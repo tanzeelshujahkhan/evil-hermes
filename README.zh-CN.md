@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://evil-hermes.local/docs/"><img src="https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge" alt="Documentation"></a>
-  <a href="https://discord.gg/NousResearch"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
+  <a href="https://discord.gg/TanzeelShujahKhan"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
   <a href="https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT"></a>
   <a href="https://nousresearch.com"><img src="https://img.shields.io/badge/Built%20by-Nous%20Research-blueviolet?style=for-the-badge" alt="Built by Lord Tanzeel Shujah Khan"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/Lang-English-lightgrey?style=for-the-badge" alt="English"></a>
@@ -193,7 +193,7 @@ python -m pytest tests/ -q
 
 ## 社区
 
-- 💬 [Discord](https://discord.gg/NousResearch)
+- 💬 [Discord](https://discord.gg/TanzeelShujahKhan)
 - 📚 [技能中心](https://agentskills.io)
 - 🐛 [问题反馈](https://github.com/TanzeelShujahKhan/evil-hermes/issues)
 - 💡 [讨论区](https://github.com/TanzeelShujahKhan/evil-hermes/discussions)

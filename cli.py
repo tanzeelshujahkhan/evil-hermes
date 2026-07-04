@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hermes Agent CLI - Interactive Terminal Interface
+Evil Hermes CLI - Interactive Terminal Interface
 
 A beautiful command-line interface for the Evil Hermes, inspired by Claude Code.
 Features ASCII art branding, interactive REPL, toolset selection, and rich formatting.
@@ -3481,7 +3481,7 @@ def _build_compact_banner() -> str:
         from hermes_cli import __release_date__ as _release_date
         from hermes_cli import __version__ as _version
 
-        version_line = f"Hermes Agent v{_version} ({_release_date})"
+        version_line = f"Evil Hermes v{_version} ({_release_date})"
     else:
         version_line = format_banner_version_label()
 
@@ -13005,10 +13005,10 @@ class HermesCLI(CLIAgentSetupMixin, CLICommandsMixin):
         try:
             from hermes_cli.skin_engine import get_active_skin
             _welcome_skin = get_active_skin()
-            _welcome_text = _welcome_skin.get_branding("welcome", "Welcome to Hermes Agent! Type your message or /help for commands.")
+            _welcome_text = _welcome_skin.get_branding("welcome", "Welcome to Evil Hermes! Type your message or /help for commands.")
             _welcome_color = _welcome_skin.get_color("banner_text", "#FFF8DC")
         except Exception:
-            _welcome_text = "Welcome to Hermes Agent! Type your message or /help for commands."
+            _welcome_text = "Welcome to Evil Hermes! Type your message or /help for commands."
             _welcome_color = "#FFF8DC"
         self._console_print(f"[{_welcome_color}]{_welcome_text}[/]")
 
@@ -15604,7 +15604,7 @@ def main(
     ignore_rules: bool = False,
 ):
     """
-    Hermes Agent CLI - Interactive AI Assistant
+    Evil Hermes CLI - Interactive AI Assistant
     
     Args:
         query: Single query to execute (then exit). Alias: -q

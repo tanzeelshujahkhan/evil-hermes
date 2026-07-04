@@ -10,7 +10,7 @@ const config: Config = {
   url: 'https://evil-hermes.local',
   baseUrl: '/docs/',
 
-  organizationName: 'NousResearch',
+  organizationName: 'TanzeelShujahKhan',
   projectName: 'hermes-agent',
 
   onBrokenLinks: 'warn',
@@ -150,7 +150,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://discord.gg/NousResearch',
+          href: 'https://discord.gg/TanzeelShujahKhan',
           label: 'Discord',
           position: 'right',
         },
@@ -171,7 +171,7 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            { label: 'Discord', href: 'https://discord.gg/NousResearch' },
+            { label: 'Discord', href: 'https://discord.gg/TanzeelShujahKhan' },
             { label: 'GitHub Issues', href: 'https://github.com/TanzeelShujahKhan/evil-hermes/issues' },
             { label: 'Skills Hub', href: 'https://agentskills.io' },
           ],

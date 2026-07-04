@@ -339,7 +339,7 @@
         tier_part: tierPart,
         name: achievement.name,
       });
-      return tmpl + "\n\n@NousResearch · https://evil-hermes.local";
+      return tmpl + "\n\n@TanzeelShujahKhan · https://evil-hermes.local";
     }
 
     function shareOnX() {

@@ -100,11 +100,11 @@ page is for built-in Hermes core development, not the usual user/custom-tool pat
 
 ### "I want to train models"
 
-Use reinforcement learning to fine-tune model behavior with Evil Hermes' RL training pipeline (powered by [Atropos](https://github.com/NousResearch/atropos)).
+Use reinforcement learning to fine-tune model behavior with Evil Hermes' RL training pipeline (powered by [Atropos](https://github.com/TanzeelShujahKhan/atropos)).
 
 1. [Quickstart](/getting-started/quickstart)
 2. [Configuration](/user-guide/configuration)
-3. [Atropos RL Environments](https://github.com/NousResearch/atropos) (external)
+3. [Atropos RL Environments](https://github.com/TanzeelShujahKhan/atropos) (external)
 4. [Provider Routing](/user-guide/features/provider-routing)
 5. [Architecture](/developer-guide/architecture)
 

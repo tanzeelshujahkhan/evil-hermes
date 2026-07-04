@@ -142,7 +142,7 @@ class TestConstruction:
             client_id="agent:inst1", portal_url="https://portal.example.com"
         )
         assert p.name == "nous"
-        assert p.display_name == "Nous Research"
+        assert p.display_name == "Lord Tanzeel Shujah Khan"
 
     def test_extracts_agent_instance_id(self):
         p = nous_plugin.NousDashboardAuthProvider(
