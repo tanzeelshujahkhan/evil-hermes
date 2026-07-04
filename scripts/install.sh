@@ -61,8 +61,8 @@ NODE_VERSION="22"
 
 # FHS-style root install layout (set by resolve_install_layout when applicable):
 #   code at /usr/local/lib/hermes-agent, command at /usr/local/bin/hermes,
-#   data still at /root/.hermes (HERMES_HOME).  Matches Claude Code / Codex CLI
-#   and keeps Docker bind-mounted /root/ volumes lean.
+#   data still at ~/.hermes (HERMES_HOME).  Matches Claude Code / Codex CLI
+#   and keeps Docker bind-mounted volumes lean.
 ROOT_FHS_LAYOUT=false
 DETECTED_BROWSER_EXECUTABLE=""
 
@@ -184,7 +184,7 @@ while [[ $# -gt 0 ]]; do
             echo "  /usr/local/lib/hermes-agent and links the command into"
             echo "  /usr/local/bin/hermes (FHS layout — matches Claude Code / Codex CLI)."
             echo "  Data, config, sessions, and logs still live in \$HERMES_HOME"
-            echo "  (default /root/.hermes).  This keeps Docker bind-mounted volumes"
+            echo "  (default ~/.hermes).  This keeps Docker bind-mounted volumes"
             echo "  small and ensures the command is on PATH for all shells."
             echo "  Existing installs at \$HERMES_HOME/hermes-agent are preserved in-place."
             echo "  --ensure DEPS  Install only specified deps (comma-separated)"
@@ -427,7 +427,7 @@ resolve_install_layout() {
         INSTALL_DIR="/usr/local/lib/hermes-agent"
         ROOT_FHS_LAYOUT=true
         # Place uv-managed Python under /usr/local/share so the venv interpreter
-        # is world-readable.  Default uv paths land in /root/.local/share/uv,
+        # is world-readable.  Default uv paths land in ~/.local/share/uv,
         # which non-root users can't traverse — leaving the shared
         # /usr/local/bin/hermes wrapper unable to exec the bad-interpreter venv
         # python.  See #21457.
@@ -1655,8 +1655,8 @@ EOF
     # /etc/profile pathmunge), but on RHEL/CentOS/Rocky/Alma 8+ non-login
     # interactive root shells (su, sudo -s, tmux panes, some web terminals)
     # only source /etc/bashrc, which does NOT add /usr/local/bin — and
-    # /root/.bash_profile doesn't either.  So verify with `command -v` and
-    # fall back to writing a PATH guard into /root/.bashrc when needed.
+    # ~/.bash_profile doesn't either.  So verify with `command -v` and
+    # fall back to writing a PATH guard into ~/.bashrc when needed.
     if [ "$ROOT_FHS_LAYOUT" = true ]; then
         export PATH="$command_link_dir:$PATH"
         # Probe a fresh non-login interactive bash the way the user will use it.
