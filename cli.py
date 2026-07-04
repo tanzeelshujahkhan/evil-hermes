@@ -3470,8 +3470,8 @@ def _build_compact_banner() -> str:
     dim_color = _skin.get_color("banner_dim", "#B8860B") if _skin else "#B8860B"
 
     if skin_name == "default":
-        line1 = "⚕ NOUS HERMES - AI Agent Framework"
-        tiny_line = "⚕ NOUS HERMES"
+        line1 = "⛧ EVIL HERMES - AI Agent Framework by Lord Tanzeel Shujah Khan"
+        tiny_line = "⛧ EVIL HERMES"
     else:
         agent_name = _skin.get_branding("agent_name", "Evil Hermes") if _skin else "Evil Hermes"
         line1 = f"{agent_name} - AI Agent Framework"
