@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Lord Tanzeel Shujah Khan Discord
+    url: https://discord.gg/NousResearch
+    about: For quick questions, showcasing projects, sharing skills, and community chat.
+  - name: 📖 Documentation
+    url: https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/README.md
+    about: Check the README and docs before opening an issue.
+  - name: 🤝 Contributing Guide
+    url: https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/CONTRIBUTING.md
+    about: Read this before submitting a PR.
