@@ -35,11 +35,11 @@ Evil Hermes 提供了一个 Nix flake，支持三个层级的集成：
 
 ```bash
 # 直接运行（首次使用时构建，之后使用缓存）
-nix run github:TanzeelShujahKhan/evil-hermes -- setup
-nix run github:TanzeelShujahKhan/evil-hermes -- chat
+nix run github:tanzeelshujahkhan/evil-hermes -- setup
+nix run github:tanzeelshujahkhan/evil-hermes -- chat
 
 # 或持久化安装
-nix profile install github:TanzeelShujahKhan/evil-hermes
+nix profile install github:tanzeelshujahkhan/evil-hermes
 hermes setup
 hermes chat
 ```
@@ -50,7 +50,7 @@ hermes chat
 <summary><strong>从本地克隆构建</strong></summary>
 
 ```bash
-git clone https://github.com/TanzeelShujahKhan/evil-hermes.git
+git clone https://github.com/tanzeelshujahkhan/evil-hermes.git
 cd hermes-agent
 nix build
 ./result/bin/hermes setup
@@ -75,7 +75,7 @@ nix build
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    evil-hermes.url = "github:TanzeelShujahKhan/evil-hermes";
+    evil-hermes.url = "github:tanzeelshujahkhan/evil-hermes";
   };
 
   outputs = { nixpkgs, evil-hermes, ... }: {
@@ -685,7 +685,7 @@ services.hermes-agent = {
 
 ```nix
 {
-  inputs.hermes-agent.url = "github:TanzeelShujahKhan/evil-hermes";
+  inputs.hermes-agent.url = "github:tanzeelshujahkhan/evil-hermes";
   outputs = { hermes-agent, nixpkgs, ... }: {
     nixpkgs.overlays = [ hermes-agent.overlays.default ];
     # 然后：

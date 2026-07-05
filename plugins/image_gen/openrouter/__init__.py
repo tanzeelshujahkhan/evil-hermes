@@ -337,7 +337,7 @@ class OpenRouterCompatImageProvider(ImageGenProvider):
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
             # OpenRouter attribution headers (harmless against Nous Portal).
-            "HTTP-Referer": "https://github.com/TanzeelShujahKhan/evil-hermes",
+            "HTTP-Referer": "https://github.com/tanzeelshujahkhan/evil-hermes",
             "X-Title": "Evil Hermes",
         }
         last_error: Optional[Dict[str, Any]] = None

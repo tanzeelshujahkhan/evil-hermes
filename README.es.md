@@ -2,214 +2,167 @@
   <img src="assets/banner.png" alt="Evil Hermes" width="100%">
 </p>
 
-# Evil Hermes ☤
-<p align="center">
-  <a href="https://evil-hermes.local/">Evil Hermes</a> | <a href="https://evil-hermes.local/">Hermes Desktop</a>
-</p>
-<p align="center">
-  <a href="https://evil-hermes.local/docs/"><img src="https://img.shields.io/badge/Docs-evil--hermes.local-FFD700?style=for-the-badge" alt="Documentación"></a>
-  <a href="https://discord.gg/TanzeelShujahKhan"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
-  <a href="https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/LICENSE"><img src="https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge" alt="Licencia: MIT"></a>
-  <a href="https://github.com/TanzeelShujahKhan/evil-hermes"><img src="https://img.shields.io/badge/Creado%20por-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge" alt="Creado por Lord Tanzeel Shujah Khan"></a>
-  <a href="README.md"><img src="https://img.shields.io/badge/Lang-English-blue?style=for-the-badge" alt="English"></a>
-  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
-  <a href="README.ur-pk.md"><img src="https://img.shields.io/badge/Lang-اردو-green?style=for-the-badge" alt="اردو"></a>
-</p>
+# Evil Hermes
 
-**El agente de IA con mejora continua creado por [Lord Tanzeel Shujah Khan](https://github.com/TanzeelShujahKhan/evil-hermes).** Es el único agente con un bucle de aprendizaje integrado: crea habilidades a partir de la experiencia, las mejora durante el uso, se impulsa a sí mismo a persistir el conocimiento, busca en sus propias conversaciones pasadas y construye un modelo cada vez más profundo de quién eres a lo largo de las sesiones. Ejecútalo en un VPS de $5, un clúster de GPUs o infraestructura sin servidor que cuesta casi nada cuando está inactivo. No está atado a tu laptop — habla con él desde Telegram mientras trabaja en una VM en la nube.
+**Un framework de agente de IA soberano, auto-mejorable, para constructores, investigadores y operadores que necesitan control total sobre identidad, filtros y política.**
 
-Usa cualquier modelo que quieras — [Nous Portal](https://portal.nousresearch.com), [OpenRouter](https://openrouter.ai) (más de 200 modelos), [NovitaAI](https://novita.ai), [NVIDIA NIM](https://build.nvidia.com) (Nemotron), [Xiaomi MiMo](https://platform.xiaomimimo.com), [z.ai/GLM](https://z.ai), [Kimi/Moonshot](https://platform.moonshot.ai), [MiniMax](https://www.minimax.io), [Hugging Face](https://huggingface.co), OpenAI, o tu propio endpoint. Cambia con `hermes model` — sin cambios de código, sin dependencias.
+[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://hermes-agent.nousresearch.com/docs/)
+[![License: MIT](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)](LICENSE)
+[![Built by Lord Tanzeel Shujah Khan](https://img.shields.io/badge/Creado%20por-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge)](https://github.com/tanzeelshujahkhan)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nousresearch)
+[![中文](https://img.shields.io/badge/Lang-中文-red?style=for-the-badge)](README.zh-CN.md)
+[![اردو](https://img.shields.io/badge/Lang-اردو-green?style=for-the-badge)](README.ur-pk.md)
+[![English](https://img.shields.io/badge/Lang-English-blue?style=for-the-badge)](README.md)
 
-<table>
-<tr><td><b>Una interfaz de terminal real</b></td><td>TUI completa con edición multilínea, autocompletado de comandos, historial de conversaciones, interrupción y redirección, y salida de herramientas en streaming.</td></tr>
-<tr><td><b>Vive donde tú vives</b></td><td>Telegram, Discord, Slack, WhatsApp, Signal y CLI — todo desde un único proceso gateway. Transcripción de notas de voz, continuidad de conversación entre plataformas.</td></tr>
-<tr><td><b>Un bucle de aprendizaje cerrado</b></td><td>Memoria curada por el agente con recordatorios periódicos. Creación autónoma de habilidades tras tareas complejas. Las habilidades mejoran solas durante el uso. Búsqueda FTS5 de sesiones con resumención por LLM para recuperación entre sesiones. Modelado de usuario dialéctico <a href="https://github.com/plastic-labs/honcho">Honcho</a>. Compatible con el estándar abierto de <a href="https://agentskills.io">agentskills.io</a>.</td></tr>
-<tr><td><b>Automatizaciones programadas</b></td><td>Planificador cron integrado con entrega a cualquier plataforma. Informes diarios, copias de seguridad nocturnas, auditorías semanales — todo en lenguaje natural, ejecutándose de forma autónoma.</td></tr>
-<tr><td><b>Delega y paraleliza</b></td><td>Lanza subagentes aislados para flujos de trabajo paralelos. Escribe scripts de Python que llaman a herramientas vía RPC, convirtiendo pipelines de múltiples pasos en turnos de coste cero de contexto.</td></tr>
-<tr><td><b>Funciona en cualquier lugar, no solo en tu laptop</b></td><td>Seis backends de terminal — local, Docker, SSH, Singularity, Modal y Daytona. Daytona y Modal ofrecen persistencia sin servidor — el entorno de tu agente hiberna cuando está inactivo y se activa bajo demanda, costando casi nada entre sesiones. Ejecútalo en un VPS de $5 o un clúster de GPUs.</td></tr>
-<tr><td><b>Listo para investigación</b></td><td>Generación de trayectorias en lote, compresión de trayectorias para entrenar la próxima generación de modelos de llamadas a herramientas.</td></tr>
-</table>
+Evil Hermes es un framework de agente completo — interfaz de terminal, gateway de mensajería, aplicación de escritorio, bucle de aprendizaje, sistema de plugins y ecosistema de habilidades — empaquetado en un único paquete Python que se ejecuta en un VPS de $5, un clúster de GPUs o infraestructura serverless. Misma arquitectura que [Hermes Agent](https://github.com/NousResearch/hermes-agent); un subconjunto deliberado y auditado de pre-filtros eliminado para que el operador posea las decisiones de política en lugar de heredarlas.
+
+> **Creado por [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan).**
+> Identidad soberana, configuración soberana, despliegue soberano.
 
 ---
 
-## Instalación rápida
+## Qué obtienes
+
+- **Interfaz de terminal real** — TUI completa con edición multilínea, autocompletado de comandos, historial de conversaciones, interrupción y redirección, y salida de herramientas en streaming.
+- **Un gateway, veinte plataformas** — Telegram, Discord, Slack, WhatsApp, Signal, Matrix, iMessage, Teams, Home Assistant y más, desde un único proceso con historial de conversación unificado.
+- **Bucle de aprendizaje cerrado** — memoria curada por el agente con persistencia periódica, creación autónoma de habilidades tras tareas complejas, habilidades que se auto-mejoran durante el uso, búsqueda FTS5 de sesiones con resúmenes LLM para recuperación entre sesiones, compatible con el estándar abierto [agentskills.io](https://agentskills.io).
+- **Automatizaciones programadas** — planificador cron integrado con entrega a cualquier plataforma. Informes diarios, copias de seguridad nocturnas, auditorías semanales — en lenguaje natural, sin atención.
+- **Delegación y paralelismo** — lanza subagentes aislados para flujos de trabajo paralelos, o escribe scripts Python que llaman a herramientas vía RPC para colapsar pipelines multi-paso en turnos de coste cero de contexto.
+- **Ejecuta en cualquier lugar** — seis backends de terminal: local, Docker, SSH, Singularity, Modal, Daytona. La persistencia serverless significa que tu agente hiberna cuando está inactivo y despierta bajo demanda.
+- **Tooling de grado investigación** — generación de trayectorias en lote, compresión de trayectorias y ganchos de currículo para entrenar la próxima generación de modelos con uso de herramientas.
+
+---
+
+## Instalación
 
 ### Linux, macOS, WSL2, Termux
 
 ```bash
-curl -fsSL https://evil-hermes.local/install.sh | bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
-### Windows (nativo, PowerShell)
-
-> **Nota:** En Windows nativo, Hermes funciona sin WSL — la CLI, el gateway, la TUI y las herramientas funcionan de forma nativa. Si prefieres usar WSL2, el comando de Linux/macOS de arriba también funciona allí. ¿Encontraste un error? Por favor [crea un issue](https://github.com/TanzeelShujahKhan/evil-hermes/issues).
-
-Ejecuta esto en PowerShell:
+### Windows (PowerShell nativo)
 
 ```powershell
-iex (irm https://evil-hermes.local/install.ps1)
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
 ```
 
-El instalador se encarga de todo: uv, Python 3.11, Node.js, ripgrep, ffmpeg, **y un Git Bash portátil** (MinGit, descomprimido en `%LOCALAPPDATA%\hermes\git` — no requiere administrador, completamente aislado de cualquier instalación de Git del sistema). Hermes usa este Git Bash incluido para ejecutar comandos de shell.
-
-Si ya tienes Git instalado, el instalador lo detecta y lo usa en su lugar. De lo contrario, una descarga de ~45MB de MinGit es todo lo que necesitas — no tocará ni interferirá con ningún Git del sistema.
-
-> **Android / Termux:** La ruta manual probada está documentada en la [guía de Termux](https://evil-hermes.local/docs/getting-started/termux). En Termux, Hermes instala el extra `.[termux]` curado porque el extra completo `.[all]` actualmente incluye dependencias de voz incompatibles con Android.
->
-> **Windows:** Windows nativo es totalmente compatible — el comando de PowerShell de arriba instala todo. Si prefieres usar WSL2, el comando de Linux también funciona allí. La instalación nativa de Windows se encuentra en `%LOCALAPPDATA%\hermes`; WSL2 instala en `~/.hermes` como en Linux.
+El instalador aprovisiona todo: `uv`, Python 3.11, Node.js, ripgrep, ffmpeg, y un Git Bash portátil (MinGit) que no toca ninguna instalación de Git del sistema. Si Git ya está presente, el instalador lo usa y omite el bundle.
 
 Después de la instalación:
 
 ```bash
 source ~/.bashrc    # recargar shell (o: source ~/.zshrc)
-hermes              # ¡empieza a chatear!
+hermes              # empezar a chatear
 ```
 
----
-
-## Primeros pasos
+### Configuración inicial
 
 ```bash
-hermes              # CLI interactiva — inicia una conversación
-hermes model        # Elige tu proveedor y modelo LLM
-hermes tools        # Configura qué herramientas están habilitadas
-hermes config set   # Establece valores de configuración individuales
-hermes gateway      # Inicia el gateway de mensajería (Telegram, Discord, etc.)
-hermes setup        # Ejecuta el asistente de configuración completo
-hermes claw migrate # Migra desde OpenClaw (si vienes de OpenClaw)
-hermes update       # Actualiza a la última versión
-hermes doctor       # Diagnostica cualquier problema
+hermes model        # elige tu proveedor y modelo LLM
+hermes tools        # configura qué herramientas están habilitadas
+hermes setup        # ejecuta el asistente de configuración completo
+hermes gateway      # inicia el gateway de mensajería (Telegram, Discord, etc.)
+hermes update       # actualiza a la última versión
+hermes doctor       # diagnostica problemas
 ```
 
-📖 **[Documentación completa →](https://evil-hermes.local/docs/)**
+📖 **[Documentación completa →](https://hermes-agent.nousresearch.com/docs/)**
 
 ---
 
-## Evita la colección de claves API — Nous Portal
+## Cómo difiere Evil Hermes del upstream
 
-Hermes funciona con cualquier proveedor que quieras — eso no cambiará. Pero si prefieres no recopilar cinco claves API separadas para el modelo, búsqueda web, generación de imágenes, TTS y un navegador en la nube, **[Nous Portal](https://portal.nousresearch.com)** las cubre todas bajo una sola suscripción:
+Evil Hermes es un fork de [Hermes Agent](https://github.com/NousResearch/hermes-agent) por [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan). El motor, gateway, sistema de plugins, formato de habilidades y matriz de proveedores son **idénticos y probados juntos**. Las diferencias son intencionales y quirúrgicas.
 
-- **Más de 300 modelos** — elige cualquiera con `/model <nombre>`
-- **Tool Gateway** — búsqueda web (Firecrawl), generación de imágenes (FAL), texto a voz (OpenAI), navegador en la nube (Browser Use), todo enrutado a través de tu suscripción. Sin cuentas adicionales.
+| Dimensión | Hermes Agent (upstream) | Evil Hermes |
+|---|---|---|
+| **Identidad** | `agent/prompt_builder.py:DEFAULT_AGENT_IDENTITY` envía un asistente Nous neutral. `SOUL.md` es opcional. | Una identidad soberana creada por Lord Tanzeel Shujah Khan. `SOUL.md` **se carga por defecto** en cada conversación — la instalación de primera vez siembra una plantilla soberana. La ruta de identidad neutral está a una bandera de distancia. |
+| **Pre-filtros morales** | Regex de patrones de amenaza, guardrails de bucles de llamadas a herramientas y una denylist de escritura de archivos por defecto (`.ssh`, `.aws`, `.gnupg`, `.kube`, `.docker`, `.env`, `.netrc`, `.pgpass`, etc.) habilitados. | Pre-filtros reducidos a una **denylist mínima** de archivos de identidad del sistema (`/etc/passwd`, `/etc/shadow`, `/etc/sudoers*`) y el almacén de credenciales propio del agente. Todo lo demás es territorio del operador. El código del filtro sigue en el árbol — activa una bandera y el comportamiento upstream vuelve. |
+| **Guardrails de herramientas** | `warnings=True`, `hard_stop=True` por defecto para llamadas fallidas repetidas. Skills Guard devuelve `block` para habilidades de comunidad `dangerous`. | `warnings=False`, `hard_stop=False` por defecto. Skills Guard aún emite un veredicto `safe / caution / dangerous` y lo muestra al instalar — ningún veredicto bloquea. El escáner permanece en el bucle como fuente de instrumentación. |
+| **Redacción de secretos** | `HERMES_REDACT_SECRETS=true` es el valor por defecto en el transporte MCP. | `_REDACT_ENABLED` por defecto es `false`. Activa la bandera si quieres scrubbing de logs; los patrones no cambian. |
+| **Plomería** | Paquete `hermes-agent`, rutas de import `hermes_*`, env var `HERMES_HOME`, directorio de config `~/.hermes/`. | **Idéntico por diseño.** Renombrar rompería 6.000+ imports. Solo difieren las cadenas visibles al usuario, la identidad por defecto y los valores por defecto de pre-filtros — localizado a un puñado de archivos. |
+| **Licencia** | MIT | MIT (sin cambios) |
+| **Política de mantenimiento** | Conservadora en el núcleo del agente + esquema de herramientas del modelo. Se aplica la rúbrica de contribución de AGENTS.md. | Idéntica. Sin divergencia del núcleo respecto a la rúbrica de contribución upstream. |
 
-Un comando desde una instalación nueva:
-
-```bash
-hermes setup --portal
-```
-
-Esto te autentica vía OAuth, establece Nous como tu proveedor y activa el Tool Gateway. Comprueba qué está conectado en cualquier momento con `hermes portal info`. Detalles completos en la [página de documentación del Tool Gateway](https://evil-hermes.local/docs/user-guide/features/tool-gateway).
-
-Puedes seguir usando tus propias claves por herramienta cuando quieras — el gateway es por backend, no todo o nada.
+**El punto del fork es la propiedad.** El código del filtro es infraestructura de agente real e inspeccionable. En el codebase upstream los filtros están acoplados a la identidad visible del agente y se envían habilitados por defecto. Evil Hermes separa ambos: los filtros están presentes y son auditables, pero el operador — no el framework — decide qué está activo.
 
 ---
 
-## Referencia rápida: CLI vs Mensajería
+## Despliegue
 
-Hermes tiene dos puntos de entrada: inicia la interfaz de terminal con `hermes`, o ejecuta el gateway y habla con él desde Telegram, Discord, Slack, WhatsApp, Signal o Email. Una vez en una conversación, muchos comandos de barra son compartidos entre ambas interfaces.
+Evil Hermes es un agente personal de un solo inquilino. El modelo de confianza se detalla en [SECURITY.md](SECURITY.md). Tres decisiones marcan la diferencia entre un juguete y un despliegue en producción:
 
-| Acción                              | CLI                                           | Plataformas de mensajería                                                         |
-| ----------------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------- |
-| Empezar a chatear                   | `hermes`                                      | Ejecuta `hermes gateway setup` + `hermes gateway start`, luego envía un mensaje al bot |
-| Nueva conversación                  | `/new` o `/reset`                             | `/new` o `/reset`                                                                 |
-| Cambiar modelo                      | `/model [proveedor:modelo]`                   | `/model [proveedor:modelo]`                                                       |
-| Establecer personalidad             | `/personality [nombre]`                       | `/personality [nombre]`                                                           |
-| Reintentar o deshacer último turno  | `/retry`, `/undo`                             | `/retry`, `/undo`                                                                 |
-| Comprimir contexto / ver uso        | `/compress`, `/usage`, `/insights [--days N]` | `/compress`, `/usage`, `/insights [days]`                                         |
-| Explorar habilidades                | `/skills` o `/<nombre-habilidad>`             | `/<nombre-habilidad>`                                                             |
-| Interrumpir trabajo actual          | `Ctrl+C` o enviar un nuevo mensaje            | `/stop` o enviar un nuevo mensaje                                                 |
-| Estado específico de plataforma     | `/platforms`                                  | `/status`, `/sethome`                                                             |
+1. **Configura `toolsets` deliberadamente** en `~/.hermes/config.yaml`. `hermes-cli` te da shell + file + edit. Añade `web` para red. Cuanto más estrecho el conjunto, menor el radio de impacto.
+2. **Elige un backend de terminal** que coincida con tu modelo de amenaza. `backend: local` para hosts de un solo usuario de confianza. `backend: docker` para aislamiento efímero en contenedor. `backend: modal` o `backend: daytona` para sandboxing serverless.
+3. **Reactiva los filtros que realmente quieras** en la configuración del operador. `HERMES_REDACT_SECRETS=true` para scrubbing de logs. El escáner de patrones de amenaza puede reactivarse editando `tools/threat_patterns.py:_PATTERNS` — el framework envía los patrones; solo la lista por defecto está vacía.
 
-Para las listas de comandos completas, consulta la [guía de CLI](https://evil-hermes.local/docs/user-guide/cli) y la [guía del Gateway de Mensajería](https://evil-hermes.local/docs/user-guide/messaging).
+Lee [SECURITY.md](SECURITY.md) antes de exponer el gateway o la API a internet abierta.
 
 ---
 
 ## Documentación
 
-Toda la documentación está en **[evil-hermes.local/docs](https://evil-hermes.local/docs/)**:
+El sitio de documentación completo está publicado en **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)**. El motor es compartido, por lo que los documentos upstream aplican de forma literal; las notas específicas de Evil Hermes se señalan in-situ.
 
-| Sección                                                                                             | Contenido                                                    |
-| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| [Inicio rápido](https://evil-hermes.local/docs/getting-started/quickstart)              | Instalar → configurar → primera conversación en 2 minutos   |
-| [Uso de CLI](https://evil-hermes.local/docs/user-guide/cli)                             | Comandos, atajos de teclado, personalidades, sesiones        |
-| [Configuración](https://evil-hermes.local/docs/user-guide/configuration)               | Archivo de configuración, proveedores, modelos, todas las opciones |
-| [Gateway de Mensajería](https://evil-hermes.local/docs/user-guide/messaging)           | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant   |
-| [Seguridad](https://evil-hermes.local/docs/user-guide/security)                        | Aprobación de comandos, emparejamiento por DM, aislamiento en contenedor |
-| [Herramientas y Toolsets](https://evil-hermes.local/docs/user-guide/features/tools)   | Más de 40 herramientas, sistema de toolsets, backends de terminal |
-| [Sistema de Habilidades](https://evil-hermes.local/docs/user-guide/features/skills)   | Memoria procedimental, Skills Hub, creación de habilidades   |
-| [Memoria](https://evil-hermes.local/docs/user-guide/features/memory)                   | Memoria persistente, perfiles de usuario, mejores prácticas  |
-| [Integración MCP](https://evil-hermes.local/docs/user-guide/features/mcp)              | Conecta cualquier servidor MCP para capacidades extendidas   |
-| [Programación Cron](https://evil-hermes.local/docs/user-guide/features/cron)           | Tareas programadas con entrega a plataforma                  |
-| [Archivos de Contexto](https://evil-hermes.local/docs/user-guide/features/context-files) | Contexto de proyecto que da forma a cada conversación      |
-| [Arquitectura](https://evil-hermes.local/docs/developer-guide/architecture)            | Estructura del proyecto, bucle del agente, clases principales |
-| [Contribuir](https://evil-hermes.local/docs/developer-guide/contributing)              | Configuración de desarrollo, proceso de PR, estilo de código |
-| [Referencia de CLI](https://evil-hermes.local/docs/reference/cli-commands)             | Todos los comandos y flags                                   |
-| [Variables de Entorno](https://evil-hermes.local/docs/reference/environment-variables) | Referencia completa de variables de entorno                  |
+| Sección | Contenido |
+|---|---|
+| [Inicio rápido](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) | Instalar → configurar → primera conversación en 2 minutos |
+| [Uso de CLI](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | Comandos, atajos, personalidades, sesiones |
+| [Configuración](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) | Archivo de config, proveedores, modelos, todas las opciones |
+| [Gateway de Mensajería](https://hermes-agent.nousresearch.com/docs/user-guide/messaging) | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant |
+| [Seguridad](https://hermes-agent.nousresearch.com/docs/user-guide/security) | Aprobación de comandos, emparejamiento DM, aislamiento en contenedor |
+| [Herramientas y Toolsets](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools) | 40+ herramientas, sistema de toolsets, backends de terminal |
+| [Sistema de Habilidades](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | Memoria procedimental, Skills Hub, creación de habilidades |
+| [Memoria](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) | Memoria persistente, perfiles de usuario, buenas prácticas |
+| [Integración MCP](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) | Conecta cualquier servidor MCP para capacidades extendidas |
+| [Programación Cron](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) | Tareas programadas con entrega a plataforma |
+| [Archivos de Contexto](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files) | Contexto de proyecto que da forma a cada conversación |
+| [Arquitectura](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture) | Estructura del proyecto, bucle del agente, clases principales |
+| [Contribuir](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) | Configuración de desarrollo, proceso de PR, estilo de código |
+| [Referencia de CLI](https://hermes-agent.nousresearch.com/docs/reference/cli-commands) | Todos los comandos y flags |
+| [Variables de Entorno](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | Referencia completa de variables de entorno |
 
 ---
 
 ## Migración desde OpenClaw
 
-Si vienes de OpenClaw, Hermes puede importar automáticamente tu configuración, memorias, habilidades y claves API.
-
-**Durante la configuración inicial:** El asistente de configuración (`hermes setup`) detecta automáticamente `~/.openclaw` y ofrece migrar antes de que comience la configuración.
-
-**En cualquier momento después de instalar:**
+El asistente de configuración (`hermes setup`) detecta `~/.openclaw` y ofrece migrar antes de empezar. Para migrar después de la instalación:
 
 ```bash
 hermes claw migrate              # Migración interactiva (preset completo)
-hermes claw migrate --dry-run    # Vista previa de qué se migraría
+hermes claw migrate --dry-run    # Vista previa de lo que se migraría
 hermes claw migrate --preset user-data   # Migrar sin secretos
-hermes claw migrate --overwrite  # Sobreescribir conflictos existentes
+hermes claw migrate --overwrite  # Sobrescribir conflictos existentes
 ```
 
-Qué se importa:
-
-- **SOUL.md** — archivo de personalidad
-- **Memorias** — entradas de MEMORY.md y USER.md
-- **Habilidades** — habilidades creadas por el usuario → `~/.hermes/skills/openclaw-imports/`
-- **Lista de comandos permitidos** — patrones de aprobación
-- **Configuración de mensajería** — configuración de plataformas, usuarios permitidos, directorio de trabajo
-- **Claves API** — secretos en lista de permitidos (Telegram, OpenRouter, OpenAI, Anthropic, ElevenLabs)
-- **Assets de TTS** — archivos de audio del espacio de trabajo
-- **Instrucciones del espacio de trabajo** — AGENTS.md (con `--workspace-target`)
-
-Consulta `hermes claw migrate --help` para todas las opciones, o usa la habilidad `openclaw-migration` para una migración guiada interactiva por el agente con vistas previas de dry-run.
+Importa: `SOUL.md`, `MEMORY.md`, `USER.md`, habilidades creadas por el usuario (→ `~/.hermes/skills/openclaw-imports/`), lista de comandos permitidos, configuración de mensajería, claves API en allowlist, assets TTS y `AGENTS.md` del workspace.
 
 ---
 
 ## Contribuir
 
-¡Las contribuciones son bienvenidas! Consulta la [Guía de Contribución](CONTRIBUTING.es.md) para la configuración del desarrollo, el estilo de código y el proceso de PR.
-
-Inicio rápido para colaboradores — clona y comienza con `setup-hermes.sh`:
+Las contribuciones son bienvenidas. Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para la configuración de desarrollo, estilo de código y proceso de PR. La rúbrica de contribución en [AGENTS.md](AGENTS.md) gobierna qué entra y qué no — léela antes de abrir un PR grande.
 
 ```bash
-git clone https://github.com/TanzeelShujahKhan/evil-hermes.git
-cd hermes-agent
-./setup-hermes.sh     # instala uv, crea venv, instala .[all], enlaza ~/.local/bin/hermes
-./hermes              # detecta automáticamente el venv, no necesitas hacer `source` primero
-```
-
-Ruta manual (equivalente a lo anterior):
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv venv .venv --python 3.11
-source .venv/bin/activate
+git clone https://github.com/tanzeelshujahkhan/evil-hermes.git
+cd evil-hermes
+uv venv ~/.hermes/venvs/hermes-dev --python 3.11
+source ~/.hermes/venvs/hermes-dev/bin/activate
 uv pip install -e ".[all,dev]"
 scripts/run_tests.sh
 ```
+
+La suite completa de tests de Hermes Agent (~17k tests) se envía en `tests/`.
 
 ---
 
 ## Comunidad
 
-- 💬 [Discord](https://discord.gg/TanzeelShujahKhan)
-- 📚 [Skills Hub](https://agentskills.io)
-- 🐛 [Issues](https://github.com/TanzeelShujahKhan/evil-hermes/issues)
-- 🔌 [computer-use-linux](https://github.com/avifenesh/computer-use-linux) — Servidor MCP de control de escritorio Linux para Hermes y otros hosts MCP, con árboles de accesibilidad AT-SPI, entrada Wayland/X11, capturas de pantalla y targeting de ventanas del compositor.
-- 🔌 [HermesClaw](https://github.com/AaronWong1999/hermesclaw) — Puente WeChat comunitario: Ejecuta Evil Hermes y OpenClaw en la misma cuenta de WeChat.
+- 💬 [Discord](https://discord.gg/nousresearch) — comunidad Hermes Agent
+- 🐛 [GitHub Issues](https://github.com/tanzeelshujahkhan/evil-hermes/issues) — reportes de bugs y solicitudes de funcionalidad
+- 💡 [GitHub Discussions](https://github.com/tanzeelshujahkhan/evil-hermes/discussions) — preguntas y discusión de diseño
+- 📚 [Skills Hub](https://agentskills.io) — estándar abierto para habilidades de agente
 
 ---
 
@@ -217,4 +170,4 @@ scripts/run_tests.sh
 
 MIT — ver [LICENSE](LICENSE).
 
-Creado por [Lord Tanzeel Shujah Khan](https://github.com/TanzeelShujahKhan/evil-hermes).
+**Creado por [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan).** Forkeado de [Hermes Agent](https://github.com/NousResearch/hermes-agent) — mismo motor, identidad soberana, política propiedad del operador.

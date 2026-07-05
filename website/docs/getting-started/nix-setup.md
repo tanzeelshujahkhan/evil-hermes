@@ -41,17 +41,17 @@ No clone needed. Nix fetches, builds, and runs everything:
 
 ```bash
 # Run the desktop app
-nix run github:TanzeelShujahKhan/evil-hermes#desktop
+nix run github:tanzeelshujahkhan/evil-hermes#desktop
 
 # Or install persistently
-nix profile install github:TanzeelShujahKhan/evil-hermes#desktop
+nix profile install github:tanzeelshujahkhan/evil-hermes#desktop
 
 # run the tui
-nix run github:TanzeelShujahKhan/evil-hermes -- setup
-nix run github:TanzeelShujahKhan/evil-hermes -- --tui
+nix run github:tanzeelshujahkhan/evil-hermes -- setup
+nix run github:tanzeelshujahkhan/evil-hermes -- --tui
 
 # or install it in your profile
-nix profile install github:TanzeelShujahKhan/evil-hermes
+nix profile install github:tanzeelshujahkhan/evil-hermes
 hermes setup
 hermes --tui
 ```
@@ -69,7 +69,7 @@ The `default` package adds ~700 MB to the closure. If you only need messaging pl
 <summary><strong>Running from a local clone</strong></summary>
 
 ```bash
-git clone https://github.com/TanzeelShujahKhan/evil-hermes.git
+git clone https://github.com/tanzeelshujahkhan/evil-hermes.git
 cd hermes-agent
 nix develop
 hermes setup
@@ -94,7 +94,7 @@ This module requires NixOS. For non-NixOS systems (macOS, other Linux distros), 
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    evil-hermes.url = "github:TanzeelShujahKhan/evil-hermes";
+    evil-hermes.url = "github:tanzeelshujahkhan/evil-hermes";
   };
 
   outputs = { nixpkgs, evil-hermes, ... }: {
@@ -733,7 +733,7 @@ External flakes can override the package directly:
 
 ```nix
 {
-  inputs.hermes-agent.url = "github:TanzeelShujahKhan/evil-hermes";
+  inputs.hermes-agent.url = "github:tanzeelshujahkhan/evil-hermes";
   outputs = { hermes-agent, nixpkgs, ... }: {
     nixpkgs.overlays = [ hermes-agent.overlays.default ];
     # Then:

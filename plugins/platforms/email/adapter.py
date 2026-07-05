@@ -140,7 +140,7 @@ def _send_imap_id(imap: "imaplib.IMAP4") -> None:
         imap.xatom(
             "ID",
             f'("name" "evil-hermes" "version" "{_hermes_version}" '
-            '"vendor" "TanzeelShujahKhan" '
+            '"vendor" "tanzeelshujahkhan" '
             '"support-email" "noreply@nousresearch.com")',
         )
     except Exception as e:  # noqa: BLE001 — best-effort, never fatal

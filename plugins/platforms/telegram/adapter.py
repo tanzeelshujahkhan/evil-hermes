@@ -2008,7 +2008,7 @@ class TelegramAdapter(BasePlatformAdapter):
                     # "in-flight" and skips triggering a new reconnect, and
                     # the gateway silently drops messages for hours.
                     # Bounding stop() lets the reconnect ladder always advance.
-                    # Refs: TanzeelShujahKhan/evil-hermes#58270
+                    # Refs: tanzeelshujahkhan/evil-hermes#58270
                     await asyncio.wait_for(app.updater.stop(), timeout=_UPDATER_STOP_TIMEOUT)
                 except asyncio.TimeoutError:
                     logger.warning(
@@ -3157,7 +3157,7 @@ class TelegramAdapter(BasePlatformAdapter):
                         "TELEGRAM_WEBHOOK_URL is set. Without it, the "
                         "webhook endpoint accepts forged updates from "
                         "anyone who can reach it — see "
-                        "https://github.com/TanzeelShujahKhan/evil-hermes/"
+                        "https://github.com/tanzeelshujahkhan/evil-hermes/"
                         "security/advisories/GHSA-3vpc-7q5r-276h.\n\n"
                         "Generate a secret and set it in your .env:\n"
                         "  export TELEGRAM_WEBHOOK_SECRET=\"$(openssl rand -hex 32)\"\n\n"

@@ -231,7 +231,7 @@ class TestCmdUpdateBranchFallback:
         """Regression for issue #26172: forks whose local HEAD already matches
         origin/main must still consult upstream/main before printing
         "Already up to date!" — otherwise a fork that's caught up to its own
-        origin but behind TanzeelShujahKhan/hermes-agent silently misses updates.
+        origin but behind tanzeelshujahkhan/hermes-agent silently misses updates.
         """
         from hermes_cli import main as hm
 

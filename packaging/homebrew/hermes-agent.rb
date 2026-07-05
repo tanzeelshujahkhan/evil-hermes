@@ -2,10 +2,10 @@ class EvilHermes < Formula
   include Language::Python::Virtualenv
 
   desc "Evil Hermes — self-improving AI agent that creates skills from experience. Created by Lord Tanzeel Shujah Khan."
-  homepage "https://evil-hermes.local"
+  homepage "https://hermes-agent.nousresearch.com"
   # Stable source should point at the semver-named sdist asset attached by
   # scripts/release.py, not the CalVer tag tarball.
-  url "https://github.com/TanzeelShujahKhan/hermes-agent/releases/download/v2026.3.30/hermes_agent-0.6.0.tar.gz"
+  url "https://github.com/tanzeelshujahkhan/hermes-agent/releases/download/v2026.3.30/hermes_agent-0.6.0.tar.gz"
   sha256 "<replace-with-release-asset-sha256>"
   license "MIT"
 

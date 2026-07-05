@@ -46,7 +46,7 @@ jobs:
   # ---------------------------------------------------------------------------
   build-amd64:
     # Only run on the upstream repository, not on forks
-    if: github.repository == 'TanzeelShujahKhan/hermes-agent'
+    if: github.repository == 'tanzeelshujahkhan/hermes-agent'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     outputs:
@@ -193,7 +193,7 @@ jobs:
   # smoke test, then on push/release push by digest.
   # ---------------------------------------------------------------------------
   build-arm64:
-    if: github.repository == 'TanzeelShujahKhan/hermes-agent'
+    if: github.repository == 'tanzeelshujahkhan/hermes-agent'
     runs-on: ubuntu-24.04-arm
     timeout-minutes: 45
     outputs:
@@ -298,7 +298,7 @@ jobs:
   # On releases: tags :<release_tag_name>.
   # ---------------------------------------------------------------------------
   merge:
-    if: github.repository == 'TanzeelShujahKhan/hermes-agent' && (github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'release')
+    if: github.repository == 'tanzeelshujahkhan/hermes-agent' && (github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'release')
     runs-on: ubuntu-latest
     needs: [build-amd64, build-arm64]
     timeout-minutes: 10

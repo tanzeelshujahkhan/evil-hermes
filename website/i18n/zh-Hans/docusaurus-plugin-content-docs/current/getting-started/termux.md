@@ -46,7 +46,7 @@ python -m pip install -e '.[termux]' -c constraints-termux.txt
 Hermes 现已内置 Termux 感知的安装路径：
 
 ```bash
-curl -fsSL https://evil-hermes.local/install.sh | bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
 在 Termux 上，安装程序会自动：
@@ -80,7 +80,7 @@ pkg install -y git python clang rust make pkg-config libffi openssl nodejs ripgr
 ### 2. 克隆 Hermes
 
 ```bash
-git clone https://github.com/TanzeelShujahKhan/evil-hermes.git
+git clone https://github.com/tanzeelshujahkhan/evil-hermes.git
 cd hermes-agent
 ```
 

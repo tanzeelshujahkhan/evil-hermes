@@ -15,19 +15,19 @@ Hermes isn't just a CLI tool. You can import `AIAgent` directly and use it progr
 Install Hermes directly from the repository:
 
 ```bash
-pip install git+https://github.com/TanzeelShujahKhan/evil-hermes.git
+pip install git+https://github.com/tanzeelshujahkhan/evil-hermes.git
 ```
 
 Or with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-uv pip install git+https://github.com/TanzeelShujahKhan/evil-hermes.git
+uv pip install git+https://github.com/tanzeelshujahkhan/evil-hermes.git
 ```
 
 You can also pin it in your `requirements.txt`:
 
 ```text
-evil-hermes @ git+https://github.com/TanzeelShujahKhan/evil-hermes.git
+evil-hermes @ git+https://github.com/tanzeelshujahkhan/evil-hermes.git
 ```
 
 :::tip

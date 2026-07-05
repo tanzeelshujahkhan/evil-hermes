@@ -295,14 +295,14 @@ export default function UserStoriesCollage(): JSX.Element {
       <div className={styles.footer}>
         Built something with Hermes?{' '}
         <a
-          href="https://github.com/TanzeelShujahKhan/evil-hermes/edit/main/website/src/data/userStories.json"
+          href="https://github.com/tanzeelshujahkhan/evil-hermes/edit/main/website/src/data/userStories.json"
           target="_blank"
           rel="noopener noreferrer"
         >
           Add your story to this page
         </a>{' '}
         by editing <code>userStories.json</code>, or post it in the{' '}
-        <a href="https://discord.gg/TanzeelShujahKhan" target="_blank" rel="noopener noreferrer">
+        <a href="https://discord.gg/nousresearch" target="_blank" rel="noopener noreferrer">
           Lord Tanzeel Shujah Khan Discord
         </a>{' '}
         and we&apos;ll pick it up.

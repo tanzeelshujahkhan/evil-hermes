@@ -395,7 +395,7 @@ npm install
 导航到指定 URL。必须在其他任何浏览器工具之前调用。初始化 Browserbase 会话。
 
 ```
-Navigate to https://github.com/TanzeelShujahKhan
+Navigate to https://github.com/tanzeelshujahkhan
 ```
 
 :::tip

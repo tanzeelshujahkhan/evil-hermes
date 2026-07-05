@@ -214,7 +214,7 @@ If you've worked through this guide and the issue persists:
 
 1. Run the job with `hermes cron run <job_id>` (fires on next gateway tick) and watch for errors in the chat output
 2. Check `~/.hermes/logs/agent.log` for scheduler messages and `~/.hermes/logs/errors.log` for warnings
-3. Open an issue at [github.com/TanzeelShujahKhan/evil-hermes](https://github.com/TanzeelShujahKhan/evil-hermes) with:
+3. Open an issue at [github.com/tanzeelshujahkhan/evil-hermes](https://github.com/tanzeelshujahkhan/evil-hermes) with:
    - The job ID and schedule
    - The delivery target
    - What you expected vs. what happened

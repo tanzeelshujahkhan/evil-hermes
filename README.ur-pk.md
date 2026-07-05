@@ -4,258 +4,174 @@
   <img src="assets/banner.png" alt="Evil Hermes" width="100%">
 </p>
 
-# ہرمیس ایجنٹ ☤ (Evil Hermes)
+# ایول ہرمیس (Evil Hermes)
 
-<p align="center">
-  <a href="https://evil-hermes.local/docs/"><img src="https://img.shields.io/badge/Docs-evil--hermes.local-FFD700?style=for-the-badge" alt="Documentation"></a>
-  <a href="https://discord.gg/TanzeelShujahKhan"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
-  <a href="https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License: MIT"></a>
-  <a href="https://github.com/TanzeelShujahKhan/evil-hermes"><img src="https://img.shields.io/badge/Built%20by-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge" alt="Built by Lord Tanzeel Shujah Khan"></a>
-  <a href="README.md"><img src="https://img.shields.io/badge/Lang-English-lightgrey?style=for-the-badge" alt="English"></a>
-  <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
-</p>
+**بنایا گیا، محققین اور آپریٹرز کے لیے ایک خود مختار، خود بہتر ہونے والا AI ایجنٹ فریم ورک — جنہیں شناخت، فلٹرز اور پالیسی پر مکمل کنٹرول کی ضرورت ہے۔**
 
-**[نوس ریسرچ (Lord Tanzeel Shujah Khan)](https://github.com/TanzeelShujahKhan/evil-hermes) کا تیار کردہ خود کو بہتر بنانے والا اے آئی (AI) ایجنٹ۔** یہ واحد ایجنٹ ہے جس میں سیکھنے کا عمل (learning loop) پہلے سے موجود ہے — یہ اپنے تجربات سے نئی مہارتیں (skills) بناتا ہے، استعمال کے دوران ان کو بہتر کرتا ہے، معلومات کو محفوظ رکھنے کے لیے خود کو یاد دہانی کرواتا ہے، اپنی پرانی بات چیت کو تلاش کر سکتا ہے، اور مختلف سیشنز کے دوران آپ کے بارے میں ایک گہری سمجھ پیدا کرتا ہے۔ اسے $5 والے VPS پر چلائیں، GPU کلسٹر پر، یا سرور لیس (serverless) انفراسٹرکچر پر جس کی قیمت استعمال نہ ہونے پر تقریباً صفر ہے۔ یہ آپ کے لیپ ٹاپ تک محدود نہیں ہے — آپ ٹیلی گرام (Telegram) سے اس کے ساتھ بات چیت کر سکتے ہیں جبکہ یہ کلاؤڈ VM پر کام کر رہا ہو۔
+[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://hermes-agent.nousresearch.com/docs/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Built by Lord Tanzeel Shujah Khan](https://img.shields.io/badge/Built%20by-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge)](https://github.com/tanzeelshujahkhan)
+[![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nousresearch)
+[![English](https://img.shields.io/badge/Lang-English-lightgrey?style=for-the-badge)](README.md)
+[![中文](https://img.shields.io/badge/Lang-中文-red?style=for-the-badge)](README.zh-CN.md)
+[![Español](https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge)](README.es.md)
 
-آپ اپنی مرضی کا کوئی بھی ماڈل استعمال کر سکتے ہیں — [Nous Portal](https://portal.nousresearch.com)، [OpenRouter](https://openrouter.ai) (200 سے زائد ماڈلز)، [NovitaAI](https://novita.ai) (ماڈل API، ایجنٹ سینڈ باکس، اور GPU کلاؤڈ کے لیے اے آئی مقامی کلاؤڈ)، [NVIDIA NIM](https://build.nvidia.com) (Nemotron)، [Xiaomi MiMo](https://platform.xiaomimimo.com)، [z.ai/GLM](https://z.ai)، [Kimi/Moonshot](https://platform.moonshot.ai)، [MiniMax](https://www.minimax.io)، [Hugging Face](https://huggingface.co)، OpenAI، یا اپنا حسب ضرورت اینڈ پوائنٹ (endpoint) استعمال کریں۔ ماڈل تبدیل کرنے کے لیے صرف `hermes model` استعمال کریں — کسی کوڈ کو تبدیل کرنے کی ضرورت نہیں، کوئی پابندی نہیں۔
+ایول ہرمیس ایک مکمل ایجنٹ فریم ورک ہے — ٹرمینل UI، میسجنگ گیٹ وے، ڈیسک ٹاپ ایپ، لرننگ لوپ، پلگ ان سسٹم، اور سکلز ایکو سسٹم — سب کچھ ایک Python پیکج میں جو $5 والے VPS، GPU کلسٹر، یا سرور لیس انفراسٹرکچر پر چلتا ہے۔ [ہرمیس ایجنٹ](https://github.com/NousResearch/hermes-agent) جیسی ہی فن تعمیر؛ جان بوجھ کر آڈٹ شدہ پری فلٹرز کا ایک ذیلی مجموعہ ہٹا دیا گیا ہے تاکہ آپریٹر کو پالیسی کے فیصلے وراثت میں ملنے کی بجائے ملکیت میں ملیں۔
 
-<table>
-<tr><td><b>حقیقی ٹرمینل انٹرفیس</b></td><td>مکمل TUI جس میں ملٹی لائن ایڈیٹنگ، سلیش-کمانڈ آٹو کمپلیٹ، بات چیت کی ہسٹری، انٹرپٹ اور ری ڈائریکٹ، اور سٹریمنگ ٹول آؤٹ پٹ شامل ہے۔</td></tr>
-<tr><td><b>یہ وہاں موجود ہے جہاں آپ ہیں</b></td><td>ٹیلی گرام، ڈسکارڈ (Discord)، سلیک (Slack)، واٹس ایپ (WhatsApp)، سگنل (Signal)، اور CLI — سب ایک ہی گیٹ وے پروسیس سے کام کرتے ہیں۔ وائس میمو (Voice memo) ٹرانسکرپشن، کراس پلیٹ فارم بات چیت کا تسلسل۔</td></tr>
-<tr><td><b>سیکھنے کا ایک مکمل عمل</b></td><td>ایجنٹ کی اپنی ترتیب دی گئی میموری، جس میں وہ خود کو وقتاً فوقتاً یاد دہانی کرواتا ہے۔ پیچیدہ کاموں کے بعد خود کار طریقے سے مہارت (skill) کی تخلیق۔ استعمال کے دوران مہارتوں میں بہتری۔ LLM سمرائزیشن کے ساتھ FTS5 سیشن سرچ تاکہ پرانے سیشنز کی یاددہانی کی جا سکے۔ <a href="https://github.com/plastic-labs/honcho">Honcho</a> کے ذریعے صارف کی ماڈلنگ۔ <a href="https://agentskills.io">agentskills.io</a> اوپن سٹینڈرڈ کے ساتھ مکمل مطابقت۔</td></tr>
-<tr><td><b>شیڈول کی گئی خودکار کارروائیاں</b></td><td>بلٹ ان (Built-in) کرون (cron) شیڈیولر جو کسی بھی پلیٹ فارم پر ڈیلیوری کے لیے استعمال ہو سکتا ہے۔ روزانہ کی رپورٹس، رات کے بیک اپس، ہفتہ وار آڈٹس — یہ سب کچھ قدرتی زبان (natural language) میں اور بغیر کسی نگرانی کے کام کرتا ہے۔</td></tr>
-<tr><td><b>کام کی تقسیم اور متوازی عمل</b></td><td>متوازی (parallel) کاموں کے لیے الگ سے ذیلی ایجنٹس (subagents) بنائیں۔ پائتھون (Python) سکرپٹس لکھیں جو RPC کے ذریعے ٹولز کو استعمال کریں، تاکہ کئی مراحل پر مشتمل کاموں کو بغیر کسی سیاق و سباق (context) کے خرچ کے، ایک ہی باری میں انجام دیا جا سکے۔</td></tr>
-<tr><td><b>کہیں بھی چلائیں، صرف اپنے لیپ ٹاپ پر نہیں</b></td><td>چھ (Six) ٹرمینل بیک اینڈز — لوکل، Docker، SSH، Singularity، Modal، اور Daytona۔ ڈیٹونا (Daytona) اور موڈل (Modal) سرور لیس (serverless) فعالیت پیش کرتے ہیں — جب آپ کا ایجنٹ فارغ ہوتا ہے تو اس کا ماحول سلیپ (hibernate) ہو جاتا ہے اور ضرورت پڑنے پر خود بخود جاگ جاتا ہے، جس کی وجہ سے سیشنز کے درمیان لاگت تقریباً صفر رہتی ہے۔ اسے $5 والے VPS یا GPU کلسٹر پر چلائیں۔</td></tr>
-<tr><td><b>تحقیق کے لیے تیار</b></td><td>بیچ (Batch) ٹریجیکٹری (trajectory) جنریشن، اگلی نسل کے ٹول کالنگ ماڈلز کی تربیت کے لیے ٹریجیکٹری کمپریشن۔</td></tr>
-</table>
+> **[Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan) کی تعمیر۔**
+> خود مختار شناخت، خود مختار ترتیب، خود مختار تعیناتی۔
 
 ---
 
-## فوری انسٹالیشن (Quick Install)
+## آپ کو کیا ملتا ہے
 
-### لینکس (Linux)، میک او ایس (macOS)، ڈبلیو ایس ایل ٹو (WSL2)، ٹرمکس (Termux)
+- **اصل ٹرمینل انٹرفیس** — مکمل TUI، ملٹی لائن ایڈیٹنگ، سلیش کمانڈ آٹو کمپلیشن، گفتگو کی سرگزشت، انٹرپٹ اور ری ڈائریکٹ، اور ٹول آؤٹ پٹ اسٹریمنگ۔
+- **ایک گیٹ وے، بیس پلیٹ فارمز** — ٹیلی گرام، ڈسکارڈ، سلیک، واٹس ایپ، سگنل، میٹرکس، آئی مسیج، ٹیمز، ہوم اسسٹنٹ، اور مزید، ایک ہی عمل سے، متحدہ گفتگو کی سرگزشت اور کراس پلیٹ فارم تسلسل کے ساتھ۔
+- **بند لرننگ لوپ** — ایجنٹ کی طرف سے منتخب کردہ میموری، وقفے وقفے سے استقامت کی یاد دہانیوں کے ساتھ۔ پیچیدہ کاموں کے بعد خود مختار سکلز بنانا۔ سکلز استعمال کے دوران خود کو بہتر بناتی ہیں۔ کراس سیشن یاددہانی کے لیے LLM خلاصے کے ساتھ FTS5 سیشن سرچ۔ [agentskills.io](https://agentskills.io) کھلے معیار کے ساتھ مکمل مطابقت۔
+- **شیڈیولڈ آٹومیشنز** — کسی بھی پلیٹ فارم پر ترسیل کے ساتھ بلٹ ان cron شیڈیولر۔ روزانہ رپورٹس، رات کے بیک اپ، ہفتہ وار آڈٹس — فطری زبان میں، بغیر نگہبانی کے۔
+- **تفویض اور متوازی کاری** — متوازی ورک فلو کے لیے الگ تھلگ ذیلی ایجنٹس بنائیں، یا ایسے Python اسکرپٹس لکھیں جو RPC کے ذریعے ٹولز کو کال کریں اور کثیر مرحلہ پائپ لائنز کو صفر سیاق و سباق لاگت والے موڑ میں تبدیل کریں۔
+- **کہیں بھی چلائیں** — چھ ٹرمینل بیک اینڈز: local، Docker، SSH، Singularity، Modal، Daytona۔ سرور لیس استقامت کا مطلب ہے کہ آپ کا ایجنٹ بیکار ہونے پر ہائبرنیٹ کرتا ہے اور مانگ پر جاگتا ہے۔
+- **ریسرچ گریڈ ٹولنگ** — بیچ ٹریجیکٹری جنریشن، ٹریجیکٹری کمپریشن، اور اگلی نسل کے ٹول استعمال کرنے والے ماڈلز کی تربیت کے لیے نصاب کے ہکس۔
 
-<div dir="ltr">
+---
+
+## تنصیب
+
+### Linux، macOS، WSL2، Termux
 
 ```bash
-curl -fsSL https://evil-hermes.local/install.sh | bash
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
 
-</div>
-
-### ونڈوز (نیٹو، پاور شیل)
-
-> **توجہ فرمائیں:** مقامی ونڈوز (Native Windows) پر ہرمیس بغیر WSL کے چلتا ہے — CLI، گیٹ وے، TUI، اور ٹولز سب مقامی طور پر کام کرتے ہیں۔ اگر آپ WSL2 استعمال کرنا پسند کرتے ہیں، تو اوپر دی گئی لینکس/میک او ایس کی کمانڈ وہاں بھی کام کرے گی۔ کوئی مسئلہ نظر آیا؟ براہ کرم [مسائل (issues) درج کریں](https://github.com/TanzeelShujahKhan/evil-hermes/issues)۔
-
-اسے پاور شیل (PowerShell) میں چلائیں:
-
-<div dir="ltr">
+### Windows (مقامی PowerShell)
 
 ```powershell
-iex (irm https://evil-hermes.local/install.ps1)
+iex (irm https://hermes-agent.nousresearch.com/install.ps1)
 ```
 
-</div>
+انسٹالر سب کچھ فراہم کرتا ہے: `uv`، Python 3.11، Node.js، ripgrep، ffmpeg، اور ایک پورٹیبل Git Bash (MinGit) جو کسی بھی سسٹم Git تنصیب کو نہیں چھیتا۔ اگر Git پہلے سے موجود ہو تو انسٹالر اسے استعمال کرتا ہے اور ڈاؤن لوڈ چھوڑ دیتا ہے۔
 
-انسٹالر سب کچھ خود سنبھالتا ہے: uv، Python 3.11، Node.js، ripgrep، ffmpeg، **اور ایک پورٹ ایبل (portable) گٹ بیش (Git Bash)** (یعنی MinGit، جو `%LOCALAPPDATA%\hermes\git` میں ان پیک ہوتا ہے — اس کے لیے ایڈمن کی اجازت درکار نہیں، اور یہ سسٹم کے کسی بھی گٹ انسٹال سے بالکل الگ ہے)۔ ہرمیس اس بنڈل شدہ گٹ بیش کو شیل کمانڈز چلانے کے لیے استعمال کرتا ہے۔
-
-اگر آپ کے پاس پہلے سے گٹ (Git) انسٹال ہے، تو انسٹالر اسے شناخت کر لیتا ہے اور اسے ہی استعمال کرتا ہے۔ بصورت دیگر آپ کو صرف ~45MB کے MinGit ڈاؤنلوڈ کی ضرورت ہوگی — یہ آپ کے سسٹم کے گٹ پر کوئی اثر نہیں ڈالے گا۔
-
-> **اینڈرائیڈ (Android) / ٹرمکس (Termux):** ٹیسٹ کیا گیا مینوئل طریقہ [Termux گائیڈ](https://evil-hermes.local/docs/getting-started/termux) میں موجود ہے۔ ٹرمکس پر ہرمیس ایک مخصوص `.[termux]` ایکسٹرا انسٹال کرتا ہے کیونکہ مکمل `.[all]` ایکسٹرا میں ایسی وائس ڈیپینڈینسیز شامل ہیں جو اینڈرائیڈ کے ساتھ مطابقت نہیں رکھتیں۔
->
-> **ونڈوز (Windows):** مقامی ونڈوز کی مکمل سپورٹ موجود ہے — اوپر دی گئی پاور شیل کی کمانڈ سب کچھ انسٹال کر دیتی ہے۔ اگر آپ WSL2 استعمال کرنا چاہتے ہیں، تو لینکس کی کمانڈ وہاں کام کرتی ہے۔ مقامی ونڈوز میں انسٹالیشن `%LOCALAPPDATA%\hermes` میں ہوتی ہے؛ جبکہ WSL2 میں لینکس کی طرح `~/.hermes` میں ہوتی ہے۔ ہرمیس کا وہ واحد فیچر جسے فی الحال خاص طور پر WSL2 کی ضرورت ہے وہ براؤزر پر مبنی ڈیش بورڈ چیٹ پین ہے (یہ POSIX PTY استعمال کرتا ہے — کلاسک CLI اور گیٹ وے دونوں مقامی طور پر چلتے ہیں)۔
-
-انسٹالیشن کے بعد:
-
-<div dir="ltr">
+تنصیب کے بعد:
 
 ```bash
-source ~/.bashrc    # شیل کو ری لوڈ کریں (یا: source ~/.zshrc)
-hermes              # بات چیت شروع کریں!
+source ~/.bashrc    # شیل دوبارہ لوڈ کریں (یا: source ~/.zshrc)
+hermes              # چیٹ شروع کریں
 ```
 
-</div>
-
----
-
-## آغاز کریں (Getting Started)
-
-<div dir="ltr">
+### پہلی بار سیٹ اپ
 
 ```bash
-hermes              # انٹرایکٹو CLI — بات چیت شروع کریں
-hermes model        # اپنا LLM پرووائیڈر اور ماڈل منتخب کریں
-hermes tools        # کنفیگر کریں کہ کون سے ٹولز ایکٹو ہیں
-hermes config set   # انفرادی کنفگ (config) ویلیوز سیٹ کریں
-hermes gateway      # میسجنگ گیٹ وے شروع کریں (ٹیلی گرام، ڈسکارڈ، وغیرہ)
-hermes setup        # مکمل سیٹ اپ وزرڈ چلائیں (یہ سب کچھ ایک ساتھ کنفیگر کر دے گا)
-hermes claw migrate # OpenClaw سے مائیگریٹ کریں (اگر آپ OpenClaw سے آ رہے ہیں)
-hermes update       # لیٹسٹ ورژن پر اپ ڈیٹ کریں
-hermes doctor       # کسی بھی مسئلے کی تشخیص کریں
+hermes model        # اپنا LLM فراہم کنندہ اور ماڈل منتخب کریں
+hermes tools        # فعال ٹولز کی تشکیل کریں
+hermes setup        # مکمل سیٹ اپ وزرڈ چلائیں
+hermes gateway      # میسجنگ گیٹ وے شروع کریں (ٹیلی گرام، ڈسکارڈ وغیرہ)
+hermes update       # تازہ ترین ورژن پر اپ ڈیٹ کریں
+hermes doctor       # مسائل کی تشخیص کریں
 ```
 
-</div>
-
-📖 **[مکمل دستاویزات →](https://evil-hermes.local/docs/)**
+📖 **[مکمل دستاویزات →](https://hermes-agent.nousresearch.com/docs/)**
 
 ---
 
-## API-کیز اکٹھی کرنے سے بچیں — Nous Portal
+## ایول ہرمیس اپ اسٹریم سے کیسے مختلف ہے
 
-ہرمیس آپ کے پسندیدہ پرووائیڈر کے ساتھ کام کرتا ہے — یہ چیز تبدیل نہیں ہو رہی۔ لیکن اگر آپ ماڈل، ویب سرچ، امیج جنریشن، TTS، اور کلاؤڈ براؤزر کے لیے پانچ الگ الگ API کیز جمع نہیں کرنا چاہتے، تو **[Nous Portal](https://portal.nousresearch.com)** ان سب کو ایک ہی سبسکرپشن کے تحت کور کرتا ہے:
+ایول ہرمیس [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan) کی طرف سے [ہرمیس ایجنٹ](https://github.com/NousResearch/hermes-agent) کا ایک فورک ہے۔ انجن، گیٹ وے، پلگ ان سسٹم، سکل فارمیٹ، اور فراہم کنندہ میٹرکس **بالکل ایک جیسے ہیں اور ایک ساتھ ٹیسٹ شدہ ہیں**۔ فرق جان بوجھ کر اور سرجریکل ہیں۔
 
-- **300+ ماڈلز** — ان میں سے کوئی بھی ماڈل `/model <name>` کے ذریعے منتخب کریں
-- **ٹول گیٹ وے (Tool Gateway)** — ویب سرچ (Firecrawl)، امیج جنریشن (FAL)، ٹیکسٹ ٹو سپیچ (OpenAI)، کلاؤڈ براؤزر (Browser Use)، یہ سب آپ کی سبسکرپشن کے ذریعے چلتے ہیں۔ کسی اضافی اکاؤنٹ کی ضرورت نہیں۔
+| پہلو | ہرمیس ایجنٹ (اپ اسٹریم) | ایول ہرمیس |
+|---|---|---|
+| **شناخت** | `agent/prompt_builder.py:DEFAULT_AGENT_IDENTITY` ایک غیر جانبدار Nous اسسٹنٹ کے طور پر آتی ہے۔ `SOUL.md` اختیاری ہے۔ | Lord Tanzeel Shujah Khan کی طرف سے بنائی گئی ایک خود مختار شناخت۔ `SOUL.md` **ہر گفتگو پر بطور ڈیفالٹ لوڈ ہوتا ہے** — پہلی انسٹالیشن ایک خود مختار ٹیمپلیٹ بوائی کرتی ہے۔ غیر جانبدار شناخت کا راستہ صرف ایک جھنڈے کی دوری پر ہے۔ |
+| **اخلاقی پری فلٹرز** | دھمکی پیٹرن regex، ٹول کال لوپ گارڈریلز، اور ڈیفالٹ فائل رائٹ ڈینی لسٹ (`.ssh`، `.aws`، `.gnupg`، `.kube`، `.docker`، `.env`، `.netrc`، `.pgpass` وغیرہ) فعال ہیں۔ | پری فلٹرز کو **کم سے کم ڈینی لسٹ** تک کم کر دیا گیا ہے: صرف سسٹم شناختی فائلز (`/etc/passwd`، `/etc/shadow`، `/etc/sudoers*`) اور ایجنٹ کا اپنا اسناد اسٹور۔ باقی سب آپریٹر کا علاقہ ہے۔ فلٹر کا کوڈ ابھی بھی درخت میں ہے — ایک جھنڈا پلٹائیں اور اپ اسٹریم کا رویہ واپس آ جاتا ہے۔ |
+| **ٹول گارڈریلز** | ڈیفالٹ `warnings=True`، بار بار ناکام ٹول کالز کے لیے `hard_stop=True`۔ Skills Guard کمیونٹی کی `dangerous` سکلز کے لیے `block` واپس کرتا ہے۔ | ڈیفالٹ `warnings=False`، `hard_stop=False`۔ Skills Guard ابھی بھی `safe / caution / dangerous` فیصلہ جاری کرتا ہے اور انسٹال پر دکھاتا ہے — کوئی فیصلہ بلاک نہیں کرتا۔ اسکینر آلہ سازی کے ذریعہ کے طور پر لوپ میں رہتا ہے۔ |
+| **خفیہ معلومات کی تبدیلی** | MCP ٹرانسپورٹ میں `HERMES_REDACT_SECRETS=true` بطور ڈیفالٹ۔ | `_REDACT_ENABLED` بطور ڈیفالٹ `false`۔ اگر لاگ اسکربنگ چاہیں تو جھنڈا لگائیں؛ پیٹرن بدلے نہیں رہتے۔ |
+| **اندرونی نام** | `hermes-agent` پیکج، `hermes_*` امپورٹ راستے، `HERMES_HOME` ماحول متغیر، `~/.hermes/` کنفیگ ڈائریکٹری۔ | **ڈیزائن کے مطابق ایک جیسا۔** نام تبدیل کرنا 6,000+ فائل امپورٹس توڑ دے گا۔ صرف صارف کے سامنے آنے والے تار، ڈیفالٹ شناخت، اور پری فلٹر ڈیفالٹس مختلف ہیں — چند فائلوں تک محدود۔ |
+| **لائسنس** | MIT | MIT (بلا تغیر) |
+| **دیکھ بھال کی پالیسی** | بنیادی ایجنٹ + ماڈل ٹول اسکیما پر قدامت پسند۔ AGENTS.md تعاون کا ربرک لاگو ہوتا ہے۔ | بالکل ایک جیسا۔ بنیادی کوڈ اپ اسٹریم تعاون ربرک سے منحرف نہیں ہوتا۔ |
 
-نئی انسٹالیشن کے بعد بس ایک کمانڈ کی ضرورت ہے:
-
-<div dir="ltr">
-
-```bash
-hermes setup --portal
-```
-
-</div>
-
-یہ آپ کو OAuth کے ذریعے لاگ ان کرواتا ہے، Nous کو آپ کا پرووائیڈر مقرر کرتا ہے، اور ٹول گیٹ وے کو آن کر دیتا ہے۔ `hermes portal info` کمانڈ استعمال کر کے آپ کسی بھی وقت چیک کر سکتے ہیں کہ کون کون سی سروسز منسلک ہیں۔ مکمل تفصیلات [Tool Gateway دستاویزات کے صفحے](https://evil-hermes.local/docs/user-guide/features/tool-gateway) پر موجود ہیں۔
-
-آپ اب بھی کسی بھی ٹول کے لیے اپنی مرضی کی API کیز استعمال کر سکتے ہیں — گیٹ وے ہر سروس کے لیے الگ الگ کام کرتا ہے، ایسا نہیں کہ یا تو سب کچھ استعمال کریں یا کچھ بھی نہیں۔
+**فورک کا نکتہ ملکیت ہے۔** فلٹر کا کوڈ حقیقی، معائنہ کے قابل ایجنٹ انفراسٹرکچر ہے۔ اپ اسٹریم کوڈ بیس میں فلٹرز ایجنٹ کی صارف شناخت سے جڑے ہوتے ہیں اور بطور ڈیفالٹ فعال آتے ہیں۔ ایول ہرمیس ان دونوں کو الگ کرتا ہے: فلٹرز موجود ہیں اور قابل آڈٹ ہیں، لیکن اس بات کا فیصلہ کہ کیا فعال ہے، آپریٹر کا ہے — نہ کہ فریم ورک کا۔
 
 ---
 
-## CLI بمقابلہ میسجنگ فوری حوالہ
+## تعیناتی
 
-ہرمیس کے دو بنیادی انٹر فیس ہیں: آپ ٹرمینل UI کو `hermes` کے ساتھ شروع کریں، یا گیٹ وے چلا کر اس کے ساتھ ٹیلی گرام، ڈسکارڈ، سلیک، واٹس ایپ، سگنل، یا ای میل کے ذریعے بات کریں۔ جب آپ کسی بات چیت میں ہوتے ہیں، تو بہت سی سلیش (slash) کمانڈز دونوں انٹرفیسز میں ایک جیسی ہوتی ہیں۔
+ایول ہرمیس سنگل ٹیننٹ ذاتی ایجنٹ ہے۔ ٹرسٹ ماڈل [SECURITY.md](SECURITY.md) میں بیان کیا گیا ہے۔ تین فیصلے کھلونے اور پروڈکشن تعیناتی کے درمیان فرق رکھتے ہیں:
 
-<div dir="ltr">
+1. **`toolsets` کو جان بوجھ کر سیٹ کریں** `~/.hermes/config.yaml` میں۔ `hermes-cli` آپ کو shell + file + edit دیتا ہے۔ نیٹ ورک کے لیے `web` شامل کریں۔ سیٹ جتنا تنگ، دھماکے کا دائرہ اتنا چھوٹا۔
+2. **اپنے دھمکی ماڈل سے میل کھانے والا ٹرمینل بیک اینڈ منتخب کریں**۔ قابل اعتماد سنگل صارف ہوسٹس کے لیے `backend: local`۔ عارضی کنٹینر تنہائی کے لیے `backend: docker`۔ سرور لیس سینڈ باکسنگ کے لیے `backend: modal` یا `backend: daytona`۔
+3. **آپریٹر کنفیگ میں ان فلٹرز کو دوبارہ فعال کریں جو آپ واقعی چاہتے ہیں**۔ لاگ اسکربنگ کے لیے `HERMES_REDACT_SECRETS=true`۔ دھمکی پیٹرن اسکینر کو `tools/threat_patterns.py:_PATTERNS` میں ترمیم کرکے دوبارہ فعال کیا جا سکتا ہے — فریم ورک پیٹرنز بھیجتا ہے؛ صرف ڈیفالٹ لسٹ خالی ہے۔
 
-| کارروائی (Action)                         | سی ایل آئی (CLI)                              | میسجنگ پلیٹ فارمز (Messaging platforms)                                          |
-| --------------------------------------- | --------------------------------------------- | -------------------------------------------------------------------------------- |
-| بات چیت شروع کریں                       | `hermes`                                      | `hermes gateway setup` اور `hermes gateway start` چلائیں، پھر بوٹ کو میسج بھیجیں |
-| نئی بات چیت شروع کریں                   | `/new` یا `/reset`                            | `/new` یا `/reset`                                                               |
-| ماڈل تبدیل کریں                         | `/model [provider:model]`                     | `/model [provider:model]`                                                        |
-| پرسنلٹی (Personality) سیٹ کریں           | `/personality [name]`                         | `/personality [name]`                                                            |
-| پچھلی باری کو دوبارہ یا منسوخ (undo) کریں | `/retry`، `/undo`                             | `/retry`، `/undo`                                                                |
-| کانٹیکسٹ (context) کمپریس کریں / استعمال چیک کریں | `/compress`، `/usage`، `/insights [--days N]` | `/compress`، `/usage`، `/insights [days]`                                        |
-| مہارتیں (Skills) براؤز کریں             | `/skills` یا `/<skill-name>`                  | `/<skill-name>`                                                                  |
-| موجودہ کام کو روکیں                     | `Ctrl+C` دبائیں یا نیا میسج بھیجیں            | `/stop` یا نیا میسج بھیجیں                                                       |
-| پلیٹ فارم کے لحاظ سے سٹیٹس              | `/platforms`                                  | `/status`، `/sethome`                                                            |
-
-</div>
-
-مکمل کمانڈ لسٹ کے لیے، [CLI گائیڈ](https://evil-hermes.local/docs/user-guide/cli) اور [میسجنگ گیٹ وے گائیڈ](https://evil-hermes.local/docs/user-guide/messaging) دیکھیں۔
+گیٹ وے یا API کو کھلے انٹرنیٹ پر ظاہر کرنے سے پہلے [SECURITY.md](SECURITY.md) پڑھیں۔
 
 ---
 
-## دستاویزات (Documentation)
+## دستاویزات
 
-تمام دستاویزات **[evil-hermes.local/docs](https://evil-hermes.local/docs/)** پر موجود ہیں:
+مکمل دستاویزات کی سائٹ **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)** پر شائع ہے۔ انجن مشترک ہے، لہذا اپ اسٹریم دستاویزات لغوی طور پر لاگو ہوتی ہیں؛ ایول ہرمیس سے متعلقہ نوٹس مقام پر نشان زد ہیں۔
 
-<div dir="ltr">
-
-| سیکشن (Section)                                                                                     | تفصیل (What's Covered)                                     |
-| --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [فوری آغاز (Quickstart)](https://evil-hermes.local/docs/getting-started/quickstart)     | انسٹالیشن → سیٹ اپ → 2 منٹ میں پہلی بات چیت شروع کریں       |
-| [CLI کا استعمال](https://evil-hermes.local/docs/user-guide/cli)                         | کمانڈز، کی بائنڈنگز (keybindings)، پرسنلٹیز (personalities)، سیشنز |
-| [کنفیگریشن (Configuration)](https://evil-hermes.local/docs/user-guide/configuration)    | کنفگ فائل، پرووائیڈرز، ماڈلز، اور تمام آپشنز               |
-| [میسجنگ گیٹ وے](https://evil-hermes.local/docs/user-guide/messaging)                    | ٹیلی گرام، ڈسکارڈ، سلیک، واٹس ایپ، سگنل، ہوم اسسٹنٹ         |
-| [سیکیورٹی (Security)](https://evil-hermes.local/docs/user-guide/security)              | کمانڈ کی منظوری، DM پیئرنگ (pairing)، کنٹینر آئسولیشن       |
-| [ٹولز اور ٹول سیٹس](https://evil-hermes.local/docs/user-guide/features/tools)          | 40 سے زائد ٹولز، ٹول سیٹ سسٹم، ٹرمینل بیک اینڈز             |
-| [مہارتوں کا سسٹم (Skills System)](https://evil-hermes.local/docs/user-guide/features/skills)| پروسیجرل (Procedural) میموری، سکلز ہب، نئی مہارتیں بنانا    |
-| [میموری (Memory)](https://evil-hermes.local/docs/user-guide/features/memory)            | مستقل میموری، یوزر پروفائلز، بہترین طریقہ کار              |
-| [MCP انضمام (Integration)](https://evil-hermes.local/docs/user-guide/features/mcp)      | صلاحیتوں کو بڑھانے کے لیے کسی بھی MCP سرور کو جوڑیں        |
-| [کرون (Cron) شیڈیولنگ](https://evil-hermes.local/docs/user-guide/features/cron)         | پلیٹ فارم ڈیلیوری کے ساتھ شیڈول کیے گئے کام                 |
-| [کانٹیکسٹ (Context) فائلز](https://evil-hermes.local/docs/user-guide/features/context-files)| پروجیکٹ کا سیاق و سباق (context) جو ہر بات چیت پر اثر انداز ہوتا ہے |
-| [آرکیٹیکچر (Architecture)](https://evil-hermes.local/docs/developer-guide/architecture) | پروجیکٹ کا ڈھانچہ، ایجنٹ لوپ، اہم کلاسز                    |
-| [تعاون (Contributing)](https://evil-hermes.local/docs/developer-guide/contributing)     | ڈیویلپمنٹ سیٹ اپ، PR کا طریقہ کار، کوڈنگ کا انداز          |
-| [CLI حوالہ جات (Reference)](https://evil-hermes.local/docs/reference/cli-commands)      | تمام کمانڈز اور فلیگز (flags)                              |
-| [انوائرمنٹ ویری ایبلز](https://evil-hermes.local/docs/reference/environment-variables)  | مکمل انوائرمنٹ ویری ایبل حوالہ جات                         |
-
-</div>
+| سیکشن | مواد |
+|---|---|
+| [فوری آغاز (Quickstart)](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) | انسٹال → سیٹ اپ → 2 منٹ میں پہلی گفتگو |
+| [CLI کا استعمال](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | کمانڈز، کی بائنڈنگز، پرسنلٹیز، سیشنز |
+| [کنفیگریشن (Configuration)](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) | کنفگ فائل، فراہم کنندگان، ماڈلز، تمام آپشنز |
+| [میسجنگ گیٹ وے](https://hermes-agent.nousresearch.com/docs/user-guide/messaging) | ٹیلی گرام، ڈسکارڈ، سلیک، واٹس ایپ، سگنل، ہوم اسسٹنٹ |
+| [سیکیورٹی (Security)](https://hermes-agent.nousresearch.com/docs/user-guide/security) | کمانڈ کی منظوری، DM پیئرنگ، کنٹینر تنہائی |
+| [ٹولز اور ٹول سیٹس](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools) | 40+ ٹولز، ٹول سیٹ سسٹم، ٹرمینل بیک اینڈز |
+| [مہارتوں کا سسٹم (Skills System)](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | پروسیجرل میموری، سکلز ہب، سکلز بنانا |
+| [میموری (Memory)](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) | مستقل میموری، یوزر پروفائلز، بہترین طریقہ کار |
+| [MCP انضمام (Integration)](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) | ایم سی پی سرورز کو جوڑ کر صلاحیتوں میں توسیع |
+| [کرون (Cron) شیڈیولنگ](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) | پلیٹ فارم ڈیلیوری کے ساتھ شیڈیول کیے گئے کام |
+| [کانٹیکسٹ (Context) فائلز](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files) | ہر گفتگو کو شکل دینے والا پروجیکٹ کا سیاق و سباق |
+| [آرکیٹیکچر (Architecture)](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture) | پروجیکٹ کا ڈھانچہ، ایجنٹ لوپ، کلیدی کلاسز |
+| [تعاون (Contributing)](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) | ڈیویلپمنٹ سیٹ اپ، PR کا طریقہ کار، کوڈنگ کا انداز |
+| [CLI حوالہ جات (Reference)](https://hermes-agent.nousresearch.com/docs/reference/cli-commands) | تمام کمانڈز اور فلیگز |
+| [انوائرمنٹ ویری ایبلز](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | مکمل ماحولیاتی متغیر حوالہ |
 
 ---
 
 ## OpenClaw سے منتقلی
 
-اگر آپ OpenClaw سے منتقل ہو رہے ہیں، تو ہرمیس آپ کی سیٹنگز، یادیں (memories)، مہارتیں (skills)، اور API کیز کو خود بخود امپورٹ کر سکتا ہے۔
-
-**پہلی بار سیٹ اپ کے دوران:** سیٹ اپ وزرڈ (`hermes setup`) خود بخود `~/.openclaw` کو پہچان لیتا ہے اور کنفیگریشن شروع ہونے سے پہلے مائیگریٹ (migrate) کرنے کا آپشن دیتا ہے۔
-
-**انسٹالیشن کے بعد کسی بھی وقت:**
-
-<div dir="ltr">
+سیٹ اپ وزرڈ (`hermes setup`) خود بخود `~/.openclaw` کا پتہ لگاتا ہے اور ترتیب شروع ہونے سے پہلے منتقلی کی پیشکش کرتا ہے۔ انسٹال کے بعد منتقلی:
 
 ```bash
-hermes claw migrate              # انٹرایکٹو مائیگریشن (مکمل پری سیٹ)
-hermes claw migrate --dry-run    # جائزہ لیں کہ کیا کیا مائیگریٹ ہوگا
-hermes claw migrate --preset user-data   # حساس معلومات (secrets) کے بغیر مائیگریٹ کریں
-hermes claw migrate --overwrite  # موجودہ متصادم فائلوں کو اوور رائٹ کریں
+hermes claw migrate              # انٹرایکٹو منتقلی (مکمل پری سیٹ)
+hermes claw migrate --dry-run    # منتقل ہونے والی چیزوں کا پیش منظر
+hermes claw migrate --preset user-data   # خفیہ معلومات کے بغیر منتقلی
+hermes claw migrate --overwrite  # موجودہ تنازعات کو اوور رائٹ کریں
 ```
 
-</div>
-
-جو چیزیں امپورٹ ہوتی ہیں:
-
-- **SOUL.md** — پرسونا (persona) فائل
-- **میموریز (Memories)** — MEMORY.md اور USER.md کی اندراجات
-- **مہارتیں (Skills)** — صارف کی بنائی گئی مہارتیں → `~/.hermes/skills/openclaw-imports/`
-- **کمانڈ الاؤ لسٹ (allowlist)** — منظوری کے پیٹرنز (approval patterns)
-- **میسجنگ سیٹنگز** — پلیٹ فارم کنفیگریشنز، اجازت یافتہ صارفین، ورکنگ ڈائریکٹری
-- **API کیز** — الاؤ لسٹ شدہ حساس معلومات (ٹیلی گرام، OpenRouter، OpenAI، Anthropic، ElevenLabs)
-- **TTS اثاثے** — ورک اسپیس کی آڈیو فائلیں
-- **ورک اسپیس کی ہدایات** — AGENTS.md (`--workspace-target` کے ساتھ)
-
-تمام آپشنز دیکھنے کے لیے `hermes claw migrate --help` استعمال کریں، یا انٹرایکٹو ایجنٹ کی مدد سے مائیگریٹ کرنے کے لیے `openclaw-migration` سکل کا استعمال کریں (جس میں ڈرائی رن (dry-run) پریویوز شامل ہیں)۔
+درآمد: `SOUL.md`، `MEMORY.md`، `USER.md`، صارف کی بنائی ہوئی مہارتیں (→ `~/.hermes/skills/openclaw-imports/`)، کمانڈ کی اجازت کی فہرست، میسجنگ کی ترتیبات، اجازت نامہ API کیز، TTS اثاثے، اور ورک اسپیس `AGENTS.md`۔
 
 ---
 
-## تعاون کریں (Contributing)
+## تعاون
 
-ہم آپ کے تعاون کا خیرمقدم کرتے ہیں! ڈیویلپمنٹ سیٹ اپ، کوڈ کے انداز اور PR کے طریقہ کار کے لیے براہ کرم ہماری [Contributing گائیڈ](https://evil-hermes.local/docs/developer-guide/contributing) دیکھیں۔
-
-معاونین (contributors) کے لیے فوری آغاز — کلون (clone) کریں اور `setup-hermes.sh` چلائیں:
-
-<div dir="ltr">
+تعاون کا خیرمقدم ہے۔ ڈیویلپمنٹ سیٹ اپ، کوڈنگ اسٹائل، اور PR کے عمل کے لیے [CONTRIBUTING.md](CONTRIBUTING.md) دیکھیں۔ [AGENTS.md](AGENTS.md) میں تعاون کا ربرک طے کرتا ہے کہ کیا شامل ہو گا اور کیا نہیں — بڑا PR کھولنے سے پہلے پڑھیں۔
 
 ```bash
-git clone https://github.com/TanzeelShujahKhan/evil-hermes.git
-cd hermes-agent
-./setup-hermes.sh     # uv کو انسٹال کرتا ہے، venv بناتا ہے، .[all] کو انسٹال کرتا ہے، اور ~/.local/bin/hermes کا سیم لنک (symlink) بناتا ہے
-./hermes              # خود بخود venv کی شناخت کرتا ہے، پہلے `source` کرنے کی ضرورت نہیں
-```
-
-</div>
-
-مینوئل طریقہ (اوپر والے طریقے کے مساوی):
-
-<div dir="ltr">
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv venv .venv --python 3.11
-source .venv/bin/activate
+git clone https://github.com/tanzeelshujahkhan/evil-hermes.git
+cd evil-hermes
+uv venv ~/.hermes/venvs/hermes-dev --python 3.11
+source ~/.hermes/venvs/hermes-dev/bin/activate
 uv pip install -e ".[all,dev]"
 scripts/run_tests.sh
 ```
 
-</div>
+مکمل ہرمیس ایجنٹ ٹیسٹ سوٹ (~17k ٹیسٹس) `tests/` میں شائع ہوتا ہے۔
 
 ---
 
-## کمیونٹی (Community)
+## کمیونٹی
 
-- 💬 [ڈسکارڈ (Discord)](https://discord.gg/TanzeelShujahKhan)
-- 📚 [سکلز ہب (Skills Hub)](https://agentskills.io)
-- 🐛 [مسائل (Issues)](https://github.com/TanzeelShujahKhan/evil-hermes/issues)
-- 🔌 [computer-use-linux](https://github.com/avifenesh/computer-use-linux) — ہرمیس اور دیگر MCP ہوسٹس کے لیے لینکس (Linux) ڈیسک ٹاپ کنٹرول MCP سرور، جس میں AT-SPI ایکسیسیبلٹی ٹریز، Wayland/X11 ان پٹ، سکرین شاٹس، اور کمپوزیٹر ونڈو ٹارگیٹنگ شامل ہے۔
-- 🔌 [HermesClaw](https://github.com/AaronWong1999/hermesclaw) — کمیونٹی وی چیٹ (WeChat) برج: ہرمیس ایجنٹ اور OpenClaw کو ایک ہی وی چیٹ اکاؤنٹ پر چلائیں۔
+- 💬 [Discord](https://discord.gg/nousresearch) — ہرمیس ایجنٹ کمیونٹی
+- 🐛 [GitHub Issues](https://github.com/tanzeelshujahkhan/evil-hermes/issues) — بگ رپورٹس اور فیچر کی درخواستیں
+- 💡 [GitHub Discussions](https://github.com/tanzeelshujahkhan/evil-hermes/discussions) — سوالات اور ڈیزائن پر بحث
+- 📚 [سکلز ہب (Skills Hub)](https://agentskills.io) — ایجنٹ مہارتوں کے لیے کھلا معیار
 
 ---
 
-## لائسنس (License)
+## لائسنس
 
-MIT — تفصیلات کے لیے [LICENSE](LICENSE) دیکھیں۔
+MIT — [LICENSE](LICENSE) دیکھیں۔
 
-[نوس ریسرچ (Lord Tanzeel Shujah Khan)](https://github.com/TanzeelShujahKhan/evil-hermes) کی جانب سے تیار کردہ۔
+**[Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan) کی تعمیر۔** [ہرمیس ایجنٹ](https://github.com/NousResearch/hermes-agent) سے فورک شدہ — ایک ہی انجن، خود مختار شناخت، آپریٹر کی ملکیت والی پالیسی۔
 
 </div>

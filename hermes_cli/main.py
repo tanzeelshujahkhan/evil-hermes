@@ -5945,7 +5945,7 @@ def _print_curator_first_run_notice() -> None:
     print("  Preview now:  hermes curator run --dry-run")
     print("  Pause it:     hermes curator pause")
     print(
-        "  Docs:         https://evil-hermes.local/docs/user-guide/features/curator"
+        "  Docs:         https://hermes-agent.nousresearch.com/docs/user-guide/features/curator"
     )
 
 
@@ -6226,7 +6226,7 @@ def _update_via_zip(args):
         )
         sys.exit(1)
     zip_url = (
-        f"https://github.com/TanzeelShujahKhan/evil-hermes/archive/refs/heads/{branch}.zip"
+        f"https://github.com/tanzeelshujahkhan/evil-hermes/archive/refs/heads/{branch}.zip"
     )
 
     print("→ Downloading latest version...")
@@ -6634,12 +6634,12 @@ def _discard_stashed_changes(
 # =========================================================================
 
 OFFICIAL_REPO_URLS = {
-    "https://github.com/TanzeelShujahKhan/evil-hermes.git",
-    "git@github.com:TanzeelShujahKhan/evil-hermes.git",
-    "https://github.com/TanzeelShujahKhan/evil-hermes",
-    "git@github.com:TanzeelShujahKhan/evil-hermes",
+    "https://github.com/tanzeelshujahkhan/evil-hermes.git",
+    "git@github.com:tanzeelshujahkhan/evil-hermes.git",
+    "https://github.com/tanzeelshujahkhan/evil-hermes",
+    "git@github.com:tanzeelshujahkhan/evil-hermes",
 }
-OFFICIAL_REPO_URL = "https://github.com/TanzeelShujahKhan/evil-hermes.git"
+OFFICIAL_REPO_URL = "https://github.com/tanzeelshujahkhan/evil-hermes.git"
 SKIP_UPSTREAM_PROMPT_FILE = ".skip_upstream_prompt"
 
 
@@ -6773,7 +6773,7 @@ def _sync_with_upstream_if_needed(git_cmd: list[str], cwd: Path) -> None:
         # Ask user if they want to add upstream
         print()
         print("ℹ Your fork is not tracking the official Hermes repository.")
-        print("  This means you may miss updates from TanzeelShujahKhan/evil-hermes.")
+        print("  This means you may miss updates from tanzeelshujahkhan/evil-hermes.")
         print()
         try:
             response = (
@@ -6787,7 +6787,7 @@ def _sync_with_upstream_if_needed(git_cmd: list[str], cwd: Path) -> None:
             print("→ Adding upstream remote...")
             if _add_upstream_remote(git_cmd, cwd):
                 print(
-                    "  ✓ Added upstream: https://github.com/TanzeelShujahKhan/evil-hermes.git"
+                    "  ✓ Added upstream: https://github.com/tanzeelshujahkhan/evil-hermes.git"
                 )
                 has_upstream = True
             else:
@@ -6795,7 +6795,7 @@ def _sync_with_upstream_if_needed(git_cmd: list[str], cwd: Path) -> None:
                 return
         else:
             print(
-                "  Skipped. Run 'git remote add upstream https://github.com/TanzeelShujahKhan/evil-hermes.git' to add later."
+                "  Skipped. Run 'git remote add upstream https://github.com/tanzeelshujahkhan/evil-hermes.git' to add later."
             )
             _mark_skip_upstream_prompt()
             return
@@ -9456,7 +9456,7 @@ def _cmd_update_impl(args, gateway_mode: bool):
                 return
             print("✗ Not a git repository. Please reinstall:")
             print(
-                "  curl -fsSL https://evil-hermes.local/install.sh | bash"
+                "  curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash"
             )
             sys.exit(1)
 
@@ -11813,7 +11813,7 @@ def _maybe_setup_dashboard_auth_interactively(args) -> None:
             "    hermes dashboard register\n"
             "  It provisions a Nous Portal OAuth client and writes "
             "HERMES_DASHBOARD_OAUTH_CLIENT_ID into ~/.hermes/.env for you.\n"
-            "  Docs: https://evil-hermes.local/docs/"
+            "  Docs: https://hermes-agent.nousresearch.com/docs/"
             "user-guide/features/web-dashboard#authentication-gated-mode"
         )
         sys.exit(0)
@@ -12743,7 +12743,7 @@ def main():
             "Manage the fallback provider chain.  Fallback providers are tried "
             "in order when the primary model fails with rate-limit, overload, or "
             "connection errors.  See: "
-            "https://evil-hermes.local/docs/user-guide/features/fallback-providers"
+            "https://hermes-agent.nousresearch.com/docs/user-guide/features/fallback-providers"
         ),
     )
     fallback_subparsers = fallback_parser.add_subparsers(dest="fallback_command")
@@ -12777,7 +12777,7 @@ def main():
             "Pull API keys from an external secret manager at process startup "
             "instead of storing them in ~/.hermes/.env.  Currently supports "
             "Bitwarden Secrets Manager.  See: "
-            "https://evil-hermes.local/docs/user-guide/secrets/bitwarden"
+            "https://hermes-agent.nousresearch.com/docs/user-guide/secrets/bitwarden"
         ),
     )
     secrets_subparsers = secrets_parser.add_subparsers(dest="secrets_command")

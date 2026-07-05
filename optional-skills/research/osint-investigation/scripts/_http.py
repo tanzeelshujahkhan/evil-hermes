@@ -13,7 +13,7 @@ import urllib.request
 
 DEFAULT_UA = (
     "hermes-osint-investigation/0.2 "
-    "(+https://github.com/TanzeelShujahKhan/evil-hermes; "
+    "(+https://github.com/tanzeelshujahkhan/evil-hermes; "
     "set HERMES_OSINT_UA env var to identify yourself per "
     "Wikimedia / SEC fair-use guidance)"
 )

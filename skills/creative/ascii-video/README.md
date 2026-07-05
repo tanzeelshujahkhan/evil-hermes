@@ -2,7 +2,7 @@
 
 Renders any content as colored ASCII character video. Audio, video, images, text, or pure math in, MP4/GIF/PNG sequence out. Full RGB color per character cell, 1080p 24fps default. No GPU.
 
-Built for [Evil Hermes](https://github.com/TanzeelShujahKhan/evil-hermes). Usable in any coding agent. Canonical source lives here; synced to [`TanzeelShujahKhan/evil-hermes/skills/creative/ascii-video`](https://github.com/TanzeelShujahKhan/evil-hermes/tree/main/skills/creative/ascii-video) via PR.
+Built for [Evil Hermes](https://github.com/tanzeelshujahkhan/evil-hermes). Usable in any coding agent. Canonical source lives here; synced to [`tanzeelshujahkhan/evil-hermes/skills/creative/ascii-video`](https://github.com/tanzeelshujahkhan/evil-hermes/tree/main/skills/creative/ascii-video) via PR.
 
 ## What this is
 

@@ -6,7 +6,7 @@ description: >
   SMS gateway adapter for Evil Hermes via Twilio. Sends and receives SMS
   through the Twilio REST API + inbound webhook, relaying texts between phone
   numbers and the Hermes agent. Markdown is stripped to plain text.
-author: TanzeelShujahKhan
+author: tanzeelshujahkhan
 requires_env:
   - name: TWILIO_ACCOUNT_SID
     description: "Twilio Account SID"

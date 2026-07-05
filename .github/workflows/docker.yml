@@ -22,7 +22,7 @@ env:
 jobs:
   # Build, test, and optionally push the image for each architecture.
   build:
-    if: github.repository == 'TanzeelShujahKhan/evil-hermes'
+    if: github.repository == 'tanzeelshujahkhan/evil-hermes'
     strategy:
       fail-fast: false
       matrix:
@@ -155,7 +155,7 @@ jobs:
   # On releases: tags :<release_tag_name>.
   # ---------------------------------------------------------------------------
   merge:
-    if: github.repository == 'TanzeelShujahKhan/evil-hermes' && (github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'release')
+    if: github.repository == 'tanzeelshujahkhan/evil-hermes' && (github.event_name == 'push' && github.ref == 'refs/heads/main' || github.event_name == 'release')
     runs-on: ubuntu-latest
     needs: [build]
     timeout-minutes: 10
