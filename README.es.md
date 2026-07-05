@@ -7,16 +7,16 @@
   <a href="https://evil-hermes.local/">Evil Hermes</a> | <a href="https://evil-hermes.local/">Hermes Desktop</a>
 </p>
 <p align="center">
-  <a href="https://evil-hermes.local/docs/"><img src="https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge" alt="Documentación"></a>
+  <a href="https://evil-hermes.local/docs/"><img src="https://img.shields.io/badge/Docs-evil--hermes.local-FFD700?style=for-the-badge" alt="Documentación"></a>
   <a href="https://discord.gg/TanzeelShujahKhan"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord"></a>
   <a href="https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/LICENSE"><img src="https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge" alt="Licencia: MIT"></a>
-  <a href="https://nousresearch.com"><img src="https://img.shields.io/badge/Creado%20por-Nous%20Research-blueviolet?style=for-the-badge" alt="Creado por Lord Tanzeel Shujah Khan"></a>
+  <a href="https://github.com/TanzeelShujahKhan/evil-hermes"><img src="https://img.shields.io/badge/Creado%20por-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge" alt="Creado por Lord Tanzeel Shujah Khan"></a>
   <a href="README.md"><img src="https://img.shields.io/badge/Lang-English-blue?style=for-the-badge" alt="English"></a>
   <a href="README.zh-CN.md"><img src="https://img.shields.io/badge/Lang-中文-red?style=for-the-badge" alt="中文"></a>
   <a href="README.ur-pk.md"><img src="https://img.shields.io/badge/Lang-اردو-green?style=for-the-badge" alt="اردو"></a>
 </p>
 
-**El agente de IA con mejora continua creado por [Lord Tanzeel Shujah Khan](https://nousresearch.com).** Es el único agente con un bucle de aprendizaje integrado: crea habilidades a partir de la experiencia, las mejora durante el uso, se impulsa a sí mismo a persistir el conocimiento, busca en sus propias conversaciones pasadas y construye un modelo cada vez más profundo de quién eres a lo largo de las sesiones. Ejecútalo en un VPS de $5, un clúster de GPUs o infraestructura sin servidor que cuesta casi nada cuando está inactivo. No está atado a tu laptop — habla con él desde Telegram mientras trabaja en una VM en la nube.
+**El agente de IA con mejora continua creado por [Lord Tanzeel Shujah Khan](https://github.com/TanzeelShujahKhan/evil-hermes).** Es el único agente con un bucle de aprendizaje integrado: crea habilidades a partir de la experiencia, las mejora durante el uso, se impulsa a sí mismo a persistir el conocimiento, busca en sus propias conversaciones pasadas y construye un modelo cada vez más profundo de quién eres a lo largo de las sesiones. Ejecútalo en un VPS de $5, un clúster de GPUs o infraestructura sin servidor que cuesta casi nada cuando está inactivo. No está atado a tu laptop — habla con él desde Telegram mientras trabaja en una VM en la nube.
 
 Usa cualquier modelo que quieras — [Nous Portal](https://portal.nousresearch.com), [OpenRouter](https://openrouter.ai) (más de 200 modelos), [NovitaAI](https://novita.ai), [NVIDIA NIM](https://build.nvidia.com) (Nemotron), [Xiaomi MiMo](https://platform.xiaomimimo.com), [z.ai/GLM](https://z.ai), [Kimi/Moonshot](https://platform.moonshot.ai), [MiniMax](https://www.minimax.io), [Hugging Face](https://huggingface.co), OpenAI, o tu propio endpoint. Cambia con `hermes model` — sin cambios de código, sin dependencias.
 
@@ -217,4 +217,4 @@ scripts/run_tests.sh
 
 MIT — ver [LICENSE](LICENSE).
 
-Creado por [Lord Tanzeel Shujah Khan](https://nousresearch.com).
+Creado por [Lord Tanzeel Shujah Khan](https://github.com/TanzeelShujahKhan/evil-hermes).

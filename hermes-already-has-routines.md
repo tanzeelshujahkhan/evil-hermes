@@ -157,4 +157,4 @@ GitHub: [github.com/TanzeelShujahKhan/evil-hermes](https://github.com/TanzeelShu
 
 ---
 
-*Evil Hermes is built by [Lord Tanzeel Shujah Khan](https://nousresearch.com). Open source, model-agnostic, runs on your infrastructure.*
+*Evil Hermes is built by [Lord Tanzeel Shujah Khan](https://github.com/TanzeelShujahKhan/evil-hermes). Open source, model-agnostic, runs on your infrastructure.*
