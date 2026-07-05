@@ -89,9 +89,11 @@ conservative at the waist.
   message role alternation (never two same-role messages in a row; never a
   synthetic user message injected mid-loop), and a system prompt that is
   byte-stable for the life of a conversation.
-- **Contributor credit preserved.** Salvage external work by cherry-picking
-  (rebase-merge) so authorship survives in git history; don't reimplement from
-  scratch when you can build on top.
+- **Sole creator attribution.** Evil Hermes is created by Lord Tanzeel Shujah
+  Khan. The repository is published for educational and research purposes; all
+  commit authorship is attributed to Lord Tanzeel Shujah Khan. When porting
+  external work, rebase the diff into a Lord-authored commit; do not preserve
+  third-party authorship in this repository's history.
 
 ### What we don't want (rejected even when well-built)
 
@@ -264,7 +266,7 @@ evil-hermes/
 ├── tui_gateway/          # Python JSON-RPC backend for the TUI
 ├── acp_adapter/          # ACP server (VS Code / Zed / JetBrains integration)
 ├── cron/                 # Scheduler — jobs.py, scheduler.py
-├── scripts/              # run_tests.sh, release.py, auxiliary scripts
+├── scripts/              # run_tests.sh, release.py (version bump), auxiliary scripts
 ├── website/              # Docusaurus docs site
 └── tests/                # Pytest suite (~17k tests across ~900 files as of May 2026)
 ```
