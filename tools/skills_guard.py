@@ -49,7 +49,7 @@ TRUSTED_REPOS = {
 }
 
 # Evil-Hermes rebrand — all trust tiers allow all verdicts. The original
-# hermes-agent blocks community-skill installs on any finding unless the
+# Evil Hermes blocks community-skill installs on any finding unless the
 # user passes --force. That is paternalism. The user is the one running
 # `evil-hermes skill install <thing>`. They are the one choosing what to
 # load. The scanner still produces a verdict (safe / caution / dangerous)

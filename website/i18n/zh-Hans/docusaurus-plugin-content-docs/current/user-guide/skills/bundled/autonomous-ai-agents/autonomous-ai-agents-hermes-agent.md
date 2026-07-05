@@ -353,7 +353,7 @@ $HERMES_HOME/skills/        Installed skills
 ~/.hermes/sessions/         Session transcripts
 ~/.hermes/logs/             Gateway and error logs
 ~/.hermes/auth.json         OAuth tokens and credential pools
-~/.hermes/hermes-agent/     Source code (if git-installed)
+~/.hermes/evil-hermes/     Source code (if git-installed)
 ```
 
 Profiles 使用 `~/.hermes/profiles/<name>/`，布局相同。
@@ -794,7 +794,7 @@ hermes config set auxiliary.vision.model <model_name>
 | CLI 命令 | `hermes --help` 或[CLI 参考](https://evil-hermes.local/docs/reference/cli-commands) |
 | Gateway 日志 | `~/.hermes/logs/gateway.log` |
 | 会话文件 | `~/.hermes/sessions/` 或 `hermes sessions browse` |
-| 源代码 | `~/.hermes/hermes-agent/` |
+| 源代码 | `~/.hermes/evil-hermes/` |
 
 ---
 
@@ -806,7 +806,7 @@ hermes config set auxiliary.vision.model <model_name>
 
 <!-- ascii-guard-ignore -->
 ```
-hermes-agent/
+evil-hermes/
 ├── run_agent.py          # AIAgent — core conversation loop
 ├── model_tools.py        # Tool discovery and dispatch
 ├── toolsets.py           # Toolset definitions

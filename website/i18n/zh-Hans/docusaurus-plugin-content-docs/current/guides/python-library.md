@@ -27,7 +27,7 @@ uv pip install git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 也可以在 `requirements.txt` 中固定版本：
 
 ```text
-hermes-agent @ git+https://github.com/TanzeelShujahKhan/evil-hermes.git
+evil-hermes @ git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 ```
 
 :::tip

@@ -365,7 +365,7 @@ $HERMES_HOME/skills/        Installed skills
 ~/.hermes/state.db          Canonical session store (SQLite + FTS5)
 ~/.hermes/logs/             Gateway and error logs
 ~/.hermes/auth.json         OAuth tokens and credential pools
-~/.hermes/hermes-agent/     Source code (if git-installed)
+~/.hermes/evil-hermes/     Source code (if git-installed)
 ```
 
 Profiles use `~/.hermes/profiles/<name>/` with the same layout.
@@ -908,7 +908,7 @@ multi-source resolution chain (highest priority first):
 | CLI commands | `hermes --help` or [CLI reference](https://evil-hermes.local/docs/reference/cli-commands) |
 | Gateway logs | `~/.hermes/logs/gateway.log` |
 | Session files | `hermes sessions browse` (reads state.db) |
-| Source code | `~/.hermes/hermes-agent/` |
+| Source code | `~/.hermes/evil-hermes/` |
 
 ---
 
@@ -920,7 +920,7 @@ For occasional contributors and PR authors. Full developer docs: https://evil-he
 
 <!-- ascii-guard-ignore -->
 ```
-hermes-agent/
+evil-hermes/
 ├── run_agent.py          # AIAgent — core conversation loop
 ├── model_tools.py        # Tool discovery and dispatch
 ├── toolsets.py           # Toolset definitions

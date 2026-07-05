@@ -385,7 +385,7 @@ cat > "$OUTPUT_DIR/.codewiki-state.json" <<EOF
   "source_path": "$PWD",
   "source_sha": "$REPO_SHA",
   "generated_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-  "generator": "hermes-agent code-wiki skill v0.1.0",
+  "generator": "evil-hermes code-wiki skill v0.1.0",
   "modules_documented": []
 }
 EOF

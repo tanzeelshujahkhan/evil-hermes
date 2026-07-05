@@ -758,7 +758,7 @@ async def cache_image_from_url(url: str, ext: str = ".jpg", retries: int = 2) ->
                     "GET",
                     url,
                     headers={
-                        "User-Agent": "Mozilla/5.0 (compatible; HermesAgent/1.0)",
+                        "User-Agent": "Mozilla/5.0 (compatible; EvilHermes/1.0)",
                         "Accept": "image/*,*/*;q=0.8",
                     },
                 ) as response:
@@ -878,7 +878,7 @@ async def cache_audio_from_url(url: str, ext: str = ".ogg", retries: int = 2) ->
                     "GET",
                     url,
                     headers={
-                        "User-Agent": "Mozilla/5.0 (compatible; HermesAgent/1.0)",
+                        "User-Agent": "Mozilla/5.0 (compatible; EvilHermes/1.0)",
                         "Accept": "audio/*,*/*;q=0.8",
                     },
                 ) as response:
@@ -1187,7 +1187,7 @@ def _path_under_denied_prefix(resolved: Path) -> bool:
     the home itself is not treated as denied. ``/root`` is on the system-path
     denylist so that a non-root gateway can't deliver another user's home, but
     on a root-run gateway ``$HOME=/root`` and the operator's own deliverables
-    (``/root/work/proposal.docx``) live directly under it. The credential
+    (e.g. ``$HOME/work/proposal.docx``) live directly under it. The credential
     sub-directories inside home (``~/.ssh``, ``~/.aws``, ...) and Hermes
     secrets (``~/.hermes/.env``, ``auth.json``) are *separate, more-specific*
     denied paths, so they stay blocked regardless of this exception — it can

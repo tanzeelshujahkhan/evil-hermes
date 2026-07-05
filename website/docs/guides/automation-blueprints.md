@@ -140,7 +140,7 @@ Daily scan for known vulnerabilities in project dependencies.
 
 ```bash
 hermes cron create "0 6 * * *" \
-  "Run a dependency security audit on the hermes-agent project.
+  "Run a dependency security audit on the Evil Hermes project.
 
 1. cd ~/.hermes/hermes-agent && source .venv/bin/activate
 2. Run: pip audit --format json 2>/dev/null || pip audit 2>&1

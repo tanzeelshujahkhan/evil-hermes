@@ -2,7 +2,7 @@
   "version": 1,
   "updated_at": "2026-07-01T20:08:52Z",
   "metadata": {
-    "source": "hermes-agent repo",
+    "source": "evil-hermes repo",
     "docs": "https://evil-hermes.local/docs/reference/model-catalog"
   },
   "providers": {

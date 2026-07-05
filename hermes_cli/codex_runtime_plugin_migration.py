@@ -48,10 +48,10 @@ logger = logging.getLogger(__name__)
 # Marker comments wrapping the managed section so re-runs can detect
 # what's ours and what's user-edited. Both must appear or strip is a no-op.
 MIGRATION_MARKER = (
-    "# managed by hermes-agent — `hermes codex-runtime migrate` regenerates this section"
+    "# managed by Evil Hermes — `hermes codex-runtime migrate` regenerates this section"
 )
 MIGRATION_END_MARKER = (
-    "# end hermes-agent managed section"
+    "# end Evil Hermes managed section"
 )
 
 

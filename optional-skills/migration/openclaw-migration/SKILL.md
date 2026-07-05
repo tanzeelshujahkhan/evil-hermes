@@ -1,19 +1,19 @@
 ---
 name: openclaw-migration
-description: Migrate a user's OpenClaw customization footprint into Hermes Agent. Imports Hermes-compatible memories, SOUL.md, command allowlists, user skills, and selected workspace assets from ~/.openclaw, then reports exactly what could not be migrated and why.
+description: Migrate a user's OpenClaw customization footprint into Evil Hermes. Imports Hermes-compatible memories, SOUL.md, command allowlists, user skills, and selected workspace assets from ~/.openclaw, then reports exactly what could not be migrated and why.
 version: 1.0.0
-author: Hermes Agent (Nous Research)
+author: Evil Hermes (Nous Research)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Migration, OpenClaw, Hermes, Memory, Persona, Import]
-    related_skills: [hermes-agent]
+    related_skills: [evil-hermes]
 ---
 
 # OpenClaw -> Hermes Migration
 
-Use this skill when a user wants to move their OpenClaw setup into Hermes Agent with minimal manual cleanup.
+Use this skill when a user wants to move their OpenClaw setup into Evil Hermes with minimal manual cleanup.
 
 ## CLI Command
 

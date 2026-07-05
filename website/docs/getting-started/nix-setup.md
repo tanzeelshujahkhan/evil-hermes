@@ -59,7 +59,7 @@ hermes --tui
 After `nix profile install`, `hermes`, `evil-hermes`, and `hermes-acp` are on your PATH. From here, the workflow is identical to the [standard installation](./installation.md) — `hermes setup` walks you through provider selection, `hermes gateway install` sets up a launchd (macOS) or systemd user service, and config lives in `~/.hermes/`.
 
 :::warning Messaging platforms (Discord, Telegram, Slack)
-The default package includes ALL libraries hermes-agent might need. if you want a smaller variant, check the other flake outputs. 
+The default package includes ALL libraries Evil Hermes might need. if you want a smaller variant, check the other flake outputs. 
 
 The `default` package adds ~700 MB to the closure. If you only need messaging platforms, `#messaging` adds just ~33 MB.
 
@@ -94,14 +94,14 @@ This module requires NixOS. For non-NixOS systems (macOS, other Linux distros), 
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hermes-agent.url = "github:TanzeelShujahKhan/evil-hermes";
+    evil-hermes.url = "github:TanzeelShujahKhan/evil-hermes";
   };
 
-  outputs = { nixpkgs, hermes-agent, ... }: {
+  outputs = { nixpkgs, evil-hermes, ... }: {
     nixosConfigurations.your-host = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        hermes-agent.nixosModules.default
+        evil-hermes.nixosModules.default
         ./configuration.nix
       ];
     };
@@ -187,7 +187,7 @@ After `nixos-rebuild switch`, check that the service is running:
 systemctl status hermes-agent
 
 # Watch logs (Ctrl+C to stop)
-journalctl -u hermes-agent -f
+journalctl -u evil-hermes -f
 
 # If addToSystemPackages is true, test the CLI
 hermes version
@@ -497,7 +497,7 @@ The first OAuth authorization requires a browser-based consent flow. In a headle
 
 ```bash
 # Container mode
-docker exec -it hermes-agent \
+docker exec -it evil-hermes \
   hermes mcp add my-oauth-server --url https://mcp.example.com/mcp --auth oauth
 
 # Native mode
@@ -555,7 +555,7 @@ When hermes runs via the NixOS module, the following CLI commands are **blocked*
 This prevents drift between what Nix declares and what's on disk. Detection uses two signals:
 
 1. **`HERMES_MANAGED=true`** environment variable — set by the systemd service, visible to the gateway process
-2. **`.managed` marker file** in `HERMES_HOME` — set by the activation script, visible to interactive shells (e.g., `docker exec -it hermes-agent hermes config set ...` is also blocked)
+2. **`.managed` marker file** in `HERMES_HOME` — set by the activation script, visible to interactive shells (e.g., `docker exec -it evil-hermes hermes config set ...` is also blocked)
 
 To change configuration, edit your Nix config and run `sudo nixos-rebuild switch`.
 
@@ -667,7 +667,7 @@ The package's `site-packages` is added to PYTHONPATH in the hermes wrapper. `imp
 
 ### Optional Dependency Groups (`extraDependencyGroups`)
 
-For optional extras declared in hermes-agent's `pyproject.toml`, use `extraDependencyGroups` to include them in the sealed venv at build time. This is required for any extra not in the default `[all]` set — on Nix, runtime installation into the read-only store is not possible.
+For optional extras declared in Evil Hermes' `pyproject.toml`, use `extraDependencyGroups` to include them in the sealed venv at build time. This is required for any extra not in the default `[all]` set — on Nix, runtime installation into the read-only store is not possible.
 
 ```nix
 # Enable Discord, Telegram, Slack
@@ -828,8 +828,8 @@ nix build .#checks.x86_64-linux.config-roundtrip    # merge script preserves use
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `enable` | `bool` | `false` | Enable the hermes-agent service |
-| `package` | `package` | `evil-hermes` | The hermes-agent package to use |
+| `enable` | `bool` | `false` | Enable the Evil Hermes service |
+| `package` | `package` | `evil-hermes` | The Evil Hermes package to use |
 | `user` | `str` | `"hermes"` | System user |
 | `group` | `str` | `"hermes"` | System group |
 | `createUser` | `bool` | `true` | Auto-create user/group |
@@ -963,7 +963,7 @@ All `docker` commands below work the same with `podman`. Substitute accordingly 
 
 ```bash
 # Both modes use the same systemd unit
-journalctl -u hermes-agent -f
+journalctl -u evil-hermes -f
 
 # Container mode: also available directly
 docker logs -f hermes-agent
@@ -974,8 +974,8 @@ docker logs -f hermes-agent
 ```bash
 systemctl status hermes-agent
 docker ps -a --filter name=hermes-agent
-docker inspect hermes-agent --format='{{.State.Status}}'
-docker exec -it hermes-agent bash
+docker inspect evil-hermes --format='{{.State.Status}}'
+docker exec -it evil-hermes bash
 docker exec hermes-agent readlink /data/current-package
 docker exec hermes-agent cat /data/.container-identity
 ```

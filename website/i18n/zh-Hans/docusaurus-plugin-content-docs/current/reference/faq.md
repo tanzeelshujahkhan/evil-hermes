@@ -796,7 +796,7 @@ hermes profile import ./work-backup.tar.gz work
 
 **手动备选方案（rsync）：** 如果您倾向于直接复制文件，请排除代码仓库：
 ```bash
-rsync -av --exclude='hermes-agent' ~/.hermes/ newmachine:~/.hermes/
+rsync -av --exclude='evil-hermes' ~/.hermes/ newmachine:~/.hermes/
 ```
 
 :::tip

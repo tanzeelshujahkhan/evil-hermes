@@ -2,14 +2,14 @@
 name: honcho
 description: Configure and use Honcho memory with Hermes -- cross-session user modeling, multi-profile peer isolation, observation config, dialectic reasoning, session summaries, and context budget enforcement. Use when setting up Honcho, troubleshooting memory, managing profiles with Honcho peers, or tuning observation, recall, and dialectic settings.
 version: 2.0.0
-author: Hermes Agent
+author: Evil Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Honcho, Memory, Profiles, Observation, Dialectic, User-Modeling, Session-Summary]
     homepage: https://docs.honcho.dev
-    related_skills: [hermes-agent]
+    related_skills: [evil-hermes]
 prerequisites:
   pip: [honcho-ai]
 ---

@@ -2,7 +2,7 @@
 name: code-wiki
 description: "Generate wiki docs + Mermaid diagrams for any codebase."
 version: 0.1.0
-author: Teknium (teknium1), Hermes Agent
+author: Teknium (teknium1), Evil Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
@@ -367,7 +367,7 @@ cat > "$OUTPUT_DIR/.codewiki-state.json" <<EOF
   "source_path": "$PWD",
   "source_sha": "$REPO_SHA",
   "generated_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-  "generator": "hermes-agent code-wiki skill v0.1.0",
+  "generator": "evil-hermes code-wiki skill v0.1.0",
   "modules_documented": []
 }
 EOF

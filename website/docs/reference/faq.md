@@ -778,7 +778,7 @@ The imported profile will have all config, memories, sessions, and skills from t
 
 **Manual fallback (rsync):** If you prefer to copy files directly, exclude the code repo:
 ```bash
-rsync -av --exclude='hermes-agent' ~/.hermes/ newmachine:~/.hermes/
+rsync -av --exclude='evil-hermes' ~/.hermes/ newmachine:~/.hermes/
 ```
 
 :::tip

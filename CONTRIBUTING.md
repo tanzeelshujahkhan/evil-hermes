@@ -214,7 +214,7 @@ pytest tests/ -v
 ## Project Structure
 
 ```
-hermes-agent/
+evil-hermes/
 ├── run_agent.py              # AIAgent class — core conversation loop, tool dispatch, session persistence
 ├── cli.py                    # HermesCLI class — interactive TUI, prompt_toolkit integration
 ├── model_tools.py            # Tool orchestration (thin layer over tools/registry.py)

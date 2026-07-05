@@ -1206,8 +1206,8 @@ class TestMediaDeliveryDefaultMode:
     def test_root_home_deliverable_is_accepted(self, tmp_path, monkeypatch):
         """The motivating bug (#38106): a root-run gateway has ``$HOME=/root``,
         which is on the system-prefix denylist. A plain deliverable the agent
-        produced in its working dir (``/root/work/proposal.docx``) must still
-        deliver — the home itself is not a credential location.
+        produced in its working dir (e.g. ``$HOME/work/proposal.docx``) must
+        still deliver — the home itself is not a credential location.
         """
         self._patch_roots(monkeypatch)
 

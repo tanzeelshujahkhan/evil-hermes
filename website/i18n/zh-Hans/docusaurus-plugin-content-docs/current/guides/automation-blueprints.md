@@ -140,7 +140,7 @@ Report any gaps where code changed but docs didn't. If everything is in sync, re
 
 ```bash
 hermes cron create "0 6 * * *" \
-  "Run a dependency security audit on the hermes-agent project.
+  "Run a dependency security audit on the Evil Hermes project.
 
 1. cd ~/.hermes/hermes-agent && source .venv/bin/activate
 2. Run: pip audit --format json 2>/dev/null || pip audit 2>&1

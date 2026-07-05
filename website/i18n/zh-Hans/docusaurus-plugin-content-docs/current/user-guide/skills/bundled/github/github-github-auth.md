@@ -70,7 +70,7 @@ git config --global credential.helper 2>/dev/null || echo "no git credential hel
 告知用户访问：**https://github.com/settings/tokens**
 
 - 点击"Generate new token (classic)"
-- 填写名称，如"hermes-agent"
+- 填写名称，如"evil-hermes"
 - 选择权限范围（scope）：
   - `repo`（完整仓库访问——读、写、推送、PR）
   - `workflow`（触发和管理 GitHub Actions）
@@ -149,7 +149,7 @@ cat ~/.ssh/id_ed25519.pub
 告知用户在以下地址添加公钥：**https://github.com/settings/keys**
 - 点击"New SSH key"
 - 粘贴公钥内容
-- 填写标题，如"hermes-agent-&lt;machine-name>"
+- 填写标题，如"evil-hermes-&lt;machine-name>"
 
 **第三步：测试连接**
 

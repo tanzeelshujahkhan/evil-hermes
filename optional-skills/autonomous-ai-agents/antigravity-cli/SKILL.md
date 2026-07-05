@@ -2,13 +2,13 @@
 name: antigravity-cli
 description: "Operate the Antigravity CLI (agy): plugins, auth, sandbox."
 version: 0.2.0
-author: Tony Simons (asimons81), Hermes Agent
+author: Tony Simons (asimons81), Evil Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Coding-Agent, Antigravity, CLI, Auth, Plugins, Sandbox]
-    related_skills: [grok, codex, claude-code, hermes-agent]
+    related_skills: [grok, codex, claude-code, evil-hermes]
 ---
 
 # Antigravity CLI (`agy`)

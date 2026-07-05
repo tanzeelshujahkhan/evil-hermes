@@ -27,7 +27,7 @@ uv pip install git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 You can also pin it in your `requirements.txt`:
 
 ```text
-hermes-agent @ git+https://github.com/TanzeelShujahKhan/evil-hermes.git
+evil-hermes @ git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 ```
 
 :::tip

@@ -7,7 +7,7 @@ and install them with ``hermes mcp install <name>`` (or by toggling in the
 picker, which flows them through any required env/OAuth setup).
 
 Catalog policy:
-- Entries are added only by merging a PR into hermes-agent. Presence in the
+- Entries are added only by merging a PR into Evil Hermes. Presence in the
   ``optional-mcps/`` directory = Nous approval. No community tier, no trust
   signals beyond "it's in the catalog".
 - Manifests pin transport details (commands, args, refs). MCPs are never

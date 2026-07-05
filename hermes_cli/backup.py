@@ -2,7 +2,7 @@
 Backup and import commands for hermes CLI.
 
 `hermes backup` creates a zip archive of the entire ~/.hermes/ directory
-(excluding the hermes-agent repo and transient files).
+(excluding the Evil Hermes repo and transient files).
 
 `hermes import` restores from a backup zip, overlaying onto the current
 HERMES_HOME root.
@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 # Directory names to skip entirely (matched against each path component)
-# ``hermes-agent`` is special-cased to root level only in ``_should_exclude``
+# ``hermes-agent`` (the Evil Hermes source checkout, also known as the ``evil-hermes`` directory on disk) is special-cased to root level only in ``_should_exclude``
 # so that skill directories like ``skills/autonomous-ai-agents/hermes-agent/``
 # are not accidentally excluded.
 #
@@ -215,7 +215,7 @@ def _should_exclude(rel_path: Path) -> bool:
     for part in parts:
         if part not in _EXCLUDED_DIRS:
             continue
-        # ``hermes-agent`` only matches at the root level (first component).
+        # The ``hermes-agent`` source checkout only matches at the root level (first component).
         # Nested directories with the same name — e.g.
         # ``skills/autonomous-ai-agents/hermes-agent/`` — must be preserved.
         if part == "hermes-agent" and part != parts[0]:
@@ -727,7 +727,7 @@ def run_import(args) -> None:
         # Guidance
         print()
         if not (hermes_root / "hermes-agent").is_dir():
-            print("Note: The hermes-agent codebase was not included in the backup.")
+            print("Note: The Evil Hermes codebase was not included in the backup.")
             print("  If this is a fresh install, run: hermes update")
 
         if restored_profiles:

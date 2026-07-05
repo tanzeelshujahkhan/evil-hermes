@@ -1,7 +1,7 @@
 {
-  "name": "hermes-agent",
+  "name": "evil-hermes",
   "version": "1.0.0",
-  "description": "An AI agent with advanced tool-calling capabilities, featuring a flexible toolsets system for organizing and managing tools.",
+  "description": "Evil Hermes — an AI agent with advanced tool-calling capabilities, featuring a flexible toolsets system for organizing and managing tools. Created by Lord Tanzeel Shujah Khan.",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -24,13 +24,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TanzeelShujahKhan/Hermes-Agent.git"
+    "url": "git+https://github.com/TanzeelShujahKhan/evil-hermes.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/TanzeelShujahKhan/Hermes-Agent/issues"
+    "url": "https://github.com/TanzeelShujahKhan/evil-hermes/issues"
   },
-  "homepage": "https://github.com/TanzeelShujahKhan/Hermes-Agent#readme",
+  "homepage": "https://github.com/TanzeelShujahKhan/evil-hermes#readme",
   "dependencies": {
     "@streamdown/math": "^1.0.2",
     "agent-browser": "^0.26.0"

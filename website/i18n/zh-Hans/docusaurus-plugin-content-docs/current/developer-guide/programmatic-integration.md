@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
 title: "程序化集成"
-description: "从外部程序驱动 hermes-agent 的三种协议：ACP、TUI gateway JSON-RPC 以及兼容 OpenAI 的 HTTP API"
+description: "从外部程序驱动 Evil Hermes 的三种协议：ACP、TUI gateway JSON-RPC 以及兼容 OpenAI 的 HTTP API"
 ---
 
 # 程序化集成

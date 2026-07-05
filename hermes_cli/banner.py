@@ -358,7 +358,7 @@ def check_for_updates() -> Optional[int]:
         # Path(__file__) always resolves to the actual installed checkout.
         repo_dir = Path(__file__).parent.parent.resolve()
         if not (repo_dir / ".git").exists():
-            repo_dir = hermes_home / "hermes-agent"
+            repo_dir = hermes_home / "evil-hermes"
         if not (repo_dir / ".git").exists():
             behind = check_via_pypi()
         else:
@@ -384,7 +384,7 @@ def _resolve_repo_dir() -> Optional[Path]:
     repo_dir = Path(__file__).parent.parent.resolve()
     if not (repo_dir / ".git").exists():
         hermes_home = get_hermes_home()
-        repo_dir = hermes_home / "hermes-agent"
+        repo_dir = hermes_home / "evil-hermes"
     return repo_dir if (repo_dir / ".git").exists() else None
 
 

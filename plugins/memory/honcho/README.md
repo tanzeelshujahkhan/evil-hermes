@@ -219,7 +219,7 @@ The Honcho session name determines which conversation bucket memory lands in. Re
 
 Gateway platforms always resolve via priority 3 (per-chat isolation) regardless of `sessionStrategy`. The strategy setting only affects CLI sessions.
 
-If `sessionPeerPrefix` is `true`, the peer name is prepended: `alice-hermes-agent`.
+If `sessionPeerPrefix` is `true`, the peer name is prepended: `alice-evil-hermes`.
 
 #### What each strategy produces
 

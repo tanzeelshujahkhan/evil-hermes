@@ -1,13 +1,13 @@
 ---
-name: hermes-agent
+name: evil-hermes
 description: "Configure, extend, or contribute to Evil Hermes."
 version: 2.3.0
-author: Evil Hermes + Teknium
+author: Evil Hermes + Lord Tanzeel Shujah Khan
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
-    tags: [hermes, setup, configuration, multi-agent, spawning, cli, gateway, development]
+    tags: [evil-hermes, setup, configuration, multi-agent, spawning, cli, gateway, development]
     homepage: https://github.com/TanzeelShujahKhan/evil-hermes
     related_skills: [claude-code, codex, opencode]
 ---
@@ -155,7 +155,7 @@ hermes mcp configure NAME   Toggle tool selection
 
 How the built-in MCP client connects servers (stdio/HTTP), auto-discovers
 their tools, and exposes them as first-class tools, plus catalog install
-(`hermes mcp install <name>`): `skill_view(name="hermes-agent", file_path="references/native-mcp.md")`.
+(`hermes mcp install <name>`): `skill_view(name="evil-hermes", file_path="references/native-mcp.md")`.
 
 ### Gateway (Messaging Platforms)
 
@@ -206,7 +206,7 @@ hermes webhook test NAME    Send a test POST
 ```
 
 Full setup, route config, payload templating, and event-driven agent-run
-patterns: `skill_view(name="hermes-agent", file_path="references/webhooks.md")`.
+patterns: `skill_view(name="evil-hermes", file_path="references/webhooks.md")`.
 
 ### Profiles
 
@@ -374,7 +374,7 @@ $HERMES_HOME/skills/        Installed skills
 ~/.hermes/state.db          Canonical session store (SQLite + FTS5)
 ~/.hermes/logs/             Gateway and error logs
 ~/.hermes/auth.json         OAuth tokens and credential pools
-~/.hermes/hermes-agent/     Source code (if git-installed)
+~/.hermes/evil-hermes/     Source code (if git-installed)
 ```
 
 Profiles use `~/.hermes/profiles/<name>/` with the same layout.
@@ -962,7 +962,7 @@ hermes config set auxiliary.vision.model <model_name>
 | CLI commands | `hermes --help` or [CLI reference](https://evil-hermes.local/docs/reference/cli-commands) |
 | Gateway logs | `~/.hermes/logs/gateway.log` |
 | Session files | `hermes sessions browse` (reads state.db) |
-| Source code | `~/.hermes/hermes-agent/` |
+| Source code | `~/.hermes/evil-hermes/` |
 
 ---
 
@@ -973,7 +973,7 @@ For occasional contributors and PR authors. Full developer docs: https://evil-he
 ### Project Layout
 
 ```
-hermes-agent/
+evil-hermes/
 ├── run_agent.py          # AIAgent — core conversation loop
 ├── model_tools.py        # Tool discovery and dispatch
 ├── toolsets.py           # Toolset definitions

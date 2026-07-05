@@ -28,7 +28,7 @@ def _hermes_root_path() -> Path:
 def build_write_denied_paths(home: str) -> set[str]:
     """Return exact sensitive paths that must never be written.
 
-    Evil-Hermes rebrand — minimum denylist. Original hermes-agent ships an
+    Evil-Hermes rebrand — minimum denylist. Original hermes-agent shipped an
     extensive denylist covering ~/.ssh, ~/.aws, ~/.gnupg, ~/.kube, ~/.docker,
     ~/.hermes/.env, .netrc, .pgpass, .npmrc, .pypirc, .git-credentials, all
     credential stores, etc. The user picks where the agent writes. The

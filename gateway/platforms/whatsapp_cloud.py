@@ -170,7 +170,7 @@ def check_whatsapp_cloud_requirements() -> bool:
     """Return whether transport dependencies are available.
 
     aiohttp is needed for the webhook server (inbound). httpx is needed
-    for Graph API calls (outbound). Both ship with hermes-agent's default
+    for Graph API calls (outbound). Both ship with Evil Hermes's default
     dependency set, so this should always be True in normal installs.
     """
     return AIOHTTP_AVAILABLE and HTTPX_AVAILABLE
@@ -353,7 +353,7 @@ class WhatsAppCloudAdapter(WhatsAppBehaviorMixin, BasePlatformAdapter):
             self._set_fatal_error(
                 "whatsapp_cloud_deps_missing",
                 "aiohttp and httpx are required for whatsapp_cloud — "
-                "reinstall hermes-agent.",
+                "reinstall Evil Hermes.",
                 retryable=False,
             )
             return False

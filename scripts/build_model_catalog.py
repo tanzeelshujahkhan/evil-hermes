@@ -44,7 +44,7 @@ def build_catalog() -> dict:
         "version": CATALOG_VERSION,
         "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "metadata": {
-            "source": "hermes-agent repo",
+            "source": "evil-hermes repo",
             "docs": "https://evil-hermes.local/docs/reference/model-catalog",
         },
         "providers": {

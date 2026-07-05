@@ -534,7 +534,7 @@ def my_callback(session_id: str, user_message: str, conversation_history: list,
 
 ```python
 # Inject context
-return {"context": "Recalled memories:\n- User likes Python\n- Working on hermes-agent"}
+return {"context": "Recalled memories:\n- User likes Python\n- Working on evil-hermes"}
 
 # Plain string (equivalent)
 return "Recalled memories:\n- User likes Python"

@@ -877,7 +877,7 @@ class DockerEnvironment(BaseEnvironment):
         self._all_run_args = all_run_args
 
         self._labels = {
-            "hermes-agent": "1",
+            "evil-hermes": "1",
             "hermes-task-id": task_label,
             "hermes-profile": profile_name,
         }

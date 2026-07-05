@@ -11,7 +11,7 @@ const config: Config = {
   baseUrl: '/docs/',
 
   organizationName: 'TanzeelShujahKhan',
-  projectName: 'hermes-agent',
+  projectName: 'evil-hermes',
 
   onBrokenLinks: 'warn',
 

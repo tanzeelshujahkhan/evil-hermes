@@ -27,7 +27,7 @@ explicitly allowlisted set.
 │  Docker Network: internal (no internet)     │
 │                                             │
 │   ┌──────────────┐   ┌──────────────────┐   │
-│   │ hermes-agent │   │ hermes-dashboard │   │
+│   │ Evil Hermes  │   │ hermes-dashboard │   │
 │   └──────┬───────┘   └────────┬─────────┘   │
 │          │                    │              │
 │          ▼                    │              │

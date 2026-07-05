@@ -83,7 +83,7 @@ E164_RE = re.compile(r"^\+[1-9]\d{6,14}$")
 
 
 # ---------------------------------------------------------------------------
-# auth.json helpers — share the file with the rest of hermes-agent.
+# auth.json helpers — share the file with the rest of Evil Hermes.
 
 def _auth_json_path() -> Path:
     """Resolve ``~/.hermes/auth.json`` honouring the active Hermes profile."""

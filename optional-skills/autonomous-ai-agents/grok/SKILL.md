@@ -2,13 +2,13 @@
 name: grok
 description: "Delegate coding to xAI Grok Build CLI (features, PRs)."
 version: 0.1.0
-author: Matt Maximo (MattMaximo), Hermes Agent
+author: Matt Maximo (MattMaximo), Evil Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Coding-Agent, Grok, xAI, Code-Review, Refactoring, Automation]
-    related_skills: [codex, claude-code, hermes-agent]
+    related_skills: [codex, claude-code, evil-hermes]
 ---
 
 # Grok Build CLI — Hermes Orchestration Guide
@@ -283,7 +283,7 @@ Put global preferences in `~/.grok/config.toml` (not project-scoped
    `mktemp -d && git init` for scratch commit tasks.
 9. **Clean up tmux sessions** with `tmux kill-session -t <name>` when done.
 
-## Rules for Hermes Agents
+## Rules for Evil Hermess
 
 1. **Prefer headless `-p`** for single tasks — cleanest integration, structured
    output via `--output-format json`.

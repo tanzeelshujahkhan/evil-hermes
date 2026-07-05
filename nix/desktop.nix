@@ -159,8 +159,8 @@ stdenv.mkDerivation {
   };
 
   meta = with lib; {
-    description = "Native Electron desktop shell for Hermes Agent";
-    homepage = "https://github.com/NousResearch/hermes-agent";
+    description = "Native Electron desktop shell for Evil Hermes";
+    homepage = "https://github.com/TanzeelShujahKhan/evil-hermes";
     license = licenses.mit;
     platforms = platforms.unix;
     mainProgram = "hermes-desktop";

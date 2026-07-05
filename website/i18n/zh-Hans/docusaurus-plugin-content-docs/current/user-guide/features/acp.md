@@ -141,7 +141,7 @@ Zed v0.221.x 及更新版本通过官方 ACP Registry 安装外部 agent。
 ```json
 {
   "agent_servers": {
-    "hermes-agent": {
+    "evil-hermes": {
       "type": "custom",
       "command": "hermes",
       "args": ["acp"]
@@ -167,7 +167,7 @@ acp_registry/agent.json
 acp_registry/icon.svg
 ```
 
-上游 registry PR 将这些文件复制到 `agentclientprotocol/registry` 中的顶层 `hermes-agent/` 目录。
+上游 registry PR 将这些文件复制到 `agentclientprotocol/registry` 中的顶层 `evil-hermes/` 目录。
 
 Registry 条目使用直接指向 `evil-hermes` PyPI 发行版的 `uvx` 发行版：
 

@@ -143,7 +143,7 @@ For local development before the registry entry is available, use a custom agent
 ```json
 {
   "agent_servers": {
-    "hermes-agent": {
+    "evil-hermes": {
       "type": "custom",
       "command": "hermes",
       "args": ["acp"]
@@ -169,7 +169,7 @@ acp_registry/agent.json
 acp_registry/icon.svg
 ```
 
-The upstream registry PR copies those files into the top-level `hermes-agent/` directory in `agentclientprotocol/registry`.
+The upstream registry PR copies those files into the top-level `evil-hermes/` directory in `agentclientprotocol/registry`.
 
 The registry entry uses a `uvx` distribution that points directly at the `evil-hermes` PyPI release:
 

@@ -75,14 +75,14 @@ nix build
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hermes-agent.url = "github:TanzeelShujahKhan/evil-hermes";
+    evil-hermes.url = "github:TanzeelShujahKhan/evil-hermes";
   };
 
-  outputs = { nixpkgs, hermes-agent, ... }: {
+  outputs = { nixpkgs, evil-hermes, ... }: {
     nixosConfigurations.your-host = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        hermes-agent.nixosModules.default
+        evil-hermes.nixosModules.default
         ./configuration.nix
       ];
     };
@@ -168,7 +168,7 @@ CLI 会自动检测何时需要 sudo 并透明地使用它。没有此配置，�
 systemctl status hermes-agent
 
 # 查看日志（Ctrl+C 停止）
-journalctl -u hermes-agent -f
+journalctl -u evil-hermes -f
 
 # 如果 addToSystemPackages 为 true，测试 CLI
 hermes version
@@ -477,7 +477,7 @@ Token 存储在 `$HERMES_HOME/mcp-tokens/<server-name>.json` 中，在重启和�
 
 ```bash
 # 容器模式
-docker exec -it hermes-agent \
+docker exec -it evil-hermes \
   hermes mcp add my-oauth-server --url https://mcp.example.com/mcp --auth oauth
 
 # 原生模式
@@ -535,7 +535,7 @@ scp ~/.hermes/mcp-tokens/my-oauth-server{,.client}.json \
 这可以防止 Nix 声明的内容与磁盘上实际内容之间产生漂移。检测使用两个信号：
 
 1. **`HERMES_MANAGED=true`** 环境变量——由 systemd 服务设置，对 gateway 进程可见
-2. **`.managed` 标记文件**，位于 `HERMES_HOME` 中——由激活脚本设置，对交互式 shell 可见（例如 `docker exec -it hermes-agent hermes config set ...` 也会被屏蔽）
+2. **`.managed` 标记文件**，位于 `HERMES_HOME` 中——由激活脚本设置，对交互式 shell 可见（例如 `docker exec -it evil-hermes hermes config set ...` 也会被屏蔽）
 
 要更改配置，请编辑你的 Nix 配置并运行 `sudo nixos-rebuild switch`。
 
@@ -647,7 +647,7 @@ services.hermes-agent.extraPythonPackages = [
 
 ### 可选依赖组（`extraDependencyGroups`）
 
-对于已在 hermes-agent 的 `pyproject.toml` 中声明的可选 extras（例如 `hindsight` 或 `honcho` 等记忆提供商），使用 `extraDependencyGroups` 在构建时将其包含到封闭的 venv 中：
+对于已在 Evil Hermes 的 `pyproject.toml` 中声明的可选 extras（例如 `hindsight` 或 `honcho` 等记忆提供商），使用 `extraDependencyGroups` 在构建时将其包含到封闭的 venv 中：
 
 ```nix
 services.hermes-agent = {
@@ -780,8 +780,8 @@ nix build .#checks.x86_64-linux.config-roundtrip    # 合并脚本保留用户�
 
 | 选项 | 类型 | 默认值 | 描述 |
 |---|---|---|---|
-| `enable` | `bool` | `false` | 启用 hermes-agent 服务 |
-| `package` | `package` | `evil-hermes` | 使用的 hermes-agent 包 |
+| `enable` | `bool` | `false` | 启用 Evil Hermes 服务 |
+| `package` | `package` | `evil-hermes` | 使用的 Evil Hermes 包 |
 | `user` | `str` | `"hermes"` | 系统用户 |
 | `group` | `str` | `"hermes"` | 系统组 |
 | `createUser` | `bool` | `true` | 自动创建用户/组 |
@@ -915,7 +915,7 @@ sudo nixos-rebuild switch
 
 ```bash
 # 两种模式使用相同的 systemd 单元
-journalctl -u hermes-agent -f
+journalctl -u evil-hermes -f
 
 # 容器模式：也可直接查看
 docker logs -f hermes-agent
@@ -926,8 +926,8 @@ docker logs -f hermes-agent
 ```bash
 systemctl status hermes-agent
 docker ps -a --filter name=hermes-agent
-docker inspect hermes-agent --format='{{.State.Status}}'
-docker exec -it hermes-agent bash
+docker inspect evil-hermes --format='{{.State.Status}}'
+docker exec -it evil-hermes bash
 docker exec hermes-agent readlink /data/current-package
 docker exec hermes-agent cat /data/.container-identity
 ```

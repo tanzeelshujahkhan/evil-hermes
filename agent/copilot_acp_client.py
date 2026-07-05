@@ -624,7 +624,7 @@ class CopilotACPClient:
                         }
                     },
                     "clientInfo": {
-                        "name": "hermes-agent",
+                        "name": "evil-hermes",
                         "title": "Evil Hermes",
                         "version": "0.0.0",
                     },

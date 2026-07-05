@@ -64,7 +64,7 @@ def log_warn(msg: str):
 
 def _agent_root(hermes_home: Path) -> Path:
     """The agent checkout root — same layout install.sh / install.ps1 use."""
-    return hermes_home / "hermes-agent"
+    return hermes_home / "evil-hermes"
 
 
 def desktop_userdata_dir() -> Path:
@@ -91,7 +91,7 @@ def source_built_gui_artifacts(hermes_home: Path) -> "list[Path]":
     """GUI build artifacts produced by ``hermes desktop`` inside the checkout.
 
     These are removable on a GUI uninstall without harming the agent: the
-    Python agent runs from ``hermes-agent/`` source + ``venv/`` and never
+    Python agent runs from ``evil-hermes/`` source + ``venv/`` and never
     needs the Electron build output or node_modules.
     """
     agent_root = _agent_root(hermes_home)
