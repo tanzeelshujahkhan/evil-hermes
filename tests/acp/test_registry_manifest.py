@@ -33,7 +33,7 @@ def test_agent_json_matches_official_registry_required_fields():
     assert data["name"] == "Evil Hermes"
     assert data["description"]
     assert data["repository"] == "https://github.com/tanzeelshujahkhan/evil-hermes"
-    assert data["website"].startswith("https://hermes-agent.nousresearch.com/")
+    assert data["website"].startswith("https://evil-hermes.nousresearch.com/")
     assert data["authors"] == ["Lord Tanzeel Shujah Khan"]
     assert data["license"] == "MIT"
     assert set(data["distribution"]) <= ALLOWED_DISTRIBUTIONS

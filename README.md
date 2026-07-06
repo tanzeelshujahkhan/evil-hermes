@@ -6,7 +6,7 @@
 
 **A sovereign, self-improving AI agent framework — built for operators who need full control over identity, filters, and policy.**
 
-[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://hermes-agent.nousresearch.com/docs/)
+[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://evil-hermes.nousresearch.com/docs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Built by Lord Tanzeel Shujah Khan](https://img.shields.io/badge/Built%20by-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge)](https://github.com/tanzeelshujahkhan)
 [![GitHub stars](https://img.shields.io/github/stars/tanzeelshujahkhan/evil-hermes?style=for-the-badge)](https://github.com/tanzeelshujahkhan/evil-hermes/stargazers)
@@ -126,13 +126,13 @@ There is no SaaS control plane. There is no per-seat license. There is no "team 
 ### Linux, macOS, WSL2, Termux
 
 ```bash
-curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
 ```
 
 ### Windows (native PowerShell)
 
 ```powershell
-iex (irm https://hermes-agent.nousresearch.com/install.ps1)
+iex (irm https://evil-hermes.nousresearch.com/install.ps1)
 ```
 
 The installer provisions everything: `uv`, Python 3.11, Node.js, ripgrep, ffmpeg, and a portable Git Bash (MinGit) that does not touch any system Git install. If Git is already present, the installer uses that and skips the bundle.
@@ -156,11 +156,11 @@ hermes doctor       # diagnose issues
 hermes desktop      # build and launch the native desktop app
 ```
 
-📖 **[Full documentation →](https://hermes-agent.nousresearch.com/docs/)**
+📖 **[Full documentation →](https://evil-hermes.nousresearch.com/docs/)**
 
 ### Prebuilt desktop installers
 
-Native installers for **macOS, Windows, and Linux** are available from the [Hermes Desktop website](https://hermes-agent.nousresearch.com/). The desktop app bundles the agent, the chat surface, the file browser, voice, and a settings UI — same engine, same skills, same memory, no terminal required.
+Native installers for **macOS, Windows, and Linux** are available from the [Hermes Desktop website](https://evil-hermes.nousresearch.com/). The desktop app bundles the agent, the chat surface, the file browser, voice, and a settings UI — same engine, same skills, same memory, no terminal required.
 
 ---
 
@@ -189,25 +189,25 @@ Read [SECURITY.md](SECURITY.md) before exposing the gateway or API to the open i
 
 ## Documentation
 
-The full documentation site is published at **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)**. The engine is shared, so the upstream docs apply verbatim; Evil-Hermes-specific notes are flagged in-place.
+The full documentation site is published at **[evil-hermes.nousresearch.com/docs](https://evil-hermes.nousresearch.com/docs/)**. The engine is shared, so the upstream docs apply verbatim; Evil-Hermes-specific notes are flagged in-place.
 
 | Section | Contents |
 |---|---|
-| [Quickstart](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) | Install → setup → first conversation in 2 minutes |
-| [CLI Usage](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | Commands, keybindings, personalities, sessions |
-| [Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) | Config file, providers, models, all options |
-| [Messaging Gateway](https://hermes-agent.nousresearch.com/docs/user-guide/messaging) | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant |
-| [Security](https://hermes-agent.nousresearch.com/docs/user-guide/security) | Command approval, DM pairing, container isolation |
-| [Tools & Toolsets](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools) | 40+ tools, toolset system, terminal backends |
-| [Skills System](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | Procedural memory, Skills Hub, creating skills |
-| [Memory](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) | Persistent memory, user profiles, best practices |
-| [MCP Integration](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) | Connect any MCP server for extended capabilities |
-| [Cron Scheduling](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) | Scheduled tasks with platform delivery |
-| [Context Files](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files) | Project context that shapes every conversation |
-| [Architecture](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture) | Project structure, agent loop, key classes |
-| [Contributing](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) | Development setup, PR process, code style |
-| [CLI Reference](https://hermes-agent.nousresearch.com/docs/reference/cli-commands) | All commands and flags |
-| [Environment Variables](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | Complete env var reference |
+| [Quickstart](https://evil-hermes.nousresearch.com/docs/getting-started/quickstart) | Install → setup → first conversation in 2 minutes |
+| [CLI Usage](https://evil-hermes.nousresearch.com/docs/user-guide/cli) | Commands, keybindings, personalities, sessions |
+| [Configuration](https://evil-hermes.nousresearch.com/docs/user-guide/configuration) | Config file, providers, models, all options |
+| [Messaging Gateway](https://evil-hermes.nousresearch.com/docs/user-guide/messaging) | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant |
+| [Security](https://evil-hermes.nousresearch.com/docs/user-guide/security) | Command approval, DM pairing, container isolation |
+| [Tools & Toolsets](https://evil-hermes.nousresearch.com/docs/user-guide/features/tools) | 40+ tools, toolset system, terminal backends |
+| [Skills System](https://evil-hermes.nousresearch.com/docs/user-guide/features/skills) | Procedural memory, Skills Hub, creating skills |
+| [Memory](https://evil-hermes.nousresearch.com/docs/user-guide/features/memory) | Persistent memory, user profiles, best practices |
+| [MCP Integration](https://evil-hermes.nousresearch.com/docs/user-guide/features/mcp) | Connect any MCP server for extended capabilities |
+| [Cron Scheduling](https://evil-hermes.nousresearch.com/docs/user-guide/features/cron) | Scheduled tasks with platform delivery |
+| [Context Files](https://evil-hermes.nousresearch.com/docs/user-guide/features/context-files) | Project context that shapes every conversation |
+| [Architecture](https://evil-hermes.nousresearch.com/docs/developer-guide/architecture) | Project structure, agent loop, key classes |
+| [Contributing](https://evil-hermes.nousresearch.com/docs/developer-guide/contributing) | Development setup, PR process, code style |
+| [CLI Reference](https://evil-hermes.nousresearch.com/docs/reference/cli-commands) | All commands and flags |
+| [Environment Variables](https://evil-hermes.nousresearch.com/docs/reference/environment-variables) | Complete env var reference |
 
 ---
 
