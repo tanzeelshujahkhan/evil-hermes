@@ -85,9 +85,9 @@ op --version
 
 3. Choose an auth method above and configure it.
 
-## Hermes Execution Pattern (desktop app flow)
+## Evil Hermes Execution Pattern (desktop app flow)
 
-Hermes terminal commands are non-interactive by default and can lose auth context between calls.
+Evil Hermes terminal commands are non-interactive by default and can lose auth context between calls.
 For reliable `op` use with desktop app integration, run sign-in and secret operations inside a dedicated tmux session.
 
 Note: This is NOT needed when using `OP_SERVICE_ACCOUNT_TOKEN` — the token persists across terminal calls automatically.

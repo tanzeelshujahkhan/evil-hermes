@@ -33,7 +33,7 @@ If the user wants a paid API call (HTTP 402, no checkout form), the `card` path 
 - Node.js 20+ available on `PATH` (`node --version`)
 - US-based (Link account requirement)
 
-The Link account, payment method, and spend-approval app do NOT need to be set up before Hermes attempts to pay — the CLI walks the user through them on first run:
+The Link account, payment method, and spend-approval app do NOT need to be set up before Evil Hermes attempts to pay — the CLI walks the user through them on first run:
 
 - A Link account at https://app.link.com — created/linked during first `link-cli` auth
 - At least one payment method — added during first run at https://app.link.com/wallet
@@ -158,7 +158,7 @@ rm -f /tmp/link-card.json
 
 ## Optional: run as an MCP server instead
 
-`@stripe/link-cli --mcp` exposes the same commands as MCP tools over stdio. To register it with Hermes' native MCP:
+`@stripe/link-cli --mcp` exposes the same commands as MCP tools over stdio. To register it with Evil Hermes' native MCP:
 
 ```
 hermes mcp add stripe-link --command "npx" --args "@stripe/link-cli --mcp"

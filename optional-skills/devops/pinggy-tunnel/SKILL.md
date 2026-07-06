@@ -245,7 +245,7 @@ echo "MCP URL: $URL"
 echo "Bearer token: $TOKEN"
 ```
 
-The remote client connects to `$URL` with `Authorization: Bearer $TOKEN`. Hermes' own native MCP client config: `{"transport": "http", "url": "<URL>", "headers": {"Authorization": "Bearer <TOKEN>"}}`.
+The remote client connects to `$URL` with `Authorization: Bearer $TOKEN`. Evil Hermes' own native MCP client config: `{"transport": "http", "url": "<URL>", "headers": {"Authorization": "Bearer <TOKEN>"}}`.
 
 ### Recipe 3 — Expose a local LLM endpoint (Ollama / vLLM / llama.cpp)
 

@@ -37,7 +37,7 @@ scanning and submitting with native tools (`web_extract`, `browser_*`, email, `c
 hermes skills install official/security/unbroker
 ```
 
-Then start a new Hermes session and drive it (below). The skill works zero-config; a few optional
+Then start a new Evil Hermes session and drive it (below). The skill works zero-config; a few optional
 env vars unlock more automation (all documented in `SKILL.md` under Prerequisites):
 
 - `BROWSERBASE_API_KEY`: the recommended default browser. A real residential-IP cloud browser that
@@ -52,7 +52,7 @@ env vars unlock more automation (all documented in `SKILL.md` under Prerequisite
 
 ## Usage
 
-Drive it from a Hermes session:
+Drive it from a Evil Hermes session:
 
 > "Use the unbroker skill to remove my data from data brokers. Here is my consent. Run it hands-off
 > and show me the human-task digest at the end."

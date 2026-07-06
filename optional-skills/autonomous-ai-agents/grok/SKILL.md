@@ -11,10 +11,10 @@ metadata:
     related_skills: [codex, claude-code, evil-hermes]
 ---
 
-# Grok Build CLI — Hermes Orchestration Guide
+# Grok Build CLI — Evil Hermes Orchestration Guide
 
 Delegate coding tasks to [Grok Build](https://docs.x.ai/build/overview) (xAI's
-autonomous coding agent CLI, the `grok` command) via the Hermes terminal. Grok
+autonomous coding agent CLI, the `grok` command) via the Evil Hermes terminal. Grok
 can read files, write code, run shell commands, spawn subagents, and manage git
 workflows. It runs three ways: an interactive TUI, **headless** (`-p`), and as
 an **ACP agent** over JSON-RPC.
@@ -167,7 +167,7 @@ terminal(command="grok --no-auto-update -c -p 'What did you change last time?'",
 To have Grok review local artifacts and return a clean markdown note (for
 Obsidian or a repo) without mutating anything:
 
-1. Prepare stable input files first with Hermes tools (`read_file`,
+1. Prepare stable input files first with Evil Hermes tools (`read_file`,
    `write_file`). Snapshot only the relevant context into a temp file rather
    than dumping raw paths.
 2. Run Grok headless **without** `--always-approve` so it cannot auto-write, and
@@ -264,7 +264,7 @@ Put global preferences in `~/.grok/config.toml` (not project-scoped
 1. **Auth is subscription-gated.** `grok login` requires a SuperGrok or X
    Premium+ subscription. If login fails or there's no `~/.grok/auth.json`,
    confirm the subscription is active before falling back to `XAI_API_KEY`.
-2. **Don't conflate Hermes' xAI auth with the `grok` CLI's auth.** Hermes'
+2. **Don't conflate Evil Hermes' xAI auth with the `grok` CLI's auth.** Evil Hermes'
    `x_search` runs on its own xAI OAuth; the standalone `grok` CLI has a
    separate token in `~/.grok/auth.json`. A working `x_search` does NOT mean
    `grok` is logged in.

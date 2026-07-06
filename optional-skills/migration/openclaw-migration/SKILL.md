@@ -84,7 +84,7 @@ With `--migrate-secrets`, it will also import a small allowlisted set of Hermes-
 
 ## User interaction protocol
 
-Hermes CLI supports the `clarify` tool for interactive prompts, but it is limited to:
+Evil Hermes CLI supports the `clarify` tool for interactive prompts, but it is limited to:
 
 - one choice at a time
 - up to 4 predefined choices
@@ -159,9 +159,9 @@ Execution gate:
 Use these exact `clarify` payload shapes as the default pattern:
 
 - `{"question":"Your existing SOUL.md conflicts with the imported one. What should I do?","choices":["keep existing","overwrite with backup","review first"]}`
-- `{"question":"One or more imported OpenClaw skills already exist in Hermes. How should I handle those skill conflicts?","choices":["keep existing skills","overwrite conflicting skills with backup","import conflicting skills under renamed folders"]}`
+- `{"question":"One or more imported OpenClaw skills already exist in Evil Hermes. How should I handle those skill conflicts?","choices":["keep existing skills","overwrite conflicting skills with backup","import conflicting skills under renamed folders"]}`
 - `{"question":"Choose migration mode: migrate only user data, or run the full compatible migration including allowlisted secrets?","choices":["user-data only","full compatible migration","cancel"]}`
-- `{"question":"Do you want to copy the OpenClaw workspace instructions file into a Hermes workspace?","choices":["skip workspace instructions","copy to a workspace path","decide later"]}`
+- `{"question":"Do you want to copy the OpenClaw workspace instructions file into a Evil Hermes workspace?","choices":["skip workspace instructions","copy to a workspace path","decide later"]}`
 - `{"question":"Please provide an absolute path where the workspace instructions should be copied."}`
 
 ## Decision-to-command mapping

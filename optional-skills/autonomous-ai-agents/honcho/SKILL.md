@@ -59,7 +59,7 @@ When Honcho injects context into the system prompt (in `hybrid` or `context` rec
 
 1. **Session summary** -- a short digest of the current session so far (placed first so the model has immediate conversational continuity)
 2. **User representation** -- Honcho's accumulated model of the user (preferences, facts, patterns)
-3. **AI peer card** -- the identity card for this Hermes profile's AI peer
+3. **AI peer card** -- the identity card for this Evil Hermes profile's AI peer
 
 The session summary is generated automatically by Honcho at the start of each turn (when a prior session exists). It gives the model a warm start without replaying full history.
 
@@ -76,10 +76,10 @@ You do not need to configure this -- it is automatic based on session state.
 
 ### Peers
 
-Honcho models conversations as interactions between **peers**. Hermes creates two peers per session:
+Honcho models conversations as interactions between **peers**. Evil Hermes creates two peers per session:
 
 - **User peer** (`peerName`): represents the human. Honcho builds a user representation from observed messages.
-- **AI peer** (`aiPeer`): represents this Hermes instance. Each profile gets its own AI peer so agents develop independent views.
+- **AI peer** (`aiPeer`): represents this Evil Hermes instance. Each profile gets its own AI peer so agents develop independent views.
 
 ### Observation
 
@@ -120,7 +120,7 @@ Honcho sessions scope where messages and observations land. Strategy options:
 |----------|----------|
 | `per-directory` (default) | One session per working directory |
 | `per-repo` | One session per git repository root |
-| `per-session` | New Honcho session each Hermes run |
+| `per-session` | New Honcho session each Evil Hermes run |
 | `global` | Single session across all directories |
 
 Manual override: `hermes honcho map my-project-name`
@@ -196,7 +196,7 @@ Higher levels produce richer synthesis but cost more tokens on Honcho's backend.
 
 ## Multi-Profile Setup
 
-Each Hermes profile gets its own Honcho AI peer while sharing the same workspace (user context). This means:
+Each Evil Hermes profile gets its own Honcho AI peer while sharing the same workspace (user context). This means:
 
 - All profiles see the same user representation
 - Each profile builds its own AI identity and observations
@@ -288,7 +288,7 @@ honcho_conclude delete_id="abc123"    # PII removal
 
 ## Agent Usage Patterns
 
-Guidelines for Hermes when Honcho memory is active.
+Guidelines for Evil Hermes when Honcho memory is active.
 
 ### On conversation start
 
