@@ -51,7 +51,7 @@ That does not stop Hermes from working well as a phone-native CLI agent — it j
 Hermes now ships a Termux-aware installer path:
 
 ```bash
-curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
 ```
 
 On Termux, the installer automatically:

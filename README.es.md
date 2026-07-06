@@ -6,7 +6,7 @@
 
 **Un framework de agente de IA soberano, auto-mejorable, para constructores, investigadores y operadores que necesitan control total sobre identidad, filtros y política.**
 
-[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://evil-hermes.nousresearch.com/docs/)
+[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://hermes-agent.nousresearch.com/docs/)
 [![License: MIT](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)](LICENSE)
 [![Built by Lord Tanzeel Shujah Khan](https://img.shields.io/badge/Creado%20por-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge)](https://github.com/tanzeelshujahkhan)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nousresearch)
@@ -38,13 +38,13 @@ Evil Hermes es un framework de agente completo — interfaz de terminal, gateway
 ### Linux, macOS, WSL2, Termux
 
 ```bash
-curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
 ```
 
 ### Windows (PowerShell nativo)
 
 ```powershell
-iex (irm https://evil-hermes.nousresearch.com/install.ps1)
+iex (irm https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.ps1)
 ```
 
 El instalador aprovisiona todo: `uv`, Python 3.11, Node.js, ripgrep, ffmpeg, y un Git Bash portátil (MinGit) que no toca ninguna instalación de Git del sistema. Si Git ya está presente, el instalador lo usa y omite el bundle.
@@ -67,7 +67,7 @@ hermes update       # actualiza a la última versión
 hermes doctor       # diagnostica problemas
 ```
 
-📖 **[Documentación completa →](https://evil-hermes.nousresearch.com/docs/)**
+📖 **[Documentación completa →](https://hermes-agent.nousresearch.com/docs/)**
 
 ---
 
@@ -103,25 +103,25 @@ Lee [SECURITY.md](SECURITY.md) antes de exponer el gateway o la API a internet a
 
 ## Documentación
 
-El sitio de documentación completo está publicado en **[evil-hermes.nousresearch.com/docs](https://evil-hermes.nousresearch.com/docs/)**. El motor es compartido, por lo que los documentos upstream aplican de forma literal; las notas específicas de Evil Hermes se señalan in-situ.
+El sitio de documentación completo está publicado en **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)**. El motor es compartido, por lo que los documentos upstream aplican de forma literal; las notas específicas de Evil Hermes se señalan in-situ.
 
 | Sección | Contenido |
 |---|---|
-| [Inicio rápido](https://evil-hermes.nousresearch.com/docs/getting-started/quickstart) | Instalar → configurar → primera conversación en 2 minutos |
-| [Uso de CLI](https://evil-hermes.nousresearch.com/docs/user-guide/cli) | Comandos, atajos, personalidades, sesiones |
-| [Configuración](https://evil-hermes.nousresearch.com/docs/user-guide/configuration) | Archivo de config, proveedores, modelos, todas las opciones |
-| [Gateway de Mensajería](https://evil-hermes.nousresearch.com/docs/user-guide/messaging) | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant |
-| [Seguridad](https://evil-hermes.nousresearch.com/docs/user-guide/security) | Aprobación de comandos, emparejamiento DM, aislamiento en contenedor |
-| [Herramientas y Toolsets](https://evil-hermes.nousresearch.com/docs/user-guide/features/tools) | 40+ herramientas, sistema de toolsets, backends de terminal |
-| [Sistema de Habilidades](https://evil-hermes.nousresearch.com/docs/user-guide/features/skills) | Memoria procedimental, Skills Hub, creación de habilidades |
-| [Memoria](https://evil-hermes.nousresearch.com/docs/user-guide/features/memory) | Memoria persistente, perfiles de usuario, buenas prácticas |
-| [Integración MCP](https://evil-hermes.nousresearch.com/docs/user-guide/features/mcp) | Conecta cualquier servidor MCP para capacidades extendidas |
-| [Programación Cron](https://evil-hermes.nousresearch.com/docs/user-guide/features/cron) | Tareas programadas con entrega a plataforma |
-| [Archivos de Contexto](https://evil-hermes.nousresearch.com/docs/user-guide/features/context-files) | Contexto de proyecto que da forma a cada conversación |
-| [Arquitectura](https://evil-hermes.nousresearch.com/docs/developer-guide/architecture) | Estructura del proyecto, bucle del agente, clases principales |
-| [Contribuir](https://evil-hermes.nousresearch.com/docs/developer-guide/contributing) | Configuración de desarrollo, proceso de PR, estilo de código |
-| [Referencia de CLI](https://evil-hermes.nousresearch.com/docs/reference/cli-commands) | Todos los comandos y flags |
-| [Variables de Entorno](https://evil-hermes.nousresearch.com/docs/reference/environment-variables) | Referencia completa de variables de entorno |
+| [Inicio rápido](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) | Instalar → configurar → primera conversación en 2 minutos |
+| [Uso de CLI](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | Comandos, atajos, personalidades, sesiones |
+| [Configuración](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) | Archivo de config, proveedores, modelos, todas las opciones |
+| [Gateway de Mensajería](https://hermes-agent.nousresearch.com/docs/user-guide/messaging) | Telegram, Discord, Slack, WhatsApp, Signal, Home Assistant |
+| [Seguridad](https://hermes-agent.nousresearch.com/docs/user-guide/security) | Aprobación de comandos, emparejamiento DM, aislamiento en contenedor |
+| [Herramientas y Toolsets](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools) | 40+ herramientas, sistema de toolsets, backends de terminal |
+| [Sistema de Habilidades](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | Memoria procedimental, Skills Hub, creación de habilidades |
+| [Memoria](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) | Memoria persistente, perfiles de usuario, buenas prácticas |
+| [Integración MCP](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) | Conecta cualquier servidor MCP para capacidades extendidas |
+| [Programación Cron](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) | Tareas programadas con entrega a plataforma |
+| [Archivos de Contexto](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files) | Contexto de proyecto que da forma a cada conversación |
+| [Arquitectura](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture) | Estructura del proyecto, bucle del agente, clases principales |
+| [Contribuir](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) | Configuración de desarrollo, proceso de PR, estilo de código |
+| [Referencia de CLI](https://hermes-agent.nousresearch.com/docs/reference/cli-commands) | Todos los comandos y flags |
+| [Variables de Entorno](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | Referencia completa de variables de entorno |
 
 ---
 

@@ -206,7 +206,7 @@ source ~/.bashrc
 # If you previously installed with sudo, clean up:
 sudo rm /usr/local/bin/hermes
 # Then re-run the standard installer
-curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
 ```
 
 ---
@@ -732,7 +732,7 @@ Skills with very long descriptions are truncated to 40 characters in the Telegra
 
 1. Install Evil Hermes on the new machine:
    ```bash
-   curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
+   curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
    ```
 
 2. On the **source machine**, create a full backup:

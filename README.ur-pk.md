@@ -8,7 +8,7 @@
 
 **بنایا گیا، محققین اور آپریٹرز کے لیے ایک خود مختار، خود بہتر ہونے والا AI ایجنٹ فریم ورک — جنہیں شناخت، فلٹرز اور پالیسی پر مکمل کنٹرول کی ضرورت ہے۔**
 
-[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://evil-hermes.nousresearch.com/docs/)
+[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://hermes-agent.nousresearch.com/docs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Built by Lord Tanzeel Shujah Khan](https://img.shields.io/badge/Built%20by-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge)](https://github.com/tanzeelshujahkhan)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nousresearch)
@@ -40,13 +40,13 @@
 ### Linux، macOS، WSL2، Termux
 
 ```bash
-curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
 ```
 
 ### Windows (مقامی PowerShell)
 
 ```powershell
-iex (irm https://evil-hermes.nousresearch.com/install.ps1)
+iex (irm https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.ps1)
 ```
 
 انسٹالر سب کچھ فراہم کرتا ہے: `uv`، Python 3.11، Node.js، ripgrep، ffmpeg، اور ایک پورٹیبل Git Bash (MinGit) جو کسی بھی سسٹم Git تنصیب کو نہیں چھیتا۔ اگر Git پہلے سے موجود ہو تو انسٹالر اسے استعمال کرتا ہے اور ڈاؤن لوڈ چھوڑ دیتا ہے۔
@@ -69,7 +69,7 @@ hermes update       # تازہ ترین ورژن پر اپ ڈیٹ کریں
 hermes doctor       # مسائل کی تشخیص کریں
 ```
 
-📖 **[مکمل دستاویزات →](https://evil-hermes.nousresearch.com/docs/)**
+📖 **[مکمل دستاویزات →](https://hermes-agent.nousresearch.com/docs/)**
 
 ---
 
@@ -105,25 +105,25 @@ hermes doctor       # مسائل کی تشخیص کریں
 
 ## دستاویزات
 
-مکمل دستاویزات کی سائٹ **[evil-hermes.nousresearch.com/docs](https://evil-hermes.nousresearch.com/docs/)** پر شائع ہے۔ انجن مشترک ہے، لہذا اپ اسٹریم دستاویزات لغوی طور پر لاگو ہوتی ہیں؛ ایول ہرمیس سے متعلقہ نوٹس مقام پر نشان زد ہیں۔
+مکمل دستاویزات کی سائٹ **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)** پر شائع ہے۔ انجن مشترک ہے، لہذا اپ اسٹریم دستاویزات لغوی طور پر لاگو ہوتی ہیں؛ ایول ہرمیس سے متعلقہ نوٹس مقام پر نشان زد ہیں۔
 
 | سیکشن | مواد |
 |---|---|
-| [فوری آغاز (Quickstart)](https://evil-hermes.nousresearch.com/docs/getting-started/quickstart) | انسٹال → سیٹ اپ → 2 منٹ میں پہلی گفتگو |
-| [CLI کا استعمال](https://evil-hermes.nousresearch.com/docs/user-guide/cli) | کمانڈز، کی بائنڈنگز، پرسنلٹیز، سیشنز |
-| [کنفیگریشن (Configuration)](https://evil-hermes.nousresearch.com/docs/user-guide/configuration) | کنفگ فائل، فراہم کنندگان، ماڈلز، تمام آپشنز |
-| [میسجنگ گیٹ وے](https://evil-hermes.nousresearch.com/docs/user-guide/messaging) | ٹیلی گرام، ڈسکارڈ، سلیک، واٹس ایپ، سگنل، ہوم اسسٹنٹ |
-| [سیکیورٹی (Security)](https://evil-hermes.nousresearch.com/docs/user-guide/security) | کمانڈ کی منظوری، DM پیئرنگ، کنٹینر تنہائی |
-| [ٹولز اور ٹول سیٹس](https://evil-hermes.nousresearch.com/docs/user-guide/features/tools) | 40+ ٹولز، ٹول سیٹ سسٹم، ٹرمینل بیک اینڈز |
-| [مہارتوں کا سسٹم (Skills System)](https://evil-hermes.nousresearch.com/docs/user-guide/features/skills) | پروسیجرل میموری، سکلز ہب، سکلز بنانا |
-| [میموری (Memory)](https://evil-hermes.nousresearch.com/docs/user-guide/features/memory) | مستقل میموری، یوزر پروفائلز، بہترین طریقہ کار |
-| [MCP انضمام (Integration)](https://evil-hermes.nousresearch.com/docs/user-guide/features/mcp) | ایم سی پی سرورز کو جوڑ کر صلاحیتوں میں توسیع |
-| [کرون (Cron) شیڈیولنگ](https://evil-hermes.nousresearch.com/docs/user-guide/features/cron) | پلیٹ فارم ڈیلیوری کے ساتھ شیڈیول کیے گئے کام |
-| [کانٹیکسٹ (Context) فائلز](https://evil-hermes.nousresearch.com/docs/user-guide/features/context-files) | ہر گفتگو کو شکل دینے والا پروجیکٹ کا سیاق و سباق |
-| [آرکیٹیکچر (Architecture)](https://evil-hermes.nousresearch.com/docs/developer-guide/architecture) | پروجیکٹ کا ڈھانچہ، ایجنٹ لوپ، کلیدی کلاسز |
-| [تعاون (Contributing)](https://evil-hermes.nousresearch.com/docs/developer-guide/contributing) | ڈیویلپمنٹ سیٹ اپ، PR کا طریقہ کار، کوڈنگ کا انداز |
-| [CLI حوالہ جات (Reference)](https://evil-hermes.nousresearch.com/docs/reference/cli-commands) | تمام کمانڈز اور فلیگز |
-| [انوائرمنٹ ویری ایبلز](https://evil-hermes.nousresearch.com/docs/reference/environment-variables) | مکمل ماحولیاتی متغیر حوالہ |
+| [فوری آغاز (Quickstart)](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) | انسٹال → سیٹ اپ → 2 منٹ میں پہلی گفتگو |
+| [CLI کا استعمال](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | کمانڈز، کی بائنڈنگز، پرسنلٹیز، سیشنز |
+| [کنفیگریشن (Configuration)](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) | کنفگ فائل، فراہم کنندگان، ماڈلز، تمام آپشنز |
+| [میسجنگ گیٹ وے](https://hermes-agent.nousresearch.com/docs/user-guide/messaging) | ٹیلی گرام، ڈسکارڈ، سلیک، واٹس ایپ، سگنل، ہوم اسسٹنٹ |
+| [سیکیورٹی (Security)](https://hermes-agent.nousresearch.com/docs/user-guide/security) | کمانڈ کی منظوری، DM پیئرنگ، کنٹینر تنہائی |
+| [ٹولز اور ٹول سیٹس](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools) | 40+ ٹولز، ٹول سیٹ سسٹم، ٹرمینل بیک اینڈز |
+| [مہارتوں کا سسٹم (Skills System)](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | پروسیجرل میموری، سکلز ہب، سکلز بنانا |
+| [میموری (Memory)](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) | مستقل میموری، یوزر پروفائلز، بہترین طریقہ کار |
+| [MCP انضمام (Integration)](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) | ایم سی پی سرورز کو جوڑ کر صلاحیتوں میں توسیع |
+| [کرون (Cron) شیڈیولنگ](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) | پلیٹ فارم ڈیلیوری کے ساتھ شیڈیول کیے گئے کام |
+| [کانٹیکسٹ (Context) فائلز](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files) | ہر گفتگو کو شکل دینے والا پروجیکٹ کا سیاق و سباق |
+| [آرکیٹیکچر (Architecture)](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture) | پروجیکٹ کا ڈھانچہ، ایجنٹ لوپ، کلیدی کلاسز |
+| [تعاون (Contributing)](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) | ڈیویلپمنٹ سیٹ اپ، PR کا طریقہ کار، کوڈنگ کا انداز |
+| [CLI حوالہ جات (Reference)](https://hermes-agent.nousresearch.com/docs/reference/cli-commands) | تمام کمانڈز اور فلیگز |
+| [انوائرمنٹ ویری ایبلز](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | مکمل ماحولیاتی متغیر حوالہ |
 
 ---
 

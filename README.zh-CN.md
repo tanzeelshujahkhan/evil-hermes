@@ -6,7 +6,7 @@
 
 **一个面向构建者、研究者和运营者的主权、自进化 AI 代理框架——他们需要对身份、过滤器和策略拥有完全控制权。**
 
-[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://evil-hermes.nousresearch.com/docs/)
+[![Docs](https://img.shields.io/badge/Docs-hermes--agent.nousresearch.com-FFD700?style=for-the-badge)](https://hermes-agent.nousresearch.com/docs/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![Built by Lord Tanzeel Shujah Khan](https://img.shields.io/badge/Built%20by-Lord%20Tanzeel%20Shujah%20Khan-blueviolet?style=for-the-badge)](https://github.com/tanzeelshujahkhan)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/nousresearch)
@@ -38,13 +38,13 @@ Evil Hermes 是一个完整的代理框架——终端 UI、消息网关、桌�
 ### Linux、macOS、WSL2、Termux
 
 ```bash
-curl -fsSL https://evil-hermes.nousresearch.com/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
 ```
 
 ### Windows（原生 PowerShell）
 
 ```powershell
-iex (irm https://evil-hermes.nousresearch.com/install.ps1)
+iex (irm https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.ps1)
 ```
 
 安装器会提供一切：`uv`、Python 3.11、Node.js、ripgrep、ffmpeg，以及一个便携式 Git Bash（MinGit），不会触碰任何系统 Git 安装。如果系统已安装 Git，安装器会直接使用并跳过下载。
@@ -67,7 +67,7 @@ hermes update       # 更新到最新版本
 hermes doctor       # 诊断问题
 ```
 
-📖 **[完整文档 →](https://evil-hermes.nousresearch.com/docs/)**
+📖 **[完整文档 →](https://hermes-agent.nousresearch.com/docs/)**
 
 ---
 
@@ -103,25 +103,25 @@ Evil Hermes 是单租户个人代理。信任模型详见 [SECURITY.md](SECURITY
 
 ## 文档
 
-完整文档站点发布在 **[evil-hermes.nousresearch.com/docs](https://evil-hermes.nousresearch.com/docs/)**。引擎是共享的，因此上游文档原文适用；Evil Hermes 特有说明会在原位标注。
+完整文档站点发布在 **[hermes-agent.nousresearch.com/docs](https://hermes-agent.nousresearch.com/docs/)**。引擎是共享的，因此上游文档原文适用；Evil Hermes 特有说明会在原位标注。
 
 | 章节 | 内容 |
 |---|---|
-| [快速开始](https://evil-hermes.nousresearch.com/docs/getting-started/quickstart) | 安装 → 配置 → 2 分钟内首次对话 |
-| [CLI 使用](https://evil-hermes.nousresearch.com/docs/user-guide/cli) | 命令、快捷键、人格、会话 |
-| [配置](https://evil-hermes.nousresearch.com/docs/user-guide/configuration) | 配置文件、提供商、模型、全部选项 |
-| [消息网关](https://evil-hermes.nousresearch.com/docs/user-guide/messaging) | Telegram、Discord、Slack、WhatsApp、Signal、Home Assistant |
-| [安全](https://evil-hermes.nousresearch.com/docs/user-guide/security) | 命令审批、DM 配对、容器隔离 |
-| [工具与工具集](https://evil-hermes.nousresearch.com/docs/user-guide/features/tools) | 40+ 工具、工具集系统、终端后端 |
-| [技能系统](https://evil-hermes.nousresearch.com/docs/user-guide/features/skills) | 过程记忆、技能中心、创建技能 |
-| [记忆](https://evil-hermes.nousresearch.com/docs/user-guide/features/memory) | 持久记忆、用户画像、最佳实践 |
-| [MCP 集成](https://evil-hermes.nousresearch.com/docs/user-guide/features/mcp) | 连接任意 MCP 服务器扩展能力 |
-| [定时调度](https://evil-hermes.nousresearch.com/docs/user-guide/features/cron) | 定时任务与平台投递 |
-| [上下文文件](https://evil-hermes.nousresearch.com/docs/user-guide/features/context-files) | 塑造每次对话的项目上下文 |
-| [架构](https://evil-hermes.nousresearch.com/docs/developer-guide/architecture) | 项目结构、代理循环、关键类 |
-| [贡献](https://evil-hermes.nousresearch.com/docs/developer-guide/contributing) | 开发设置、PR 流程、代码风格 |
-| [CLI 参考](https://evil-hermes.nousresearch.com/docs/reference/cli-commands) | 全部命令与标志 |
-| [环境变量](https://evil-hermes.nousresearch.com/docs/reference/environment-variables) | 完整环境变量参考 |
+| [快速开始](https://hermes-agent.nousresearch.com/docs/getting-started/quickstart) | 安装 → 配置 → 2 分钟内首次对话 |
+| [CLI 使用](https://hermes-agent.nousresearch.com/docs/user-guide/cli) | 命令、快捷键、人格、会话 |
+| [配置](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) | 配置文件、提供商、模型、全部选项 |
+| [消息网关](https://hermes-agent.nousresearch.com/docs/user-guide/messaging) | Telegram、Discord、Slack、WhatsApp、Signal、Home Assistant |
+| [安全](https://hermes-agent.nousresearch.com/docs/user-guide/security) | 命令审批、DM 配对、容器隔离 |
+| [工具与工具集](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools) | 40+ 工具、工具集系统、终端后端 |
+| [技能系统](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) | 过程记忆、技能中心、创建技能 |
+| [记忆](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory) | 持久记忆、用户画像、最佳实践 |
+| [MCP 集成](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) | 连接任意 MCP 服务器扩展能力 |
+| [定时调度](https://hermes-agent.nousresearch.com/docs/user-guide/features/cron) | 定时任务与平台投递 |
+| [上下文文件](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files) | 塑造每次对话的项目上下文 |
+| [架构](https://hermes-agent.nousresearch.com/docs/developer-guide/architecture) | 项目结构、代理循环、关键类 |
+| [贡献](https://hermes-agent.nousresearch.com/docs/developer-guide/contributing) | 开发设置、PR 流程、代码风格 |
+| [CLI 参考](https://hermes-agent.nousresearch.com/docs/reference/cli-commands) | 全部命令与标志 |
+| [环境变量](https://hermes-agent.nousresearch.com/docs/reference/environment-variables) | 完整环境变量参考 |
 
 ---
 
