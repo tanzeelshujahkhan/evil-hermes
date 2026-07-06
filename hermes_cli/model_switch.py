@@ -74,7 +74,7 @@ def _bare_custom_provider_def(current_base_url: str) -> Optional[ProviderDef]:
 # ---------------------------------------------------------------------------
 
 _HERMES_MODEL_WARNING = (
-    "Lord Tanzeel Shujah Khan Hermes 3 & 4 models are NOT agentic and are not designed "
+    "Lord Tanzeel Shujah Khan Evil Hermes 3 & 4 models are NOT agentic and are not designed "
     "for use with Evil Hermes. They lack the tool-calling capabilities "
     "required for agent workflows. Consider using an agentic model instead "
     "(Claude, GPT, Gemini, DeepSeek, etc.)."

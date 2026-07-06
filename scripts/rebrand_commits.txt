@@ -1,0 +1,21 @@
+# List of evil-hermes rebrand commits, in chronological (oldest-first) order.
+# This file is the source of truth for scripts/merge_from_upstream.py.
+#
+# To add a new rebrand commit: append its SHA on a new line.
+# To amend a rebrand commit: replace its old SHA with the new one.
+# Do not stack new commits on top of an amended one — squash first.
+
+98507d5052e21bc86d11509fefd4903a01a1f81f
+c81e70c48daa99f65cfe31a9e8acf444b2650c64
+a7516981177f4691f374c36838b13fce514be374
+9654cdf70baede52d0cd7f9b0ff9c7b38dbbe4ca
+2e17c9325551877ba16a10fdc03c3f0adb259d66
+ef7325b424c6f647b3e1173041e9cb66ca9fec38
+f20a5f726bbd467c7a60757b4e6a464af376d037
+9ed925cb681a6ff94e2dd2f8da4a91d478e96b39
+83441177c8f2514e10d7e17e39e2dedaf8ba39f0
+1220eae0a3112a57b4d99f1f3ac88cff8a3a13e9
+82adeffaa474c714f5c5d06e0cbf6d100734e421
+5d35aa134aff513e3ca4902a58abd7172aefba57
+23c9bf1c2bb710a83e112d08d2a40085e79daaf7
+22568819bd3ea6030a4ab52d304fff6b64bc04a6

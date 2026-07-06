@@ -27,7 +27,7 @@ from plugins.memory.honcho.client import resolve_active_host, resolve_config_pat
 
 logger = logging.getLogger(__name__)
 
-# The loopback redirect registered for the Hermes OAuth client. IP-literal so
+# The loopback redirect registered for the Evil Hermes OAuth client. IP-literal so
 # the browser can't resolve the advertised host to ::1 and miss the IPv4 bind.
 LOOPBACK_HOST = "127.0.0.1"
 LOOPBACK_PORT = 8765
@@ -237,7 +237,7 @@ _CALLBACK_HTML = (
     b"<title>Honcho connected</title>"
     b"<body style='font:14px ui-monospace,monospace;background:#0b0e14;color:#c9d1d9;"
     b"display:flex;align-items:center;justify-content:center;height:100vh;margin:0'>"
-    b"<div>Connected to Honcho. You can close this tab and return to Hermes.</div>"
+    b"<div>Connected to Honcho. You can close this tab and return to Evil Hermes.</div>"
 )
 
 

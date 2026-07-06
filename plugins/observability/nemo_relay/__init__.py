@@ -1,4 +1,4 @@
-"""nemo_relay — optional Hermes plugin for NeMo Relay observability."""
+"""nemo_relay — optional Evil Hermes plugin for NeMo Relay observability."""
 
 from __future__ import annotations
 
@@ -295,7 +295,7 @@ class _Runtime:
         # NeMo Relay's native managed execution may wrap a failing callback as an
         # internal runtime error, hiding the real downstream provider/tool
         # exception. Capture the original here and re-raise it after managed
-        # execution so Hermes retry classification still sees it. The LLM and tool
+        # execution so Evil Hermes retry classification still sees it. The LLM and tool
         # paths share this scaffolding; they differ only in payload normalization,
         # response shaping, and the Relay call itself.
         raw_response: dict[str, Any] = {"set": False, "value": None}
@@ -842,7 +842,7 @@ def _value(obj: Any, key: str, default: Any = None) -> Any:
 
 
 def _original_downstream_error(exc: Exception) -> BaseException:
-    # Hermes wraps downstream execution failures in a local/private exception
+    # Evil Hermes wraps downstream execution failures in a local/private exception
     # class, so detect the wrapper by shape instead of importing it here.
     original = getattr(exc, "original", None)
     if exc.__class__.__name__ == "_DownstreamExecutionError" and isinstance(original, BaseException):
@@ -856,7 +856,7 @@ def _is_relay_wrapped_callback_error(exc: Exception, callback_error: Exception |
     # trailing traceback/suffix in a future Relay version doesn't silently defeat
     # the unwrap; the class-name + message prefix still discriminates the real
     # downstream failure from unrelated Relay-internal errors. If Relay drops the
-    # leading ``internal error:`` shape entirely, this returns False and Hermes
+    # leading ``internal error:`` shape entirely, this returns False and Evil Hermes
     # falls back to surfacing Relay's error (the pre-fix behavior) rather than
     # masking it.
     if callback_error is None or not isinstance(exc, RuntimeError):

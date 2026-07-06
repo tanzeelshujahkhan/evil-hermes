@@ -1,7 +1,7 @@
 """
-Email platform adapter for the Hermes gateway.
+Email platform adapter for the Evil Hermes gateway.
 
-Allows users to interact with Hermes by sending emails.
+Allows users to interact with Evil Hermes by sending emails.
 Uses IMAP to receive and SMTP to send messages.
 
 Environment variables:
@@ -1253,7 +1253,7 @@ def _build_adapter(config):
 
 
 def register(ctx) -> None:
-    """Plugin entry point — called by the Hermes plugin system."""
+    """Plugin entry point — called by the Evil Hermes plugin system."""
     ctx.register_platform(
         name="email",
         label="Email",

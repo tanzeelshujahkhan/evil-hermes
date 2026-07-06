@@ -13,7 +13,7 @@ or a linked OpenViking CLI config:
   OPENVIKING_API_KEY   — API key (required for authenticated servers)
   OPENVIKING_ACCOUNT   — Tenant account for local/trusted mode (default: default)
   OPENVIKING_USER      — Tenant user for local/trusted mode (default: default)
-  OPENVIKING_AGENT     — Hermes peer ID in OpenViking (default: hermes)
+  OPENVIKING_AGENT     — Evil Hermes peer ID in OpenViking (default: hermes)
 
 Capabilities:
   - Automatic memory extraction on session commit (6 categories)
@@ -56,7 +56,7 @@ logger = logging.getLogger(__name__)
 _DEFAULT_ENDPOINT = "http://127.0.0.1:1933"
 _OPENVIKING_SERVICE_ENDPOINT = "https://api.vikingdb.cn-beijing.volces.com/openviking"
 _DEFAULT_AGENT = "hermes"
-_AGENT_PROMPT_LABEL = "Hermes peer ID in OpenViking"
+_AGENT_PROMPT_LABEL = "Evil Hermes peer ID in OpenViking"
 _OVCLI_CONFIG_ENV = "OPENVIKING_CLI_CONFIG_FILE"
 _OVCLI_DEFAULT_RELATIVE_PATH = ".openviking/ovcli.conf"
 _OVCLI_SAVED_PREFIX = "ovcli.conf."
@@ -162,7 +162,7 @@ def _format_openviking_exception(error: Exception) -> str:
 
 
 def _derive_openviking_user_text(content: Any) -> str:
-    """Strip Hermes slash-skill scaffolding before sending content to OpenViking.
+    """Strip Evil Hermes slash-skill scaffolding before sending content to OpenViking.
 
     Defense-in-depth: MemoryManager already strips skill scaffolding for the
     whole provider fan-out (see ``MemoryManager._strip_skill_scaffolding``), so
@@ -1255,7 +1255,7 @@ def _runtime_openviking_timeout_message(endpoint: str) -> str:
         f"Local OpenViking server at {endpoint} is not reachable. "
         "Tried to start openviking-server, but it did not become reachable "
         f"within {_LOCAL_OPENVIKING_AUTOSTART_TIMEOUT:.0f} seconds. "
-        "OpenViking memory disabled for this Hermes run."
+        "OpenViking memory disabled for this Evil Hermes run."
     )
 
 
@@ -1609,7 +1609,7 @@ def _print_openviking_ready(message: str, path: Optional[Path] = None) -> None:
     print(f"  {message}")
     if path is not None:
         print(f"  Config file: {path}")
-    print("  Start a new Hermes session to activate.\n")
+    print("  Start a new Evil Hermes session to activate.\n")
 
 
 def _run_existing_profile_setup(
@@ -1727,7 +1727,7 @@ def _run_create_profile_setup(
     save_choice = select(
         "  Save OpenViking config",
         [
-            ("Keep in Hermes only", "write values only to Hermes .env"),
+            ("Keep in Evil Hermes only", "write values only to Evil Hermes .env"),
             ("Mirror to OpenViking store", "write ~/.openviking/ovcli.conf.<name> and link it"),
         ],
         default=1,
@@ -1760,7 +1760,7 @@ def _run_create_profile_setup(
         env_path=env_path,
         values=values,
     )
-    _print_openviking_ready("Connection saved to Hermes .env.")
+    _print_openviking_ready("Connection saved to Evil Hermes .env.")
     return True
 
 
@@ -1863,7 +1863,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
             {
                 "key": "agent",
                 "description": (
-                    "Hermes peer ID in OpenViking, sent as the actor peer and "
+                    "Evil Hermes peer ID in OpenViking, sent as the actor peer and "
                     "used for peer-scoped memories"
                 ),
                 "default": "hermes",
@@ -2065,7 +2065,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
             if not client.health():
                 _emit_runtime_warning(
                     f"OpenViking server at {endpoint} is still not reachable after auto-start; "
-                    "OpenViking memory disabled for this Hermes run.",
+                    "OpenViking memory disabled for this Evil Hermes run.",
                     warning_callback,
                 )
                 return
@@ -2075,7 +2075,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
         except Exception as e:
             _emit_runtime_warning(
                 f"OpenViking server at {endpoint} could not be attached after auto-start: {e}. "
-                "OpenViking memory disabled for this Hermes run.",
+                "OpenViking memory disabled for this Evil Hermes run.",
                 warning_callback,
             )
             return
@@ -2096,7 +2096,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
         if not _is_local_openviking_url(endpoint):
             _emit_runtime_warning(
                 f"Remote OpenViking server at {endpoint} is not reachable; "
-                "OpenViking memory disabled for this Hermes run. "
+                "OpenViking memory disabled for this Evil Hermes run. "
                 "Check the configured endpoint and network connectivity.",
                 warning_callback,
             )
@@ -2107,7 +2107,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
         if not started:
             _emit_runtime_warning(
                 f"Local OpenViking server at {endpoint} is not reachable. {start_message} "
-                "OpenViking memory disabled for this Hermes run.",
+                "OpenViking memory disabled for this Evil Hermes run.",
                 warning_callback,
             )
             self._client = None
@@ -2156,7 +2156,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
                 )
             elif health_state != "healthy":
                 _emit_runtime_warning(
-                    f"{health_message} OpenViking memory disabled for this Hermes run.",
+                    f"{health_message} OpenViking memory disabled for this Evil Hermes run.",
                     warning_callback,
                 )
                 self._client = None
@@ -2807,7 +2807,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
         user_content: str,
         assistant_content: str,
     ) -> List[Dict[str, Any]]:
-        """Slice the completed turn out of Hermes' full canonical transcript."""
+        """Slice the completed turn out of Evil Hermes' full canonical transcript."""
         if not messages:
             return []
 
@@ -2926,7 +2926,7 @@ class OpenVikingMemoryProvider(MemoryProvider):
         *,
         assistant_peer_id: str = "",
     ) -> List[Dict[str, Any]]:
-        """Convert Hermes canonical messages into OpenViking batch payloads."""
+        """Convert Evil Hermes canonical messages into OpenViking batch payloads."""
         assistant_peer_id = str(assistant_peer_id or "").strip()
         tool_calls_by_id: Dict[str, Dict[str, Any]] = {}
         completed_tool_ids: set[str] = set()

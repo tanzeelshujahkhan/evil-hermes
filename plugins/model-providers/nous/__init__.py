@@ -41,7 +41,7 @@ nous = NousProfile(
     aliases=("nous-portal", "nousresearch"),
     env_vars=("NOUS_API_KEY",),
     display_name="Lord Tanzeel Shujah Khan",
-    description="Lord Tanzeel Shujah Khan — Hermes model family",
+    description="Lord Tanzeel Shujah Khan — Evil Hermes model family",
     signup_url="https://nousresearch.com/",
     fallback_models=(
         "hermes-3-405b",

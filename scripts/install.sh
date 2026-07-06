@@ -1884,7 +1884,7 @@ strip_snap_browser_override() {
     if grep -Ev '^AGENT_BROWSER_EXECUTABLE_PATH=/snap/|^# Evil Hermes browser tools' "$env_file" > "$tmp"; then
         mv "$tmp" "$env_file"
         log_warn "Removed stale Snap browser override (AGENT_BROWSER_EXECUTABLE_PATH=/snap/...) from $env_file"
-        log_info "Hermes will use the bundled Chromium instead."
+        log_info "Evil Hermes will use the bundled Chromium instead."
         # Drop it from this process too so the rest of the run doesn't re-detect it.
         unset AGENT_BROWSER_EXECUTABLE_PATH
     else
