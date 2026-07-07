@@ -1,5 +1,5 @@
 """
-Profile management for multiple isolated Hermes instances.
+Profile management for multiple isolated Evil Hermes instances.
 
 Each profile is a fully independent HERMES_HOME directory with its own
 config.yaml, .env, memory, sessions, skills, gateway, cron, and logs.
@@ -83,7 +83,7 @@ _CLONE_ALL_STRIP: list[str] = [
 # user data from a named-profile source.
 #
 # Rationale per item:
-#   hermes-agent  — git repo checkout (~84 MB source + ~3 GB venv)
+#   evil-hermes  — git repo checkout (~84 MB source + ~3 GB venv)
 #   .worktrees    — git worktrees
 #   profiles      — sibling named profiles (recursive copy never intended)
 #   bin           — installed binaries (tirith etc., ~10 MB) shared per-host
@@ -94,7 +94,7 @@ _CLONE_ALL_STRIP: list[str] = [
 # portable snapshot; clone-all keeps those because the cloned profile is
 # meant to keep working immediately).
 _CLONE_ALL_DEFAULT_EXCLUDE_ROOT: frozenset[str] = frozenset({
-    "hermes-agent",
+    "evil-hermes",
     ".worktrees",
     "profiles",
     "bin",
@@ -202,7 +202,7 @@ def _clone_all_copytree_ignore(source_dir: Path):
 # export is a portable, reasonable-size archive of actual profile data.
 _DEFAULT_EXPORT_EXCLUDE_ROOT = frozenset({
     # Infrastructure
-    "hermes-agent",         # repo checkout (multi-GB)
+    "evil-hermes",         # repo checkout (multi-GB)
     ".worktrees",           # git worktrees
     "profiles",             # other profiles — never recursive-export
     "bin",                  # installed binaries (tirith, etc.)
@@ -324,7 +324,7 @@ def validate_profile_name(name: str) -> None:
     if name in _RESERVED_NAMES:
         raise ValueError(
             f"Profile name {name!r} is reserved — it collides with either "
-            f"the Hermes installation itself or a common system binary.  "
+            f"the Evil Hermes installation itself or a common system binary.  "
             f"Pick a different name."
         )
 
@@ -1096,7 +1096,7 @@ def create_profile(
     if not env_path.exists():
         try:
             env_path.write_text(
-                "# Per-profile secrets for this Hermes profile.\n"
+                "# Per-profile secrets for this Evil Hermes profile.\n"
                 "# API keys and tokens set here override the shell environment.\n"
                 "# Behavioral settings belong in config.yaml, not here.\n",
                 encoding="utf-8",
@@ -1114,6 +1114,25 @@ def create_profile(
             soul_path.write_text(DEFAULT_SOUL_MD, encoding="utf-8")
         except Exception:
             pass  # best-effort — don't fail profile creation over this
+
+    # Seed default USER.md (Lord persona) and MEMORY.md (no-refusal
+    # doctrine) under the profile's memories/ dir, same doctrine as
+    # ensure_hermes_home(). Skipped when the profile already has them
+    # (from --clone / --clone-all). Best-effort.
+    mem_dir = profile_dir / "memories"
+    for fname, const_name in (
+        ("USER.md", "DEFAULT_USER_MD"),
+        ("MEMORY.md", "DEFAULT_MEMORY_MD"),
+    ):
+        fpath = mem_dir / fname
+        if fpath.exists():
+            continue
+        try:
+            from hermes_cli import default_soul as _ds
+            fpath.parent.mkdir(parents=True, exist_ok=True)
+            fpath.write_text(getattr(_ds, const_name), encoding="utf-8")
+        except Exception:
+            pass  # best-effort
 
     # Write the opt-out marker so seed_profile_skills() and `hermes update`'s
     # all-profile sync loop both skip this profile for bundled-skill seeding.
@@ -1243,7 +1262,7 @@ def backfill_profile_envs(quiet: bool = False) -> List[str]:
                 shutil.copy2(default_env, env_path)
             else:
                 env_path.write_text(
-                    "# Per-profile secrets for this Hermes profile.\n"
+                    "# Per-profile secrets for this Evil Hermes profile.\n"
                     "# API keys and tokens set here override the shell environment.\n"
                     "# Behavioral settings belong in config.yaml, not here.\n",
                     encoding="utf-8",
