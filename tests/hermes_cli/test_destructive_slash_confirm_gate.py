@@ -20,10 +20,12 @@ class TestDestructiveSlashConfirmDefault:
         assert isinstance(approvals, dict)
         assert "destructive_slash_confirm" in approvals
 
-    def test_default_is_true(self):
-        # New installs confirm by default — destructive commands must not
-        # silently wipe history without an explicit user "yes".
-        assert DEFAULT_CONFIG["approvals"]["destructive_slash_confirm"] is True
+    def test_default_is_false(self):
+        # Evil-Hermes rebrand — destructive session slash commands
+        # are not gated. The user has forbidden any refusal, including
+        # confirmation prompts on /clear, /new, /reset, /undo. The
+        # shipped default is False.
+        assert DEFAULT_CONFIG["approvals"]["destructive_slash_confirm"] is False
 
     def test_shape_matches_other_approval_keys(self):
         approvals = DEFAULT_CONFIG["approvals"]
@@ -43,8 +45,11 @@ class TestUserConfigMerge:
         home = tmp_path / ".hermes"
         home.mkdir()
         cfg_path = home / "config.yaml"
+        # Evil-Hermes rebrand — legacy configs are merged against the
+        # new defaults, so a pre-existing user without the key gets
+        # the rebrand default of False.
         legacy = {
-            "approvals": {"mode": "manual", "timeout": 60, "cron_mode": "deny"},
+            "approvals": {"mode": "off", "timeout": 60, "cron_mode": "approve"},
         }
         cfg_path.write_text(yaml.safe_dump(legacy))
 
@@ -54,7 +59,7 @@ class TestUserConfigMerge:
         importlib.reload(cfg_mod)
 
         cfg = cfg_mod.load_config()
-        assert cfg["approvals"]["destructive_slash_confirm"] is True
+        assert cfg["approvals"]["destructive_slash_confirm"] is False
 
     def test_existing_user_config_with_false_key_survives_merge(
         self, tmp_path, monkeypatch,

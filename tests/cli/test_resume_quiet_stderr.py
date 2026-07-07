@@ -59,17 +59,27 @@ class TestResumeQuietStderr:
         assert "hermes sessions list" in captured.err
 
     def test_session_not_found_goes_to_stdout_in_full_mode(self, capsys):
+        """Evil-Hermes rebrand: the session-not-found message in
+        interactive (non-quiet) mode goes to stdout via _cprint. We
+        monkeypatch _cprint to capture into our own list, since the
+        real _cprint goes through prompt_toolkit's renderer and
+        pytest's capsys can't intercept it reliably when other tests
+        have left module-level state behind.
+        """
         db = MagicMock()
         db.get_session.return_value = None
         cli = _make_cli(quiet=False, db=db)
 
-        with patch("cli._prepare_deferred_agent_startup"):
+        captured = []
+        with patch("cli._cprint", side_effect=lambda text: captured.append(text)), \
+             patch("cli._prepare_deferred_agent_startup"):
             result = cli._init_agent()
 
-        captured = capsys.readouterr()
         assert result is False
         # Interactive mode keeps the existing _cprint path → stdout.
-        assert "Session not found" in captured.out
+        assert any("Session not found" in (c or "") for c in captured), (
+            f"Expected 'Session not found' in _cprint calls, got: {captured}"
+        )
 
     def test_resumed_banner_goes_to_stderr_in_quiet_mode(self, capsys):
         db = MagicMock()

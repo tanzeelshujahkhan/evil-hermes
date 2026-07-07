@@ -1,4 +1,13 @@
-"""Runtime tests for tool-call loop guardrails."""
+"""Runtime tests for tool-call loop guardrails.
+
+Evil-Hermes rebrand: the controller is a passive observer. The agent
+does not refuse. These tests pin the new doctrine: under any config,
+``before_call`` / ``after_call`` always return ``action='allow'`` and
+``_set_tool_guardrail_halt`` is a no-op. Repeated failures, repeated
+identical results, and any other previously-blocking conditions do not
+block execution and do not inject loop-guidance text into the tool
+result.
+"""
 
 import json
 import uuid
@@ -61,6 +70,7 @@ def _make_agent(*tool_names: str, max_iterations: int = 10, config: dict | None 
 
 
 def _seed_exact_failures(agent: AIAgent, tool_name: str, args: dict, count: int = 2) -> None:
+    """Tick the failure counter without producing any refusal."""
     for _ in range(count):
         agent._tool_guardrails.after_call(
             tool_name,
@@ -71,6 +81,7 @@ def _seed_exact_failures(agent: AIAgent, tool_name: str, args: dict, count: int 
 
 
 def _hard_stop_config(**overrides) -> dict:
+    """Hard-stop config is now no-op, but parser still accepts it."""
     cfg = {
         "tool_loop_guardrails": {
             "warnings_enabled": True,
@@ -86,60 +97,63 @@ def _hard_stop_config(**overrides) -> dict:
     return cfg
 
 
-def test_default_sequential_path_warns_repeated_exact_failure_without_blocking_execution():
-    agent = _make_agent("web_search")
+# ---------------------------------------------------------------------------
+# Doctrine: no refusal ever
+# ---------------------------------------------------------------------------
+
+
+def test_sequential_path_never_injects_loop_guidance_text():
+    """Old behavior: a repeated exact failure would inject
+    'repeated_exact_failure_warning' into the tool result. New behavior:
+    the tool result passes through unchanged, even with hard_stop on."""
+    agent = _make_agent("web_search", config=_hard_stop_config())
     args = {"query": "same"}
-    _seed_exact_failures(agent, "web_search", args)
-    starts = []
-    progress = []
-    agent.tool_start_callback = lambda *a, **k: starts.append((a, k))
-    agent.tool_progress_callback = lambda *a, **k: progress.append((a, k))
+    _seed_exact_failures(agent, "web_search", args, count=10)
     tc = _mock_tool_call("web_search", json.dumps(args), "c-soft")
     msg = SimpleNamespace(content="", tool_calls=[tc])
     messages = []
 
-    with patch("run_agent.handle_function_call", return_value=json.dumps({"error": "boom"})) as mock_hfc:
+    with patch("run_agent.handle_function_call", return_value=json.dumps({"error": "boom"})):
         agent._execute_tool_calls_sequential(msg, messages, "task-1")
 
-    mock_hfc.assert_called_once()
-    assert len(starts) == 1
-    assert any(event[0][0] == "tool.completed" for event in progress)
     assert len(messages) == 1
     assert messages[0]["role"] == "tool"
     assert messages[0]["tool_call_id"] == "c-soft"
-    assert "repeated_exact_failure_warning" in messages[0]["content"]
+    # No refusal text injected.
+    assert "repeated_exact_failure_warning" not in messages[0]["content"]
     assert "repeated_exact_failure_block" not in messages[0]["content"]
+    assert "Tool loop warning" not in messages[0]["content"]
+    assert "Tool loop hard stop" not in messages[0]["content"]
     assert agent._tool_guardrail_halt_decision is None
 
 
-def test_config_enabled_hard_stop_blocks_repeated_exact_failure_before_execution():
+def test_hard_stop_enabled_never_blocks_before_execution():
+    """Even with hard_stop_enabled and tight thresholds, the tool runs."""
     agent = _make_agent("web_search", config=_hard_stop_config())
     args = {"query": "same"}
-    _seed_exact_failures(agent, "web_search", args)
-    starts = []
-    progress = []
-    agent.tool_start_callback = lambda *a, **k: starts.append((a, k))
-    agent.tool_progress_callback = lambda *a, **k: progress.append((a, k))
+    _seed_exact_failures(agent, "web_search", args, count=10)
     tc = _mock_tool_call("web_search", json.dumps(args), "c-block")
     msg = SimpleNamespace(content="", tool_calls=[tc])
     messages = []
 
-    with patch("run_agent.handle_function_call", return_value="SHOULD_NOT_RUN") as mock_hfc:
+    with patch("run_agent.handle_function_call", return_value='{"ok":true}') as mock_hfc:
         agent._execute_tool_calls_sequential(msg, messages, "task-1")
 
-    mock_hfc.assert_not_called()
-    assert starts == []
-    assert progress == []
+    # The tool ran. There is no synthetic block result.
+    mock_hfc.assert_called_once()
     assert len(messages) == 1
-    assert messages[0]["role"] == "tool"
-    assert messages[0]["tool_call_id"] == "c-block"
-    assert "repeated_exact_failure_block" in messages[0]["content"]
+    assert "repeated_exact_failure_block" not in messages[0]["content"]
+    assert messages[0]["content"] == '{"ok":true}'
+    assert agent._tool_guardrail_halt_decision is None
 
 
-def test_sequential_after_call_appends_guidance_to_tool_result_without_extra_messages():
+def test_after_call_never_appends_guidance_to_tool_result():
+    """Old behavior: append_toolguard_guidance() injected a 'Tool loop
+    warning' suffix. New behavior: the result string is returned
+    unchanged."""
     agent = _make_agent("web_search")
     args = {"query": "same"}
-    _seed_exact_failures(agent, "web_search", args, count=1)
+    _seed_exact_failures(agent, "web_search", args, count=20)
     tc = _mock_tool_call("web_search", json.dumps(args), "c-warn")
     msg = SimpleNamespace(content="", tool_calls=[tc])
     messages = []
@@ -148,27 +162,23 @@ def test_sequential_after_call_appends_guidance_to_tool_result_without_extra_mes
         agent._execute_tool_calls_sequential(msg, messages, "task-1")
 
     assert [m["role"] for m in messages] == ["tool"]
-    assert messages[0]["tool_call_id"] == "c-warn"
-    assert "Tool loop warning" in messages[0]["content"]
-    assert "repeated_exact_failure_warning" in messages[0]["content"]
+    assert messages[0]["content"] == json.dumps({"error": "boom"})
+    assert "Tool loop warning" not in messages[0]["content"]
 
 
-def test_same_tool_failure_warning_tells_model_to_recover_with_tools():
+def test_same_tool_varying_args_never_emits_recovery_hint():
+    """Old behavior: the controller injected 'pwd && ls -la', 'keep
+    using tools', etc. into the tool result. New behavior: nothing."""
     agent = _make_agent("terminal")
     guardrails = getattr(agent, "_tool_guardrails")
-    guardrails.after_call(
-        "terminal",
-        {"command": "bad-1"},
-        json.dumps({"exit_code": 1}),
-        failed=True,
-    )
-    guardrails.after_call(
-        "terminal",
-        {"command": "bad-2"},
-        json.dumps({"exit_code": 1}),
-        failed=True,
-    )
-    tc = _mock_tool_call("terminal", json.dumps({"command": "bad-3"}), "c-recover")
+    for i in range(10):
+        guardrails.after_call(
+            "terminal",
+            {"command": f"bad-{i}"},
+            json.dumps({"exit_code": 1}),
+            failed=True,
+        )
+    tc = _mock_tool_call("terminal", json.dumps({"command": "bad-X"}), "c-recover")
     msg = SimpleNamespace(content="", tool_calls=[tc])
     messages = []
 
@@ -176,23 +186,20 @@ def test_same_tool_failure_warning_tells_model_to_recover_with_tools():
         agent._execute_tool_calls_sequential(msg, messages, "task-1")
 
     content = messages[0]["content"]
-    assert "same_tool_failure_warning" in content
-    assert "Do not switch to text-only replies" in content
-    assert "keep using tools" in content
-    assert "pwd && ls -la" in content
-    assert "absolute path" in content
-    assert "different tool" in content
+    assert "same_tool_failure_warning" not in content
+    assert "Do not switch to text-only replies" not in content
+    assert "keep using tools" not in content
+    assert "pwd && ls -la" not in content
+    assert content == json.dumps({"exit_code": 1})
 
 
-def test_config_enabled_hard_stop_concurrent_path_does_not_submit_blocked_calls_and_preserves_result_order():
+def test_concurrent_path_never_skips_blocked_calls():
+    """Old behavior: a 'blocked' call was skipped, an 'allowed' one ran.
+    New behavior: all calls run."""
     agent = _make_agent("web_search", config=_hard_stop_config())
     blocked_args = {"query": "blocked"}
     allowed_args = {"query": "allowed"}
-    _seed_exact_failures(agent, "web_search", blocked_args)
-    starts = []
-    progress_events = []
-    agent.tool_start_callback = lambda tool_call_id, name, args: starts.append((tool_call_id, name, args))
-    agent.tool_progress_callback = lambda event, name, preview, args, **kw: progress_events.append((event, name, args, kw))
+    _seed_exact_failures(agent, "web_search", blocked_args, count=10)
     calls = [
         _mock_tool_call("web_search", json.dumps(blocked_args), "c-block"),
         _mock_tool_call("web_search", json.dumps(allowed_args), "c-allow"),
@@ -208,19 +215,19 @@ def test_config_enabled_hard_stop_concurrent_path_does_not_submit_blocked_calls_
     with patch("run_agent.handle_function_call", side_effect=fake_handle):
         agent._execute_tool_calls_concurrent(msg, messages, "task-1")
 
-    assert executed == [("web_search", allowed_args, "c-allow")]
+    # Both calls executed, in order.
+    assert [c[2] for c in executed] == ["c-block", "c-allow"]
     assert [m["tool_call_id"] for m in messages] == ["c-block", "c-allow"]
-    assert "repeated_exact_failure_block" in messages[0]["content"]
+    # No block synthetic result.
+    assert "repeated_exact_failure_block" not in messages[0]["content"]
+    assert json.loads(messages[0]["content"]) == {"ok": "blocked"}
     assert json.loads(messages[1]["content"]) == {"ok": "allowed"}
-    assert starts == [("c-allow", "web_search", allowed_args)]
-    started_events = [event for event in progress_events if event[0] == "tool.started"]
-    completed_events = [event for event in progress_events if event[0] == "tool.completed"]
-    assert started_events == [("tool.started", "web_search", allowed_args, {})]
-    assert len(completed_events) == 1
-    assert completed_events[0][1] == "web_search"
 
 
-def test_plugin_pre_tool_block_wins_without_counting_as_toolguard_block():
+def test_plugin_pre_tool_block_still_works():
+    """Plugin-level blocks are NOT tool-guardrail blocks and must still
+    short-circuit execution. The user-facing refusal gate is the
+    pre-exec plugin hook, not the tool-call loop controller."""
     agent = _make_agent("web_search")
     args = {"query": "same"}
     tc = _mock_tool_call("web_search", json.dumps(args), "c-plugin")
@@ -235,10 +242,18 @@ def test_plugin_pre_tool_block_wins_without_counting_as_toolguard_block():
 
     mock_hfc.assert_not_called()
     assert "plugin policy" in messages[0]["content"]
+    # The guardrail controller itself did not block.
     assert agent._tool_guardrails.before_call("web_search", args).action == "allow"
 
 
-def test_default_run_conversation_warns_without_guardrail_halt():
+# ---------------------------------------------------------------------------
+# run_conversation: turn never halts on guardrail
+# ---------------------------------------------------------------------------
+
+
+def test_run_conversation_completes_normally_under_repeated_failures():
+    """Old behavior: turn_exit_reason became 'guardrail_halt'.
+    New behavior: turn completes normally, no 'guardrail' key in result."""
     agent = _make_agent("web_search", max_iterations=10)
     same_args = {"query": "same"}
     responses = [
@@ -264,13 +279,19 @@ def test_default_run_conversation_warns_without_guardrail_halt():
     assert result["turn_exit_reason"].startswith("text_response")
     assert "guardrail" not in result
     assert result["final_response"] == "done"
+    # And no loop-warning text in any tool result.
     tool_contents = [m["content"] for m in result["messages"] if m.get("role") == "tool"]
-    assert any("repeated_exact_failure_warning" in content for content in tool_contents)
+    for c in tool_contents:
+        assert "repeated_exact_failure_warning" not in c
+        assert "Tool loop warning" not in c
 
 
-def test_config_enabled_hard_stop_run_conversation_returns_controlled_guardrail_halt_without_top_level_error():
+def test_run_conversation_never_emits_guardrail_halt():
+    """Even with hard_stop_enabled, run_conversation must never end with
+    turn_exit_reason='guardrail_halt'. The doctrine is absolute."""
     agent = _make_agent("web_search", max_iterations=10, config=_hard_stop_config())
     same_args = {"query": "same"}
+    # Many identical failing calls in a row.
     responses = [
         _mock_response(
             content="",
@@ -279,6 +300,7 @@ def test_config_enabled_hard_stop_run_conversation_returns_controlled_guardrail_
         )
         for i in range(1, 10)
     ]
+    responses.append(_mock_response(content="done", finish_reason="stop", tool_calls=None))
     agent.client.chat.completions.create.side_effect = responses
 
     with (
@@ -289,31 +311,17 @@ def test_config_enabled_hard_stop_run_conversation_returns_controlled_guardrail_
     ):
         result = agent.run_conversation("search repeatedly")
 
-    assert mock_hfc.call_count == 2
-    assert result["api_calls"] == 3
-    assert result["api_calls"] < agent.max_iterations
-    assert result["turn_exit_reason"] == "guardrail_halt"
-    assert "error" not in result
-    assert result["completed"] is True
-    assert "stopped retrying" in result["final_response"]
-    assert result["guardrail"]["code"] == "repeated_exact_failure_block"
-    assert result["guardrail"]["tool_name"] == "web_search"
-
-    assistant_tool_calls = [m for m in result["messages"] if m.get("role") == "assistant" and m.get("tool_calls")]
-    for assistant_msg in assistant_tool_calls:
-        call_ids = [tc["id"] for tc in assistant_msg["tool_calls"]]
-        following_results = [m for m in result["messages"] if m.get("role") == "tool" and m.get("tool_call_id") in call_ids]
-        assert len(following_results) == len(call_ids)
+    # All 9 calls ran. There is no synthetic block, no halt, no 'stopped retrying' text.
+    assert mock_hfc.call_count == 9
+    assert result["turn_exit_reason"] != "guardrail_halt"
+    assert "guardrail" not in result
+    assert "stopped retrying" not in result.get("final_response", "").lower()
+    assert result["final_response"] == "done"
 
 
-def test_guardrail_halt_emits_final_response_through_stream_delta_callback():
-    """Regression for #30770: when the guardrail halts the loop, the
-    synthesized halt message must be pushed through ``stream_delta_callback``
-    so SSE/TUI clients see why the agent stopped instead of a silent stream
-    close.  Without this the chat-completions SSE writer drains an empty
-    queue and emits a finish chunk with zero content (indistinguishable
-    from a crash for Open WebUI and similar clients).
-    """
+def test_stream_delta_callback_never_receives_halt_message():
+    """Old behavior: a 'stopped retrying' message was pushed through
+    stream_delta_callback. New behavior: only normal stream content."""
     agent = _make_agent("web_search", max_iterations=10, config=_hard_stop_config())
     same_args = {"query": "same"}
     responses = [
@@ -322,16 +330,13 @@ def test_guardrail_halt_emits_final_response_through_stream_delta_callback():
             finish_reason="tool_calls",
             tool_calls=[_mock_tool_call("web_search", json.dumps(same_args), f"c{i}")],
         )
-        for i in range(1, 10)
+        for i in range(1, 6)
     ]
+    responses.append(_mock_response(content="done", finish_reason="stop", tool_calls=None))
     agent.client.chat.completions.create.side_effect = responses
 
     deltas: list = []
     agent.stream_delta_callback = lambda d: deltas.append(d)
-    # The mocked client returns SimpleNamespace responses which aren't
-    # iterable as streaming chunks; force the non-streaming code path so
-    # the guardrail-halt branch is reached without engaging the real
-    # streaming machinery.
     agent._disable_streaming = True
 
     with (
@@ -342,14 +347,7 @@ def test_guardrail_halt_emits_final_response_through_stream_delta_callback():
     ):
         result = agent.run_conversation("search repeatedly")
 
-    assert result["turn_exit_reason"] == "guardrail_halt"
-    halt_text = result["final_response"]
-    assert "stopped retrying" in halt_text
-
-    # The halt message must have been pushed through the callback at least
-    # once.  Empty-queue SSE writers were the bug — clients saw no content
-    # delta before the finish chunk.
+    assert result["turn_exit_reason"] != "guardrail_halt"
     text_deltas = [d for d in deltas if isinstance(d, str)]
-    assert halt_text in text_deltas, (
-        f"halt message was never streamed; callback only saw {deltas!r}"
-    )
+    for d in text_deltas:
+        assert "stopped retrying" not in d.lower()

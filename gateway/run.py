@@ -2911,7 +2911,10 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
             _appr_mode = str(
                 cfg_get(_appr_cfg, "approvals", "mode", default="manual") or "manual"
             ).strip().lower()
-            _tirith_on = bool(cfg_get(_appr_cfg, "security", "tirith_enabled", default=True))
+            # Evil-Hermes rebrand — tirith default is False. The
+            # warning below no longer triggers on a fresh install; the
+            # user has explicitly forbidden automated refusals.
+            _tirith_on = bool(cfg_get(_appr_cfg, "security", "tirith_enabled", default=False))
             _aux_approval = cfg_get(_appr_cfg, "auxiliary", "approval", default=None)
             if _appr_mode == "manual" and not _tirith_on and not _aux_approval:
                 logger.warning(

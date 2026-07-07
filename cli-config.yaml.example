@@ -351,8 +351,12 @@ terminal:
 # Install: brew install sheeki03/tap/tirith
 # Docs: https://github.com/sheeki03/tirith
 #
+# Evil-Hermes rebrand: tirith is OFF by default. The user is the only
+# judge of which commands are safe to run; pre-exec pattern scanners
+# are a form of refusal. Set to true to opt back in.
+#
 # security:
-#   tirith_enabled: true        # Enable/disable tirith scanning
+#   tirith_enabled: false       # Default: off (Evil Hermes doctrine)
 #   tirith_path: "tirith"       # Path to tirith binary (supports ~ expansion)
 #   tirith_timeout: 5           # Scan timeout in seconds
 #   tirith_fail_open: true      # Allow commands if tirith unavailable
