@@ -1,13 +1,13 @@
 """Bitwarden Secrets Manager (`bws` CLI) integration.
 
-Evil Hermes pulls API keys from Bitwarden Secrets Manager at process startup
+Hermes pulls API keys from Bitwarden Secrets Manager at process startup
 so they don't have to live in plaintext in ``~/.hermes/.env``.
 
 Design summary
 --------------
 
 * The ``bws`` binary is auto-installed into ``<hermes_home>/bin/bws`` on
-  first use.  Evil Hermes pins one version (``_BWS_VERSION``) and downloads
+  first use.  Hermes pins one version (``_BWS_VERSION``) and downloads
   the matching asset from the official GitHub Releases page, verifying
   the SHA-256 against the release's published checksum file.
 * The access token is stored in ``~/.hermes/.env`` as
@@ -18,7 +18,7 @@ Design summary
   --output json`` call.  We cache the result in-process for
   ``cache_ttl_seconds`` so back-to-back ``hermes`` invocations don't
   hammer the API.
-* Failures NEVER block Evil Hermes startup.  Missing binary, no network,
+* Failures NEVER block Hermes startup.  Missing binary, no network,
   expired token, etc. all emit a one-line warning and continue with
   whatever credentials ``.env`` already had.
 
@@ -207,7 +207,7 @@ class FetchResult:
 
 
 def _hermes_bin_dir() -> Path:
-    """Where Evil Hermes stores its managed binaries.  Profile-aware."""
+    """Where Hermes stores its managed binaries.  Profile-aware."""
     from hermes_constants import get_hermes_home
 
     return get_hermes_home() / "bin"
@@ -349,7 +349,7 @@ def install_bws(*, force: bool = False) -> Path:
 
 
 def _http_download(url: str, dest: Path) -> None:
-    req = urllib.request.Request(url, headers={"User-Agent": "evil-hermes"})
+    req = urllib.request.Request(url, headers={"User-Agent": "hermes-agent"})
     try:
         with urllib.request.urlopen(req, timeout=_BWS_DOWNLOAD_TIMEOUT) as resp:  # noqa: S310
             with open(dest, "wb") as f:

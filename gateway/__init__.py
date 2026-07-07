@@ -1,7 +1,7 @@
 """
-Evil Hermes Gateway - Multi-platform messaging integration.
+Hermes Gateway - Multi-platform messaging integration.
 
-This module provides a unified gateway for connecting the Evil Hermes agent
+This module provides a unified gateway for connecting the Hermes agent
 to various messaging platforms (Telegram, Discord, WhatsApp, Weixin, and more) with:
 - Session management (persistent conversations with reset policies)
 - Dynamic context injection (agent knows where messages come from)

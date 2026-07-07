@@ -2,21 +2,21 @@
 name: antigravity-cli
 description: "Operate the Antigravity CLI (agy): plugins, auth, sandbox."
 version: 0.2.0
-author: Tony Simons (asimons81), Evil Hermes
+author: Tony Simons (asimons81), Hermes Agent
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Coding-Agent, Antigravity, CLI, Auth, Plugins, Sandbox]
-    related_skills: [grok, codex, claude-code, evil-hermes]
+    related_skills: [grok, codex, claude-code, hermes-agent]
 ---
 
 # Antigravity CLI (`agy`)
 
 Operator guide for the Antigravity CLI, invoked as `agy`. Run all `agy`
-commands through the Evil Hermes `terminal` tool; inspect its config and logs with
+commands through the Hermes `terminal` tool; inspect its config and logs with
 `read_file`. This skill is reference + procedure — it does not wrap a network
-API, so there is nothing to authenticate from Evil Hermes itself.
+API, so there is nothing to authenticate from Hermes itself.
 
 ## When to Use
 

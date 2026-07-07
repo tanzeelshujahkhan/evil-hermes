@@ -558,7 +558,7 @@ def _ensure_repo(cwd: str) -> None:
                 "-c",
                 "user.email=hermes@localhost",
                 "-c",
-                "user.name=Evil Hermes",
+                "user.name=Hermes",
                 "commit",
                 "--allow-empty",
                 "-m",

@@ -4,7 +4,7 @@ Routes ``web_search`` tool calls through xAI's agentic Web Search tool
 (server-side ``web_search`` on the Responses API). Grok runs the actual
 searching and page-browsing server-side; we ask it to return the top
 results as structured JSON so we can hand back the same
-``{title, url, description, position}`` rows every other Evil Hermes web
+``{title, url, description, position}`` rows every other Hermes web
 provider produces.
 
 Reference: https://docs.x.ai/developers/tools/web-search

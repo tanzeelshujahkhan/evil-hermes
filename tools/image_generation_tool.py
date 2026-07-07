@@ -765,7 +765,7 @@ def _agent_cache_base_for_env(env: Any) -> str | None:
             return "/root/.hermes"
 
     # If no environment has been created yet, only backends with deterministic
-    # Evil Hermes cache roots can be translated without side effects. SSH can still
+    # Hermes cache roots can be translated without side effects. SSH can still
     # use a shell-visible tilde path; its first environment sync will upload
     # the cache file before the first command runs.
     backend = (os.getenv("TERMINAL_ENV") or "local").strip().lower()

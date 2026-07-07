@@ -308,10 +308,10 @@ class TestResolveSessionName:
     def test_per_repo_uses_git_root(self):
         config = HonchoClientConfig(session_strategy="per-repo")
         with patch.object(
-            HonchoClientConfig, "_git_repo_name", return_value="evil-hermes"
+            HonchoClientConfig, "_git_repo_name", return_value="hermes-agent"
         ):
             result = config.resolve_session_name("/home/user/hermes-agent/subdir")
-        assert result == "evil-hermes"
+        assert result == "hermes-agent"
 
     def test_per_repo_with_peer_prefix(self):
         config = HonchoClientConfig(

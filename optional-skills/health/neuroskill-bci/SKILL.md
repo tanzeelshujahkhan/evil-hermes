@@ -8,7 +8,7 @@ description: >
   running locally.
 platforms: [linux, macos, windows]
 version: 1.0.0
-author: Evil Hermes + Nous Research
+author: Hermes Agent + Nous Research
 license: MIT
 metadata:
   hermes:

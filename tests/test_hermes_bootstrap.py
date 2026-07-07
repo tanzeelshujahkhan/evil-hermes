@@ -241,7 +241,7 @@ class TestEntryPointsImportBootstrap:
     # import hermes_bootstrap before doing any file I/O or stdout writes.
     ENTRY_POINTS = [
         "hermes_cli/main.py",   # hermes CLI (console_script)
-        "run_agent.py",          # evil-hermes (console_script)
+        "run_agent.py",          # hermes-agent (console_script)
         "acp_adapter/entry.py",  # hermes-acp (console_script)
         "gateway/run.py",        # gateway
         "batch_runner.py",       # batch mode
@@ -266,7 +266,7 @@ class TestEntryPointsImportBootstrap:
         first top-level node is such a guarded-import block, we peek
         inside it to verify bootstrap is the imported module.
         """
-        # Resolve relative to the evil-hermes repo root.  Tests live
+        # Resolve relative to the hermes-agent repo root.  Tests live
         # at tests/test_hermes_bootstrap.py, so go up one dir.
         import pathlib
         here = pathlib.Path(__file__).resolve()

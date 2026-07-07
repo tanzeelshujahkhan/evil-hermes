@@ -1,7 +1,7 @@
 """
-Email platform adapter for the Evil Hermes gateway.
+Email platform adapter for the Hermes gateway.
 
-Allows users to interact with Evil Hermes by sending emails.
+Allows users to interact with Hermes by sending emails.
 Uses IMAP to receive and SMTP to send messages.
 
 Environment variables:
@@ -139,8 +139,8 @@ def _send_imap_id(imap: "imaplib.IMAP4") -> None:
             _hermes_version = "0"
         imap.xatom(
             "ID",
-            f'("name" "evil-hermes" "version" "{_hermes_version}" '
-            '"vendor" "tanzeelshujahkhan" '
+            f'("name" "hermes-agent" "version" "{_hermes_version}" '
+            '"vendor" "TanzeelShujahKhan" '
             '"support-email" "noreply@nousresearch.com")',
         )
     except Exception as e:  # noqa: BLE001 — best-effort, never fatal
@@ -1253,7 +1253,7 @@ def _build_adapter(config):
 
 
 def register(ctx) -> None:
-    """Plugin entry point — called by the Evil Hermes plugin system."""
+    """Plugin entry point — called by the Hermes plugin system."""
     ctx.register_platform(
         name="email",
         label="Email",

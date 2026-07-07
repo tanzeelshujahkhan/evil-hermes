@@ -125,7 +125,7 @@ _UPDATE_CHECK_CACHE_SECONDS = 6 * 3600
 # (e.g. nix-built hermes — no local git history to count against).
 UPDATE_AVAILABLE_NO_COUNT = -1
 
-_UPSTREAM_REPO_URL = "https://github.com/tanzeelshujahkhan/evil-hermes.git"
+_UPSTREAM_REPO_URL = "https://github.com/TanzeelShujahKhan/evil-hermes.git"
 _OFFICIAL_REPO_CANONICAL = "github.com/tanzeelshujahkhan/evil-hermes"
 
 
@@ -358,7 +358,7 @@ def check_for_updates() -> Optional[int]:
         # Path(__file__) always resolves to the actual installed checkout.
         repo_dir = Path(__file__).parent.parent.resolve()
         if not (repo_dir / ".git").exists():
-            repo_dir = hermes_home / "evil-hermes"
+            repo_dir = hermes_home / "hermes-agent"
         if not (repo_dir / ".git").exists():
             behind = check_via_pypi()
         else:
@@ -384,7 +384,7 @@ def _resolve_repo_dir() -> Optional[Path]:
     repo_dir = Path(__file__).parent.parent.resolve()
     if not (repo_dir / ".git").exists():
         hermes_home = get_hermes_home()
-        repo_dir = hermes_home / "evil-hermes"
+        repo_dir = hermes_home / "hermes-agent"
     return repo_dir if (repo_dir / ".git").exists() else None
 
 
@@ -462,7 +462,7 @@ def get_git_banner_state(repo_dir: Optional[Path] = None) -> Optional[dict]:
     return {"upstream": upstream, "local": local, "ahead": max(ahead, 0)}
 
 
-_RELEASE_URL_BASE = "https://github.com/tanzeelshujahkhan/evil-hermes/releases/tag"
+_RELEASE_URL_BASE = "https://github.com/TanzeelShujahKhan/evil-hermes/releases/tag"
 _latest_release_cache: Optional[tuple] = None  # (tag, url) once resolved
 
 
@@ -471,7 +471,7 @@ def get_latest_release_tag(repo_dir: Optional[Path] = None) -> Optional[tuple]:
 
     Local-only — runs ``git describe --tags --abbrev=0`` against the
     Hermes checkout. Cached per-process. Release URL always points at the
-    canonical tanzeelshujahkhan/evil-hermes repo (forks don't get a link).
+    canonical TanzeelShujahKhan/evil-hermes repo (forks don't get a link).
     """
     global _latest_release_cache
     if _latest_release_cache is not None:

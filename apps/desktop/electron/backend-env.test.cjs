@@ -82,7 +82,7 @@ test('normalizeHermesHomeRoot maps profile homes back to the global Hermes root'
 test('Windows PATH casing and delimiter are preserved without POSIX sane entries', () => {
   const env = buildDesktopBackendEnv({
     hermesHome: 'C:\\Users\\test\\AppData\\Local\\hermes',
-    pythonPathEntries: ['C:\\repo\\evil-hermes'],
+    pythonPathEntries: ['C:\\repo\\hermes-agent'],
     venvRoot: 'C:\\Users\\test\\AppData\\Local\\hermes\\hermes-agent\\venv',
     currentEnv: {
       Path: 'C:\\Windows\\System32;C:\\Windows',

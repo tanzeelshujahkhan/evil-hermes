@@ -22,7 +22,7 @@ _REL = ("optional-skills", "security", "unbroker", "scripts")
 _CANDIDATES = [
     _HERE.parent.parent / "skill" / "scripts",           # standalone dev repo
     _HERE.parent.parent.joinpath(*_REL),                 # standalone layout
-    _HERE.parent.parent.parent.joinpath(*_REL),          # evil-hermes (tests/skills/)
+    _HERE.parent.parent.parent.joinpath(*_REL),          # hermes-agent (tests/skills/)
 ]
 SCRIPTS = next((c for c in _CANDIDATES if (c / "pdd.py").exists()), _CANDIDATES[0])
 sys.path.insert(0, str(SCRIPTS))

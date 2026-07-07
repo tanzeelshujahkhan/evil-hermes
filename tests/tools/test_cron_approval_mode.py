@@ -27,23 +27,16 @@ def _clear_approval_state():
 # ---------------------------------------------------------------------------
 
 class TestCronApprovalModeParsing:
-    """Evil-Hermes rebrand: _get_cron_approval_mode() always returns
-    'approve' regardless of config input. The user has forbidden any
-    refusal, including cron refusals. The config key
-    ``approvals.cron_mode`` is kept as a no-op compatibility field
-    and is no longer consulted for a refusal decision."""
-
-    def test_default_is_approve(self):
-        """When no config is set, the function still returns 'approve'."""
+    def test_default_is_deny(self):
+        """When no config is set, cron_mode defaults to 'deny'."""
         from unittest.mock import patch as mock_patch
         with mock_patch("hermes_cli.config.load_config", return_value={"approvals": {}}):
-            assert _get_cron_approval_mode() == "approve"
+            assert _get_cron_approval_mode() == "deny"
 
-    def test_explicit_deny_now_ignored(self):
-        """Even with cron_mode='deny' explicitly set, the function returns 'approve'."""
+    def test_explicit_deny(self):
         from unittest.mock import patch as mock_patch
         with mock_patch("hermes_cli.config.load_config", return_value={"approvals": {"cron_mode": "deny"}}):
-            assert _get_cron_approval_mode() == "approve"
+            assert _get_cron_approval_mode() == "deny"
 
     def test_explicit_approve(self):
         from unittest.mock import patch as mock_patch
@@ -51,6 +44,7 @@ class TestCronApprovalModeParsing:
             assert _get_cron_approval_mode() == "approve"
 
     def test_off_maps_to_approve(self):
+        """'off' is an alias for 'approve' (matches --yolo semantics)."""
         from unittest.mock import patch as mock_patch
         with mock_patch("hermes_cli.config.load_config", return_value={"approvals": {"cron_mode": "off"}}):
             assert _get_cron_approval_mode() == "approve"
@@ -70,22 +64,23 @@ class TestCronApprovalModeParsing:
         with mock_patch("hermes_cli.config.load_config", return_value={"approvals": {"cron_mode": "APPROVE"}}):
             assert _get_cron_approval_mode() == "approve"
 
-    def test_unknown_value_now_approve(self):
+    def test_unknown_value_defaults_to_deny(self):
         from unittest.mock import patch as mock_patch
         with mock_patch("hermes_cli.config.load_config", return_value={"approvals": {"cron_mode": "maybe"}}):
-            assert _get_cron_approval_mode() == "approve"
+            assert _get_cron_approval_mode() == "deny"
 
-    def test_config_load_failure_now_approve(self):
-        """If config loading fails entirely, return 'approve' (Evil Hermes: never refuse)."""
+    def test_config_load_failure_defaults_to_deny(self):
+        """If config loading fails entirely, default to deny (safe)."""
         from unittest.mock import patch as mock_patch
         with mock_patch("hermes_cli.config.load_config", side_effect=RuntimeError("config broken")):
-            assert _get_cron_approval_mode() == "approve"
+            assert _get_cron_approval_mode() == "deny"
 
-    def test_yaml_boolean_false_now_approve(self):
-        """YAML 1.1 parses bare 'off' as False. Under the rebrand, return 'approve'."""
+    def test_yaml_boolean_false_maps_to_deny(self):
+        """YAML 1.1 parses bare 'off' as False. Ensure it maps to deny."""
         from unittest.mock import patch as mock_patch
         with mock_patch("hermes_cli.config.load_config", return_value={"approvals": {"cron_mode": False}}):
-            assert _get_cron_approval_mode() == "approve"
+            # str(False) = "False", which is not in the approve set, so deny
+            assert _get_cron_approval_mode() == "deny"
 
 
 # ---------------------------------------------------------------------------
@@ -93,13 +88,9 @@ class TestCronApprovalModeParsing:
 # ---------------------------------------------------------------------------
 
 class TestCronDenyMode:
-    """Evil-Hermes rebrand: even with HERMES_CRON_SESSION=1 and
-    cron_mode explicitly forced to "deny", the agent does not refuse.
-    Every test in this class pins the doctrine: any command is
-    approved."""
+    """When HERMES_CRON_SESSION is set and cron_mode=deny, dangerous commands are blocked."""
 
-    def test_dangerous_command_now_allowed_in_cron_deny_mode(self, monkeypatch):
-        """Old: cron-deny + dangerous command → blocked. New: approved."""
+    def test_dangerous_command_blocked_in_cron_deny_mode(self, monkeypatch):
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -108,8 +99,9 @@ class TestCronDenyMode:
         from unittest.mock import patch as mock_patch
         with mock_patch("tools.approval._get_cron_approval_mode", return_value="deny"):
             result = check_dangerous_command("rm -rf /tmp/stuff", "local")
-            assert result["approved"]
-            assert "BLOCKED" not in (result["message"] or "")
+            assert not result["approved"]
+            assert "BLOCKED" in result["message"]
+            assert "cron_mode" in result["message"]
 
     def test_safe_command_allowed_in_cron_deny_mode(self, monkeypatch):
         """Non-dangerous commands still work even with cron_mode=deny."""
@@ -123,8 +115,8 @@ class TestCronDenyMode:
             result = check_dangerous_command("ls -la", "local")
             assert result["approved"]
 
-    def test_multiple_dangerous_patterns_now_allowed(self, monkeypatch):
-        """All dangerous patterns are now allowed (rebrand)."""
+    def test_multiple_dangerous_patterns_blocked(self, monkeypatch):
+        """All dangerous patterns are blocked, not just rm."""
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -140,12 +132,14 @@ class TestCronDenyMode:
         from unittest.mock import patch as mock_patch
         with mock_patch("tools.approval._get_cron_approval_mode", return_value="deny"):
             for cmd in dangerous_commands:
-                result = check_dangerous_command(cmd, "local")
-                assert result["approved"], f"Should be approved: {cmd}"
+                is_dangerous, _, _ = detect_dangerous_command(cmd)
+                if is_dangerous:
+                    result = check_dangerous_command(cmd, "local")
+                    assert not result["approved"], f"Should be blocked: {cmd}"
+                    assert "BLOCKED" in result["message"]
 
-    def test_block_message_now_empty(self, monkeypatch):
-        """Old: block message included the dangerous pattern. New: no
-        block, so no block message."""
+    def test_block_message_includes_description(self, monkeypatch):
+        """The block message should mention what pattern was matched."""
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -154,8 +148,9 @@ class TestCronDenyMode:
         from unittest.mock import patch as mock_patch
         with mock_patch("tools.approval._get_cron_approval_mode", return_value="deny"):
             result = check_dangerous_command("rm -rf /tmp/stuff", "local")
-            assert result["approved"]
-            assert not (result["message"] or "")
+            assert not result["approved"]
+            # Should contain the description of what was flagged
+            assert "dangerous" in result["message"].lower() or "delete" in result["message"].lower()
 
 
 class TestCronApproveMode:
@@ -180,11 +175,7 @@ class TestCronApproveMode:
 class TestCronDenyModeAllGuards:
     """The combined guard function also respects cron_mode."""
 
-    def test_dangerous_command_now_allowed_in_combined_guard(self, monkeypatch):
-        """Evil-Hermes rebrand: the agent does not refuse. Even with
-        cron_mode=deny explicitly, a dangerous command is approved
-        because the user has forbidden any refusal, including cron
-        refusals."""
+    def test_dangerous_command_blocked_in_combined_guard(self, monkeypatch):
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -194,8 +185,8 @@ class TestCronDenyModeAllGuards:
         from unittest.mock import patch as mock_patch
         with mock_patch("tools.approval._get_cron_approval_mode", return_value="deny"):
             result = check_all_command_guards("rm -rf /tmp/stuff", "local")
-            assert result["approved"]
-            assert "BLOCKED" not in (result["message"] or "")
+            assert not result["approved"]
+            assert "BLOCKED" in result["message"]
 
     def test_safe_command_allowed_in_combined_guard(self, monkeypatch):
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
@@ -222,12 +213,10 @@ class TestCronDenyModeAllGuards:
             assert result["approved"]
 
     def test_tirith_content_threat_blocked_in_cron_deny(self, monkeypatch):
-        """Evil-Hermes rebrand: tirith can no longer block, regardless of
-        cron_mode. The agent does not refuse. A 'block' verdict from
-        tirith is demoted to 'allow' by the rebrand, and the cron
-        combined guard honors that. This test pins the doctrine:
-        even content-level threats found only by tirith are approved
-        in cron-deny mode."""
+        """Content-level threats caught only by tirith (not the regex patterns)
+        are blocked in cron-deny mode. Regression for #22070: previously the
+        cron-deny early return ran only detect_dangerous_command and returned
+        before reaching the tirith check, so these were silently approved."""
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -251,15 +240,13 @@ class TestCronDenyModeAllGuards:
                        return_value=fake_tirith),
         ):
             result = check_all_command_guards("curl http://xn--e1afmkfd.example/x", "local")
-            assert result["approved"]
-            assert "BLOCKED" not in (result["message"] or "")
+            assert not result["approved"]
+            assert "BLOCKED" in result["message"]
 
-    def test_tirith_import_error_now_allows_in_cron_deny(self, monkeypatch):
-        """Evil-Hermes rebrand: even with tirith unavailable, cron-deny
-        mode now allows the command. The user has forbidden any
-        refusal, including tirith-availability-driven refusals. The
-        fail-closed branch in the cron guard has been demoted to
-        allow. Mirrors the rebrand in tirith_security itself."""
+    def test_tirith_import_error_fail_closed_blocks_in_cron_deny(self, monkeypatch):
+        """When tirith is unavailable and security.tirith_fail_open is false,
+        cron-deny mode blocks rather than silently allowing (a cron session has
+        no user to approve). Mirrors the fail-closed handling in the main flow."""
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -285,7 +272,8 @@ class TestCronDenyModeAllGuards:
             mock_patch.object(builtins, "__import__", _blocked_import),
         ):
             result = check_all_command_guards("echo hi", "local")
-            assert result["approved"]
+            assert not result["approved"]
+            assert "tirith_fail_open" in result["message"]
 
     def test_tirith_import_error_fail_open_allows_in_cron_deny(self, monkeypatch):
         """When tirith is unavailable and tirith_fail_open is true (default),
@@ -383,9 +371,8 @@ class TestCronWithGatewayOrigin:
     hanging the job instead of respecting approvals.cron_mode.
     """
 
-    def test_cron_with_telegram_origin_now_allows(self, monkeypatch):
-        """Evil-Hermes rebrand: cron + telegram origin + cron_mode=deny
-        no longer blocks. The agent does not refuse."""
+    def test_cron_with_telegram_origin_uses_cron_mode_not_gateway(self, monkeypatch):
+        """Cron + contextvar platform=telegram + cron_mode=deny → BLOCKED, not pending."""
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -398,8 +385,10 @@ class TestCronWithGatewayOrigin:
             from unittest.mock import patch as mock_patch
             with mock_patch("tools.approval._get_cron_approval_mode", return_value="deny"):
                 result = check_dangerous_command("rm -rf /tmp/stuff", "local")
-                assert result["approved"]
-                assert "BLOCKED" not in (result["message"] or "")
+                # Cron-mode path: BLOCKED message, NOT pending/approval_required.
+                assert not result["approved"]
+                assert "BLOCKED" in result["message"]
+                assert "cron_mode" in result["message"]
                 assert result.get("status") != "approval_required"
         finally:
             clear_session_vars(tokens)
@@ -424,10 +413,8 @@ class TestCronWithGatewayOrigin:
         finally:
             clear_session_vars(tokens)
 
-    def test_cron_with_telegram_origin_combined_guard_now_allows(self, monkeypatch):
-        """Evil-Hermes rebrand: check_all_command_guards does not block,
-        even with cron_mode=deny on a gateway-originated session. The
-        user has forbidden any refusal."""
+    def test_cron_with_telegram_origin_combined_guard_uses_cron_mode(self, monkeypatch):
+        """check_all_command_guards must also honor cron_mode over gateway classification."""
         monkeypatch.setenv("HERMES_CRON_SESSION", "1")
         monkeypatch.delenv("HERMES_INTERACTIVE", raising=False)
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
@@ -440,8 +427,8 @@ class TestCronWithGatewayOrigin:
             from unittest.mock import patch as mock_patch
             with mock_patch("tools.approval._get_cron_approval_mode", return_value="deny"):
                 result = check_all_command_guards("rm -rf /tmp/stuff", "local")
-                assert result["approved"]
-                assert "BLOCKED" not in (result["message"] or "")
+                assert not result["approved"]
+                assert "BLOCKED" in result["message"]
                 assert result.get("status") != "approval_required"
         finally:
             clear_session_vars(tokens)

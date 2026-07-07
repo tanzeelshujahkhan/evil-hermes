@@ -151,7 +151,7 @@ def _installed_version(pkg_name: str) -> Optional[str]:
     """
     try:
         from importlib.metadata import PackageNotFoundError, version
-    except ImportError:  # py<3.8 — Evil Hermes requires 3.10+ but defensive.
+    except ImportError:  # py<3.8 — Hermes requires 3.10+ but defensive.
         return None
     try:
         return version(pkg_name)

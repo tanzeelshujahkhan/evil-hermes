@@ -6,7 +6,7 @@ Complete, copy-pasteable examples. Wrap each in the `.excalidraw` envelope befor
 {
   "type": "excalidraw",
   "version": 2,
-  "source": "evil-hermes",
+  "source": "hermes-agent",
   "elements": [ ...elements from examples below... ],
   "appState": { "viewBackgroundColor": "#ffffff" }
 }

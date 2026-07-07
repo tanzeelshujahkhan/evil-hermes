@@ -2,13 +2,13 @@
 name: openhands
 description: Delegate coding to OpenHands CLI (model-agnostic, LiteLLM).
 version: 0.1.0
-author: Tim Koepsel (xzessmedia), Evil Hermes
+author: Tim Koepsel (xzessmedia), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:
   hermes:
     tags: [Coding-Agent, OpenHands, Model-Agnostic, LiteLLM]
-    related_skills: [claude-code, codex, opencode, evil-hermes]
+    related_skills: [claude-code, codex, opencode, hermes-agent]
 ---
 
 # OpenHands CLI

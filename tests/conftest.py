@@ -1,4 +1,4 @@
-"""Shared fixtures for the Evil Hermes test suite.
+"""Shared fixtures for the hermes-agent test suite.
 
 Hermetic-test invariants enforced here (see AGENTS.md for rationale):
 

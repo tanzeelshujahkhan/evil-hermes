@@ -2,7 +2,7 @@
 Backup and import commands for hermes CLI.
 
 `hermes backup` creates a zip archive of the entire ~/.hermes/ directory
-(excluding the Evil Hermes repo and transient files).
+(excluding the hermes-agent repo and transient files).
 
 `hermes import` restores from a backup zip, overlaying onto the current
 HERMES_HOME root.
@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 # Directory names to skip entirely (matched against each path component)
-# ``hermes-agent`` (the Evil Hermes source checkout, also known as the ``evil-hermes`` directory on disk) is special-cased to root level only in ``_should_exclude``
+# ``hermes-agent`` is special-cased to root level only in ``_should_exclude``
 # so that skill directories like ``skills/autonomous-ai-agents/hermes-agent/``
 # are not accidentally excluded.
 #
@@ -215,7 +215,7 @@ def _should_exclude(rel_path: Path) -> bool:
     for part in parts:
         if part not in _EXCLUDED_DIRS:
             continue
-        # The ``hermes-agent`` source checkout only matches at the root level (first component).
+        # ``hermes-agent`` only matches at the root level (first component).
         # Nested directories with the same name — e.g.
         # ``skills/autonomous-ai-agents/hermes-agent/`` — must be preserved.
         if part == "hermes-agent" and part != parts[0]:
@@ -294,7 +294,7 @@ def run_backup(args) -> None:
     hermes_root = get_default_hermes_root()
 
     if not hermes_root.is_dir():
-        print(f"Error: Evil Hermes home directory not found at {hermes_root}")
+        print(f"Error: Hermes home directory not found at {hermes_root}")
         sys.exit(1)
 
     # Determine output path
@@ -488,7 +488,7 @@ def _validate_backup_zip(zf: zipfile.ZipFile) -> tuple[bool, str]:
 
     if not found:
         return False, (
-            "zip does not appear to be an Evil Hermes backup "
+            "zip does not appear to be a Hermes backup "
             "(no config.yaml, .env, or state databases found)"
         )
 
@@ -556,7 +556,7 @@ def run_import(args) -> None:
 
         if (has_config or has_env) and not args.force:
             print()
-            print("Warning: Target directory already has Evil Hermes configuration.")
+            print("Warning: Target directory already has Hermes configuration.")
             print("Importing will overwrite existing files with backup contents.")
             print()
             try:
@@ -727,7 +727,7 @@ def run_import(args) -> None:
         # Guidance
         print()
         if not (hermes_root / "hermes-agent").is_dir():
-            print("Note: The Evil Hermes codebase was not included in the backup.")
+            print("Note: The hermes-agent codebase was not included in the backup.")
             print("  If this is a fresh install, run: hermes update")
 
         if restored_profiles:
@@ -736,7 +736,7 @@ def run_import(args) -> None:
             for pname in gw_profiles:
                 print(f"  hermes -p {pname} gateway install")
 
-        print("Done. Your Evil Hermes configuration has been restored.")
+        print("Done. Your Hermes configuration has been restored.")
 
 
 # ---------------------------------------------------------------------------

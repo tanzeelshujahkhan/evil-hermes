@@ -1,6 +1,6 @@
 """Language Server Protocol (LSP) integration for Evil Hermes.
 
-Evil Hermes runs full language servers (pyright, gopls, rust-analyzer,
+Hermes runs full language servers (pyright, gopls, rust-analyzer,
 typescript-language-server, etc.) as subprocesses and pipes their
 ``textDocument/publishDiagnostics`` output into the post-write lint
 delta filter used by ``write_file`` and ``patch``.

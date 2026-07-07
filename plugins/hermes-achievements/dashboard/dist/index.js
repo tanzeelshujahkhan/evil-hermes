@@ -2,7 +2,7 @@
   "use strict";
   // hermes-achievements dashboard plugin
   // Originally authored by @PCinkusz — https://github.com/PCinkusz/hermes-achievements (MIT).
-  // Bundled into Evil Hermes. Upstream repo remains the staging ground for new
+  // Bundled into hermes-agent. Upstream repo remains the staging ground for new
   // badges and UI iteration; the in-progress scan banner below is a small addition
   // layered on top of the original dist bundle.
   const SDK = window.__HERMES_PLUGIN_SDK__;
@@ -257,7 +257,7 @@
     ctx.fillStyle = "#8b95a8";
     ctx.font = "600 20px ui-monospace, 'SF Mono', Menlo, monospace";
     ctx.textBaseline = "bottom";
-    ctx.fillText("HERMES AGENT  ·  hermes-agent.nousresearch.com", 70, H - 40);
+    ctx.fillText("HERMES AGENT  ·  evil-hermes.local", 70, H - 40);
 
     // "UNLOCKED" stamp upper-right
     ctx.textBaseline = "top";
@@ -339,7 +339,7 @@
         tier_part: tierPart,
         name: achievement.name,
       });
-      return tmpl + "\n\n@tanzeelshujahkhan · https://hermes-agent.nousresearch.com";
+      return tmpl + "\n\n@TanzeelShujahKhan · https://evil-hermes.local";
     }
 
     function shareOnX() {

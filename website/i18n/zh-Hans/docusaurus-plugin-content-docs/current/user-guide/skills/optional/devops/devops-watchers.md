@@ -81,7 +81,7 @@ python $HERMES_HOME/skills/devops/watchers/scripts/watch_rss.py \
 
 ```bash
 python $HERMES_HOME/skills/devops/watchers/scripts/watch_github.py \
-  --name hermes-issues --repo tanzeelshujahkhan/evil-hermes --scope issues
+  --name hermes-issues --repo TanzeelShujahKhan/evil-hermes --scope issues
 ```
 
 轮询任意 JSON API：

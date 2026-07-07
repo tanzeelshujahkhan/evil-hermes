@@ -1,6 +1,6 @@
 """Centralized Nous Portal request tags.
 
-Every Evil Hermes request that hits the Nous Portal — main agent loop, auxiliary
+Every Hermes request that hits the Nous Portal — main agent loop, auxiliary
 client (compression / titles / vision / web_extract / session_search / etc.),
 and any future code path — must carry the same product-attribution tags so
 Nous can attribute usage to Evil Hermes and bucket it by client release.
@@ -8,7 +8,7 @@ Nous can attribute usage to Evil Hermes and bucket it by client release.
 Tag shape (sent in OpenAI-compatible ``extra_body['tags']``):
 
     [
-        "product=evil-hermes",
+        "product=hermes-agent",
         "client=hermes-client-v<__version__>",
     ]
 
@@ -35,7 +35,7 @@ from typing import List
 
 
 def _hermes_version() -> str:
-    """Return the current Evil Hermes release version, e.g. ``"0.13.0"``.
+    """Return the current Hermes release version, e.g. ``"0.13.0"``.
 
     Falls back to ``"unknown"`` if ``hermes_cli`` cannot be imported (should
     never happen in a real install — guarded for defensive testing).
@@ -61,4 +61,4 @@ def nous_portal_tags() -> List[str]:
     Always returns a fresh list so callers can mutate it freely
     (e.g. ``merged_extra.setdefault("tags", []).extend(nous_portal_tags())``).
     """
-    return ["product=evil-hermes", hermes_client_tag()]
+    return ["product=hermes-agent", hermes_client_tag()]

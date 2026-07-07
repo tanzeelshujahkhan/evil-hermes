@@ -13,7 +13,7 @@ required_credential_files:
 metadata:
   hermes:
     tags: [Google, Gmail, Calendar, Drive, Sheets, Docs, Contacts, Email, OAuth]
-    homepage: https://github.com/tanzeelshujahkhan/evil-hermes
+    homepage: https://github.com/TanzeelShujahKhan/evil-hermes
     related_skills: [himalaya]
 ---
 

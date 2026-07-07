@@ -1,4 +1,4 @@
-"""Shared utility functions for Evil Hermes."""
+"""Shared utility functions for hermes-agent."""
 
 import errno
 import json

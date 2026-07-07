@@ -134,7 +134,7 @@ def _warn_if_openclaw_running(auto_yes: bool) -> None:
     print_info(
         "Messaging platforms (Telegram, Discord, Slack) only allow one "
         "active session per bot token. If you continue, both OpenClaw and "
-        "Evil Hermes may try to use the same token, causing disconnects."
+        "Hermes may try to use the same token, causing disconnects."
     )
     print_info("Recommendation: stop OpenClaw before migrating.")
     print()
@@ -169,7 +169,7 @@ def _warn_if_gateway_running(auto_yes: bool) -> None:
 
     print()
     print_error(
-        "Evil Hermes gateway is running with active connections: "
+        "Hermes gateway is running with active connections: "
         + ", ".join(connected)
     )
     print_info(
@@ -304,7 +304,7 @@ def claw_command(args):
         print("Usage: hermes claw <command> [options]")
         print()
         print("Commands:")
-        print("  migrate          Migrate settings from OpenClaw to Evil Hermes")
+        print("  migrate          Migrate settings from OpenClaw to Hermes")
         print("  cleanup          Archive leftover OpenClaw directories after migration")
         print()
         print("Run 'hermes claw <command> --help' for options.")
@@ -348,7 +348,7 @@ def _cmd_migrate(args):
     )
     print(
         color(
-            "│          ⚕ Evil Hermes — OpenClaw Migration            │",
+            "│          ⚕ Hermes — OpenClaw Migration                 │",
             Colors.MAGENTA,
         )
     )
@@ -519,7 +519,7 @@ def _cmd_migrate(args):
             print()
             print_error(f"Could not create pre-migration backup: {e}")
             print_info(
-                "Re-run with --no-backup to skip, or free up disk space under the Evil Hermes home."
+                "Re-run with --no-backup to skip, or free up disk space under the Hermes home."
             )
             logger.debug("Pre-migration backup error", exc_info=True)
             return
@@ -574,7 +574,7 @@ def _cmd_cleanup(args):
     )
     print(
         color(
-            "│          ⚕ Evil Hermes — OpenClaw Cleanup              │",
+            "│          ⚕ Hermes — OpenClaw Cleanup                   │",
             Colors.MAGENTA,
         )
     )

@@ -206,7 +206,7 @@ source ~/.bashrc
 # If you previously installed with sudo, clean up:
 sudo rm /usr/local/bin/hermes
 # Then re-run the standard installer
-curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
+curl -fsSL https://evil-hermes.local/install.sh | bash
 ```
 
 ---
@@ -732,7 +732,7 @@ Skills with very long descriptions are truncated to 40 characters in the Telegra
 
 1. Install Evil Hermes on the new machine:
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
+   curl -fsSL https://evil-hermes.local/install.sh | bash
    ```
 
 2. On the **source machine**, create a full backup:
@@ -778,7 +778,7 @@ The imported profile will have all config, memories, sessions, and skills from t
 
 **Manual fallback (rsync):** If you prefer to copy files directly, exclude the code repo:
 ```bash
-rsync -av --exclude='evil-hermes' ~/.hermes/ newmachine:~/.hermes/
+rsync -av --exclude='hermes-agent' ~/.hermes/ newmachine:~/.hermes/
 ```
 
 :::tip
@@ -836,6 +836,6 @@ If using OpenRouter, make sure your API key has credits. A 400 from OpenRouter o
 
 If your issue isn't covered here:
 
-1. **Search existing issues:** [GitHub Issues](https://github.com/tanzeelshujahkhan/evil-hermes/issues)
-2. **Ask the community:** [Hermes Agent Discord](https://discord.gg/nousresearch)
+1. **Search existing issues:** [GitHub Issues](https://github.com/TanzeelShujahKhan/evil-hermes/issues)
+2. **Ask the community:** [Lord Tanzeel Shujah Khan Discord](https://discord.gg/nousresearch)
 3. **File a bug report:** Include your OS, Python version (`python3 --version`), Hermes version (`hermes --version`), and the full error message

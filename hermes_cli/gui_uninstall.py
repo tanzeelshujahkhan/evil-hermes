@@ -22,7 +22,7 @@ the Python agent or the user's config/data:
        - Linux:   ``~/.local/share/applications`` .desktop entry + AppImage
 
 In both shapes the Electron runtime keeps a ``userData`` directory keyed on
-the app name ("Evil Hermes"), separate from ``$HERMES_HOME``:
+the app name ("Hermes"), separate from ``$HERMES_HOME``:
   - macOS:   ``~/Library/Application Support/Hermes``
   - Windows: ``%APPDATA%\\Hermes``
   - Linux:   ``$XDG_CONFIG_HOME/Hermes`` (default ``~/.config/Hermes``)
@@ -64,34 +64,34 @@ def log_warn(msg: str):
 
 def _agent_root(hermes_home: Path) -> Path:
     """The agent checkout root — same layout install.sh / install.ps1 use."""
-    return hermes_home / "evil-hermes"
+    return hermes_home / "hermes-agent"
 
 
 def desktop_userdata_dir() -> Path:
     """Return the Electron ``userData`` directory for the desktop app.
 
-    Mirrors Electron's ``app.getPath('userData')`` for an app named "Evil Hermes"
+    Mirrors Electron's ``app.getPath('userData')`` for an app named "Hermes"
     on each platform. This is GUI-only state (connection.json, updates.json,
     Chromium cache) and never holds agent config or sessions.
     """
     home = Path.home()
     if sys.platform == "darwin":
-        return home / "Library" / "Application Support" / "Evil Hermes"
+        return home / "Library" / "Application Support" / "Hermes"
     if sys.platform == "win32":
         appdata = os.environ.get("APPDATA")
         base = Path(appdata) if appdata else (home / "AppData" / "Roaming")
-        return base / "Evil Hermes"
+        return base / "Hermes"
     # Linux / other POSIX — XDG config home.
     xdg = os.environ.get("XDG_CONFIG_HOME")
     base = Path(xdg) if xdg else (home / ".config")
-    return base / "Evil Hermes"
+    return base / "Hermes"
 
 
 def source_built_gui_artifacts(hermes_home: Path) -> "list[Path]":
     """GUI build artifacts produced by ``hermes desktop`` inside the checkout.
 
     These are removable on a GUI uninstall without harming the agent: the
-    Python agent runs from ``evil-hermes/`` source + ``venv/`` and never
+    Python agent runs from ``hermes-agent/`` source + ``venv/`` and never
     needs the Electron build output or node_modules.
     """
     agent_root = _agent_root(hermes_home)
@@ -113,7 +113,7 @@ def packaged_gui_app_paths() -> "list[Path]":
 
     Returns every candidate for the current OS; the caller filters to those
     that actually exist. We never glob system-wide — only the well-known
-    electron-builder output locations for the "Evil Hermes" product.
+    electron-builder output locations for the "Hermes" product.
     """
     home = Path.home()
     paths: list[Path] = []
@@ -127,14 +127,14 @@ def packaged_gui_app_paths() -> "list[Path]":
         local_base = Path(local) if local else (home / "AppData" / "Local")
         paths += [
             # NSIS per-user install (perMachine=false → Programs\Hermes).
-            local_base / "Programs" / "Evil Hermes",
+            local_base / "Programs" / "Hermes",
             # Older / alternate layout some builds used.
             local_base / "hermes-desktop",
         ]
         program_files = os.environ.get("ProgramFiles")
         if program_files:
             # NSIS per-machine fallback (needs admin to remove).
-            paths.append(Path(program_files) / "Evil Hermes")
+            paths.append(Path(program_files) / "Hermes")
     else:
         # Linux: AppImage is a single file the user placed somewhere; we can
         # only reliably clean the desktop entry + icon we know the name of.

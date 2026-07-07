@@ -299,7 +299,7 @@ main() {
     api_key="$(generate_secret)"
   fi
 
-  log 'Ensuring Evil Hermes API server is configured...'
+  log 'Ensuring Hermes API server is configured...'
   upsert_env API_SERVER_ENABLED true "$HERMES_ENV_FILE"
   upsert_env API_SERVER_HOST "$HERMES_API_HOST" "$HERMES_ENV_FILE"
   upsert_env API_SERVER_PORT "$HERMES_API_PORT" "$HERMES_ENV_FILE"
@@ -307,11 +307,11 @@ main() {
   upsert_env API_SERVER_KEY "$api_key" "$HERMES_ENV_FILE"
   ensure_env_permissions
 
-  log 'Restarting Evil Hermes gateway so API server settings take effect...'
+  log 'Restarting Hermes gateway so API server settings take effect...'
   hermes gateway restart >/dev/null 2>&1 || true
   sleep 4
   if ! curl -fsS "http://${HERMES_API_CONNECT_HOST}:${HERMES_API_PORT}/health" >/dev/null; then
-    log 'Evil Hermes API server did not answer on the first check. Trying to start gateway in the background...'
+    log 'Hermes API server did not answer on the first check. Trying to start gateway in the background...'
     nohup hermes gateway run >/dev/null 2>&1 &
     sleep 6
   fi
@@ -342,7 +342,7 @@ main() {
   esac
 
   log "Done. Open WebUI should be available at: http://${OPEN_WEBUI_HOST}:${OPEN_WEBUI_PORT}"
-  log "Evil Hermes API endpoint: ${HERMES_API_BASE_URL}"
+  log "Hermes API endpoint: ${HERMES_API_BASE_URL}"
   log 'Important: Open WebUI persists connection settings after first launch. If you later save a wrong API key in the Admin UI, update/delete that connection there or reset its database.'
 }
 

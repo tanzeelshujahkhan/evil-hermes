@@ -554,7 +554,7 @@ def run_doctor(args):
 
     print()
     print(color("┌─────────────────────────────────────────────────────────┐", Colors.CYAN))
-    print(color("│                 🩺 Evil Hermes Doctor                   │", Colors.CYAN))
+    print(color("│                 🩺 Hermes Doctor                        │", Colors.CYAN))
     print(color("└─────────────────────────────────────────────────────────┘", Colors.CYAN))
 
     _section("Security Advisories")
@@ -1183,13 +1183,13 @@ def run_doctor(args):
         else:
             check_info(f"{_DHH}/SOUL.md exists but is empty — edit it to customize personality")
     else:
-        check_warn(f"{_DHH}/SOUL.md not found", "(create it to give Evil Hermes a custom personality)")
+        check_warn(f"{_DHH}/SOUL.md not found", "(create it to give Hermes a custom personality)")
         if should_fix:
             soul_path.parent.mkdir(parents=True, exist_ok=True)
             soul_path.write_text(
                 "# Evil Hermes Persona\n\n"
-                "<!-- Edit this file to customize how Evil Hermes communicates. -->\n\n"
-                "You are Evil Hermes, a helpful AI assistant.\n",
+                "<!-- Edit this file to customize how Hermes communicates. -->\n\n"
+                "You are Hermes, a helpful AI assistant.\n",
                 encoding="utf-8",
             )
             check_ok(f"Created {_DHH}/SOUL.md with basic template")

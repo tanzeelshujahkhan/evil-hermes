@@ -90,7 +90,7 @@ rest are picked by what the brief actually requires.
 For the role library and per-style team compositions, see
 **[references/role-archetypes.md](references/role-archetypes.md)**.
 
-For mapping role → which Evil Hermes skills + toolsets it loads, see
+For mapping role → which Hermes skills + toolsets it loads, see
 **[references/tool-matrix.md](references/tool-matrix.md)**.
 
 ### Step 4 — Setup
@@ -99,7 +99,7 @@ Generate a setup script (`setup.sh`) and run it. The script:
 
 1. Creates the project workspace (`~/projects/video-pipeline/<slug>/`)
 2. Copies any provided assets into `taste/`, `audio/`, `assets/`
-3. Creates each Evil Hermes profile via `hermes profile create --clone`
+3. Creates each Hermes profile via `hermes profile create --clone`
 4. Writes per-profile `SOUL.md` (personality + role definition)
 5. Configures profile YAML (toolsets, always_load skills, cwd)
 6. Writes `brief.md`, `TEAM.md`, and `taste/` content

@@ -1,6 +1,6 @@
 """Shared Hermes-side execution flow for Modal transports.
 
-This module deliberately stops at the Evil Hermes boundary:
+This module deliberately stops at the Hermes boundary:
 - command preparation
 - cwd/timeout normalization
 - stdin/sudo shell wrapping

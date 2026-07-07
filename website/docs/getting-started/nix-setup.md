@@ -41,17 +41,17 @@ No clone needed. Nix fetches, builds, and runs everything:
 
 ```bash
 # Run the desktop app
-nix run github:tanzeelshujahkhan/evil-hermes#desktop
+nix run github:TanzeelShujahKhan/evil-hermes#desktop
 
 # Or install persistently
-nix profile install github:tanzeelshujahkhan/evil-hermes#desktop
+nix profile install github:TanzeelShujahKhan/evil-hermes#desktop
 
 # run the tui
-nix run github:tanzeelshujahkhan/evil-hermes -- setup
-nix run github:tanzeelshujahkhan/evil-hermes -- --tui
+nix run github:TanzeelShujahKhan/evil-hermes -- setup
+nix run github:TanzeelShujahKhan/evil-hermes -- --tui
 
 # or install it in your profile
-nix profile install github:tanzeelshujahkhan/evil-hermes
+nix profile install github:TanzeelShujahKhan/evil-hermes
 hermes setup
 hermes --tui
 ```
@@ -59,7 +59,7 @@ hermes --tui
 After `nix profile install`, `hermes`, `evil-hermes`, and `hermes-acp` are on your PATH. From here, the workflow is identical to the [standard installation](./installation.md) — `hermes setup` walks you through provider selection, `hermes gateway install` sets up a launchd (macOS) or systemd user service, and config lives in `~/.hermes/`.
 
 :::warning Messaging platforms (Discord, Telegram, Slack)
-The default package includes ALL libraries Evil Hermes might need. if you want a smaller variant, check the other flake outputs. 
+The default package includes ALL libraries hermes-agent might need. if you want a smaller variant, check the other flake outputs. 
 
 The `default` package adds ~700 MB to the closure. If you only need messaging platforms, `#messaging` adds just ~33 MB.
 
@@ -69,7 +69,7 @@ The `default` package adds ~700 MB to the closure. If you only need messaging pl
 <summary><strong>Running from a local clone</strong></summary>
 
 ```bash
-git clone https://github.com/tanzeelshujahkhan/evil-hermes.git
+git clone https://github.com/TanzeelShujahKhan/evil-hermes.git
 cd hermes-agent
 nix develop
 hermes setup
@@ -94,7 +94,7 @@ This module requires NixOS. For non-NixOS systems (macOS, other Linux distros), 
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    evil-hermes.url = "github:tanzeelshujahkhan/evil-hermes";
+    evil-hermes.url = "github:TanzeelShujahKhan/evil-hermes";
   };
 
   outputs = { nixpkgs, evil-hermes, ... }: {
@@ -187,7 +187,7 @@ After `nixos-rebuild switch`, check that the service is running:
 systemctl status hermes-agent
 
 # Watch logs (Ctrl+C to stop)
-journalctl -u evil-hermes -f
+journalctl -u hermes-agent -f
 
 # If addToSystemPackages is true, test the CLI
 hermes version
@@ -497,7 +497,7 @@ The first OAuth authorization requires a browser-based consent flow. In a headle
 
 ```bash
 # Container mode
-docker exec -it evil-hermes \
+docker exec -it hermes-agent \
   hermes mcp add my-oauth-server --url https://mcp.example.com/mcp --auth oauth
 
 # Native mode
@@ -555,7 +555,7 @@ When hermes runs via the NixOS module, the following CLI commands are **blocked*
 This prevents drift between what Nix declares and what's on disk. Detection uses two signals:
 
 1. **`HERMES_MANAGED=true`** environment variable — set by the systemd service, visible to the gateway process
-2. **`.managed` marker file** in `HERMES_HOME` — set by the activation script, visible to interactive shells (e.g., `docker exec -it evil-hermes hermes config set ...` is also blocked)
+2. **`.managed` marker file** in `HERMES_HOME` — set by the activation script, visible to interactive shells (e.g., `docker exec -it hermes-agent hermes config set ...` is also blocked)
 
 To change configuration, edit your Nix config and run `sudo nixos-rebuild switch`.
 
@@ -667,7 +667,7 @@ The package's `site-packages` is added to PYTHONPATH in the hermes wrapper. `imp
 
 ### Optional Dependency Groups (`extraDependencyGroups`)
 
-For optional extras declared in Evil Hermes' `pyproject.toml`, use `extraDependencyGroups` to include them in the sealed venv at build time. This is required for any extra not in the default `[all]` set — on Nix, runtime installation into the read-only store is not possible.
+For optional extras declared in hermes-agent's `pyproject.toml`, use `extraDependencyGroups` to include them in the sealed venv at build time. This is required for any extra not in the default `[all]` set — on Nix, runtime installation into the read-only store is not possible.
 
 ```nix
 # Enable Discord, Telegram, Slack
@@ -733,7 +733,7 @@ External flakes can override the package directly:
 
 ```nix
 {
-  inputs.hermes-agent.url = "github:tanzeelshujahkhan/evil-hermes";
+  inputs.hermes-agent.url = "github:TanzeelShujahKhan/evil-hermes";
   outputs = { hermes-agent, nixpkgs, ... }: {
     nixpkgs.overlays = [ hermes-agent.overlays.default ];
     # Then:
@@ -828,8 +828,8 @@ nix build .#checks.x86_64-linux.config-roundtrip    # merge script preserves use
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `enable` | `bool` | `false` | Enable the Evil Hermes service |
-| `package` | `package` | `evil-hermes` | The Evil Hermes package to use |
+| `enable` | `bool` | `false` | Enable the hermes-agent service |
+| `package` | `package` | `evil-hermes` | The hermes-agent package to use |
 | `user` | `str` | `"hermes"` | System user |
 | `group` | `str` | `"hermes"` | System group |
 | `createUser` | `bool` | `true` | Auto-create user/group |
@@ -963,7 +963,7 @@ All `docker` commands below work the same with `podman`. Substitute accordingly 
 
 ```bash
 # Both modes use the same systemd unit
-journalctl -u evil-hermes -f
+journalctl -u hermes-agent -f
 
 # Container mode: also available directly
 docker logs -f hermes-agent
@@ -974,8 +974,8 @@ docker logs -f hermes-agent
 ```bash
 systemctl status hermes-agent
 docker ps -a --filter name=hermes-agent
-docker inspect evil-hermes --format='{{.State.Status}}'
-docker exec -it evil-hermes bash
+docker inspect hermes-agent --format='{{.State.Status}}'
+docker exec -it hermes-agent bash
 docker exec hermes-agent readlink /data/current-package
 docker exec hermes-agent cat /data/.container-identity
 ```

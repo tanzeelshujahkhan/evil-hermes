@@ -81,7 +81,7 @@ Watch a GitHub repo (set `GITHUB_TOKEN` in `${HERMES_HOME:-~/.hermes}/.env` to a
 
 ```bash
 python $HERMES_HOME/skills/devops/watchers/scripts/watch_github.py \
-  --name hermes-issues --repo tanzeelshujahkhan/evil-hermes --scope issues
+  --name hermes-issues --repo TanzeelShujahKhan/evil-hermes --scope issues
 ```
 
 Poll an arbitrary JSON API:

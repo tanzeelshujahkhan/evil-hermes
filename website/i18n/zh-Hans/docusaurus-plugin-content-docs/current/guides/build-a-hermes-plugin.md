@@ -549,7 +549,7 @@ def register(ctx):
 
 ```python
 # 包含 context 键的字典
-return {"context": "Recalled memories:\n- User prefers dark mode\n- Last project: evil-hermes"}
+return {"context": "Recalled memories:\n- User prefers dark mode\n- Last project: hermes-agent"}
 
 # 纯字符串（等同于上面的字典形式）
 return "Recalled memories:\n- User prefers dark mode"

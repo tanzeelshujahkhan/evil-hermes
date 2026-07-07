@@ -2,7 +2,7 @@
 name: mpp-agent
 description: Pay HTTP 402 APIs via Machine Payments Protocol (MPP).
 version: 0.1.0
-author: Teknium (teknium1), Evil Hermes
+author: Teknium (teknium1), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:

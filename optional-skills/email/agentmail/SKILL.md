@@ -1,6 +1,6 @@
 ---
 name: agentmail
-description: Give the agent its own dedicated email inbox via AgentMail. Send, receive, and manage email autonomously using agent-owned email addresses (e.g. evil-hermes@agentmail.to).
+description: Give the agent its own dedicated email inbox via AgentMail. Send, receive, and manage email autonomously using agent-owned email addresses (e.g. hermes-agent@agentmail.to).
 version: 1.0.0
 platforms: [linux, macos, windows]
 metadata:
@@ -45,7 +45,7 @@ mcp_servers:
       AGENTMAIL_API_KEY: "am_your_key_here"
 ```
 
-### 3. Restart Evil Hermes
+### 3. Restart Hermes
 ```bash
 hermes
 ```
@@ -72,7 +72,7 @@ All 11 AgentMail tools are now available automatically.
 ### Create an inbox and send an email
 1. Create a dedicated inbox:
    - Use `create_inbox` with a username (e.g. `evil-hermes`)
-   - The agent gets address: `evil-hermes@agentmail.to`
+   - The agent gets address: `hermes-agent@agentmail.to`
 2. Send an email:
    - Use `send_message` with `inbox_id`, `to`, `subject`, `text`
 3. Check for replies:

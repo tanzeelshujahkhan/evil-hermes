@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Skills Hub — Source adapters and hub state management for the Evil Hermes Skills Hub.
+Skills Hub — Source adapters and hub state management for the Hermes Skills Hub.
 
 This is a library module (not an agent tool). It provides:
   - GitHubAuth: Shared GitHub API authentication (PAT, gh CLI, GitHub App)
@@ -3052,7 +3052,7 @@ class OptionalSkillSource(SkillSource):
     (search / install / inspect) and labelled "official" with "builtin" trust.
     """
 
-    OFFICIAL_REPO = "tanzeelshujahkhan/evil-hermes"
+    OFFICIAL_REPO = "TanzeelShujahKhan/evil-hermes"
 
     def __init__(self):
         from hermes_constants import get_optional_skills_dir
@@ -3653,7 +3653,7 @@ def check_for_skill_updates(
 # Hermes centralized index source
 # ---------------------------------------------------------------------------
 
-HERMES_INDEX_URL = "https://hermes-agent.nousresearch.com/docs/api/skills-index.json"
+HERMES_INDEX_URL = "https://evil-hermes.local/docs/api/skills-index.json"
 HERMES_INDEX_TTL = 6 * 3600  # 6 hours
 
 
@@ -3682,11 +3682,11 @@ def _load_hermes_index() -> Optional[dict]:
     try:
         resp = httpx.get(HERMES_INDEX_URL, timeout=15, follow_redirects=True)
         if resp.status_code != 200:
-            logger.debug("Evil Hermes index fetch returned %d", resp.status_code)
+            logger.debug("Hermes index fetch returned %d", resp.status_code)
             return _load_stale_index_cache()
         data = resp.json()
     except (httpx.HTTPError, json.JSONDecodeError) as e:
-        logger.debug("Evil Hermes index fetch failed: %s", e)
+        logger.debug("Hermes index fetch failed: %s", e)
         return _load_stale_index_cache()
 
     # Validate structure
@@ -3715,7 +3715,7 @@ def _load_stale_index_cache() -> Optional[dict]:
 
 
 class HermesIndexSource(SkillSource):
-    """Skill source backed by the centralized Evil Hermes Skills Index.
+    """Skill source backed by the centralized Hermes Skills Index.
 
     The index is a JSON catalog published to the docs site and rebuilt
     daily by CI.  It contains metadata + resolved GitHub paths for every

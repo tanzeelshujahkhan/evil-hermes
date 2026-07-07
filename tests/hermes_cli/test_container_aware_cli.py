@@ -195,7 +195,7 @@ def test_exec_in_container_calls_execvp(docker_container_info):
     e_values = [cmd[i + 1] for i in e_indices]
     assert "TERM=xterm-256color" in e_values
     assert "LANG=en_US.UTF-8" in e_values
-    assert "evil-hermes" in cmd
+    assert "hermes-agent" in cmd
     assert "/data/current-package/bin/hermes" in cmd
     assert "chat" in cmd
 

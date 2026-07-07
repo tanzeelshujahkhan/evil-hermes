@@ -66,7 +66,7 @@ def get_hermes_home() -> Path:
     callers that import this at load time.  Subprocess spawners are
     expected to propagate ``HERMES_HOME`` explicitly (see the systemd
     template in ``hermes_cli/gateway.py`` and the kanban dispatcher in
-    ``hermes_cli/kanban_db.py``).  See https://github.com/tanzeelshujahkhan/hermes-agent/issues/18594.
+    ``hermes_cli/kanban_db.py``).  See https://github.com/TanzeelShujahKhan/hermes-agent/issues/18594.
     """
     override = get_hermes_home_override()
     if override:
@@ -656,7 +656,7 @@ def secure_parent_dir(path: Path) -> None:
     prevent catastrophic host bricking when ``HERMES_HOME`` or other path
     env vars resolve to an unexpected location.
 
-    See https://github.com/tanzeelshujahkhan/hermes-agent/issues/25821.
+    See https://github.com/TanzeelShujahKhan/hermes-agent/issues/25821.
     """
     parent = path.parent.resolve()
     # Refuse root and its direct children (/usr, /home, /var, /tmp, …).
@@ -869,7 +869,7 @@ def is_container() -> bool:
 
     Result is cached for the process lifetime.  Import-safe — no heavy deps.
 
-    See: tanzeelshujahkhan/hermes-agent#47111
+    See: TanzeelShujahKhan/hermes-agent#47111
     """
     global _container_detected
     if _container_detected is not None:

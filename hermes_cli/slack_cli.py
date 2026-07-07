@@ -91,7 +91,7 @@ def _build_full_manifest(
 
     if include_assistant:
         features["assistant_view"] = {
-            "assistant_description": "Chat with Evil Hermes in threads and DMs.",
+            "assistant_description": "Chat with Hermes in threads and DMs.",
         }
         bot_scopes.append("assistant:write")
         bot_events.extend(
@@ -110,7 +110,7 @@ def _build_full_manifest(
         },
         "display_information": {
             "name": bot_name[:35],
-            "description": (bot_description or "Your Evil Hermes agent on Slack")[:140],
+            "description": (bot_description or "Your Hermes agent on Slack")[:140],
             "background_color": "#1a1a2e",
         },
         "features": features,
@@ -139,7 +139,7 @@ def slack_manifest_command(args) -> int:
     Flags (all parsed in ``hermes_cli/main.py``):
       --write [PATH]  Write to file instead of stdout (default path:
                       ``$HERMES_HOME/slack-manifest.json``)
-      --name NAME     Override the bot display name (default: "Evil Hermes")
+      --name NAME     Override the bot display name (default: "Hermes")
       --description DESC  Override the bot description
       --slashes-only  Emit only the ``features.slash_commands`` array (for
                       merging into an existing manifest manually)
@@ -148,8 +148,8 @@ def slack_manifest_command(args) -> int:
                       DMs render as a flat chat where bare slash commands
                       work inline instead of the Assistant thread pane.
     """
-    name = getattr(args, "name", None) or "Evil Hermes"
-    description = getattr(args, "description", None) or "Your Evil Hermes agent on Slack"
+    name = getattr(args, "name", None) or "Hermes"
+    description = getattr(args, "description", None) or "Your Hermes agent on Slack"
     include_assistant = not getattr(args, "no_assistant", False)
 
     if getattr(args, "slashes_only", False):
@@ -178,7 +178,7 @@ def slack_manifest_command(args) -> int:
         print(f"Slack manifest written to: {target}", file=sys.stderr)
         print(
             "\nNext steps:\n"
-            "  1. Open https://api.slack.com/apps and pick your Evil Hermes app\n"
+            "  1. Open https://api.slack.com/apps and pick your Hermes app\n"
             "     (or create a new one: Create New App → From an app manifest).\n"
             f"  2. Features → App Manifest → paste the contents of\n"
             f"     {target}\n"

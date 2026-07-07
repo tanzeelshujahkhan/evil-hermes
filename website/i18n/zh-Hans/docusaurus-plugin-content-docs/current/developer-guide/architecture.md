@@ -51,7 +51,7 @@ description: "Evil Hermes 内部结构——主要子系统、执行路径、数
 ## 目录结构
 
 ```text
-evil-hermes/
+hermes-agent/
 ├── run_agent.py              # AIAgent — 核心对话循环（大文件）
 ├── cli.py                    # HermesCLI — 交互式终端 UI（大文件）
 ├── model_tools.py            # 工具发现、schema 收集、分发

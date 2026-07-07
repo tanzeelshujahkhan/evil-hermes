@@ -12,8 +12,8 @@ body:
         - Run `hermes debug share` and paste the links in the Debug Report section below
         - If you're in a chat session, you can use `/debug` instead — it does the same thing
         - Try `hermes update` to get the latest version
-        - Check the [README troubleshooting section](https://github.com/tanzeelshujahkhan/evil-hermes#troubleshooting)
-        - For general questions, consider the [Lord Tanzeel Shujah Khan Discord](https://discord.gg/nousresearch) for faster help
+        - Check the [README troubleshooting section](https://github.com/TanzeelShujahKhan/evil-hermes#troubleshooting)
+        - For general questions, consider the [Lord Tanzeel Shujah Khan Discord](https://discord.gg/TanzeelShujahKhan) for faster help
 
   - type: textarea
     id: description

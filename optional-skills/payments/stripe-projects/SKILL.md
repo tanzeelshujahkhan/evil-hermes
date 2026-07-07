@@ -2,7 +2,7 @@
 name: stripe-projects
 description: Provision SaaS services + sync creds via Stripe Projects.
 version: 0.1.0
-author: Teknium (teknium1), Evil Hermes
+author: Teknium (teknium1), Hermes Agent
 license: MIT
 platforms: [linux, macos]
 metadata:

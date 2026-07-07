@@ -13,7 +13,7 @@ description: "通过 OpenAI 兼容 API 服务器将 Open WebUI 连接到 Evil He
 ```mermaid
 flowchart LR
     A["Open WebUI<br/>浏览器 UI<br/>端口 3000"]
-    B["evil-hermes<br/>gateway API 服务器<br/>端口 8642"]
+    B["hermes-agent<br/>gateway API 服务器<br/>端口 8642"]
     A -->|POST /v1/chat/completions| B
     B -->|SSE 流式响应| A
 ```
@@ -62,7 +62,7 @@ curl -s http://127.0.0.1:8642/health
 # {"status": "ok", ...}
 
 curl -s -H "Authorization: Bearer your-secret-key" http://127.0.0.1:8642/v1/models
-# {"object":"list","data":[{"id":"evil-hermes", ...}]}
+# {"object":"list","data":[{"id":"hermes-agent", ...}]}
 ```
 
 如果 `/health` 失败，说明 gateway 未加载 `API_SERVER_ENABLED=true`——重启它。如果 `/v1/models` 返回 `401`，说明你的 `Authorization` 头与 `API_SERVER_KEY` 不匹配。
@@ -87,7 +87,7 @@ docker run -d -p 3000:8080 \
 
 ### 5. 打开 UI
 
-访问 **http://localhost:3000** 。创建管理员账户（第一个用户将成为管理员）。你应该能在模型下拉列表中看到你的 agent（以你的 profile 命名，默认 profile 则显示为 **evil-hermes**）。开始聊天吧！
+访问 **http://localhost:3000** 。创建管理员账户（第一个用户将成为管理员）。你应该能在模型下拉列表中看到你的 agent（以你的 profile 命名，默认 profile 则显示为 **hermes-agent**）。开始聊天吧！
 
 ## Docker Compose 设置
 
@@ -134,7 +134,7 @@ docker compose up -d
 7. 点击**对勾**验证连接
 8. **保存**
 
-你的 agent 模型现在应出现在模型下拉列表中（以你的 profile 命名，默认 profile 则显示为 **evil-hermes**）。
+你的 agent 模型现在应出现在模型下拉列表中（以你的 profile 命名，默认 profile 则显示为 **hermes-agent**）。
 
 :::warning
 环境变量仅在 Open WebUI **首次启动**时生效。此后，连接设置存储在其内部数据库中。如需后续修改，请使用管理员 UI，或删除 Docker 卷后重新启动。
@@ -158,7 +158,7 @@ Open WebUI 连接后端时支持两种 API 模式：
 启用 Responses API 模式：
 
 1. 进入 **Admin Settings** → **Connections** → **OpenAI** → **Manage**
-2. 编辑你的 Evil Hermes 连接
+2. 编辑你的 hermes-agent 连接
 3. 将 **API Type** 从 "Chat Completions" 改为 **"Responses (Experimental)"**
 4. 保存
 
@@ -181,7 +181,7 @@ Open WebUI 目前即使在 Responses 模式下也在客户端管理对话历史�
 
 你的 agent 可以访问该 API 服务器 Hermes 实例所拥有的相同工具和能力。如果 API 服务器是远程的，这些工具也是远程的。
 
-如果你今天需要工具在**本地**工作区运行，请在本地运行 Hermes 并将其指向纯 LLM 提供商或纯 OpenAI 兼容模型代理（例如 vLLM、LiteLLM、Ollama、llama.cpp、OpenAI、OpenRouter 等）。"远程大脑、本地执行"的分离运行时模式正在 [#18715](https://github.com/tanzeelshujahkhan/evil-hermes/issues/18715) 中跟踪；这不是当前 API 服务器的行为。
+如果你今天需要工具在**本地**工作区运行，请在本地运行 Hermes 并将其指向纯 LLM 提供商或纯 OpenAI 兼容模型代理（例如 vLLM、LiteLLM、Ollama、llama.cpp、OpenAI、OpenRouter 等）。"远程大脑、本地执行"的分离运行时模式正在 [#18715](https://github.com/TanzeelShujahKhan/evil-hermes/issues/18715) 中跟踪；这不是当前 API 服务器的行为。
 
 :::tip 工具进度
 启用流式传输（默认）后，工具运行时你会看到简短的内联指示——工具 emoji 及其关键参数。这些内容在 agent 最终答案之前出现在响应流中，让你了解后台正在发生的事情。

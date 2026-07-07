@@ -6,10 +6,10 @@ Exposes an HTTP server with endpoints:
 - POST /v1/responses               — OpenAI Responses API format (stateful via previous_response_id; X-Hermes-Session-Key supported)
 - GET  /v1/responses/{response_id} — Retrieve a stored response
 - DELETE /v1/responses/{response_id} — Delete a stored response
-- GET  /v1/models                  — lists Evil Hermes and any configured model_routes aliases
+- GET  /v1/models                  — lists hermes-agent and any configured model_routes aliases
 - GET  /v1/capabilities            — machine-readable API capabilities for external UIs
-- GET  /api/sessions               — list client-visible Evil Hermes sessions
-- POST /api/sessions               — create an empty Evil Hermes session
+- GET  /api/sessions               — list client-visible Hermes sessions
+- POST /api/sessions               — create an empty Hermes session
 - GET/PATCH/DELETE /api/sessions/{session_id} — read/update/delete a session
 - GET  /api/sessions/{session_id}/messages — read session message history
 - POST /api/sessions/{session_id}/fork — branch a session using SessionDB lineage
@@ -23,7 +23,7 @@ Exposes an HTTP server with endpoints:
 - GET  /health/detailed            — rich status for cross-container dashboard probing
 
 Any OpenAI-compatible frontend (Open WebUI, LobeChat, LibreChat,
-AnythingLLM, NextChat, ChatBox, etc.) can connect to Evil Hermes
+AnythingLLM, NextChat, ChatBox, etc.) can connect to hermes-agent
 through this adapter by pointing at http://localhost:8642/v1 and
 authenticating with API_SERVER_KEY.
 
@@ -66,7 +66,7 @@ logger = logging.getLogger(__name__)
 
 
 def _hermes_version() -> str:
-    """Return the Evil Hermes version string, or "dev" if it can't be resolved.
+    """Return the hermes-agent version string, or "dev" if it can't be resolved.
 
     Tries the installed package metadata first (authoritative for a pip/uv
     install), then the in-tree ``hermes_cli.__version__`` (covers editable /
@@ -760,7 +760,7 @@ def _derive_chat_session_id(
     conversation history with every request.  The system prompt and first user
     message are constant across all turns of the same conversation, so hashing
     them produces a deterministic session ID that lets the API server reuse
-    the same Evil Hermes session (and therefore the same Docker container sandbox
+    the same Hermes session (and therefore the same Docker container sandbox
     directory) across turns.
     """
     seed = f"{system_prompt or ''}\n{first_user_message}"
@@ -820,7 +820,7 @@ class APIServerAdapter(BasePlatformAdapter):
     OpenAI-compatible HTTP API server adapter.
 
     Runs an aiohttp web server that accepts OpenAI-format requests
-    and routes them through Evil Hermes's AIAgent.
+    and routes them through hermes-agent's AIAgent.
     """
 
     # Stateless request/response: every route (the OpenAI-spec
@@ -1361,7 +1361,7 @@ class APIServerAdapter(BasePlatformAdapter):
     async def _handle_health(self, request: "web.Request") -> "web.Response":
         """GET /health — simple health check."""
         return web.json_response(
-            {"status": "ok", "platform": "evil-hermes", "version": _hermes_version()}
+            {"status": "ok", "platform": "hermes-agent", "version": _hermes_version()}
         )
 
     async def _handle_health_detailed(self, request: "web.Request") -> "web.Response":
@@ -1390,7 +1390,7 @@ class APIServerAdapter(BasePlatformAdapter):
         # shared contract /api/status uses so the two surfaces never disagree.
         return web.json_response({
             "status": "ok",
-            "platform": "evil-hermes",
+            "platform": "hermes-agent",
             "version": _hermes_version(),
             "gateway_state": gw_state,
             "platforms": runtime.get("platforms", {}),
@@ -1410,7 +1410,7 @@ class APIServerAdapter(BasePlatformAdapter):
         })
 
     async def _handle_models(self, request: "web.Request") -> "web.Response":
-        """GET /v1/models — list Evil Hermes and any configured model_routes aliases."""
+        """GET /v1/models — list hermes-agent and any configured model_routes aliases."""
         auth_err = self._check_auth(request)
         if auth_err:
             return auth_err
@@ -1450,7 +1450,7 @@ class APIServerAdapter(BasePlatformAdapter):
 
         External UIs and orchestrators use this endpoint to discover the API
         server's plugin-safe contract without scraping docs or assuming that
-        every Evil Hermes version exposes the same endpoints.
+        every Hermes version exposes the same endpoints.
         """
         auth_err = self._check_auth(request)
         if auth_err:
@@ -1458,7 +1458,7 @@ class APIServerAdapter(BasePlatformAdapter):
 
         return web.json_response({
             "object": "hermes.api_server.capabilities",
-            "platform": "evil-hermes",
+            "platform": "hermes-agent",
             "model": self._model_name,
             "auth": {
                 "type": "bearer",
@@ -1469,7 +1469,7 @@ class APIServerAdapter(BasePlatformAdapter):
                 "tool_execution": "server",
                 "split_runtime": False,
                 "description": (
-                    "The API server creates a server-side Evil Hermes AIAgent; "
+                    "The API server creates a server-side Hermes AIAgent; "
                     "tools execute on the API-server host unless a future "
                     "explicit split-runtime mode is enabled."
                 ),
@@ -1682,7 +1682,7 @@ class APIServerAdapter(BasePlatformAdapter):
             return []
 
     async def _handle_list_sessions(self, request: "web.Request") -> "web.Response":
-        """GET /api/sessions — list persisted Evil Hermes sessions."""
+        """GET /api/sessions — list persisted Hermes sessions."""
         auth_err = self._check_auth(request)
         if auth_err:
             return auth_err
@@ -1711,7 +1711,7 @@ class APIServerAdapter(BasePlatformAdapter):
         })
 
     async def _handle_create_session(self, request: "web.Request") -> "web.Response":
-        """POST /api/sessions — create an empty Evil Hermes session row."""
+        """POST /api/sessions — create an empty Hermes session row."""
         auth_err = self._check_auth(request)
         if auth_err:
             return auth_err
@@ -2168,7 +2168,7 @@ class APIServerAdapter(BasePlatformAdapter):
         else:
             # Derive a stable session ID from the conversation fingerprint so
             # that consecutive messages from the same Open WebUI (or similar)
-            # conversation map to the same Evil Hermes session.  The first user
+            # conversation map to the same Hermes session.  The first user
             # message + system prompt are constant across all turns.
             first_user = ""
             for cm in conversation_messages:

@@ -1,11 +1,11 @@
-class EvilHermes < Formula
+class HermesAgent < Formula
   include Language::Python::Virtualenv
 
-  desc "Evil Hermes — self-improving AI agent that creates skills from experience. Created by Lord Tanzeel Shujah Khan."
+  desc "Self-improving AI agent that creates skills from experience"
   homepage "https://hermes-agent.nousresearch.com"
   # Stable source should point at the semver-named sdist asset attached by
   # scripts/release.py, not the CalVer tag tarball.
-  url "https://github.com/tanzeelshujahkhan/hermes-agent/releases/download/v2026.3.30/hermes_agent-0.6.0.tar.gz"
+  url "https://github.com/NousResearch/hermes-agent/releases/download/v2026.3.30/hermes_agent-0.6.0.tar.gz"
   sha256 "<replace-with-release-asset-sha256>"
   license "MIT"
 
@@ -39,7 +39,7 @@ class EvilHermes < Formula
   end
 
   test do
-    assert_match "Evil Hermes v#{version}", shell_output("#{bin}/hermes version")
+    assert_match "Hermes Agent v#{version}", shell_output("#{bin}/hermes version")
 
     managed = shell_output("#{bin}/hermes update 2>&1")
     assert_match "managed by Homebrew", managed

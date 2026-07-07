@@ -53,7 +53,7 @@ It does **not** turn Hermes into a real-time inbound phone gateway. Inbound SMS 
 
 Use this logic instead of hardcoded provider routing:
 
-### 1) "I want Evil Hermes to own a real phone number"
+### 1) "I want Hermes to own a real phone number"
 Use **Twilio**.
 
 Why:
@@ -151,7 +151,7 @@ hermes skills install official/productivity/telephony
 Sign up at:
 - https://www.twilio.com/try-twilio
 
-Then save credentials into Evil Hermes:
+Then save credentials into Hermes:
 
 ```bash
 python3 "$SCRIPT" save-twilio ACXXXXXXXXXXXXXXXXXXXXXXXXXXXX your_auth_token_here
@@ -283,7 +283,7 @@ This is the main answer to “how do I access messages the number receives next 
 ### D. Make a direct Twilio call with built-in TTS
 
 ```bash
-python3 "$SCRIPT" twilio-call "+15551230000" --message "Hello! This is Evil Hermes calling with your status update." --voice Polly.Joanna
+python3 "$SCRIPT" twilio-call "+15551230000" --message "Hello! This is Hermes calling with your status update." --voice Polly.Joanna
 ```
 
 ### E. Call with a prerecorded / custom voice message
@@ -301,14 +301,14 @@ Generate or host audio separately, then:
 python3 "$SCRIPT" twilio-call "+155****0000" --audio-url "https://example.com/briefing.mp3"
 ```
 
-Recommended Evil Hermes TTS -> Twilio Play workflow:
+Recommended Hermes TTS -> Twilio Play workflow:
 
-1. Generate the audio with Evil Hermes `text_to_speech`.
+1. Generate the audio with Hermes `text_to_speech`.
 2. Make the resulting MP3 publicly reachable.
 3. Place the Twilio call with `--audio-url`.
 
 Example agent flow:
-- Ask Evil Hermes to create the message audio with `text_to_speech`
+- Ask Hermes to create the message audio with `text_to_speech`
 - If needed, expose the file with a temporary static host / tunnel / object storage URL
 - Use `twilio-call --audio-url ...` to deliver it by phone
 
@@ -318,9 +318,9 @@ Good hosting options for the MP3:
 - any existing HTTPS URL the phone provider can fetch directly
 
 Important note:
-- Evil Hermes TTS is great for prerecorded outbound messages
+- Hermes TTS is great for prerecorded outbound messages
 - Bland/Vapi are better for **live conversational AI calls** because they handle the real-time telephony audio stack themselves
-- Evil Hermes STT/TTS alone is not being used here as a full duplex phone conversation engine; that would require a much heavier streaming/webhook integration than this skill is trying to introduce
+- Hermes STT/TTS alone is not being used here as a full duplex phone conversation engine; that would require a much heavier streaming/webhook integration than this skill is trying to introduce
 
 ### F. Navigate a phone tree / IVR with Twilio direct calling
 

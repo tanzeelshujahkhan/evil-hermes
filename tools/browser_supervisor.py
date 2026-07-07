@@ -1,6 +1,6 @@
 """Persistent CDP supervisor for browser dialog + frame detection.
 
-One ``CDPSupervisor`` runs per Evil Hermes ``task_id`` that has a reachable CDP
+One ``CDPSupervisor`` runs per Hermes ``task_id`` that has a reachable CDP
 endpoint. It holds a single persistent WebSocket to the backend, subscribes
 to ``Page`` / ``Runtime`` / ``Target`` events on every attached session
 (top-level page and every OOPIF / worker target that auto-attaches), and
@@ -42,7 +42,7 @@ def _redact_cdp_error_text(exc: object) -> str:
     ``self.cdp_url`` — including a ``?token=`` query credential or
     ``user:pass@`` userinfo). Every supervisor egress point that turns such an
     exception into log text or a re-raised message MUST route through here so
-    those credentials never reach Evil Hermes logs or tracebacks. Falls back to a
+    those credentials never reach Hermes logs or tracebacks. Falls back to a
     fixed sentinel if redaction itself raises, erring toward masking.
     """
     try:

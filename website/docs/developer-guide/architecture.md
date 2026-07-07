@@ -51,7 +51,7 @@ This page is the top-level map of Evil Hermes internals. Use it to orient yourse
 ## Directory Structure
 
 ```text
-evil-hermes/
+hermes-agent/
 ├── run_agent.py              # AIAgent — core conversation loop (large file)
 ├── cli.py                    # HermesCLI — interactive terminal UI (large file)
 ├── model_tools.py            # Tool discovery, schema collection, dispatch

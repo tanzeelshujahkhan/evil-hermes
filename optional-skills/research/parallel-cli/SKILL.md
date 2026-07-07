@@ -2,7 +2,7 @@
 name: parallel-cli
 description: Optional vendor skill for Parallel CLI — agent-native web search, extraction, deep research, enrichment, FindAll, and monitoring. Prefer JSON output and non-interactive flows.
 version: 1.1.0
-author: Evil Hermes
+author: Hermes Agent
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
@@ -110,7 +110,7 @@ If auth requires browser interaction, run with `pty=true`.
 4. Cite only URLs returned by the CLI output.
 5. Save large JSON outputs to a temp file when follow-up questions are likely.
 6. Use background processes only for genuinely long-running workflows; otherwise run in foreground.
-7. Prefer Evil Hermes native tools unless the user wants Parallel specifically or needs Parallel-only workflows.
+7. Prefer Hermes native tools unless the user wants Parallel specifically or needs Parallel-only workflows.
 
 ## Quick reference
 
@@ -231,7 +231,7 @@ parallel-cli research run \
   --json
 ```
 
-Recommended Evil Hermes workflow:
+Recommended Hermes workflow:
 1. launch with `--no-wait --json`
 2. capture the returned run/task ID
 3. if the user wants to continue other work, keep moving

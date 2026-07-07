@@ -387,15 +387,15 @@ class TestTrackForgetQuick:
     ):
         dg = _load_lib()
         protected_empty = (
-            _isolate_env / "evil-hermes" / "node_modules" / "pkg" / "empty"
+            _isolate_env / "hermes-agent" / "node_modules" / "pkg" / "empty"
         )
         protected_empty.mkdir(parents=True)
 
         original_iterdir = Path.iterdir
 
         def guarded_iterdir(path):
-            if path == _isolate_env / "evil-hermes":
-                raise AssertionError("quick() descended into protected evil-hermes/")
+            if path == _isolate_env / "hermes-agent":
+                raise AssertionError("quick() descended into protected hermes-agent/")
             return original_iterdir(path)
 
         monkeypatch.setattr(Path, "iterdir", guarded_iterdir)

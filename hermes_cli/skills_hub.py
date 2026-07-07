@@ -675,7 +675,7 @@ def do_install(identifier: str, category: str = "", force: bool = False,
         if bundle.source == "official":
             c.print(Panel(
                 "[bold bright_cyan]This is an official optional skill maintained by Lord Tanzeel Shujah Khan.[/]\n\n"
-                "It ships with Evil Hermes but is not activated by default.\n"
+                "It ships with hermes-agent but is not activated by default.\n"
                 "Installing will copy it to your skills directory where the agent can use it.\n\n"
                 f"Files will be at: [cyan]{display_hermes_home()}/skills/{category + '/' if category else ''}{bundle.name}/[/]",
                 title="Official Skill",
@@ -1577,8 +1577,8 @@ def _github_publish(skill_path: Path, skill_name: str, target_repo: str,
             headers=headers, timeout=15,
             json={
                 "title": f"Add skill: {skill_name}",
-                "body": f"Submitting the `{skill_name}` skill via Evil Hermes Skills Hub.\n\n"
-                        f"This skill was scanned by the Evil Hermes Skills Guard before submission.",
+                "body": f"Submitting the `{skill_name}` skill via Hermes Skills Hub.\n\n"
+                        f"This skill was scanned by the Hermes Skills Guard before submission.",
                 "head": f"{fork_repo.split('/')[0]}:{branch_name}",
                 "base": default_branch,
             },

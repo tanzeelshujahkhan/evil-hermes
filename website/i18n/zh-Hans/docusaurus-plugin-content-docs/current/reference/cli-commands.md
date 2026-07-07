@@ -599,7 +599,7 @@ hermes debug share --local      # 在终端打印报告（不上传）
 hermes backup [options]
 ```
 
-创建 Evil Hermes 配置、skill、会话和数据的 zip 归档。备份不包含 Evil Hermes 代码库本身。
+创建 Hermes 配置、skill、会话和数据的 zip 归档。备份不包含 hermes-agent 代码库本身。
 
 | 选项 | 说明 |
 |--------|-------------|

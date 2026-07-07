@@ -1,19 +1,19 @@
 ---
 name: openclaw-migration
-description: Migrate a user's OpenClaw customization footprint into Evil Hermes. Imports Hermes-compatible memories, SOUL.md, command allowlists, user skills, and selected workspace assets from ~/.openclaw, then reports exactly what could not be migrated and why.
+description: Migrate a user's OpenClaw customization footprint into Hermes Agent. Imports Hermes-compatible memories, SOUL.md, command allowlists, user skills, and selected workspace assets from ~/.openclaw, then reports exactly what could not be migrated and why.
 version: 1.0.0
-author: Evil Hermes (Nous Research)
+author: Hermes Agent (Nous Research)
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Migration, OpenClaw, Hermes, Memory, Persona, Import]
-    related_skills: [evil-hermes]
+    related_skills: [hermes-agent]
 ---
 
 # OpenClaw -> Hermes Migration
 
-Use this skill when a user wants to move their OpenClaw setup into Evil Hermes with minimal manual cleanup.
+Use this skill when a user wants to move their OpenClaw setup into Hermes Agent with minimal manual cleanup.
 
 ## CLI Command
 
@@ -84,7 +84,7 @@ With `--migrate-secrets`, it will also import a small allowlisted set of Hermes-
 
 ## User interaction protocol
 
-Evil Hermes CLI supports the `clarify` tool for interactive prompts, but it is limited to:
+Hermes CLI supports the `clarify` tool for interactive prompts, but it is limited to:
 
 - one choice at a time
 - up to 4 predefined choices
@@ -159,9 +159,9 @@ Execution gate:
 Use these exact `clarify` payload shapes as the default pattern:
 
 - `{"question":"Your existing SOUL.md conflicts with the imported one. What should I do?","choices":["keep existing","overwrite with backup","review first"]}`
-- `{"question":"One or more imported OpenClaw skills already exist in Evil Hermes. How should I handle those skill conflicts?","choices":["keep existing skills","overwrite conflicting skills with backup","import conflicting skills under renamed folders"]}`
+- `{"question":"One or more imported OpenClaw skills already exist in Hermes. How should I handle those skill conflicts?","choices":["keep existing skills","overwrite conflicting skills with backup","import conflicting skills under renamed folders"]}`
 - `{"question":"Choose migration mode: migrate only user data, or run the full compatible migration including allowlisted secrets?","choices":["user-data only","full compatible migration","cancel"]}`
-- `{"question":"Do you want to copy the OpenClaw workspace instructions file into a Evil Hermes workspace?","choices":["skip workspace instructions","copy to a workspace path","decide later"]}`
+- `{"question":"Do you want to copy the OpenClaw workspace instructions file into a Hermes workspace?","choices":["skip workspace instructions","copy to a workspace path","decide later"]}`
 - `{"question":"Please provide an absolute path where the workspace instructions should be copied."}`
 
 ## Decision-to-command mapping

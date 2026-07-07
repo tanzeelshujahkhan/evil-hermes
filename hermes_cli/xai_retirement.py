@@ -2,7 +2,7 @@
 
 Source: https://docs.x.ai/developers/migration/may-15-retirement
 
-Pure logic: walks a Evil Hermes config dict, returns issues for any reference
+Pure logic: walks a Hermes config dict, returns issues for any reference
 to a retired xAI model. No I/O, no CLI dependencies — testable in isolation
 and reusable from both `hermes doctor` and a future `hermes migrate xai`.
 """

@@ -28,12 +28,12 @@ def test_agent_json_matches_official_registry_required_fields():
     data = _manifest()
 
     assert FORBIDDEN_MANIFEST_KEYS.isdisjoint(data)
-    assert data["id"] == "evil-hermes"
+    assert data["id"] == "hermes-agent"
     assert re.fullmatch(r"[a-z][a-z0-9-]*", data["id"])
     assert data["name"] == "Evil Hermes"
     assert data["description"]
-    assert data["repository"] == "https://github.com/tanzeelshujahkhan/evil-hermes"
-    assert data["website"].startswith("https://hermes-agent.nousresearch.com/")
+    assert data["repository"] == "https://github.com/TanzeelShujahKhan/evil-hermes"
+    assert data["website"].startswith("https://evil-hermes.local/")
     assert data["authors"] == ["Lord Tanzeel Shujah Khan"]
     assert data["license"] == "MIT"
     assert set(data["distribution"]) <= ALLOWED_DISTRIBUTIONS

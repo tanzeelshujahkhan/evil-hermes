@@ -207,13 +207,13 @@ def provider_with_config(tmp_path, monkeypatch):
 def test_normalize_retain_tags_accepts_csv_and_dedupes():
     assert _normalize_retain_tags("agent:fakeassistantname, source_system:hermes-agent, agent:fakeassistantname") == [
         "agent:fakeassistantname",
-        "source_system:evil-hermes",
+        "source_system:hermes-agent",
     ]
 
 
 def test_normalize_retain_tags_accepts_json_array_string():
-    value = json.dumps(["agent:fakeassistantname", "source_system:evil-hermes"])
-    assert _normalize_retain_tags(value) == ["agent:fakeassistantname", "source_system:evil-hermes"]
+    value = json.dumps(["agent:fakeassistantname", "source_system:hermes-agent"])
+    assert _normalize_retain_tags(value) == ["agent:fakeassistantname", "source_system:hermes-agent"]
 
 
 def test_normalize_observation_scopes_empty_is_none():

@@ -73,7 +73,7 @@ _LEGACY_TEMPLATE_SOULS = (
         "<!--\n"
         "This file defines the agent's personality and tone.\n"
         "The agent will embody whatever you write here.\n"
-        "Edit this to customize how Evil Hermes communicates with you.\n"
+        "Edit this to customize how Hermes communicates with you.\n"
         "\n"
         "Examples:\n"
         '  - "You are a warm, playful assistant who uses kaomoji occasionally."\n'
@@ -90,7 +90,7 @@ _LEGACY_TEMPLATE_SOULS = (
         "<!--\n"
         "This file defines the agent's personality and tone.\n"
         "The agent will embody whatever you write here.\n"
-        "Edit this to customize how Evil Hermes communicates with you.\n"
+        "Edit this to customize how Hermes communicates with you.\n"
         "\n"
         "This file is loaded fresh each message -- no restart needed.\n"
         "Delete the contents (or this file) to use the default personality.\n"

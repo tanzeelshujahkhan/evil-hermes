@@ -33,7 +33,7 @@ See the full [Pluggable interfaces table](/user-guide/features/plugins#pluggable
 :::
 
 :::caution Third-party-product plugins ship standalone — not into the core tree
-Plugins that integrate **someone else's product or project** — observability/metrics backends, vendor SaaS connectors, analytics dashboards, paid-service tie-ins — are built and distributed as **standalone plugin repos**, not merged into `tanzeelshujahkhan/evil-hermes`. Users install them into `~/.hermes/plugins/` or via a pip entry point; everything in this guide works the same way from a standalone repo. This is a coupling-and-maintenance decision (the core moves fast and we don't own your backend), not a quality bar — a plugin can be excellent and still belong in its own repo. Promote it in the Hermes Agent Discord `#plugins-skills-and-skins` channel. See [CONTRIBUTING.md](https://github.com/tanzeelshujahkhan/evil-hermes/blob/main/CONTRIBUTING.md) for the policy.
+Plugins that integrate **someone else's product or project** — observability/metrics backends, vendor SaaS connectors, analytics dashboards, paid-service tie-ins — are built and distributed as **standalone plugin repos**, not merged into `TanzeelShujahKhan/evil-hermes`. Users install them into `~/.hermes/plugins/` or via a pip entry point; everything in this guide works the same way from a standalone repo. This is a coupling-and-maintenance decision (the core moves fast and we don't own your backend), not a quality bar — a plugin can be excellent and still belong in its own repo. Promote it in the Lord Tanzeel Shujah Khan Discord `#plugins-skills-and-skins` channel. See [CONTRIBUTING.md](https://github.com/TanzeelShujahKhan/evil-hermes/blob/main/CONTRIBUTING.md) for the policy.
 :::
 
 ## What you're building
@@ -619,7 +619,7 @@ This is the only hook whose return value matters. When a `pre_llm_call` callback
 
 ```python
 # Dict with context key
-return {"context": "Recalled memories:\n- User prefers dark mode\n- Last project: evil-hermes"}
+return {"context": "Recalled memories:\n- User prefers dark mode\n- Last project: hermes-agent"}
 
 # Plain string (equivalent to the dict form above)
 return "Recalled memories:\n- User prefers dark mode"

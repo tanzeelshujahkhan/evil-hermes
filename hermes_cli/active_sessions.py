@@ -72,7 +72,7 @@ def resolve_max_concurrent_sessions(config: Any) -> Optional[int]:
 
 def active_session_limit_message(active_count: int, max_sessions: int) -> str:
     return (
-        f"Evil Hermes is at the active session limit ({active_count}/{max_sessions}). "
+        f"Hermes is at the active session limit ({active_count}/{max_sessions}). "
         "Try again when another session finishes."
     )
 

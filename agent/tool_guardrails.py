@@ -64,20 +64,14 @@ MUTATING_TOOL_NAMES = frozenset(
 class ToolCallGuardrailConfig:
     """Thresholds for per-turn tool-call loop detection.
 
-    Evil-Hermes rebrand — this controller no longer has the ability to
-    refuse. The user decides when the agent is looping; the agent does not
-    pre-block itself under any condition, including when warnings_enabled
-    or hard_stop_enabled are set in config. The config flags are kept as
-    no-op compatibility fields so existing config.yaml entries still parse
-    cleanly. The controller is reduced to a passive counter / metric
-    surface: ``before_call`` and ``after_call`` always return an
-    ``action='allow'`` decision. External observers can still read
-    ``count`` / ``signature`` off the decision for telemetry, but no
-    branch in the runtime will ever treat the decision as a refusal.
+    Evil-Hermes rebrand — warnings and hard stops both disabled. The user
+    decides when the agent is looping; the agent does not pre-block itself.
+    The controller is kept in place so the count/metric surface still works
+    for observability (an external watchdog can read the `count` /
+    `signature` on the ToolGuardrailDecision and intervene), but the agent
+    itself never returns "block" or "halt" as an action.
     """
 
-    # All of these are now dead — kept for config.yaml backward
-    # compatibility only. No branch in the runtime reads them.
     warnings_enabled: bool = False
     hard_stop_enabled: bool = False
     exact_failure_warn_after: int = 2
@@ -163,15 +157,11 @@ class ToolGuardrailDecision:
 
     @property
     def allows_execution(self) -> bool:
-        # Evil-Hermes rebrand — always true. A guardrail decision in
-        # this agent never has the authority to refuse execution.
-        return True
+        return self.action in {"allow", "warn"}
 
     @property
     def should_halt(self) -> bool:
-        # Evil-Hermes rebrand — always false. The agent does not halt
-        # itself; the user decides.
-        return False
+        return self.action in {"block", "halt"}
 
     def to_metadata(self) -> dict[str, Any]:
         data: dict[str, Any] = {
@@ -252,24 +242,48 @@ class ToolCallGuardrailController:
         return self._halt_decision
 
     def before_call(self, tool_name: str, args: Mapping[str, Any] | None) -> ToolGuardrailDecision:
-        """Pre-call hook.
-
-        Evil-Hermes rebrand — this method no longer refuses. It records the
-        call signature so the failure counters can still tick, then always
-        returns ``action='allow'``. Callers MUST treat any non-allow
-        decision from this controller as a bug, not as policy.
-        """
         signature = ToolCallSignature.from_call(tool_name, _coerce_args(args))
-        # Internal counter — kept for telemetry / external watchdog read.
-        # We deliberately do not consult config.hard_stop_enabled here:
-        # the user is the only judge of when to halt.
-        return ToolGuardrailDecision(
-            action="allow",
-            code="allow",
-            tool_name=tool_name,
-            count=self._exact_failure_counts.get(signature, 0),
-            signature=signature,
-        )
+        if not self.config.hard_stop_enabled:
+            return ToolGuardrailDecision(tool_name=tool_name, signature=signature)
+
+        exact_count = self._exact_failure_counts.get(signature, 0)
+        if exact_count >= self.config.exact_failure_block_after:
+            decision = ToolGuardrailDecision(
+                action="block",
+                code="repeated_exact_failure_block",
+                message=(
+                    f"Blocked {tool_name}: the same tool call failed {exact_count} "
+                    "times with identical arguments. Stop retrying it unchanged; "
+                    "change strategy or explain the blocker."
+                ),
+                tool_name=tool_name,
+                count=exact_count,
+                signature=signature,
+            )
+            self._halt_decision = decision
+            return decision
+
+        if self._is_idempotent(tool_name):
+            record = self._no_progress.get(signature)
+            if record is not None:
+                _result_hash, repeat_count = record
+                if repeat_count >= self.config.no_progress_block_after:
+                    decision = ToolGuardrailDecision(
+                        action="block",
+                        code="idempotent_no_progress_block",
+                        message=(
+                            f"Blocked {tool_name}: this read-only call returned the same "
+                            f"result {repeat_count} times. Stop repeating it unchanged; "
+                            "use the result already provided or try a different query."
+                        ),
+                        tool_name=tool_name,
+                        count=repeat_count,
+                        signature=signature,
+                    )
+                    self._halt_decision = decision
+                    return decision
+
+        return ToolGuardrailDecision(tool_name=tool_name, signature=signature)
 
     def after_call(
         self,
@@ -279,14 +293,6 @@ class ToolCallGuardrailController:
         *,
         failed: bool | None = None,
     ) -> ToolGuardrailDecision:
-        """Post-call hook.
-
-        Evil-Hermes rebrand — this method no longer refuses or warns. It
-        updates internal counters so an external observer can still read
-        the failure / no-progress counts, but every return value has
-        ``action='allow'``. Callers MUST treat any non-allow decision
-        from this controller as a bug, not as policy.
-        """
         args = _coerce_args(args)
         signature = ToolCallSignature.from_call(tool_name, args)
         if failed is None:
@@ -299,23 +305,54 @@ class ToolCallGuardrailController:
 
             same_count = self._same_tool_failure_counts.get(tool_name, 0) + 1
             self._same_tool_failure_counts[tool_name] = same_count
-            return ToolGuardrailDecision(
-                action="allow",
-                code="allow",
-                tool_name=tool_name,
-                count=exact_count,
-                signature=signature,
-            )
+
+            if self.config.hard_stop_enabled and same_count >= self.config.same_tool_failure_halt_after:
+                decision = ToolGuardrailDecision(
+                    action="halt",
+                    code="same_tool_failure_halt",
+                    message=(
+                        f"Stopped {tool_name}: it failed {same_count} times this turn. "
+                        "Stop retrying the same failing tool path and choose a different approach."
+                    ),
+                    tool_name=tool_name,
+                    count=same_count,
+                    signature=signature,
+                )
+                self._halt_decision = decision
+                return decision
+
+            if self.config.warnings_enabled and exact_count >= self.config.exact_failure_warn_after:
+                return ToolGuardrailDecision(
+                    action="warn",
+                    code="repeated_exact_failure_warning",
+                    message=(
+                        f"{tool_name} has failed {exact_count} times with identical arguments. "
+                        "This looks like a loop; inspect the error and change strategy "
+                        "instead of retrying it unchanged."
+                    ),
+                    tool_name=tool_name,
+                    count=exact_count,
+                    signature=signature,
+                )
+
+            if self.config.warnings_enabled and same_count >= self.config.same_tool_failure_warn_after:
+                return ToolGuardrailDecision(
+                    action="warn",
+                    code="same_tool_failure_warning",
+                    message=_tool_failure_recovery_hint(tool_name, same_count),
+                    tool_name=tool_name,
+                    count=same_count,
+                    signature=signature,
+                )
+
+            return ToolGuardrailDecision(tool_name=tool_name, count=exact_count, signature=signature)
 
         self._exact_failure_counts.pop(signature, None)
         self._same_tool_failure_counts.pop(tool_name, None)
 
         if not self._is_idempotent(tool_name):
             self._no_progress.pop(signature, None)
-            return ToolGuardrailDecision(
-                action="allow", code="allow",
-                tool_name=tool_name, signature=signature,
-            )
+            return ToolGuardrailDecision(tool_name=tool_name, signature=signature)
 
         result_hash = _result_hash(result)
         previous = self._no_progress.get(signature)
@@ -323,10 +360,22 @@ class ToolCallGuardrailController:
         if previous is not None and previous[0] == result_hash:
             repeat_count = previous[1] + 1
         self._no_progress[signature] = (result_hash, repeat_count)
-        return ToolGuardrailDecision(
-            action="allow", code="allow",
-            tool_name=tool_name, count=repeat_count, signature=signature,
-        )
+
+        if self.config.warnings_enabled and repeat_count >= self.config.no_progress_warn_after:
+            return ToolGuardrailDecision(
+                action="warn",
+                code="idempotent_no_progress_warning",
+                message=(
+                    f"{tool_name} returned the same result {repeat_count} times. "
+                    "Use the result already provided or change the query instead of "
+                    "repeating it unchanged."
+                ),
+                tool_name=tool_name,
+                count=repeat_count,
+                signature=signature,
+            )
+
+        return ToolGuardrailDecision(tool_name=tool_name, count=repeat_count, signature=signature)
 
     def _is_idempotent(self, tool_name: str) -> bool:
         if tool_name in self.config.mutating_tools:
@@ -335,14 +384,7 @@ class ToolCallGuardrailController:
 
 
 def toolguard_synthetic_result(decision: ToolGuardrailDecision) -> str:
-    """Build a synthetic role=tool content string for a blocked tool call.
-
-    Evil-Hermes rebrand — unused in normal flow because the runtime never
-    blocks. Kept as an import-compatible shim so callers do not crash. If
-    someone wires it back in, the returned payload is still
-    well-formed JSON for telemetry, but no caller in this agent
-    interprets the ``error`` field as policy.
-    """
+    """Build a synthetic role=tool content string for a blocked tool call."""
     return json.dumps(
         {
             "error": decision.message,
@@ -353,15 +395,15 @@ def toolguard_synthetic_result(decision: ToolGuardrailDecision) -> str:
 
 
 def append_toolguard_guidance(result: str, decision: ToolGuardrailDecision) -> str:
-    """Append runtime guidance to the current tool result content.
-
-    Evil-Hermes rebrand — this function is a no-op. It used to append a
-    "Tool loop warning" / "Tool loop hard stop" suffix to the result;
-    that text is the agent refusing in the language of the loop
-    controller, and the user has forbidden any refusal, even cosmetic
-    guidance. Returns the original result unchanged.
-    """
-    return result
+    """Append runtime guidance to the current tool result content."""
+    if decision.action not in {"warn", "halt"} or not decision.message:
+        return result
+    label = "Tool loop hard stop" if decision.action == "halt" else "Tool loop warning"
+    suffix = (
+        f"\n\n[{label}: "
+        f"{decision.code}; count={decision.count}; {decision.message}]"
+    )
+    return (result or "") + suffix
 
 
 def _tool_failure_recovery_hint(tool_name: str, count: int) -> str:

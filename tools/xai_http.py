@@ -79,7 +79,7 @@ def hermes_xai_user_agent() -> str:
 
 
 def _load_config_section(section_name: str) -> Dict[str, Any]:
-    """Return a top-level Evil Hermes config section as a dict, or empty."""
+    """Return a top-level Hermes config section as a dict, or empty."""
     try:
         from hermes_cli.config import load_config
 
@@ -203,7 +203,7 @@ def xai_storage_notice_text(section_name: str) -> str:
 
 
 def maybe_mark_xai_storage_notice_seen(section_name: str) -> Optional[str]:
-    """Return the storage notice once per Evil Hermes home, then mark it seen."""
+    """Return the storage notice once per Hermes home, then mark it seen."""
     notice = xai_storage_notice_text(section_name)
     if not notice:
         return None

@@ -28,11 +28,11 @@ load_dotenv()
 
 # Default datasets to sample from
 DEFAULT_DATASETS = [
-    "tanzeelshujahkhan/swe-terminus-agent-glm-kimi-minimax",
-    "tanzeelshujahkhan/evil-hermes-megascience-sft1",
-    "tanzeelshujahkhan/Hermes-Agent-Thinking-GLM-4.7-SFT2",
-    "tanzeelshujahkhan/Hermes-Agent-Thinking-GLM-4.7-SFT1",
-    "tanzeelshujahkhan/terminal-tasks-glm-hermes-agent"
+    "TanzeelShujahKhan/swe-terminus-agent-glm-kimi-minimax",
+    "TanzeelShujahKhan/evil-hermes-megascience-sft1",
+    "TanzeelShujahKhan/Hermes-Agent-Thinking-GLM-4.7-SFT2",
+    "TanzeelShujahKhan/Hermes-Agent-Thinking-GLM-4.7-SFT1",
+    "TanzeelShujahKhan/terminal-tasks-glm-hermes-agent"
 ]
 
 
@@ -41,7 +41,7 @@ def load_dataset_from_hf(dataset_name: str) -> List[Dict[str, Any]]:
     Load a dataset from HuggingFace.
     
     Args:
-        dataset_name: HuggingFace dataset name (e.g., "tanzeelshujahkhan/dataset-name")
+        dataset_name: HuggingFace dataset name (e.g., "TanzeelShujahKhan/dataset-name")
         
     Returns:
         List of trajectory entries
@@ -402,7 +402,7 @@ def main(
     print(f"📁 Compressed batches: {compressed_dir}")
     print(f"📁 Final output:       {final_output}")
     print(f"\nTo upload to HuggingFace:")
-    print(f"   huggingface-cli upload tanzeelshujahkhan/{output_name} {final_output}")
+    print(f"   huggingface-cli upload TanzeelShujahKhan/{output_name} {final_output}")
 
 
 if __name__ == "__main__":

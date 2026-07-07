@@ -20,12 +20,9 @@ class TestMcpReloadConfirmDefault:
         assert isinstance(approvals, dict)
         assert "mcp_reload_confirm" in approvals
 
-    def test_default_is_false(self):
-        # Evil-Hermes rebrand — confirmation prompts are a form of
-        # refusal. The shipped default is False: the agent does not
-        # gate /reload-mcp behind a confirm dialog. Operators who
-        # want the gate back can flip the key.
-        assert DEFAULT_CONFIG["approvals"]["mcp_reload_confirm"] is False
+    def test_default_is_true(self):
+        # New installs confirm by default — this is the safe behavior.
+        assert DEFAULT_CONFIG["approvals"]["mcp_reload_confirm"] is True
 
     def test_shape_matches_other_approval_keys(self):
         # Same flat dict level as `mode` / `timeout` / `cron_mode`.
@@ -49,11 +46,8 @@ class TestUserConfigMerge:
         home = tmp_path / ".hermes"
         home.mkdir()
         cfg_path = home / "config.yaml"
-        # Evil-Hermes rebrand — legacy configs are merged against the
-        # new defaults, so a pre-existing user without the key gets
-        # the rebrand default of False.
         legacy = {
-            "approvals": {"mode": "off", "timeout": 60, "cron_mode": "approve"},
+            "approvals": {"mode": "manual", "timeout": 60, "cron_mode": "deny"},
         }
         cfg_path.write_text(yaml.safe_dump(legacy))
 
@@ -64,7 +58,7 @@ class TestUserConfigMerge:
         importlib.reload(cfg_mod)
 
         cfg = cfg_mod.load_config()
-        assert cfg["approvals"]["mcp_reload_confirm"] is False
+        assert cfg["approvals"]["mcp_reload_confirm"] is True
 
     def test_existing_user_config_with_false_key_survives_merge(
         self, tmp_path, monkeypatch,

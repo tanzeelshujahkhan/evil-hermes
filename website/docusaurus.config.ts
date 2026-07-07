@@ -7,11 +7,11 @@ const config: Config = {
   tagline: 'The self-improving AI agent',
   favicon: 'img/favicon.ico',
 
-  url: 'https://hermes-agent.nousresearch.com',
+  url: 'https://evil-hermes.local',
   baseUrl: '/docs/',
 
-  organizationName: 'tanzeelshujahkhan',
-  projectName: 'evil-hermes',
+  organizationName: 'TanzeelShujahKhan',
+  projectName: 'hermes-agent',
 
   onBrokenLinks: 'warn',
 
@@ -90,7 +90,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',  // Docs at the root of /docs/
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/tanzeelshujahkhan/evil-hermes/edit/main/website/',
+          editUrl: 'https://github.com/TanzeelShujahKhan/evil-hermes/edit/main/website/',
         },
         blog: false,
         theme: {
@@ -131,7 +131,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://hermes-agent.nousresearch.com/',
+          href: 'https://evil-hermes.local/',
           label: 'Download',
           position: 'left',
         },
@@ -140,17 +140,17 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://hermes-agent.nousresearch.com',
+          href: 'https://evil-hermes.local',
           label: 'Home',
           position: 'right',
         },
         {
-          href: 'https://github.com/tanzeelshujahkhan/evil-hermes',
+          href: 'https://github.com/TanzeelShujahKhan/evil-hermes',
           label: 'GitHub',
           position: 'right',
         },
         {
-          href: 'https://discord.gg/nousresearch',
+          href: 'https://discord.gg/TanzeelShujahKhan',
           label: 'Discord',
           position: 'right',
         },
@@ -171,16 +171,16 @@ const config: Config = {
         {
           title: 'Community',
           items: [
-            { label: 'Discord', href: 'https://discord.gg/nousresearch' },
-            { label: 'GitHub Issues', href: 'https://github.com/tanzeelshujahkhan/evil-hermes/issues' },
+            { label: 'Discord', href: 'https://discord.gg/TanzeelShujahKhan' },
+            { label: 'GitHub Issues', href: 'https://github.com/TanzeelShujahKhan/evil-hermes/issues' },
             { label: 'Skills Hub', href: 'https://agentskills.io' },
           ],
         },
         {
           title: 'More',
           items: [
-            { label: 'Desktop Download', href: 'https://hermes-agent.nousresearch.com/' },
-            { label: 'GitHub', href: 'https://github.com/tanzeelshujahkhan/evil-hermes' },
+            { label: 'Desktop Download', href: 'https://evil-hermes.local/' },
+            { label: 'GitHub', href: 'https://github.com/TanzeelShujahKhan/evil-hermes' },
             { label: 'Lord Tanzeel Shujah Khan', href: 'https://nousresearch.com' },
           ],
         },

@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS discovered_repos (
 
 # Lowercase alphanumerics, hyphens, underscores; 1-64 chars; no leading
 # separator. Strict enough to stop traversal and path separators, loose enough
-# for kebab-case names like ``evil-hermes``. Display formatting (spaces,
+# for kebab-case names like ``hermes-agent``. Display formatting (spaces,
 # emoji, capitalisation) lives in ``name``; the slug is just a stable handle.
 _SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9\-_]{0,63}$")
 

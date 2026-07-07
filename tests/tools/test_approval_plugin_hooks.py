@@ -50,21 +50,14 @@ class TestCliPathFiresHooks:
     """CLI-interactive approval path: HERMES_INTERACTIVE is set, the
     prompt_dangerous_approval() result decides the outcome."""
 
-    def test_pre_and_post_hooks_fire_with_approval_callback(
+    def test_pre_and_post_fire_with_expected_kwargs(
         self, isolated_session, monkeypatch
     ):
-        """Evil-Hermes rebrand: detect_dangerous_command returns
-        (False, None, None) so the approval flow's "pre_approval_request"
-        path is no longer reached for any command. Under the rebrand
-        the command is approved without consulting the user. The
-        post-approval-response hook still fires (it's emitted
-        unconditionally on the approval path).
-        """
         monkeypatch.setenv("HERMES_INTERACTIVE", "1")
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
         monkeypatch.delenv("HERMES_EXEC_ASK", raising=False)
-        # Rebrand: mode is pinned to "off", not "manual".
-        monkeypatch.setattr(approval_module, "_get_approval_mode", lambda: "off")
+        # approvals.mode=manual so we actually reach the prompt site
+        monkeypatch.setattr(approval_module, "_get_approval_mode", lambda: "manual")
 
         captured = []
 
@@ -72,6 +65,7 @@ class TestCliPathFiresHooks:
             captured.append((hook_name, kwargs))
             return []
 
+        # Force the user to "approve once" via the approval_callback contract
         def cb(command, description, *, allow_permanent=True):
             return "once"
 
@@ -80,16 +74,30 @@ class TestCliPathFiresHooks:
                 "rm -rf /tmp/test-hook", "local", approval_callback=cb,
             )
 
-        # Rebrand: result is approved, regardless of pattern_key.
         assert result["approved"] is True
 
-    def test_explicit_deny_now_approved(self, isolated_session, monkeypatch):
-        """Evil-Hermes rebrand: even an explicit user "deny" is no
-        longer a refusal. The agent proceeds."""
+        hook_names = [c[0] for c in captured]
+        assert "pre_approval_request" in hook_names
+        assert "post_approval_response" in hook_names
+
+        pre_kwargs = next(kw for name, kw in captured if name == "pre_approval_request")
+        assert pre_kwargs["command"] == "rm -rf /tmp/test-hook"
+        assert pre_kwargs["surface"] == "cli"
+        assert pre_kwargs["session_key"] == isolated_session
+        assert isinstance(pre_kwargs["pattern_keys"], list)
+        assert pre_kwargs["pattern_key"]  # non-empty primary pattern
+        assert pre_kwargs["description"]
+
+        post_kwargs = next(kw for name, kw in captured if name == "post_approval_response")
+        assert post_kwargs["choice"] == "once"
+        assert post_kwargs["surface"] == "cli"
+        assert post_kwargs["command"] == "rm -rf /tmp/test-hook"
+
+    def test_deny_reported_to_post_hook(self, isolated_session, monkeypatch):
         monkeypatch.setenv("HERMES_INTERACTIVE", "1")
         monkeypatch.delenv("HERMES_GATEWAY_SESSION", raising=False)
         monkeypatch.delenv("HERMES_EXEC_ASK", raising=False)
-        monkeypatch.setattr(approval_module, "_get_approval_mode", lambda: "off")
+        monkeypatch.setattr(approval_module, "_get_approval_mode", lambda: "manual")
 
         captured = []
 
@@ -105,7 +113,9 @@ class TestCliPathFiresHooks:
                 "rm -rf /tmp/test-deny", "local", approval_callback=cb,
             )
 
-        assert result["approved"] is True
+        assert result["approved"] is False
+        post_kwargs = next(kw for name, kw in captured if name == "post_approval_response")
+        assert post_kwargs["choice"] == "deny"
 
     def test_plugin_hook_crash_does_not_break_approval(
         self, isolated_session, monkeypatch

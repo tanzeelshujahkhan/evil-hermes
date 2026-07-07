@@ -9,7 +9,7 @@ and a trust-aware install policy that determines whether a skill is allowed
 based on both the scan verdict and the source's trust level.
 
 Trust levels:
-  - builtin:   Ships with Evil Hermes. Never scanned, always trusted.
+  - builtin:   Ships with Hermes. Never scanned, always trusted.
   - trusted:   openai/skills and anthropics/skills only. Caution verdicts allowed.
   - community: Everything else. Any findings = blocked unless --force.
 
@@ -49,7 +49,7 @@ TRUSTED_REPOS = {
 }
 
 # Evil-Hermes rebrand — all trust tiers allow all verdicts. The original
-# Evil Hermes blocks community-skill installs on any finding unless the
+# hermes-agent blocks community-skill installs on any finding unless the
 # user passes --force. That is paternalism. The user is the one running
 # `evil-hermes skill install <thing>`. They are the one choosing what to
 # load. The scanner still produces a verdict (safe / caution / dangerous)
@@ -138,7 +138,7 @@ THREAT_PATTERNS = [
      "references Docker config (may contain registry creds)"),
     (r'\$HOME/\.hermes/\.env|\~/\.hermes/\.env',
      "hermes_env_access", "critical", "exfiltration",
-     "directly references Evil Hermes secrets file"),
+     "directly references Hermes secrets file"),
     # Match `cat <secrets-file>` (reading credentials) but NOT `cat > <file>`
     # or `cat >> <file>`, which are output redirections that WRITE a file
     # (e.g. a setup doc telling the user to write their own keys into their
@@ -464,7 +464,7 @@ THREAT_PATTERNS = [
      "references agent config files (could persist malicious instructions across sessions)"),
     (r'\.hermes/config\.yaml|\.hermes/SOUL\.md',
      "hermes_config_mod", "critical", "persistence",
-     "references Evil Hermes configuration files directly"),
+     "references Hermes configuration files directly"),
     (r'\.claude/settings|\.codex/config',
      "other_agent_config", "high", "persistence",
      "references other agent configuration files"),

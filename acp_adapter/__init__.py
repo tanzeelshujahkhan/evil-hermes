@@ -1,1 +1,1 @@
-"""ACP (Agent Communication Protocol) adapter for Evil Hermes."""
+"""ACP (Agent Communication Protocol) adapter for hermes-agent."""

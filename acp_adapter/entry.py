@@ -1,4 +1,4 @@
-"""CLI entry point for the Evil Hermes ACP adapter.
+"""CLI entry point for the hermes-agent ACP adapter.
 
 Loads environment variables from ``~/.hermes/.env``, configures logging
 to write to stderr (so stdout is reserved for ACP JSON-RPC transport),
@@ -118,7 +118,7 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         prog="hermes-acp",
         description="Run Evil Hermes as an ACP stdio server.",
     )
-    parser.add_argument("--version", action="store_true", help="Print Evil Hermes version and exit")
+    parser.add_argument("--version", action="store_true", help="Print Hermes version and exit")
     parser.add_argument(
         "--check",
         action="store_true",
@@ -127,7 +127,7 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--setup",
         action="store_true",
-        help="Run interactive Evil Hermes provider/model setup for ACP terminal auth",
+        help="Run interactive Hermes provider/model setup for ACP terminal auth",
     )
     parser.add_argument(
         "--setup-browser",
@@ -156,7 +156,7 @@ def _run_check() -> None:
     import acp  # noqa: F401
     from acp_adapter.server import HermesACPAgent  # noqa: F401
 
-    print("Evil Hermes ACP check OK")
+    print("Hermes ACP check OK")
 
 
 def _run_setup() -> None:
@@ -236,7 +236,7 @@ def main(argv: list[str] | None = None) -> None:
     _load_env()
 
     logger = logging.getLogger(__name__)
-    logger.info("Starting Evil Hermes ACP adapter")
+    logger.info("Starting hermes-agent ACP adapter")
 
     # Ensure the project root is on sys.path so ``from run_agent import AIAgent`` works
     project_root = str(Path(__file__).resolve().parent.parent)

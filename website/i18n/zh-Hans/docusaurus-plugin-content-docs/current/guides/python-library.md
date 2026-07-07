@@ -15,19 +15,19 @@ Hermes 不仅仅是一个 CLI 工具。你可以直接导入 `AIAgent`，在自�
 直接从仓库安装 Hermes：
 
 ```bash
-pip install git+https://github.com/tanzeelshujahkhan/evil-hermes.git
+pip install git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 ```
 
 或使用 [uv](https://docs.astral.sh/uv/)：
 
 ```bash
-uv pip install git+https://github.com/tanzeelshujahkhan/evil-hermes.git
+uv pip install git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 ```
 
 也可以在 `requirements.txt` 中固定版本：
 
 ```text
-evil-hermes @ git+https://github.com/tanzeelshujahkhan/evil-hermes.git
+hermes-agent @ git+https://github.com/TanzeelShujahKhan/evil-hermes.git
 ```
 
 :::tip

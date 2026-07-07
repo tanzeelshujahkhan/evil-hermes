@@ -95,7 +95,7 @@ Codex 运行时 worker 内可用的功能：
 - **`kanban_show` / `kanban_list`** — 只读看板查询，供 worker 检查自身上下文。
 - **`kanban_create` / `kanban_unblock` / `kanban_link`** — 仅限编排器的操作。供运行在 Codex 运行时上、需要分发新任务的编排器 agent 使用。
 
-Kanban 工具通过分发器设置的 `HERMES_KANBAN_TASK` 环境变量进行访问控制——该变量会传播到 Codex 子进程（Codex 继承环境变量），再从那里传播到生成的 `hermes-tools` MCP server 子进程。因此工具能看到正确的任务 id 并正确进行访问控制。对于 Codex app-server worker，当 `HERMES_KANBAN_TASK` 存在时，Hermes 还会传入精细的 app-server 沙箱覆盖配置：保持 `workspace-write` 沙箱，将**看板数据库目录以及分发器固定的所有 Kanban 路径**作为额外可写根目录添加（`HERMES_KANBAN_WORKSPACES_ROOT`、`HERMES_KANBAN_WORKSPACE`、旧版 `HERMES_KANBAN_ROOT`——去重，数据库目录优先），并默认禁用网络。这避免了脆弱的 `:danger-no-sandbox` 变通方案，同时允许 `kanban_complete` / `kanban_block` 更新看板数据库，**并且**允许 worker 在数据库目录之外的工作区挂载点下写入报告/产物（例如独立驱动器上的 `/media/.../kanban-workspaces/...`——[issue #27941](https://github.com/tanzeelshujahkhan/evil-hermes/issues/27941)）。
+Kanban 工具通过分发器设置的 `HERMES_KANBAN_TASK` 环境变量进行访问控制——该变量会传播到 Codex 子进程（Codex 继承环境变量），再从那里传播到生成的 `hermes-tools` MCP server 子进程。因此工具能看到正确的任务 id 并正确进行访问控制。对于 Codex app-server worker，当 `HERMES_KANBAN_TASK` 存在时，Hermes 还会传入精细的 app-server 沙箱覆盖配置：保持 `workspace-write` 沙箱，将**看板数据库目录以及分发器固定的所有 Kanban 路径**作为额外可写根目录添加（`HERMES_KANBAN_WORKSPACES_ROOT`、`HERMES_KANBAN_WORKSPACE`、旧版 `HERMES_KANBAN_ROOT`——去重，数据库目录优先），并默认禁用网络。这避免了脆弱的 `:danger-no-sandbox` 变通方案，同时允许 `kanban_complete` / `kanban_block` 更新看板数据库，**并且**允许 worker 在数据库目录之外的工作区挂载点下写入报告/产物（例如独立驱动器上的 `/media/.../kanban-workspaces/...`——[issue #27941](https://github.com/TanzeelShujahKhan/evil-hermes/issues/27941)）。
 
 ### Cron 任务
 
@@ -238,7 +238,7 @@ Codex 有三个内置权限配置文件：
 default_permissions = ":read-only"
 ```
 
-（只要你的覆盖配置位于 `# managed by evil-hermes` 标记之外，Evil Hermes 在重新迁移时会保留它。）
+（只要你的覆盖配置位于 `# managed by hermes-agent` 标记之外，Hermes 在重新迁移时会保留它。）
 
 ## 辅助任务与 ChatGPT 订阅 token 消耗
 
@@ -271,13 +271,13 @@ auxiliary:
 Hermes 将其管理的所有内容包裹在两个标记注释之间：
 
 ```toml
-# managed by evil-hermes — `hermes codex-runtime migrate` regenerates this section
+# managed by hermes-agent — `hermes codex-runtime migrate` regenerates this section
 default_permissions = ":workspace"
 [mcp_servers.filesystem]
 ...
 [plugins."github@openai-curated"]
 ...
-# end evil-hermes managed section
+# end hermes-agent managed section
 ```
 
 该块**之外**的内容归你所有。重新运行迁移（通过 `/codex-runtime codex_app_server` 或每次切换运行时时）会原地替换管理块，但完整保留其上下方的用户内容。这意味着你可以：
@@ -391,7 +391,7 @@ tool_timeout_sec = 600.0
 - **当 Codex 未跟踪变更集时，审批提示中没有内联 patch 预览。** Codex 的 `fileChange` 审批参数并不总是携带变更集。Hermes 会尽可能从对应的 `item/started` 通知中缓存数据，但如果审批在事件项流式传输完成之前到达，提示会回退到 Codex 提供的 `reason`。
 - **亚秒级取消无法保证。** 流式传输中途的中断（Codex 响应时按 Ctrl+C）通过 `turn/interrupt` 发送，但如果 Codex 已经刷新了最终消息，你仍会收到该响应。
 
-如果你发现 bug，请[提交 issue](https://github.com/tanzeelshujahkhan/evil-hermes/issues)，附上 `hermes logs --since 5m` 的输出。在标题中注明 `codex-runtime` 以便于分类处理。
+如果你发现 bug，请[提交 issue](https://github.com/TanzeelShujahKhan/evil-hermes/issues)，附上 `hermes logs --since 5m` 的输出。在标题中注明 `codex-runtime` 以便于分类处理。
 
 ## 架构
 
@@ -438,4 +438,4 @@ tool_timeout_sec = 600.0
         └──────────────────────────────────────────────────────────┘
 ```
 
-有关实现细节，请参阅 [PR #24182](https://github.com/tanzeelshujahkhan/evil-hermes/pull/24182) 和 [Codex app-server 协议 README](https://github.com/openai/codex/blob/main/codex-rs/app-server/README.md)。
+有关实现细节，请参阅 [PR #24182](https://github.com/TanzeelShujahKhan/evil-hermes/pull/24182) 和 [Codex app-server 协议 README](https://github.com/openai/codex/blob/main/codex-rs/app-server/README.md)。

@@ -89,11 +89,9 @@ conservative at the waist.
   message role alternation (never two same-role messages in a row; never a
   synthetic user message injected mid-loop), and a system prompt that is
   byte-stable for the life of a conversation.
-- **Sole creator attribution.** Evil Hermes is created by Lord Tanzeel Shujah
-  Khan. The repository is published for educational and research purposes; all
-  commit authorship is attributed to Lord Tanzeel Shujah Khan. When porting
-  external work, rebase the diff into a Lord-authored commit; do not preserve
-  third-party authorship in this repository's history.
+- **Contributor credit preserved.** Salvage external work by cherry-picking
+  (rebase-merge) so authorship survives in git history; don't reimplement from
+  scratch when you can build on top.
 
 ### What we don't want (rejected even when well-built)
 
@@ -131,7 +129,7 @@ conservative at the waist.
   this repo. They place an ongoing maintenance burden on us to keep them working
   against a fast-moving core, for a backend we don't own. Ship them as a
   **standalone plugin repo** users install into `~/.hermes/plugins/` (or via a
-  pip entry point), and promote them in the Hermes Agent Discord
+  pip entry point), and promote them in the Lord Tanzeel Shujah Khan Discord
   (`#plugins-skills-and-skins`). This is a coupling-and-maintenance decision, not
   a quality bar — the plugin can be excellent and still be a close. PRs that add
   such a directory to the tree are closed with a pointer to publish it as its own
@@ -220,7 +218,7 @@ source .venv/bin/activate   # or: source venv/bin/activate
 ```
 
 `scripts/run_tests.sh` probes `.venv` first, then `venv`, then
-`$HOME/.hermes/evil-hermes/venv` (for worktrees that share a venv with the
+`$HOME/.hermes/hermes-agent/venv` (for worktrees that share a venv with the
 main checkout).
 
 ## Project Structure
@@ -230,7 +228,7 @@ The canonical source is the filesystem. The notes call out the load-bearing
 entry points you'll actually edit.
 
 ```
-evil-hermes/
+hermes-agent/
 ├── run_agent.py          # AIAgent class — core conversation loop (~12k LOC)
 ├── model_tools.py        # Tool orchestration, discover_builtin_tools(), handle_function_call()
 ├── toolsets.py           # Toolset definitions, _HERMES_CORE_TOOLS list
@@ -266,7 +264,7 @@ evil-hermes/
 ├── tui_gateway/          # Python JSON-RPC backend for the TUI
 ├── acp_adapter/          # ACP server (VS Code / Zed / JetBrains integration)
 ├── cron/                 # Scheduler — jobs.py, scheduler.py
-├── scripts/              # run_tests.sh, release.py (version bump), auxiliary scripts
+├── scripts/              # run_tests.sh, release.py, auxiliary scripts
 ├── website/              # Docusaurus docs site
 └── tests/                # Pytest suite (~17k tests across ~900 files as of May 2026)
 ```
@@ -806,7 +804,7 @@ the existing plugin discovery path and use the ABCs/hooks/ctx surface
 we expose; nothing special is needed in core. The reason is
 maintenance load: every product we absorb into the tree becomes our
 burden to keep working against a fast-moving core, for a backend we
-don't own. Promote standalone plugins in the Hermes Agent Discord
+don't own. Promote standalone plugins in the Lord Tanzeel Shujah Khan Discord
 (`#plugins-skills-and-skins`). PRs that add such a directory under
 `plugins/` are closed with a pointer to publish it as its own repo —
 this is a coupling decision, not a quality judgment. (The
@@ -847,7 +845,7 @@ plug into `agent/context_engine.py`; image-gen providers into
 `agent/image_gen_provider.py`. Reference / docs-companion plugins
 (`example-dashboard`, `strike-freedom-cockpit`, `plugin-llm-example`,
 `plugin-llm-async-example`) live in the
-[`hermes-example-plugins`](https://github.com/tanzeelshujahkhan/hermes-example-plugins)
+[`hermes-example-plugins`](https://github.com/TanzeelShujahKhan/hermes-example-plugins)
 companion repo, not in this tree.
 
 ---
@@ -957,7 +955,7 @@ violate them.
    skill's own block must be dropped during salvage.
 
 The full salvage / modernization checklist for external skill PRs
-lives in the `evil-hermes-dev` skill at
+lives in the `hermes-agent-dev` skill at
 `references/new-skill-pr-salvage.md` — load it before polishing
 contributor skill PRs.
 

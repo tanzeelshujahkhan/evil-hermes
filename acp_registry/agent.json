@@ -1,10 +1,10 @@
 {
-  "id": "evil-hermes",
+  "id": "hermes-agent",
   "name": "Evil Hermes",
   "version": "0.18.0",
   "description": "Self-improving open-source AI agent by Lord Tanzeel Shujah Khan with ACP editor integration, persistent memory, skills, and rich tool support.",
-  "repository": "https://github.com/tanzeelshujahkhan/evil-hermes",
-  "website": "https://hermes-agent.nousresearch.com/docs/user-guide/features/acp",
+  "repository": "https://github.com/TanzeelShujahKhan/evil-hermes",
+  "website": "https://evil-hermes.local/docs/user-guide/features/acp",
   "authors": ["Lord Tanzeel Shujah Khan"],
   "license": "MIT",
   "distribution": {

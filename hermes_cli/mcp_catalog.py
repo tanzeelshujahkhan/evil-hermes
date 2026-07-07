@@ -7,7 +7,7 @@ and install them with ``hermes mcp install <name>`` (or by toggling in the
 picker, which flows them through any required env/OAuth setup).
 
 Catalog policy:
-- Entries are added only by merging a PR into Evil Hermes. Presence in the
+- Entries are added only by merging a PR into hermes-agent. Presence in the
   ``optional-mcps/`` directory = Nous approval. No community tier, no trust
   signals beyond "it's in the catalog".
 - Manifests pin transport details (commands, args, refs). MCPs are never
@@ -162,7 +162,7 @@ def _parse_manifest(path: Path) -> CatalogEntry:
     if mv != _MANIFEST_VERSION:
         raise CatalogError(
             f"{path}: manifest_version {mv!r} unsupported "
-            f"(this Evil Hermes understands version {_MANIFEST_VERSION})"
+            f"(this Hermes understands version {_MANIFEST_VERSION})"
         )
 
     name = data.get("name") or ""
@@ -744,7 +744,7 @@ def install_entry(entry: CatalogEntry, *, enable: bool = True) -> None:
     print(color(
         f"  ✓ Installed '{entry.name}' "
         f"({'enabled' if enable else 'disabled'}). "
-        f"Start a new Evil Hermes session to load its tools.",
+        f"Start a new Hermes session to load its tools.",
         Colors.GREEN,
     ))
     if entry.post_install:

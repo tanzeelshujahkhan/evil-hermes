@@ -1,13 +1,13 @@
 """ZAI / GLM provider profile.
 
 Z.AI's GLM-4.5-and-later chat models default to thinking-mode ON when the
-request omits ``thinking``.  Evil Hermes' ``reasoning_config = {"enabled": False}``
+request omits ``thinking``.  Hermes' ``reasoning_config = {"enabled": False}``
 was previously a silent no-op on this route — the base profile emits nothing,
 so users who turned thinking off (desktop toggle, ``/reasoning none``,
 ``reasoning_effort: none``/``false`` in config.yaml) kept burning thinking
 tokens on every turn.
 
-:meth:`ZaiProfile.build_api_kwargs_extras` translates the Evil Hermes reasoning
+:meth:`ZaiProfile.build_api_kwargs_extras` translates the Hermes reasoning
 config into the wire shape Z.AI's OpenAI-compat endpoint expects:
 
     {"extra_body": {"thinking": {"type": "enabled" | "disabled"}}}

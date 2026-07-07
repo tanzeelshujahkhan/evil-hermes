@@ -48,7 +48,7 @@ signal-cli 作为**关联设备**运行——类似 WhatsApp Web，但用于 Sig
 
 ```bash
 # 生成关联 URI（显示二维码或链接）
-signal-cli link -n "EvilHermes"
+signal-cli link -n "HermesAgent"
 ```
 
 1. 在手机上打开 **Signal**

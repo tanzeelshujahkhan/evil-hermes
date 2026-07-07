@@ -123,7 +123,7 @@ tail -f ~/.hermes/logs/update.log
 hermes version
 ```
 
-与 [GitHub releases 页面](https://github.com/tanzeelshujahkhan/evil-hermes/releases) 上的最新版本进行比较。
+与 [GitHub releases 页面](https://github.com/TanzeelShujahKhan/evil-hermes/releases) 上的最新版本进行比较。
 
 ### 从消息平台更新
 

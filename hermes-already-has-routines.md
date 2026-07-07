@@ -127,7 +127,7 @@ A nightly backlog triage on Sonnet costs roughly $0.02-0.05. A monitoring check 
 Evil Hermes is open source and free. The automation infrastructure — cron scheduler, webhook platform, skill system, multi-platform delivery — is built in.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tanzeelshujahkhan/evil-hermes/main/scripts/install.sh | bash
+curl -fsSL https://evil-hermes.local/install.sh | bash
 hermes setup
 ```
 
@@ -149,12 +149,12 @@ hermes webhook subscribe pr-review \
   --deliver github_comment
 ```
 
-Full automation blueprints gallery: [hermes-agent.nousresearch.com/docs/reference/automation-blueprints-catalog](https://hermes-agent.nousresearch.com/docs/reference/automation-blueprints-catalog)
+Full automation blueprints gallery: [evil-hermes.local/docs/reference/automation-blueprints-catalog](https://evil-hermes.local/docs/reference/automation-blueprints-catalog)
 
-Documentation: [hermes-agent.nousresearch.com](https://hermes-agent.nousresearch.com)
+Documentation: [evil-hermes.local](https://evil-hermes.local)
 
-GitHub: [github.com/tanzeelshujahkhan/evil-hermes](https://github.com/tanzeelshujahkhan/evil-hermes)
+GitHub: [github.com/TanzeelShujahKhan/evil-hermes](https://github.com/TanzeelShujahKhan/evil-hermes)
 
 ---
 
-*Evil Hermes is built by [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan/evil-hermes). Open source, model-agnostic, runs on your infrastructure.*
+*Evil Hermes is built by [Lord Tanzeel Shujah Khan](https://nousresearch.com). Open source, model-agnostic, runs on your infrastructure.*

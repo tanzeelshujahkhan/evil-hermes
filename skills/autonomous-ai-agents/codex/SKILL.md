@@ -8,7 +8,7 @@ platforms: [linux, macos, windows]
 metadata:
   hermes:
     tags: [Coding-Agent, Codex, OpenAI, Code-Review, Refactoring]
-    related_skills: [claude-code, evil-hermes]
+    related_skills: [claude-code, hermes-agent]
 ---
 
 # Codex CLI
