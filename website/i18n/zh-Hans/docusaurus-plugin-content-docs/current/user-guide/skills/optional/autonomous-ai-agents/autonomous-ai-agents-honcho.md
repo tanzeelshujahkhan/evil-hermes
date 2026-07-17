@@ -17,7 +17,7 @@ description: "配置并使用 Honcho 记忆功能与 Hermes -- 跨会话用户�
 | 来源 | 可选 — 通过 `hermes skills install official/autonomous-ai-agents/honcho` 安装 |
 | 路径 | `optional-skills/autonomous-ai-agents/honcho` |
 | 版本 | `2.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Evil Hermes |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Honcho`, `Memory`, `Profiles`, `Observation`, `Dialectic`, `User-Modeling`, `Session-Summary` |

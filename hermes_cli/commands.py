@@ -245,8 +245,8 @@ COMMAND_REGISTRY: list[CommandDef] = [
                cli_only=True),
     CommandDef("image", "Attach a local image file for your next prompt", "Info",
                cli_only=True, args_hint="<path>"),
-    CommandDef("update", "Update Evil Hermes Agent to the latest version", "Info"),
-    CommandDef("version", "Show Evil Hermes Agent version", "Info", aliases=("v",)),
+    CommandDef("update", "Update Evil Evil Hermes to the latest version", "Info"),
+    CommandDef("version", "Show Evil Evil Hermes version", "Info", aliases=("v",)),
     CommandDef("debug", "Upload debug report (system info + logs) and get shareable links", "Info",
                args_hint="[nous|local]"),
 

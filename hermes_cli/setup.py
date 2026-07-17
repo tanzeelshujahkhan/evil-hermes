@@ -1,5 +1,5 @@
 """
-Interactive setup wizard for Hermes Agent.
+Interactive setup wizard for Evil Hermes.
 
 Modular wizard with independently-runnable sections:
   1. Model & Provider — choose your AI provider and model
@@ -2802,7 +2802,7 @@ def run_setup_wizard(args):
     )
     print(
         color(
-            "│             ⚕ Evil Hermes Agent Setup Wizard                │", Colors.MAGENTA
+            "│             ⚕ Evil Evil Hermes Setup Wizard                │", Colors.MAGENTA
         )
     )
     print(
@@ -2813,7 +2813,7 @@ def run_setup_wizard(args):
     )
     print(
         color(
-            "│  Let's configure your Evil Hermes Agent installation.       │", Colors.MAGENTA
+            "│  Let's configure your Evil Evil Hermes installation.       │", Colors.MAGENTA
         )
     )
     print(

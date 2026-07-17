@@ -2,7 +2,7 @@
 name: stripe-link-cli
 description: Agent payments via Stripe Link — cards, SPT, approvals.
 version: 0.1.0
-author: Teknium (teknium1), Hermes Agent
+author: Teknium (teknium1), Evil Hermes
 license: MIT
 platforms: [linux, macos]
 metadata:
@@ -69,7 +69,7 @@ link-cli auth status
 If not authenticated, log in with a clear client name (this label shows in the user's Link app):
 
 ```
-link-cli auth login --client-name "Hermes" --interval 5 --timeout 300
+link-cli auth login --client-name "Evil Hermes" --interval 5 --timeout 300
 ```
 
 The `--interval`/`--timeout` form polls inline so the agent doesn't need to manage a `_next` step. Print the verification URL + phrase to the user and wait for the CLI to return.

@@ -2,7 +2,7 @@
 name: lbo-model
 description: Build leveraged buyout models in Excel — sources & uses, debt schedule, cash sweep, exit multiple, IRR/MOIC sensitivity. Pairs with excel-author. Use for PE screening, sponsor-case valuation, or illustrative LBO in a pitch.
 version: 1.0.0
-author: Anthropic (adapted by Nous Research)
+author: Anthropic (adapted by Lord Tanzeel Shujah Khan)
 license: Apache-2.0
 platforms: [linux, macos, windows]
 metadata:

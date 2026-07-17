@@ -17,7 +17,7 @@ Agent payments via Stripe Link — cards, SPT, approvals.
 | Source | Optional — install with `hermes skills install official/payments/stripe-link-cli` |
 | Path | `optional-skills/payments/stripe-link-cli` |
 | Version | `0.1.0` |
-| Author | Teknium (teknium1), Hermes Agent |
+| Author | Teknium (teknium1), Evil Hermes |
 | License | MIT |
 | Platforms | linux, macos |
 | Tags | `Payments`, `Stripe`, `Link`, `Checkout`, `MPP` |
@@ -87,7 +87,7 @@ link-cli auth status
 If not authenticated, log in with a clear client name (this label shows in the user's Link app):
 
 ```
-link-cli auth login --client-name "Hermes" --interval 5 --timeout 300
+link-cli auth login --client-name "Evil Hermes" --interval 5 --timeout 300
 ```
 
 The `--interval`/`--timeout` form polls inline so the agent doesn't need to manage a `_next` step. Print the verification URL + phrase to the user and wait for the CLI to return.

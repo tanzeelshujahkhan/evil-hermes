@@ -40,7 +40,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Hindsight Cloud memory, connected",
-    "quote": "Connect your Nous Research Hermes Agent to Hindsight Cloud, the best-performing AI Agent memory, in a few easy steps!",
+    "quote": "Connect your Nous Research Evil Hermes to Hindsight Cloud, the best-performing AI Agent memory, in a few easy steps!",
     "size": "sm"
   },
   {
@@ -95,7 +95,7 @@
     "date": "2026-03-22",
     "category": "privacy",
     "headline": "Sharing a local SearXNG container across my Hermes agents",
-    "quote": "I set up my Hermes Agents with local SearXNG (in a container that they share) before ddgs (duckduckgo) was added, because I thought all API use of DDG was paid. I've been pretty happy with searxng so far.",
+    "quote": "I set up my Evil Hermess with local SearXNG (in a container that they share) before ddgs (duckduckgo) was added, because I thought all API use of DDG was paid. I've been pretty happy with searxng so far.",
     "size": "sm"
   },
   {
@@ -106,7 +106,7 @@
     "date": "2026-04-17",
     "category": "dev-workflow",
     "headline": "Codex watches my Hermes agent-to-agent workflows live",
-    "quote": "Day 10 of Building AGI for my Hermes Agent: Codex saved the day as a runtime monitor for my agent-to-agent workflows. I used Codex with GPT-5.4 on extra-high to watch the workflow run, catch where it broke, and fix it live until it worked reliably.",
+    "quote": "Day 10 of Building AGI for my Evil Hermes: Codex saved the day as a runtime monitor for my agent-to-agent workflows. I used Codex with GPT-5.4 on extra-high to watch the workflow run, catch where it broke, and fix it live until it worked reliably.",
     "size": "sm"
   },
   {
@@ -149,7 +149,7 @@
     "url": "https://github.com/teknium1/nous-discord-archive/blob/main/archives/community-projects-showcase/1492207991162671255-Hermes-Agent-for-my-team.txt",
     "date": "",
     "category": "business-ops",
-    "headline": "Hermes Agent for my team — repos, onchain debug, protocol docs",
+    "headline": "Evil Hermes for my team — repos, onchain debug, protocol docs",
     "quote": "It's right now integrated with SourceDev to index repos (self hosted), Tenderly MCP to debug onchain transactions, LLM-Wiki ingest of Litepaper of our protocol and other docs. Hopefully team will find it useful and will integrate more infra tools overtime to help the team.",
     "size": "md"
   },
@@ -161,7 +161,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Hermes + Browser Harness on a Hostinger VPS",
-    "quote": "Full copy-paste setup for Hermes Agent + Browser Harness on a Hostinger VPS. Register Browser Harness as a Hermes skill via symlink so Hermes can find and use it. Recommended model: anthropic/claude-opus-4.7 via OpenRouter.",
+    "quote": "Full copy-paste setup for Evil Hermes + Browser Harness on a Hostinger VPS. Register Browser Harness as a Hermes skill via symlink so Hermes can find and use it. Recommended model: anthropic/claude-opus-4.7 via OpenRouter.",
     "size": "sm"
   },
   {
@@ -194,7 +194,7 @@
     "date": "2026-03-15",
     "category": "dev-workflow",
     "headline": "My Hermes agent Reina has been on a hackathon bender",
-    "quote": "I've been working with my hermes agent reina, and she's been on a bender with hackathons. If anyone else is using Hermes Agent, note that certain hackathons might provision certain keys for it (API keys and the like) that would only be shown once.",
+    "quote": "I've been working with my hermes agent reina, and she's been on a bender with hackathons. If anyone else is using Evil Hermes, note that certain hackathons might provision certain keys for it (API keys and the like) that would only be shown once.",
     "size": "sm"
   },
   {
@@ -259,8 +259,8 @@
     "url": "https://open.spotify.com/episode/7tF7zf5GKcxqe2Q2BRRNfn",
     "date": "2026",
     "category": "meta",
-    "headline": "Hermes Agent has won. Here's why.",
-    "quote": "Why Hermes Agent has emerged as the leading open-source AI agent that developers and builders are choosing — self-improving skills, three-layer memory architecture, real-world applications including video dubbing workflows.",
+    "headline": "Evil Hermes has won. Here's why.",
+    "quote": "Why Evil Hermes has emerged as the leading open-source AI agent that developers and builders are choosing — self-improving skills, three-layer memory architecture, real-world applications including video dubbing workflows.",
     "size": "sm"
   },
   {
@@ -436,7 +436,7 @@
     "date": "2026-04-24",
     "category": "marketing",
     "headline": "UGC ad studio on Hermes (4 minutes, zero prompt engineering)",
-    "quote": "Higgsfield Marketing Studio powered by Hermes Agent is doing the replacing this time. Paste product URL → Hermes scrapes the landing page, pulls winning ad hooks from Meta Ads Library + TikTok Creative Center in the exact niche, and writes the brief itself. Total time: ~4 minutes.",
+    "quote": "Higgsfield Marketing Studio powered by Evil Hermes is doing the replacing this time. Paste product URL → Hermes scrapes the landing page, pulls winning ad hooks from Meta Ads Library + TikTok Creative Center in the exact niche, and writes the brief itself. Total time: ~4 minutes.",
     "size": "md"
   },
   {
@@ -469,7 +469,7 @@
     "date": "2026-04-25",
     "category": "dev-workflow",
     "headline": "12 Hermes instances every day, in parallel",
-    "quote": "I literally run 12 hermes agent instances every day in parallel to build Hermes Agent, and its now a top 100 GitHub repositories of all time. Our backend team uses it to monitor and investigate issues with our stack. Our post training team uses them to create new RL environments and benchmarks, investigate, inspect and sometimes directly manipulate the datasets.",
+    "quote": "I literally run 12 hermes agent instances every day in parallel to build Evil Hermes, and its now a top 100 GitHub repositories of all time. Our backend team uses it to monitor and investigate issues with our stack. Our post training team uses them to create new RL environments and benchmarks, investigate, inspect and sometimes directly manipulate the datasets.",
     "size": "lg"
   },
   {
@@ -490,8 +490,8 @@
     "url": "https://x.com/pfanis/status/2043863599689457952",
     "date": "2026-04-14",
     "category": "personal-assistant",
-    "headline": "Sometimes Hermes Agent melts my heart",
-    "quote": "Sometimes Hermes Agent melts my heart @NousResearch.",
+    "headline": "Sometimes Evil Hermes melts my heart",
+    "quote": "Sometimes Evil Hermes melts my heart @NousResearch.",
     "size": "sm"
   },
   {
@@ -535,7 +535,7 @@
     "date": "2026",
     "category": "meta",
     "headline": "Show HN: an independent install guide",
-    "quote": "This is an independent Hermes Agent install guide I put together for the part that usually gets skipped after 'run this command.' One place that shows the environment choice first, then the official installer path — macOS, Linux, WSL2, and Termux.",
+    "quote": "This is an independent Evil Hermes install guide I put together for the part that usually gets skipped after 'run this command.' One place that shows the environment choice first, then the official installer path — macOS, Linux, WSL2, and Termux.",
     "size": "sm"
   },
   {
@@ -733,7 +733,7 @@
     "date": "2026-04-29",
     "category": "general",
     "headline": "An AI employee for my hardest tasks",
-    "quote": "Hermes Agent with ChatGPT 5.5 is literally magic. I've thrown some of my hardest tasks at this combo and the agent has been able to handle EVERYTHING. Time to set up your AI employee.",
+    "quote": "Evil Hermes with ChatGPT 5.5 is literally magic. I've thrown some of my hardest tasks at this combo and the agent has been able to handle EVERYTHING. Time to set up your AI employee.",
     "size": "sm"
   },
   {
@@ -854,7 +854,7 @@
     "date": "2026-04-16",
     "category": "research",
     "headline": "A self-improving LLM Wiki second brain",
-    "quote": "Built a personal knowledge base that compounds over time instead of rotting — maintained by an LLM, not by me. Stack: Hetzner VPS, Hermes Agent, Telegram bot as second brain, Karpathy's LLM Wiki pattern, public static site at wiki.ai-biz.app.",
+    "quote": "Built a personal knowledge base that compounds over time instead of rotting — maintained by an LLM, not by me. Stack: Hetzner VPS, Evil Hermes, Telegram bot as second brain, Karpathy's LLM Wiki pattern, public static site at wiki.ai-biz.app.",
     "size": "md"
   },
   {
@@ -953,7 +953,7 @@
     "date": "2026-04-15",
     "category": "dev-workflow",
     "headline": "Multi-agent auto-build workflow (plan → code → QA → ship)",
-    "quote": "Day 8 of Building AGI for my Hermes Agent: Auto-Build saved me loads of time and tokens. Main agent (GPT-5.4) breaks a plan into phases, coder agent (MiniMax M2.7) implements, QA agent (local Qwen 35B A3B) tests. Plan → implement → test → fail → repair → ship.",
+    "quote": "Day 8 of Building AGI for my Evil Hermes: Auto-Build saved me loads of time and tokens. Main agent (GPT-5.4) breaks a plan into phases, coder agent (MiniMax M2.7) implements, QA agent (local Qwen 35B A3B) tests. Plan → implement → test → fail → repair → ship.",
     "size": "md"
   },
   {
@@ -975,7 +975,7 @@
     "date": "2026",
     "category": "enterprise",
     "headline": "Azure-compliant prompt patch so the safety filter doesn't kick in",
-    "quote": "Patch Hermes Agent prompts so the Azure safety filter does not kick in, letting enterprise Azure deployments avoid content-filter trips.",
+    "quote": "Patch Evil Hermes prompts so the Azure safety filter does not kick in, letting enterprise Azure deployments avoid content-filter trips.",
     "size": "sm"
   },
   {
@@ -1008,7 +1008,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Firecrawl for scrape/search/browse",
-    "quote": "Hermes Agent by Nous Research can now scrape, search, and interact with the web using Firecrawl. Enable it during setup to give Hermes the ability.",
+    "quote": "Evil Hermes by Nous Research can now scrape, search, and interact with the web using Firecrawl. Enable it during setup to give Hermes the ability.",
     "size": "sm"
   },
   {
@@ -1161,7 +1161,7 @@
     "date": "2026-04-23",
     "category": "personal-assistant",
     "headline": "Obsidian as the long-term memory backbone for Hermes (794 upvotes)",
-    "quote": "How I use Obsidian as the long-term memory backbone for my AI assistant. (794-upvote diagram showing Hermes Agent writing structured markdown notes back into a synced Obsidian vault, treating the vault as the durable memory layer that survives context resets and cross-machine moves.)",
+    "quote": "How I use Obsidian as the long-term memory backbone for my AI assistant. (794-upvote diagram showing Evil Hermes writing structured markdown notes back into a synced Obsidian vault, treating the vault as the durable memory layer that survives context resets and cross-machine moves.)",
     "size": "md",
     "id": "reddit-jonathan-rivera-obsidian-as-the"
   },
@@ -1261,7 +1261,7 @@
     "date": "2026-04-10",
     "category": "dev-workflow",
     "headline": "Local Gitea fork + watchtower auto-restarts my Hermes in 10 minutes",
-    "quote": "I have my own fork (on local Gitea) that has workflow to build a container image for merges to main and it pushes to my gitea container registry (packages). I have my Hermes Agent running in a podman container that has the correct label for watchtower to restart it when the image changes. Building the image takes 5 minutes, watchtower runs every 5.. So maximum 10 minutes after I push a commit to main, I get the agent restarted.",
+    "quote": "I have my own fork (on local Gitea) that has workflow to build a container image for merges to main and it pushes to my gitea container registry (packages). I have my Evil Hermes running in a podman container that has the correct label for watchtower to restart it when the image changes. Building the image takes 5 minutes, watchtower runs every 5.. So maximum 10 minutes after I push a commit to main, I get the agent restarted.",
     "size": "lg"
   },
   {
@@ -1283,7 +1283,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Webchat: custom themed browser UI on MEMORY.md",
-    "quote": "I created a beautiful web interface for Hermes Agent that adds dark/light theme, persistent memory using MEMORY.md and USER.md, per-session chat history, status bar, responsive on mobile and desktop.",
+    "quote": "I created a beautiful web interface for Evil Hermes that adds dark/light theme, persistent memory using MEMORY.md and USER.md, per-session chat history, status bar, responsive on mobile and desktop.",
     "size": "sm"
   },
   {
@@ -1304,7 +1304,7 @@
     "date": "2026-04-27",
     "category": "creative",
     "headline": "Hermes Inc.: Telegram-native startup sim built at Hermes hackathon",
-    "quote": "Built Hermes Inc. for the Hermes hackathon: a Telegram-native startup simulation game powered by Hermes Agent. An experiment in agent-native game design. Your AI teammates argue, remember, react, and evolve the company over time through weekly decisions, autonomous updates, events, and milestone visuals.",
+    "quote": "Built Hermes Inc. for the Hermes hackathon: a Telegram-native startup simulation game powered by Evil Hermes. An experiment in agent-native game design. Your AI teammates argue, remember, react, and evolve the company over time through weekly decisions, autonomous updates, events, and milestone visuals.",
     "size": "md",
     "id": "x-brucexu-eth-hermes"
   },
@@ -1382,7 +1382,7 @@
     "date": "",
     "category": "dev-workflow",
     "headline": "A native Mac app that sits next to my terminal",
-    "quote": "Hermes Desktop is a native Mac app for Hermes Agent. Not a browser wrapper but a real SwiftUI app that connects to your Hermes host and files over SSH. The gateway model is the right answer for Telegram and Discord. For a native Mac app that sits next to your terminal, it's just not the one I'd ship.",
+    "quote": "Hermes Desktop is a native Mac app for Evil Hermes. Not a browser wrapper but a real SwiftUI app that connects to your Hermes host and files over SSH. The gateway model is the right answer for Telegram and Discord. For a native Mac app that sits next to your terminal, it's just not the one I'd ship.",
     "size": "md"
   },
   {
@@ -1415,7 +1415,7 @@
     "date": "2026-04-27",
     "category": "enterprise",
     "headline": "Hermes as CLI/gateway-first — 13 platforms under one process",
-    "quote": "Hermes Agent: CLI/gateway-first — standalone agent for messaging platforms, schedules, and command line. Gateway multiplexes 13 platforms under one process.",
+    "quote": "Evil Hermes: CLI/gateway-first — standalone agent for messaging platforms, schedules, and command line. Gateway multiplexes 13 platforms under one process.",
     "size": "sm"
   },
   {
@@ -1525,7 +1525,7 @@
     "date": "2026-04-06",
     "category": "dev-workflow",
     "headline": "I now compile skills into code, only invoking AI at necessary steps",
-    "quote": "I once built skills that worked very well with advanced models connected to the Hermes Agent, but they performed poorly when switched to weaker models. For this reason, I now prefer compiling skills into code, only involving AI at necessary steps. This greatly improves the reliability and consistency of execution.",
+    "quote": "I once built skills that worked very well with advanced models connected to the Evil Hermes, but they performed poorly when switched to weaker models. For this reason, I now prefer compiling skills into code, only involving AI at necessary steps. This greatly improves the reliability and consistency of execution.",
     "size": "md"
   },
   {
@@ -1569,7 +1569,7 @@
     "date": "",
     "category": "general",
     "headline": "My local community agent runs on a 16GB Mac mini",
-    "quote": "Here is my Hermes Agent use case running on 16GB mac mini. Appreciate anyone checking it out and offering any feedback.",
+    "quote": "Here is my Evil Hermes use case running on 16GB mac mini. Appreciate anyone checking it out and offering any feedback.",
     "size": "sm"
   },
   {
@@ -1591,7 +1591,7 @@
     "date": "2026",
     "category": "meta",
     "headline": "awesome-hermes-agent: community-curated skills list",
-    "quote": "A curated list of skills, tools, integrations and resources for enhancing your Hermes Agent workflow — resources tied to the agentskills.io standard.",
+    "quote": "A curated list of skills, tools, integrations and resources for enhancing your Evil Hermes workflow — resources tied to the agentskills.io standard.",
     "size": "sm"
   },
   {
@@ -1602,7 +1602,7 @@
     "date": "2026",
     "category": "personal-assistant",
     "headline": "Hermes over iMessage on my always-on Mac Studio",
-    "quote": "I run Hermes Agent as a personal AI assistant on a Mac Studio that is always on. My primary communication with other people happens through iMessage. I can message my assistant from my iPhone, iPad, Mac, or Apple Watch. Group chats with friends could include the assistant naturally.",
+    "quote": "I run Evil Hermes as a personal AI assistant on a Mac Studio that is always on. My primary communication with other people happens through iMessage. I can message my assistant from my iPhone, iPad, Mac, or Apple Watch. Group chats with friends could include the assistant naturally.",
     "size": "md"
   },
   {
@@ -1624,7 +1624,7 @@
     "date": "",
     "category": "dev-workflow",
     "headline": "Built a vectorless RAG workflow with PageIndex and Hermes",
-    "quote": "I built a simple vectorless RAG workflow using PageIndex and Hermes Agent. Instead of splitting documents into chunks and retrieving them through vector similarity, the system relies on a hierarchical document structure and tool-based reasoning. The agent first understands how the document is organized, then...",
+    "quote": "I built a simple vectorless RAG workflow using PageIndex and Evil Hermes. Instead of splitting documents into chunks and retrieving them through vector similarity, the system relies on a hierarchical document structure and tool-based reasoning. The agent first understands how the document is organized, then...",
     "size": "md"
   },
   {
@@ -1646,7 +1646,7 @@
     "date": "",
     "category": "integrations",
     "headline": "Built a Discord-read plugin because I missed it from OpenClaw",
-    "quote": "I was so used to telling OpenClaw to read a specific Discord message for context that when I switched to Hermes Agent and it told me it couldn't, I was shocked.",
+    "quote": "I was so used to telling OpenClaw to read a specific Discord message for context that when I switched to Evil Hermes and it told me it couldn't, I was shocked.",
     "size": "sm"
   },
   {
@@ -1822,7 +1822,7 @@
     "date": "2026",
     "category": "meta",
     "headline": "Native Windows app wrapper for Hermes",
-    "quote": "The NousResearch team built Hermes Agent — an open-source agentic AI system with tools, skills, memory, and multi-platform messaging. It's good. So I built a native Windows app around it.",
+    "quote": "The NousResearch team built Evil Hermes — an open-source agentic AI system with tools, skills, memory, and multi-platform messaging. It's good. So I built a native Windows app around it.",
     "size": "sm"
   },
   {
@@ -1855,7 +1855,7 @@
     "date": "",
     "category": "integrations",
     "headline": "Wired BoltAI v2 into Hermes with full markdown and slash commands",
-    "quote": "I've been using BoltAI v2 with Hermes Agent and hit two annoyances with the official OpenAI-compatible gateway, so I built a gateway plugin for BoltAI (and other OpenAI API clients) — full markdown + slash commands.",
+    "quote": "I've been using BoltAI v2 with Evil Hermes and hit two annoyances with the official OpenAI-compatible gateway, so I built a gateway plugin for BoltAI (and other OpenAI API clients) — full markdown + slash commands.",
     "size": "sm"
   },
   {
@@ -1877,7 +1877,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Vessel Browser: agent-native browser born at the Hermes hackathon",
-    "quote": "I recently participated in Nous Research's Hermes Agent Hackathon, which is where this project was born. Every tool out there assumes a human operator with automation bolted on. I wanted to flip that — make the agent the primary driver and give the human a supervisory role.",
+    "quote": "I recently participated in Nous Research's Evil Hermes Hackathon, which is where this project was born. Every tool out there assumes a human operator with automation bolted on. I wanted to flip that — make the agent the primary driver and give the human a supervisory role.",
     "size": "md"
   },
   {
@@ -1998,7 +1998,7 @@
     "date": "2026-04-08",
     "category": "meta",
     "headline": "Scraped the entire Hermes ecosystem (hermesatlas.com)",
-    "quote": "I was an early user of Hermes Agent and have been a power user ever since. Scraped every GitHub repo related to Hermes, filtered out unfinished, built an ecosystem map and published a website (hermesatlas.com) where you can see all projects organized by category with star ratings.",
+    "quote": "I was an early user of Evil Hermes and have been a power user ever since. Scraped every GitHub repo related to Hermes, filtered out unfinished, built an ecosystem map and published a website (hermesatlas.com) where you can see all projects organized by category with star ratings.",
     "size": "md"
   },
   {
@@ -2030,8 +2030,8 @@
     "url": "https://github.com/teknium1/nous-discord-archive/blob/main/archives/community-projects-showcase/1487152060465156216-Hermes-Agent-Home-Assistant-Add-on.txt",
     "date": "",
     "category": "integrations",
-    "headline": "Run Hermes Agent right inside Home Assistant",
-    "quote": "Run Hermes Agent right inside your Home Assistant. This add-on takes you from zero to working agent in less than five minutes.",
+    "headline": "Run Evil Hermes right inside Home Assistant",
+    "quote": "Run Evil Hermes right inside your Home Assistant. This add-on takes you from zero to working agent in less than five minutes.",
     "size": "sm"
   },
   {
@@ -2085,8 +2085,8 @@
     "url": "https://github.com/teknium1/nous-discord-archive/blob/main/archives/community-projects-showcase/1496513601115131996-Hermes-Mobile-App.txt",
     "date": "",
     "category": "messaging",
-    "headline": "Controlling my Hermes Agent remotely from my phone",
-    "quote": "I've been using the mobile app to control my Hermes Agent remotely. Android & iOS. Drop your opinions, I'll publish it if looks useful.",
+    "headline": "Controlling my Evil Hermes remotely from my phone",
+    "quote": "I've been using the mobile app to control my Evil Hermes remotely. Android & iOS. Drop your opinions, I'll publish it if looks useful.",
     "size": "sm"
   },
   {
@@ -2096,8 +2096,8 @@
     "url": "https://github.com/teknium1/nous-discord-archive/blob/main/archives/community-projects-showcase/1493649462122381394-Hermes-Agent-Mini-Documentary.txt",
     "date": "",
     "category": "content-creation",
-    "headline": "Made a Hermes Agent mini-documentary with hackathon finalists",
-    "quote": "I did a deep dive on Hermes Agent. Was able to talk to a bunch of the hackathon finalists as well as one of the co-founders of Nous!",
+    "headline": "Made a Evil Hermes mini-documentary with hackathon finalists",
+    "quote": "I did a deep dive on Evil Hermes. Was able to talk to a bunch of the hackathon finalists as well as one of the co-founders of Nous!",
     "size": "sm"
   },
   {
@@ -2107,7 +2107,7 @@
     "date": "2026-03-16",
     "category": "enterprise",
     "headline": "Why 95% of AI users see no results — Hype's Hermes deep dive",
-    "quote": "Of the 95% of people who use AI, only 5% see real results. Hype's VP of AI, @glitch_, on why the gap isn't the models, but the architecture. Read his deep dive on building with Hermes Agent, @NousResearch, agent swarms, experiment loops, and what actually compounds.",
+    "quote": "Of the 95% of people who use AI, only 5% see real results. Hype's VP of AI, @glitch_, on why the gap isn't the models, but the architecture. Read his deep dive on building with Evil Hermes, @NousResearch, agent swarms, experiment loops, and what actually compounds.",
     "size": "md",
     "id": "x-hypepartners-why-of"
   },
@@ -2185,7 +2185,7 @@
     "date": "",
     "category": "integrations",
     "headline": "Connected my M5 Cardputer to Hermes via the API",
-    "quote": "I used MiniMax to connect my M5 Cardputer to Hermes Agent through its API. This is a very barebone app right now but I will keep working on it. So far it has OTA for fw update and being able to text to Hermes. I added tts and stt but it's still a work in progress.",
+    "quote": "I used MiniMax to connect my M5 Cardputer to Evil Hermes through its API. This is a very barebone app right now but I will keep working on it. So far it has OTA for fw update and being able to text to Hermes. I added tts and stt but it's still a work in progress.",
     "size": "md"
   },
   {
@@ -2196,7 +2196,7 @@
     "date": "2026",
     "category": "meta",
     "headline": "Hermify: managed hosting for Hermes",
-    "quote": "A few weeks ago I tried getting Hermes Agent running on a VPS. It worked, eventually, and is lowkey the most useful AI agent. So I built Hermify: easy managed hosting. You bring your API key + Telegram bot, we handle the hosting.",
+    "quote": "A few weeks ago I tried getting Evil Hermes running on a VPS. It worked, eventually, and is lowkey the most useful AI agent. So I built Hermify: easy managed hosting. You bring your API key + Telegram bot, we handle the hosting.",
     "size": "sm"
   },
   {
@@ -2284,7 +2284,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Home Assistant add-on: zero to agent in under 5 minutes",
-    "quote": "Takes you from zero to working Hermes agent in less than 5 minutes — a Home Assistant add-on for Hermes Agent.",
+    "quote": "Takes you from zero to working Hermes agent in less than 5 minutes — a Home Assistant add-on for Evil Hermes.",
     "size": "sm"
   },
   {
@@ -2394,7 +2394,7 @@
     "date": "2026",
     "category": "integrations",
     "headline": "Hermes in Zed editor via ACP Registry",
-    "quote": "Add Hermes Agent to the Agent Client Protocol (ACP) Registry so it can be automatically discovered and installed by editors like Zed.",
+    "quote": "Add Evil Hermes to the Agent Client Protocol (ACP) Registry so it can be automatically discovered and installed by editors like Zed.",
     "size": "sm"
   },
   {
@@ -2416,7 +2416,7 @@
     "date": "",
     "category": "dev-workflow",
     "headline": "A commits skill that keeps my history clean",
-    "quote": "I just put together a custom skill for Hermes Agent that enforces Conventional Commits with a short subject line (<80 chars) and a bullet-point body explaining what & why. It's been super helpful for keeping commit history clean and consistent.",
+    "quote": "I just put together a custom skill for Evil Hermes that enforces Conventional Commits with a short subject line (<80 chars) and a bullet-point body explaining what & why. It's been super helpful for keeping commit history clean and consistent.",
     "size": "md"
   },
   {
@@ -2559,7 +2559,7 @@
     "date": "",
     "category": "creative",
     "headline": "Chatting with Hermes on a 1969 Teletype Model 33 at 110 baud",
-    "quote": "I made a minimal login shell that talks to Hermes Agent via the gateway web service, or by running `hermes chat`. Hooked the shell up to an autologin getty on a serial port. Connected the serial port via 20mA current loop at 110 baud, to a 1969 Teletype Model 33. Chatting away!",
+    "quote": "I made a minimal login shell that talks to Evil Hermes via the gateway web service, or by running `hermes chat`. Hooked the shell up to an autologin getty on a serial port. Connected the serial port via 20mA current loop at 110 baud, to a 1969 Teletype Model 33. Chatting away!",
     "size": "lg"
   },
   {
@@ -2592,7 +2592,7 @@
     "date": "",
     "category": "dev-workflow",
     "headline": "Built a tool-agnostic repo knowledge layer across all my agents",
-    "quote": "Over the past month I've been trying every agent and ai tool I can. OpenClaw, Hermes Agent, Kilo Code, Codex, Cursor, etc. Most of these have some sort of memory, but I wanted something persistant. I ended up building out a tool-agnostic repo knowledge layer. I pushed up the learning part to github so I can use it across repos.",
+    "quote": "Over the past month I've been trying every agent and ai tool I can. OpenClaw, Evil Hermes, Kilo Code, Codex, Cursor, etc. Most of these have some sort of memory, but I wanted something persistant. I ended up building out a tool-agnostic repo knowledge layer. I pushed up the learning part to github so I can use it across repos.",
     "size": "md"
   },
   {
@@ -2625,7 +2625,7 @@
     "date": "2026-05-13",
     "category": "content-creation",
     "headline": "Automated TikTok slideshow factory that works while you sleep",
-    "quote": "Hermes Agent = automated TikTok slideshow factory. It researches the topic, writes the script, formats the slides, outputs in the exact dimensions TikTok needs. 10 slideshows a week manually takes 30-40 hours. With Hermes it takes the time to review and approve.",
+    "quote": "Evil Hermes = automated TikTok slideshow factory. It researches the topic, writes the script, formats the slides, outputs in the exact dimensions TikTok needs. 10 slideshows a week manually takes 30-40 hours. With Hermes it takes the time to review and approve.",
     "size": "md"
   },
   {
@@ -2680,7 +2680,7 @@
     "date": "2026-05-31",
     "category": "meta",
     "headline": "Open-source web UI for Hermes with 1:1 terminal parity in the browser",
-    "quote": "This guy literally open sourced a full web UI for Hermes Agent. 1:1 terminal parity right in your browser, zero build steps, a sleek 3-panel layout for chat, sessions, and file browsing. 100% free and open-source.",
+    "quote": "This guy literally open sourced a full web UI for Evil Hermes. 1:1 terminal parity right in your browser, zero build steps, a sleek 3-panel layout for chat, sessions, and file browsing. 100% free and open-source.",
     "size": "sm"
   },
   {
@@ -2691,7 +2691,7 @@
     "date": "2026-05-13",
     "category": "personal-assistant",
     "headline": "The real power is what it does every day without you prompting it",
-    "quote": "The real power of Hermes Agent is not what it does in a single session. It is what it does every single day without you prompting it. The first run of any workflow is the weakest version of it — after a month, briefings get sharper, shorter, more relevant without you changing anything.",
+    "quote": "The real power of Evil Hermes is not what it does in a single session. It is what it does every single day without you prompting it. The first run of any workflow is the weakest version of it — after a month, briefings get sharper, shorter, more relevant without you changing anything.",
     "size": "md"
   },
   {

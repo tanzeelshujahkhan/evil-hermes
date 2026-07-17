@@ -7,7 +7,7 @@ sidebar_position: 5
 
 # 浏览器自动化
 
-Hermes Agent 内置完整的浏览器自动化工具集，支持多种后端选项：
+Evil Hermes 内置完整的浏览器自动化工具集，支持多种后端选项：
 
 - **Browserbase 云端模式** — 通过 [Browserbase](https://browserbase.com) 使用托管云端浏览器及反机器人工具
 - **Browser Use 云端模式** — 通过 [Browser Use](https://browser-use.com) 作为备选云端浏览器提供商

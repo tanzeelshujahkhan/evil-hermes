@@ -17,7 +17,7 @@ description: "适用于使用 @chenglou/pretext 构建创意浏览器演示 —�
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/creative/pretext` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Evil Hermes |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `creative-coding`, `typography`, `pretext`, `ascii-art`, `canvas`, `generative`, `text-layout`, `kinetic-typography` |

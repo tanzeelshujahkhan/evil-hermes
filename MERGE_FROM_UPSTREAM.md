@@ -75,9 +75,9 @@ When that happens, the maintainer runs the workflow above. Each merge is one fas
 
 ## What if a rebrand file diverged heavily?
 
-The PRESERVE_FILES list is the rebrand's surface. If upstream rewrites one of them (e.g. a full rewrite of `agent/prompt_builder.py` or `hermes_cli/default_soul.py`), the sync still works — it overwrites the file with the previous evil-hermes version, then the visible-surface audit re-applies any string-level changes the upstream file introduced that need to keep saying "Evil Hermes" instead of "Hermes".
+The PRESERVE_FILES list is the rebrand's surface. If upstream rewrites one of them (e.g. a full rewrite of `agent/prompt_builder.py` or `hermes_cli/default_soul.py`), the sync still works — it overwrites the file with the previous evil-hermes version, then the visible-surface audit re-applies any string-level changes the upstream file introduced that need to keep saying "Evil Hermes" instead of "Evil Hermes".
 
-The audit scripts are **idempotent** and **safe to re-run**. They only change "Hermes" to "Evil Hermes" inside string literals, leave paths and env vars alone, and skip docstrings and comments. Running them against a fresh upstream file is the recovery path.
+The audit scripts are **idempotent** and **safe to re-run**. They only change "Evil Hermes" to "Evil Hermes" inside string literals, leave paths and env vars alone, and skip docstrings and comments. Running them against a fresh upstream file is the recovery path.
 
 ## What is preserved across merges
 
@@ -91,7 +91,7 @@ The audit scripts are **idempotent** and **safe to re-run**. They only change "H
 
 ## What is NOT preserved (and re-applied by the audit)
 
-- The visible-surface audit applies to all of `hermes_cli/`, `agent/`, `tools/`, `gateway/`, `plugins/`, `acp_adapter/`. After the PRESERVE_FILES are copied, the audit runs and rewrites any new upstream strings that say "Hermes" (where they should say "Evil Hermes") inside string literals, f-strings, and module-level docstrings. Function/class docstrings, comments, and the `KEEP` set (paths, env vars, package names) are not touched.
+- The visible-surface audit applies to all of `hermes_cli/`, `agent/`, `tools/`, `gateway/`, `plugins/`, `acp_adapter/`. After the PRESERVE_FILES are copied, the audit runs and rewrites any new upstream strings that say "Evil Hermes" (where they should say "Evil Hermes") inside string literals, f-strings, and module-level docstrings. Function/class docstrings, comments, and the `KEEP` set (paths, env vars, package names) are not touched.
 - The `tests/` directory is left as upstream ships it. Tests are the rebrand-lowest-priority surface — the maintainer is happy to run the upstream test suite against the rebranded code; failures that trace to brand strings are a known cost.
 
 ## Manual fallback

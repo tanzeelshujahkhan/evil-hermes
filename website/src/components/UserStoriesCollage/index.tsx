@@ -174,7 +174,7 @@ export default function UserStoriesCollage(): JSX.Element {
       <div className={styles.hero}>
         <h1>User Stories &amp; Use Cases</h1>
         <p>
-          What the Hermes Agent community is actually building. Every tile
+          What the Evil Hermes community is actually building. Every tile
           below links to a real post, issue, video, or gist where someone
           describes how they use Hermes &mdash; scraped from X, GitHub, Reddit,
           Hacker News, YouTube, blogs, and podcasts.
@@ -302,8 +302,8 @@ export default function UserStoriesCollage(): JSX.Element {
           Add your story to this page
         </a>{' '}
         by editing <code>userStories.json</code>, or post it in the{' '}
-        <a href="https://discord.gg/NousResearch" target="_blank" rel="noopener noreferrer">
-          Nous Research Discord
+        <a href="https://discord.gg/evil-hermes" target="_blank" rel="noopener noreferrer">
+          Lord Tanzeel Shujah Khan Discord
         </a>{' '}
         and we&apos;ll pick it up.
       </div>

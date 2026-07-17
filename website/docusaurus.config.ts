@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'Hermes Agent',
+  title: 'Evil Hermes',
   tagline: 'The self-improving AI agent',
   favicon: 'img/favicon.ico',
 
@@ -127,9 +127,9 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'Hermes Agent',
+      title: 'Evil Hermes',
       logo: {
-        alt: 'Hermes Agent',
+        alt: 'Evil Hermes',
         src: 'img/logo.png',
       },
       items: [
@@ -193,13 +193,13 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            { label: 'Desktop Download', href: 'https://hermes-agent.nousresearch.com/' },
-            { label: 'GitHub', href: 'https://github.com/NousResearch/hermes-agent' },
-            { label: 'Nous Research', href: 'https://nousresearch.com' },
+            { label: 'Desktop Download', href: 'https://tanzeelshujahkhan.com/' },
+            { label: 'GitHub', href: 'https://github.com/tanzeelshujahkhan/evil-hermes' },
+            { label: 'Lord Tanzeel Shujah Khan', href: 'https://github.com/tanzeelshujahkhan' },
           ],
         },
       ],
-      copyright: `Built by <a href="https://nousresearch.com">Nous Research</a> · MIT License · ${new Date().getFullYear()}`,
+      copyright: `Created by <a href="https://github.com/tanzeelshujahkhan">Lord Tanzeel Shujah Khan</a> · MIT License · ${new Date().getFullYear()}`,
     },
     prism: {
       theme: prismThemes.github,

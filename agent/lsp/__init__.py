@@ -1,4 +1,4 @@
-"""Language Server Protocol (LSP) integration for Evil Hermes Agent.
+"""Language Server Protocol (LSP) integration for Evil Evil Hermes.
 
 Evil Hermes runs full language servers (pyright, gopls, rust-analyzer,
 typescript-language-server, etc.) as subprocesses and pipes their

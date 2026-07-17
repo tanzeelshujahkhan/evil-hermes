@@ -1,5 +1,5 @@
 """
-Lazy dependency installer for opt-in Evil Hermes Agent backends.
+Lazy dependency installer for opt-in Evil Evil Hermes backends.
 
 Many Evil Hermes features (Mistral TTS, ElevenLabs TTS, Honcho memory, Bedrock,
 Slack, Matrix, etc.) require Python packages that not every user needs. The

@@ -1,7 +1,7 @@
 """
 Weixin platform adapter.
 
-Connects Evil Hermes Agent to WeChat personal accounts via Tencent's iLink Bot API.
+Connects Evil Evil Hermes to WeChat personal accounts via Tencent's iLink Bot API.
 
 Design notes:
 - Long-poll ``getupdates`` drives inbound delivery.

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
 title: "Signal"
-description: "Set up Hermes Agent as a Signal messenger bot via signal-cli daemon"
+description: "Set up Evil Hermes as a Signal messenger bot via signal-cli daemon"
 ---
 
 # Signal Setup

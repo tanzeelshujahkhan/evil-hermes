@@ -5,7 +5,7 @@ sidebar_position: 16
 
 # Computer Use
 
-Hermes Agent can drive your desktop — clicking, typing, scrolling,
+Evil Hermes can drive your desktop — clicking, typing, scrolling,
 dragging — in the **background** on **macOS, Windows, and Linux**. Your
 cursor doesn't move, keyboard focus doesn't change, and your virtual
 desktops / Spaces don't switch on you. You and the agent co-work on the

@@ -123,7 +123,7 @@ def _bare_custom_provider_def(current_base_url: str) -> Optional[ProviderDef]:
 
 _HERMES_MODEL_WARNING = (
     "Nous Research Evil Hermes 3 & 4 models are NOT agentic and are not designed "
-    "for use with Evil Hermes Agent. They lack the tool-calling capabilities "
+    "for use with Evil Evil Hermes. They lack the tool-calling capabilities "
     "required for agent workflows. Consider using an agentic model instead "
     "(Claude, GPT, Gemini, DeepSeek, etc.)."
 )

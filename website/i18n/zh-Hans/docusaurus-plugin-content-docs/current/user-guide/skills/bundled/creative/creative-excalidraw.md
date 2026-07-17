@@ -17,7 +17,7 @@ description: "手绘风格 Excalidraw JSON 图表（架构图、流程图、时�
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/creative/excalidraw` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Evil Hermes |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Excalidraw`, `Diagrams`, `Flowcharts`, `Architecture`, `Visualization`, `JSON` |

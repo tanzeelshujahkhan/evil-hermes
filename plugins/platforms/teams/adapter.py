@@ -1,5 +1,5 @@
 """
-Microsoft Teams platform adapter for Evil Hermes Agent.
+Microsoft Teams platform adapter for Evil Evil Hermes.
 
 Uses the microsoft-teams-apps SDK for authentication and activity processing.
 Runs an aiohttp webhook server to receive messages from Teams.

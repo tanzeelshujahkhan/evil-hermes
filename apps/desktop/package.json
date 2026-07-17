@@ -1,10 +1,10 @@
 {
   "name": "hermes",
-  "productName": "Hermes",
+  "productName": "Evil Hermes",
   "private": true,
   "version": "0.17.0",
-  "description": "Native desktop shell for Hermes Agent.",
-  "author": "Nous Research",
+  "description": "Native desktop shell for Evil Hermes.",
+  "author": "Lord Tanzeel Shujah Khan",
   "type": "module",
   "main": "dist/electron-main.mjs",
   "engines": {
@@ -155,8 +155,8 @@
   "build": {
     "electronVersion": "40.10.2",
     "appId": "com.nousresearch.hermes",
-    "productName": "Hermes",
-    "executableName": "Hermes",
+    "productName": "Evil Hermes",
+    "executableName": "Evil Hermes",
     "protocols": [
       {
         "name": "Hermes Protocol",
@@ -201,9 +201,9 @@
       "entitlements": "electron/entitlements.mac.plist",
       "entitlementsInherit": "electron/entitlements.mac.inherit.plist",
       "extendInfo": {
-        "CFBundleDisplayName": "Hermes",
-        "CFBundleExecutable": "Hermes",
-        "CFBundleName": "Hermes",
+        "CFBundleDisplayName": "Evil Hermes",
+        "CFBundleExecutable": "Evil Hermes",
+        "CFBundleName": "Evil Hermes",
         "NSAudioCaptureUsageDescription": "Hermes uses audio capture for voice conversations.",
         "NSMicrophoneUsageDescription": "Hermes uses the microphone for voice input and voice conversations."
       },
@@ -237,7 +237,7 @@
       ]
     },
     "win": {
-      "legalTrademarks": "Hermes",
+      "legalTrademarks": "Evil Hermes",
       "target": [
         "nsis",
         "msi"
@@ -246,8 +246,8 @@
     },
     "linux": {
       "category": "Development",
-      "maintainer": "Nous Research <support@nousresearch.com>",
-      "synopsis": "Native desktop shell for Hermes Agent.",
+      "maintainer": "Lord Tanzeel Shujah Khan <lord@tanzeelshujahkhan.com>",
+      "synopsis": "Native desktop shell for Evil Hermes.",
       "target": [
         "AppImage",
         "deb",
@@ -258,8 +258,8 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "perMachine": false,
-      "shortcutName": "Hermes",
-      "uninstallDisplayName": "Hermes",
+      "shortcutName": "Evil Hermes",
+      "uninstallDisplayName": "Evil Hermes",
       "warningsAsErrors": false
     }
   }

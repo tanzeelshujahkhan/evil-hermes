@@ -17,7 +17,7 @@ description: "使用 FastMCP 在 Python 中构建、测试、检查、安装和�
 | 来源 | 可选 — 通过 `hermes skills install official/mcp/fastmcp` 安装 |
 | 路径 | `optional-skills/mcp/fastmcp` |
 | 版本 | `1.0.0` |
-| 作者 | Hermes Agent |
+| 作者 | Evil Hermes |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `MCP`, `FastMCP`, `Python`, `Tools`, `Resources`, `Prompts`, `Deployment` |

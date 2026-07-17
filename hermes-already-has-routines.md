@@ -157,4 +157,4 @@ GitHub: [github.com/NousResearch/hermes-agent](https://github.com/NousResearch/h
 
 ---
 
-*Hermes Agent is built by [Nous Research](https://nousresearch.com). Open source, model-agnostic, runs on your infrastructure.*
+*Evil Hermes is created by [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan). Forked from Hermes Agent by Nous Research. Open source, model-agnostic, runs on your infrastructure.*

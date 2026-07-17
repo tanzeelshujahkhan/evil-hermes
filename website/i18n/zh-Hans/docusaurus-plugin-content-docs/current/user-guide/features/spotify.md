@@ -7,7 +7,7 @@ Hermes 可以直接控制 Spotify——播放、队列、搜索、播放列表�
 ## 前提条件
 
 - 一个 Spotify 账号。**免费版**可使用搜索、播放列表、音乐库和活动工具。**Premium 版**才能使用播放控制（播放、暂停、跳曲、定位、音量、添加队列、切换设备）。
-- 已安装并运行 Hermes Agent。
+- 已安装并运行 Evil Hermes。
 - 使用播放工具时：需要一个**活跃的 Spotify Connect 设备**——至少一台设备（手机、桌面端、网页播放器、音箱）上必须打开 Spotify 应用，Web API 才有对象可控制。若无活跃设备，将收到 `403 Forbidden` 并提示"no active device"；在任意设备上打开 Spotify 后重试即可。
 
 ## 设置

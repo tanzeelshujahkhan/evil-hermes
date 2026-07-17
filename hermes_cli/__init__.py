@@ -1,5 +1,5 @@
 """
-Hermes CLI - Unified command-line interface for Hermes Agent.
+Hermes CLI - Unified command-line interface for Evil Hermes.
 
 Provides subcommands for:
 - hermes chat          - Interactive chat (same as ./hermes)

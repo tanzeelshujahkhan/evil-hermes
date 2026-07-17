@@ -42,7 +42,7 @@ description: "通过 twozero MCP 控制运行中的 TouchDesigner 实例——�
 ## 架构
 
 ```
-Hermes Agent -> MCP (Streamable HTTP) -> twozero.tox (port 40404) -> TD Python
+Evil Hermes -> MCP (Streamable HTTP) -> twozero.tox (port 40404) -> TD Python
 ```
 
 36 个原生工具。免费插件（无需付费/许可证——2026 年 4 月确认）。

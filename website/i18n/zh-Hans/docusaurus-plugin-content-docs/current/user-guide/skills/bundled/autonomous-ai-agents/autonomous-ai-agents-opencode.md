@@ -17,7 +17,7 @@ description: "将编码任务委托给 OpenCode CLI（功能开发、PR 审查�
 | 来源 | 内置（默认安装） |
 | 路径 | `skills/autonomous-ai-agents/opencode` |
 | 版本 | `1.2.0` |
-| 作者 | Hermes Agent |
+| 作者 | Evil Hermes |
 | 许可证 | MIT |
 | 平台 | linux, macos, windows |
 | 标签 | `Coding-Agent`, `OpenCode`, `Autonomous`, `Refactoring`, `Code-Review` |

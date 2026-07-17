@@ -116,7 +116,7 @@ def _load_env() -> None:
 def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog="hermes-acp",
-        description="Run Evil Hermes Agent as an ACP stdio server.",
+        description="Run Evil Evil Hermes as an ACP stdio server.",
     )
     parser.add_argument("--version", action="store_true", help="Print Evil Hermes version and exit")
     parser.add_argument(

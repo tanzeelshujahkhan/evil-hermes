@@ -2660,7 +2660,7 @@ class CLICommandsMixin:
         run_debug_share(args)
 
     def _handle_update_command(self) -> bool:
-        """Handle /update — update Hermes Agent to the latest version.
+        """Handle /update — update Evil Hermes to the latest version.
 
         In the classic CLI this exits the session and relaunches as
         ``hermes update`` so the user sees update output directly and gets
@@ -2674,7 +2674,7 @@ class CLICommandsMixin:
         from hermes_cli.config import is_managed, format_managed_message
 
         if is_managed():
-            print(f"  ✗ {format_managed_message('update Evil Hermes Agent')}")
+            print(f"  ✗ {format_managed_message('update Evil Evil Hermes')}")
             return False
 
         # Use the prompt_toolkit-native modal so the confirmation panel
@@ -2682,11 +2682,11 @@ class CLICommandsMixin:
         # with the prompt_toolkit event loop (same pattern as
         # _confirm_destructive_slash).
         choices = [
-            ("once", "Update Now", "exit the current session and update Evil Hermes Agent"),
+            ("once", "Update Now", "exit the current session and update Evil Evil Hermes"),
             ("cancel", "Cancel", "keep the current session"),
         ]
         raw = self._prompt_text_input_modal(
-            title="⚕  Update Evil Hermes Agent",
+            title="⚕  Update Evil Evil Hermes",
             detail="This will exit the current session and run `hermes update`.",
             choices=choices,
         )

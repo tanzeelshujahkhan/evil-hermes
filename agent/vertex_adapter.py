@@ -1,4 +1,4 @@
-"""Vertex AI (Google Cloud) adapter for Evil Hermes Agent.
+"""Vertex AI (Google Cloud) adapter for Evil Evil Hermes.
 
 Provides authentication and configuration for Vertex AI's OpenAI-compatible
 endpoint. This allows Evil Hermes to use Gemini models via Google Cloud with

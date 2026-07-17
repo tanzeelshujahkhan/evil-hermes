@@ -1,4 +1,4 @@
-"""AWS Bedrock Converse API adapter for Evil Hermes Agent.
+"""AWS Bedrock Converse API adapter for Evil Evil Hermes.
 
 Provides native integration with Amazon Bedrock using the Converse API,
 bypassing the OpenAI-compatible endpoint in favor of direct AWS SDK calls.

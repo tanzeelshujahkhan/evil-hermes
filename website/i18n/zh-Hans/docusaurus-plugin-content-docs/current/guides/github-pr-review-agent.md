@@ -15,7 +15,7 @@ description: "构建一个自动化 AI 代码审查器，监控你的仓库、�
 ```
 ┌───────────────────────────────────────────────────────────────────┐
 │                                                                   │
-│   Cron Timer  ──▶  Hermes Agent  ──▶  GitHub API  ──▶  Review     │
+│   Cron Timer  ──▶  Evil Hermes  ──▶  GitHub API  ──▶  Review     │
 │   (every 2h)       + gh CLI           (PR diffs)       delivery   │
 │                    + skill                             (Telegram, │
 │                    + memory                            Discord,   │
@@ -34,7 +34,7 @@ description: "构建一个自动化 AI 代码审查器，监控你的仓库、�
 
 ## 前提条件
 
-- **已安装 Hermes Agent** — 参见[安装指南](/getting-started/installation)
+- **已安装 Evil Hermes** — 参见[安装指南](/getting-started/installation)
 - **Gateway 已运行**（用于 cron 任务）：
   ```bash
   hermes gateway install   # Install as a service

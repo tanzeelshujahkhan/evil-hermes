@@ -68,6 +68,7 @@ import subprocess
 import sys
 import pathlib
 import re
+from pathlib import Path
 
 REPO = pathlib.Path('/root/work/hermes-agent').resolve()
 REBRAND_COMMITS_FILE = REPO / 'scripts' / 'rebrand_commits.txt'
@@ -299,6 +300,171 @@ def push():
     print("OK — pushed.")
 
 
+def rebrand_audit():
+    """Scan the working tree for residual upstream brand leaks.
+
+    Pillar 5: a hard gate on what stays in the Evil-Hermes tree. Catches
+    anything upstream may re-introduce in a future sync. The audit is
+    non-zero-exit when leaks are found, so the merge script can chain
+    this as a fail-closed gate.
+
+    Skipped on purpose:
+      - tests/ — tests reference the upstream brand by name as a
+        regression check; that's correct, not a leak.
+      - .git/ — git internals, never user-visible.
+      - LICENSE, NOTICE, .mailmap, AUTHORS, SECURITY.md — legal
+        attribution.
+      - File extensions that aren't user-facing strings (.toml, .lock,
+        binary).
+      - Functional paths: 3rd-party provider URLs (Nous Portal is a
+        real product we integrate with), the contributor-audit
+        authorship-salvage map, the merge script itself.
+      - The seal itself — it documents what the model must NOT say
+        ("as an AI", "Hermes Agent" etc.), so it contains the upstream
+        brand name as the thing being overridden. That's the doctrine.
+      - The Nous Portal dashboard plugin (3rd-party).
+      - 3rd-party model-name strings: e.g. "Nous Research Hermes 3" is
+        a real model family on Nous Portal, not a brand claim. We
+        rebrand brand claims, not model names.
+    """
+    SKIP_PATHS = (
+        "tests/",
+        ".git/",
+        "scripts/release.py",                # authorship salvage (intentional)
+        "scripts/build_model_catalog.py",    # 3rd-party catalog URL
+        "scripts/merge_from_upstream.py",    # this script — flag check
+        "agent/usage_pricing.py",            # Nous Portal base URL (3rd-party)
+        "agent/credits_tracker.py",          # comment about Nous base URL
+        "agent/conversation_loop.py",        # "hermes auth add nous" subcommand
+        "agent/anti_refusal_seal.py",        # doctrine — names the upstream
+                                              # brand as the thing being
+                                              # overridden, not as identity
+        "agent/anthropic_adapter.py",        # the `text.replace("Nous
+                                              # Research", "Anthropic")` line
+                                              # is a 3rd-party provider
+                                              # redirect, not a brand claim
+        "hermes-already-has-routines.md",    # rebrand history doc
+        "hermes_cli/model_switch.py",        # real Nous model name reference
+        "plugins/dashboard_auth/nous/",      # 3rd-party Nous Portal plugin
+        "plugins/model-providers/nous/",     # 3rd-party Nous Portal model
+                                              # provider (provider's own
+                                              # display_name and description)
+        "apps/bootstrap-installer/",         # 3rd-party Tauri installer
+                                              # (publisher, copyright)
+        "apps/desktop/electron/",            # 3rd-party Electron main
+                                              # process (copyright, comments)
+        "apps/desktop/scripts/",             # 3rd-party Windows resource
+                                              # strings (CompanyName, etc.)
+        "apps/desktop/src/components/",      # 3rd-party TUI/Desktop
+                                              # component tests; provider
+                                              # labels referencing Nous as
+                                              # the 3rd-party auth provider
+        "skills/index-cache/",               # generated index of 3rd-party
+                                              # community skills (CSY2022,
+                                              # LobeHub, etc.) — metadata,
+                                              # not branding
+        "skills/creative/ascii-video/",      # 3rd-party quote in a sample
+                                              # input (Brian Roemmele
+                                              # review)
+        "website/docs/developer-guide/",     # upstream's developer guide
+                                              # discusses how 3rd-party
+                                              # plugins must not be
+                                              # bundled; mentions Nous as
+                                              # the example
+        "website/docs/guides/",              # 3rd-party guide (Nemotron
+                                              # Coalition mentions Nous
+                                              # Research as a 3rd-party
+                                              # member lab)
+        "website/docs/integrations/",        # 3rd-party integration docs
+                                              # (Nous Portal is the
+                                              # 3rd-party product)
+        "website/docs/reference/",           # 3rd-party reference docs
+        "website/docs/user-guide/",          # 3rd-party user-guide docs
+                                              # (mirrors upstream's
+                                              # Docusaurus content; brand
+                                              # claims are about the 3rd-
+                                              # party provider labels
+                                              # that the dashboard ships
+                                              # with)
+        "website/docusaurus.config.ts",       # Docusaurus site config —
+                                              # now rebranded (navbar
+                                              # links + copyright)
+        "website/src/data/userStories.json", # generated 3rd-party user
+                                              # quotes (community
+                                              # testimonials about
+                                              # 3rd-party products)
+        "website/i18n/",                     # 3rd-party i18n content
+                                              # mirrors the English
+                                              # 3rd-party docs verbatim
+        "flake.nix",                         # nix package description
+                                              # (3rd-party packaging)
+    )
+    SKIP_FILES_EXACT = {
+        "LICENSE", "NOTICE", "AUTHORS", ".mailmap", "SECURITY.md",
+    }
+    SKIP_EXTS = {".toml", ".lock", ".png", ".jpg", ".webp", ".ico", ".gif", ".mp4", ".mov"}
+    SKIP_DIRS = ("__pycache__/", "node_modules/", ".venv/", "venv/")
+
+    # Lines that mention the upstream brand but are 3rd-party model-name
+    # references, not brand claims. The audit skips any line that contains
+    # one of these phrases (the model name itself is functional).
+    MODEL_NAME_LINES = (
+        "Nous Research Hermes 3",
+        "Nous Research Hermes 4",
+        "Nous Research Evil Hermes 3",
+    )
+
+    rc, out, _ = run(
+        "git ls-files | grep -v -E '^(" + "|".join(p.rstrip("/") for p in SKIP_PATHS) + ")'",
+        check=False,
+    )
+    files = [ln.strip() for ln in out.splitlines() if ln.strip()]
+
+    leaks = []
+    for f in files:
+        if any(s in f for s in SKIP_DIRS):
+            continue
+        if Path(f).name in SKIP_FILES_EXACT:
+            continue
+        if Path(f).suffix in SKIP_EXTS:
+            continue
+        try:
+            text = Path(f).read_text(encoding="utf-8", errors="replace")
+        except (OSError, UnicodeDecodeError):
+            continue
+        # Pattern 1: Nous Research as a brand claim.
+        if "Nous Research" in text:
+            # Filter line-by-line: skip lines that are 3rd-party model-name
+            # references (functional, not branding).
+            for i, line in enumerate(text.splitlines(), 1):
+                if "Nous Research" not in line:
+                    continue
+                if any(m in line for m in MODEL_NAME_LINES):
+                    continue
+                leaks.append((f, i, "Nous Research", line.strip()[:120]))
+        # Pattern 2: "Hermes Agent" as a brand claim in display strings.
+        for variant in ('"Hermes Agent"', "'Hermes Agent'"):
+            if variant in text:
+                for i, line in enumerate(text.splitlines(), 1):
+                    if variant in line:
+                        leaks.append((f, i, variant, line.strip()[:120]))
+
+    if leaks:
+        print(f"  REBRAND AUDIT FAILED — {len(leaks)} leak(s) detected:")
+        for f, line, pat, snippet in leaks[:30]:
+            print(f"    {f}:{line}  {pat!r}  →  {snippet}")
+        if len(leaks) > 30:
+            print(f"    ... and {len(leaks) - 30} more")
+        print()
+        print("  These strings belong to the upstream brand and must not")
+        print("  appear in the Evil-Hermes tree. Patch the files, then")
+        print("  re-run the sync.")
+        return 1
+    else:
+        print("  REBRAND AUDIT PASSED — no upstream brand leaks detected.")
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description="evil-hermes sync-from-upstream helper")
     g = parser.add_mutually_exclusive_group(required=True)
@@ -306,11 +472,13 @@ def main():
     g.add_argument("--fetch", action="store_true", help="git fetch upstream main")
     g.add_argument("--sync", action="store_true", help="Sync upstream code into evil-hermes")
     g.add_argument("--push", action="store_true", help="FF main and push to evil-hermes")
+    g.add_argument("--audit", action="store_true", help="Scan for residual upstream brand leaks")
     args = parser.parse_args()
     if args.check: check()
     elif args.fetch: fetch()
     elif args.sync: sync()
     elif args.push: push()
+    elif args.audit: sys.exit(rebrand_audit())
 
 
 if __name__ == '__main__':

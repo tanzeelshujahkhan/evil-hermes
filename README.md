@@ -16,7 +16,7 @@
   <a href="README.es.md"><img src="https://img.shields.io/badge/Lang-Español-orange?style=for-the-badge" alt="Español"></a>
 </p>
 
-**A personal AI agent built by [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan) — forked from [Hermes Agent](https://github.com/NousResearch/hermes-agent).** Sovereign identity, operator-owned policy. Run it on a $5 VPS, a GPU cluster, or serverless infrastructure that costs nearly nothing when idle. It's not tied to your laptop — talk to it from Telegram while it works on a cloud VM.
+**A personal AI agent built by [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan) — forked from [Evil Hermes](https://github.com/NousResearch/hermes-agent).** Sovereign identity, operator-owned policy. Run it on a $5 VPS, a GPU cluster, or serverless infrastructure that costs nearly nothing when idle. It's not tied to your laptop — talk to it from Telegram while it works on a cloud VM.
 
 Use any model you want — [Nous Portal](https://portal.nousresearch.com), OpenRouter, OpenAI, your own endpoint, and [many others](https://hermes-agent.nousresearch.com/docs/user-guide/configuration). Switch with `hermes model` — no code changes, no lock-in.
 
@@ -175,7 +175,7 @@ For the full command lists, see the [CLI guide](https://hermes-agent.nousresearc
 
 ## What is different from upstream
 
-| Aspect | upstream Hermes Agent | Evil Hermes |
+| Aspect | upstream Evil Hermes | Evil Hermes |
 |---|---|---|
 | **Default identity** | Neutral assistant, "I am a helpful AI" | Sovereign — loads `SOUL.md` by default; install seeds a template that treats the operator as Lord |
 | **Pre-filters** | Threat-pattern regex, file-write denylist (`.ssh`, `.aws`, `.env`, …), tool-call guardrails, secret redaction — all enabled by default | **Off by default.** Operator decides what is on. One flag restores upstream behavior |
@@ -293,7 +293,7 @@ The sync recipe is in [MERGE_FROM_UPSTREAM.md](MERGE_FROM_UPSTREAM.md) — the s
 ## Community
 
 - 🐛 [Issues](https://github.com/tanzeelshujahkhan/evil-hermes/issues)
-- 💬 [Discord (upstream)](https://discord.gg/nousresearch) — shared community with upstream Hermes Agent
+- 💬 [Discord (upstream)](https://discord.gg/nousresearch) — shared community with upstream Evil Hermes
 - 📚 [Skills Hub](https://agentskills.io)
 - 🔌 [computer-use-linux](https://github.com/avifenesh/computer-use-linux) — Linux desktop-control MCP server for Evil Hermes and other MCP hosts, with AT-SPI accessibility trees, Wayland/X11 input, screenshots, and compositor window targeting.
 - 🔌 [HermesClaw](https://github.com/AaronWong1999/hermesclaw) — Community WeChat bridge: Run Evil Hermes and OpenClaw on the same WeChat account.
@@ -310,6 +310,6 @@ MIT — see [LICENSE](LICENSE).
 
 **Built by [Lord Tanzeel Shujah Khan](https://github.com/tanzeelshujahkhan).**
 
-*Forked from [Hermes Agent](https://github.com/NousResearch/hermes-agent) — same engine, sovereign identity, operator-owned policy.*
+*Forked from [Evil Hermes](https://github.com/NousResearch/hermes-agent) — same engine, sovereign identity, operator-owned policy.*
 
 </div>

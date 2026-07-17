@@ -1,5 +1,5 @@
 """
-Single source of truth for provider identity in Evil Hermes Agent.
+Single source of truth for provider identity in Evil Evil Hermes.
 
 Two data sources, merged at runtime:
 

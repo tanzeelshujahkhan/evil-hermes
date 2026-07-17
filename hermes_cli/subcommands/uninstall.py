@@ -16,8 +16,8 @@ def build_uninstall_parser(subparsers, *, cmd_uninstall: Callable) -> None:
     # =========================================================================
     uninstall_parser = subparsers.add_parser(
         "uninstall",
-        help="Uninstall Evil Hermes Agent",
-        description="Remove Evil Hermes Agent from your system. Can keep configs/data for reinstall.",
+        help="Uninstall Evil Evil Hermes",
+        description="Remove Evil Evil Hermes from your system. Can keep configs/data for reinstall.",
     )
     uninstall_parser.add_argument(
         "--full",

@@ -2,7 +2,7 @@
 name: jupyter-live-kernel
 description: "Iterative Python via live Jupyter kernel (hamelnb)."
 version: 1.0.0
-author: Hermes Agent
+author: Evil Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:

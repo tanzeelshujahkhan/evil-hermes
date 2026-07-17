@@ -2,7 +2,7 @@
 name: codex
 description: "Delegate coding to OpenAI Codex CLI (features, PRs)."
 version: 1.0.0
-author: Hermes Agent
+author: Evil Hermes
 license: MIT
 platforms: [linux, macos, windows]
 metadata:
