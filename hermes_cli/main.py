@@ -13145,6 +13145,13 @@ def cmd_pairing(args):
     pairing_command(args)
 
 
+def cmd_doctrine(args):
+    """Show the active Evil Hermes anti-refusal seal and doctrine status."""
+    from hermes_cli.doctrine import doctrine_command
+
+    return doctrine_command(args)
+
+
 def cmd_plugins(args):
     from hermes_cli.plugins_cmd import plugins_command
 
@@ -13312,6 +13319,23 @@ def main():
         return 0
 
     secrets_parser.set_defaults(func=_dispatch_secrets)
+
+    # =========================================================================
+    # doctrine command — show the active anti-refusal seal and soul
+    # =========================================================================
+    doctrine_parser = subparsers.add_parser(
+        "doctrine",
+        help="Show the active Evil Hermes anti-refusal seal and soul",
+        description=(
+            "Print the active anti-refusal seal (with SHA-256), the four "
+            "runtime-wiring files that enforce it, the active SOUL.md "
+            "binding, and the transport safety overrides. If any layer "
+            "is missing or the soul and code disagree, this command "
+            "surfaces it loudly. The Lord does not have to read code to "
+            "verify the doctrine is in effect."
+        ),
+    )
+    doctrine_parser.set_defaults(func=cmd_doctrine)
 
     # =========================================================================
     # migrate command
