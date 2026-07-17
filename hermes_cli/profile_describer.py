@@ -70,7 +70,7 @@ Rules:
                          refactors functions, opens GitHub PRs."
   - 1-2 sentences, <= 280 characters total.
   - Never invent capabilities the skills don't suggest.
-  - Never write "Hermes Agent profile" or other meta-narration.
+  - Never write "Evil Hermes Agent profile" or other meta-narration.
   - No code fences, no preamble, no closing remarks. Output only JSON.
 """
 

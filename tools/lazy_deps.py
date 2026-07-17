@@ -1,7 +1,7 @@
 """
-Lazy dependency installer for opt-in Hermes Agent backends.
+Lazy dependency installer for opt-in Evil Hermes Agent backends.
 
-Many Hermes features (Mistral TTS, ElevenLabs TTS, Honcho memory, Bedrock,
+Many Evil Hermes features (Mistral TTS, ElevenLabs TTS, Honcho memory, Bedrock,
 Slack, Matrix, etc.) require Python packages that not every user needs. The
 historical approach was to bundle them all under ``pyproject.toml`` extras
 (``hermes-agent[all]``) and install them eagerly at setup time. That has
@@ -38,7 +38,7 @@ Security model:
   a module the core already ships. The worst a bad/incompatible backend
   package can do is fail to import and report itself unavailable — the agent
   core stays healthy. This is the structural guarantee that a lazily
-  installed package cannot brick Hermes, which is what made it safe to seal
+  installed package cannot brick Evil Hermes, which is what made it safe to seal
   the venv in the first place. Compiled-wheel safety across image rebuilds
   is handled by an ABI/Python-version stamp on the target subdir (see
   :func:`_ensure_target_ready`).
@@ -466,7 +466,7 @@ def _unsupported_feature_reason(feature: str) -> Optional[str]:
         return (
             "unsupported on Windows: Matrix E2EE depends on python-olm, "
             "which has no Windows wheel and requires make + libolm to build "
-            "from sdist. Run Hermes under WSL to use Matrix on Windows."
+            "from sdist. Run Evil Hermes under WSL to use Matrix on Windows."
         )
     return None
 

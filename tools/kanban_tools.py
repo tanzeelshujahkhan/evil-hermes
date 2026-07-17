@@ -961,7 +961,7 @@ def _download_url_with_cap(url: str, max_bytes: int) -> tuple[bytes, Optional[st
 def _handle_attach_url(args: dict, **kw) -> str:
     """Attach a file fetched server-side from a URL.
 
-    The agent passes a URL; Hermes downloads it (with the shared size cap)
+    The agent passes a URL; Evil Hermes downloads it (with the shared size cap)
     and stores it as a real attachment. Useful when the agent has a link
     rather than the bytes. Only http/https URLs are accepted.
     """
@@ -1656,7 +1656,7 @@ KANBAN_ATTACH_SCHEMA = {
 KANBAN_ATTACH_URL_SCHEMA = {
     "name": "kanban_attach_url",
     "description": (
-        "Attach a file to a task by URL — Hermes downloads it server-side "
+        "Attach a file to a task by URL — Evil Hermes downloads it server-side "
         "and stores it as a real attachment (capped at 25 MB). Use when "
         "you have a link rather than the bytes. Only http/https URLs are "
         "accepted."

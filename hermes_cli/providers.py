@@ -1,5 +1,5 @@
 """
-Single source of truth for provider identity in Hermes Agent.
+Single source of truth for provider identity in Evil Hermes Agent.
 
 Two data sources, merged at runtime:
 
@@ -7,7 +7,7 @@ Two data sources, merged at runtime:
    names, and full model metadata (context, cost, capabilities).  This is
    the primary database.
 
-2. **Hermes overlays** — transport type, auth patterns, aggregator flags,
+2. **Evil Hermes overlays** — transport type, auth patterns, aggregator flags,
    and additional env vars that models.dev doesn't track.  Small dict,
    maintained here.
 

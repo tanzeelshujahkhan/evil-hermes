@@ -7,7 +7,7 @@ something different on each:
   * macOS — explicit TCC grants (Accessibility + Screen Recording). cua-driver
     reports/requests them via ``permissions status`` / ``permissions grant``.
     The grants attach to cua-driver's OWN identity (``com.trycua.driver`` /
-    the installed ``CuaDriver.app``), NOT Hermes — so no Hermes entitlement is
+    the installed ``CuaDriver.app``), NOT Evil Hermes — so no Evil Hermes entitlement is
     involved, and ``grant`` launches CuaDriver via LaunchServices so the macOS
     dialog is attributed correctly.
   * Windows — no TCC toggles; the UIAccess worker (``cua-driver-uia.exe``) may

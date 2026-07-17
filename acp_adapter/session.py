@@ -1,4 +1,4 @@
-"""ACP session manager — maps ACP sessions to Hermes AIAgent instances.
+"""ACP session manager — maps ACP sessions to Evil Hermes AIAgent instances.
 
 Sessions are persisted to the shared SessionDB (``~/.hermes/state.db``) so they
 survive process restarts and appear in ``session_search``.  When the editor
@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 def _translate_acp_cwd(cwd: str) -> str:
-    """Translate Windows ACP cwd values when Hermes itself is running in WSL.
+    """Translate Windows ACP cwd values when Evil Hermes itself is running in WSL.
 
     Windows ACP clients can launch ``hermes acp`` inside WSL while still sending
     editor workspaces as Windows drive paths (``E:\\Projects``) or
@@ -112,7 +112,7 @@ def _acp_stderr_print(*args, **kwargs) -> None:
 def _register_task_cwd(task_id: str, cwd: str) -> None:
     """Bind a task/session id to the editor's working directory for tools.
 
-    Zed can launch Hermes from a Windows workspace while the ACP process runs
+    Zed can launch Evil Hermes from a Windows workspace while the ACP process runs
     inside WSL. In that case ACP sends cwd as e.g. ``E:\\Projects\\POTI``;
     local tools need the WSL mount equivalent or subprocess creation fails
     before the command can run.
@@ -157,7 +157,7 @@ def _clear_task_cwd(task_id: str) -> None:
 
 @dataclass
 class SessionState:
-    """Tracks per-session state for an ACP-managed Hermes agent."""
+    """Tracks per-session state for an ACP-managed Evil Hermes agent."""
 
     session_id: str
     agent: Any  # AIAgent instance
@@ -173,7 +173,7 @@ class SessionState:
 
 
 class SessionManager:
-    """Thread-safe manager for ACP sessions backed by Hermes AIAgent instances.
+    """Thread-safe manager for ACP sessions backed by Evil Hermes AIAgent instances.
 
     Sessions are held in-memory for fast access **and** persisted to the
     shared SessionDB so they survive process restarts and are searchable

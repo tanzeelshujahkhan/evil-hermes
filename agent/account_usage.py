@@ -456,7 +456,7 @@ def _resolve_codex_usage_credentials(
     """Resolve Codex quota credentials from the native runtime path.
 
     Prefer explicit live-agent credentials, then the legacy singleton OAuth
-    state, then the credential pool.  Hermes's native OAuth setup now stores
+    state, then the credential pool.  Evil Hermes's native OAuth setup now stores
     device-code logins in the pool, so quota diagnostics must not depend only
     on the older singleton store.
     """

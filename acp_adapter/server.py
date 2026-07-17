@@ -1,4 +1,4 @@
-"""ACP agent server — exposes Hermes Agent via the Agent Client Protocol."""
+"""ACP agent server — exposes Evil Hermes Agent via the Agent Client Protocol."""
 
 from __future__ import annotations
 
@@ -156,7 +156,7 @@ def _path_from_file_uri(uri: str) -> Path | None:
 
     Zed may send POSIX file URIs from Linux/WSL workspaces or Windows-ish paths
     when launched through wsl.exe. Translate the common Windows drive form to
-    /mnt/<drive>/... so Hermes running in WSL can read it.
+    /mnt/<drive>/... so Evil Hermes running in WSL can read it.
     """
     raw = (uri or "").strip()
     if not raw:
@@ -237,7 +237,7 @@ def _resource_link_to_parts(block: ResourceContentBlock) -> list[dict[str, Any]]
                 uri=uri,
                 name=name,
                 title=title,
-                body="[Resource link only; Hermes cannot read non-file ACP resource URIs directly.]",
+                body="[Resource link only; Evil Hermes cannot read non-file ACP resource URIs directly.]",
             ),
         }]
 
@@ -405,7 +405,7 @@ def _content_blocks_to_openai_user_content(
         | EmbeddedResourceContentBlock
     ],
 ) -> str | list[dict[str, Any]]:
-    """Convert ACP prompt blocks into a Hermes/OpenAI-compatible user content payload."""
+    """Convert ACP prompt blocks into a Evil Hermes/OpenAI-compatible user content payload."""
     parts: list[dict[str, Any]] = []
     text_parts: list[str] = []
 
@@ -448,7 +448,7 @@ def _content_blocks_to_openai_user_content(
 
 
 class HermesACPAgent(acp.Agent):
-    """ACP Agent implementation wrapping Hermes AIAgent."""
+    """ACP Agent implementation wrapping Evil Hermes AIAgent."""
 
     _SLASH_COMMANDS = {
         "help": "Show available commands",
@@ -459,7 +459,7 @@ class HermesACPAgent(acp.Agent):
         "compact": "Compress conversation context",
         "steer": "Inject guidance into the currently running agent turn",
         "queue": "Queue a prompt to run after the current turn finishes",
-        "version": "Show Hermes version",
+        "version": "Show Evil Hermes version",
     }
 
     _ADVERTISED_COMMANDS = (
@@ -500,7 +500,7 @@ class HermesACPAgent(acp.Agent):
         },
         {
             "name": "version",
-            "description": "Show Hermes version",
+            "description": "Show Evil Hermes version",
         },
     )
 
@@ -536,7 +536,7 @@ class HermesACPAgent(acp.Agent):
 
         Zed renders ``config_options`` in the prominent selector slot where the
         model picker was visible. Claude/Codex expose policy-like controls as ACP
-        modes, which coexist with the model picker, so Hermes maps edit approval
+        modes, which coexist with the model picker, so Evil Hermes maps edit approval
         policy onto modes instead of advertising config options.
         """
 
@@ -667,7 +667,7 @@ class HermesACPAgent(acp.Agent):
 
         Zed's circular context indicator is driven by ACP ``usage_update``
         session updates: ``size`` is the model context window and ``used`` is
-        the current request pressure.  Hermes estimates ``used`` from the same
+        the current request pressure.  Evil Hermes estimates ``used`` from the same
         buckets it sends to providers: system prompt, conversation history, and
         tool schemas.
         """
@@ -741,9 +741,9 @@ class HermesACPAgent(acp.Agent):
         current_hermes_session_id: Optional[str] = None,
         previous_hermes_session_id: Optional[str] = None,
     ) -> None:
-        """Send ACP native session metadata after Hermes changes it.
+        """Send ACP native session metadata after Evil Hermes changes it.
 
-        When the internal Hermes head rotated (e.g. compression-driven session
+        When the internal Evil Hermes head rotated (e.g. compression-driven session
         split during a turn), pass ``previous_hermes_session_id`` so the
         attached ``_meta.hermes.sessionProvenance`` flags the rotation reason.
         """
@@ -1030,7 +1030,7 @@ class HermesACPAgent(acp.Agent):
 
         Replays the conversation as user/assistant chunks, thinking-mode
         thought chunks, plus reconstructed tool-call start/completion
-        notifications. Merely restoring server-side state makes Hermes
+        notifications. Merely restoring server-side state makes Evil Hermes
         remember context, but leaves the editor looking like a clean thread.
         """
         if not self._conn or not state.history:
@@ -1305,7 +1305,7 @@ class HermesACPAgent(acp.Agent):
         session_id: str,
         **kwargs: Any,
     ) -> PromptResponse:
-        """Run Hermes on the user's prompt and stream events back to the editor."""
+        """Run Evil Hermes on the user's prompt and stream events back to the editor."""
         state = self.session_manager.get_session(session_id)
         if state is None:
             logger.error("prompt: session %s not found", session_id)
@@ -1439,7 +1439,7 @@ class HermesACPAgent(acp.Agent):
 
         agent = state.agent
         agent.tool_progress_callback = tool_progress_cb
-        # ACP thought panes should not receive Hermes' local kawaii waiting/status
+        # ACP thought panes should not receive Evil Hermes' local kawaii waiting/status
         # updates. Route provider/model reasoning deltas instead; if the provider
         # emits no reasoning, Zed should not get a fake "thinking" accordion.
         agent.thinking_callback = None
@@ -1549,7 +1549,7 @@ class HermesACPAgent(acp.Agent):
                         logger.debug("Could not clear ACP session context", exc_info=True)
 
         try:
-            # Snapshot the internal Hermes DB session id before the turn so we
+            # Snapshot the internal Evil Hermes DB session id before the turn so we
             # can detect a compression-driven session rotation afterwards. The
             # ACP `session_id` stays the stable client handle; agent.session_id
             # is the live internal head that compression may rotate.
@@ -1599,7 +1599,7 @@ class HermesACPAgent(acp.Agent):
         final_response = result.get("final_response", "")
         cancelled = bool(state.cancel_event and state.cancel_event.is_set())
         interrupted = bool(result.get("interrupted")) or cancelled
-        # Hermes' local "waiting for model response" interrupt status is metadata,
+        # Evil Hermes' local "waiting for model response" interrupt status is metadata,
         # not assistant prose — clients get cancellation from stop_reason instead.
         from agent.conversation_loop import INTERRUPT_WAITING_FOR_MODEL_PREFIX
 
@@ -2056,7 +2056,7 @@ class HermesACPAgent(acp.Agent):
     async def set_config_option(
         self, config_id: str, session_id: str, value: str, **kwargs: Any
     ) -> SetSessionConfigOptionResponse | None:
-        """Accept ACP config option updates even when Hermes has no typed ACP config surface yet."""
+        """Accept ACP config option updates even when Evil Hermes has no typed ACP config surface yet."""
         state = self.session_manager.get_session(session_id)
         if state is None:
             logger.warning("Session %s: config update requested for missing session", session_id)

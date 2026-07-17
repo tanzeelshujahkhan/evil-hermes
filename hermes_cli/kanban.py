@@ -1,4 +1,4 @@
-"""CLI for the Hermes Kanban board — ``hermes kanban …`` subcommand.
+"""CLI for the Evil Hermes Kanban board — ``hermes kanban …`` subcommand.
 
 Exposes the full Kanban command surface documented in the design spec
 (``docs/hermes-kanban-v1-spec.pdf``).  All DB work is delegated to
@@ -199,7 +199,7 @@ def build_parser(parent_subparsers: argparse._SubParsersAction) -> argparse.Argu
         "kanban",
         help="Multi-profile collaboration board (tasks, links, comments)",
         description=(
-            "Durable SQLite-backed task board shared across Hermes profiles. "
+            "Durable SQLite-backed task board shared across Evil Hermes profiles. "
             "Tasks are claimed atomically, can depend on other tasks, and "
             "are executed by a named profile in an isolated workspace. "
             "See https://hermes-agent.nousresearch.com/docs/user-guide/features/kanban "

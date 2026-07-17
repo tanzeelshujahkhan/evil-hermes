@@ -15,7 +15,7 @@ backend supplies only its own cache-key shape and a serializer for it.
 
 Nothing in this module ever raises out to the caller's hot path: the disk
 layer is strictly best-effort (a miss just triggers a refetch), because a
-cache problem must never block Hermes startup.
+cache problem must never block Evil Hermes startup.
 """
 
 from __future__ import annotations

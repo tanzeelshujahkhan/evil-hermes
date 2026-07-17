@@ -22,7 +22,7 @@ The ``spectrum-ts`` SDK (run by the Node sidecar) authenticates to Spectrum
 Cloud with ``(id, projectSecret)`` — the same ``id`` used in Dashboard API
 paths — which we persist as ``PHOTON_PROJECT_ID`` for the runtime.
 
-Credential storage mirrors every other Hermes channel:
+Credential storage mirrors every other Evil Hermes channel:
 
     * runtime SDK creds  -> ``~/.hermes/.env``  (``PHOTON_PROJECT_ID`` =
       project id, ``PHOTON_PROJECT_SECRET``) via ``save_env_value``
@@ -64,15 +64,15 @@ class PhotonDashboardAuthError(RuntimeError):
 # endpoint — an unregistered client_id is rejected with
 # `400 {"error":"invalid_client"}`.  Use Photon's published CLI device
 # client (matches `CLI_CLIENT_ID` in photon-hq/cli) until the dashboard API
-# registers Hermes as its own client_id.
+# registers Evil Hermes as its own client_id.
 DEFAULT_CLIENT_ID = "photon-cli"
 DEFAULT_SCOPE = "openid profile email"
 
 DEFAULT_DASHBOARD_HOST = "https://app.photon.codes"
 DEFAULT_SPECTRUM_HOST = "https://spectrum.photon.codes"
 
-# Default name of the project Hermes provisions for the operator.
-DEFAULT_PROJECT_NAME = "Hermes Agent"
+# Default name of the project Evil Hermes provisions for the operator.
+DEFAULT_PROJECT_NAME = "Evil Hermes Agent"
 
 # Polling defaults per RFC 8628.  Photon overrides via `interval` /
 # `expires_in` in the device-code response — those win.

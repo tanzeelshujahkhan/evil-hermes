@@ -20,7 +20,7 @@ Architecture mirrors `agent/bedrock_adapter.py`:
   purpose prevents accidental token-minting in logging paths or token
   leakage into cache keys / dashboard JSON.
 * No persisted JWT. ``azure-identity`` caches in-process and (where
-  available) in the OS keychain or ``~/.IdentityService``. Hermes does
+  available) in the OS keychain or ``~/.IdentityService``. Evil Hermes does
   not duplicate that storage in ``auth.json``.
 
 Reference: https://learn.microsoft.com/azure/ai-foundry/foundry-models/how-to/configure-entra-id
@@ -194,7 +194,7 @@ def _build_default_credential(config: EntraIdentityConfig) -> Any:
 def build_credential(config: EntraIdentityConfig) -> Any:
     """Return the cached ``DefaultAzureCredential`` for ``config``.
 
-    Hermes processes use exactly one Entra config at a time (the
+    Evil Hermes processes use exactly one Entra config at a time (the
     ``model.entra.*`` block in config.yaml drives every aux task,
     subagent, and credential probe in the session). ``maxsize=1`` is
     intentional: it reflects the actual usage pattern and keeps the

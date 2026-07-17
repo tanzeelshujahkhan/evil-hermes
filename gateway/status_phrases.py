@@ -1,7 +1,7 @@
 """Human-friendly generic gateway status phrases.
 
 These helpers deliberately avoid relaying raw model scratch text.  They turn
-Hermes' long-running gateway status surface into short status lines suitable
+Evil Hermes' long-running gateway status surface into short status lines suitable
 for chat surfaces.
 
 Built-in defaults live in ``gateway/assets/status_phrases.yaml``. Users can add
@@ -189,7 +189,7 @@ def classify_status_context(
     preview: str | None = None,
     args: Any = None,
 ) -> str:
-    """Classify an internal gateway event into a Hermes UI-surface bucket."""
+    """Classify an internal gateway event into a Evil Hermes UI-surface bucket."""
     normalized = str(kind or "").strip().lower()
     if normalized in {"heartbeat", "waiting", "long_running", "status"}:
         return "status"

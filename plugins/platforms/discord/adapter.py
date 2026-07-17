@@ -81,7 +81,7 @@ _DISCORD_NONCONVERSATIONAL_HISTORY_MESSAGE_PATTERNS = (
         re.IGNORECASE,
     ),
     re.compile(
-        r"^\s*(?:✅|❌)\s+Hermes update\s+"
+        r"^\s*(?:✅|❌)\s+Evil Hermes update\s+"
         r"(?:finished|failed|timed out)[\s\S]*$",
         re.IGNORECASE,
     ),
@@ -907,7 +907,7 @@ class DiscordAdapter(BasePlatformAdapter):
 
         discord.py reconnects normal gateway interruptions internally. When its
         top-level ``Bot.start()`` task actually exits after the adapter has been
-        marked running, the Discord websocket is dead while the Hermes gateway
+        marked running, the Discord websocket is dead while the Evil Hermes gateway
         process can remain alive. Treat that split-brain state as a retryable
         fatal adapter error so ``GatewayRunner._handle_adapter_fatal_error`` can
         remove this adapter and queue Discord for the existing reconnect watcher.
@@ -1757,7 +1757,7 @@ class DiscordAdapter(BasePlatformAdapter):
         return "safe"
 
     def _canonicalize_app_command_payload(self, payload: Dict[str, Any]) -> Dict[str, Any]:
-        """Reduce command payloads to the semantic fields Hermes manages."""
+        """Reduce command payloads to the semantic fields Evil Hermes manages."""
         contexts = payload.get("contexts")
         integration_types = payload.get("integration_types")
         return {
@@ -3230,7 +3230,7 @@ class DiscordAdapter(BasePlatformAdapter):
         return bool(channel_ids & allowed)
 
     def _is_pairing_approved_user(self, user_id: str) -> bool:
-        """True when the Discord user has an explicit Hermes pairing grant."""
+        """True when the Discord user has an explicit Evil Hermes pairing grant."""
         user_id = str(user_id or "").strip()
         if not user_id:
             return False
@@ -4075,7 +4075,7 @@ class DiscordAdapter(BasePlatformAdapter):
         async def slash_new(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/reset", "New conversation started~")
 
-        @tree.command(name="reset", description="Reset your Hermes session")
+        @tree.command(name="reset", description="Reset your Evil Hermes session")
         async def slash_reset(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/reset", "Session reset~")
 
@@ -4121,7 +4121,7 @@ class DiscordAdapter(BasePlatformAdapter):
         async def slash_undo(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/undo")
 
-        @tree.command(name="status", description="Show Hermes session status")
+        @tree.command(name="status", description="Show Evil Hermes session status")
         async def slash_status(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/status", "Status sent~")
 
@@ -4129,7 +4129,7 @@ class DiscordAdapter(BasePlatformAdapter):
         async def slash_sethome(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/sethome")
 
-        @tree.command(name="stop", description="Stop the running Hermes agent")
+        @tree.command(name="stop", description="Stop the running Evil Hermes agent")
         async def slash_stop(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/stop", "Stop requested~")
 
@@ -4191,11 +4191,11 @@ class DiscordAdapter(BasePlatformAdapter):
         async def slash_voice(interaction: discord.Interaction, mode: str = ""):
             await self._run_simple_slash(interaction, f"/voice {mode}".strip())
 
-        @tree.command(name="update", description="Update Hermes Agent to the latest version")
+        @tree.command(name="update", description="Update Evil Hermes Agent to the latest version")
         async def slash_update(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/update", "Update initiated~")
 
-        @tree.command(name="restart", description="Gracefully restart the Hermes gateway")
+        @tree.command(name="restart", description="Gracefully restart the Evil Hermes gateway")
         async def slash_restart(interaction: discord.Interaction):
             await self._run_simple_slash(interaction, "/restart", "Restart requested~")
 
@@ -4209,10 +4209,10 @@ class DiscordAdapter(BasePlatformAdapter):
         async def slash_deny(interaction: discord.Interaction, scope: str = ""):
             await self._run_simple_slash(interaction, f"/deny {scope}".strip())
 
-        @tree.command(name="thread", description="Create a new thread and start a Hermes session in it")
+        @tree.command(name="thread", description="Create a new thread and start a Evil Hermes session in it")
         @discord.app_commands.describe(
             name="Thread name",
-            message="Optional first message to send to Hermes in the thread",
+            message="Optional first message to send to Evil Hermes in the thread",
             auto_archive_duration="Auto-archive in minutes (60, 1440, 4320, 10080)",
         )
         async def slash_thread(
@@ -4536,7 +4536,7 @@ class DiscordAdapter(BasePlatformAdapter):
 
             cmd = discord.app_commands.Command(
                 name="skill",
-                description="Run a Hermes skill",
+                description="Run a Evil Hermes skill",
                 callback=_skill_handler,
             )
             tree.add_command(cmd)
@@ -4706,7 +4706,7 @@ class DiscordAdapter(BasePlatformAdapter):
         if thread_id:
             self._threads.mark(thread_id)
 
-        # If a message was provided, kick off a new Hermes session in the thread
+        # If a message was provided, kick off a new Evil Hermes session in the thread
         starter = (message or "").strip()
         if starter and thread_id:
             await self._dispatch_thread_session(interaction, thread_id, thread_name, starter)
@@ -5309,7 +5309,7 @@ class DiscordAdapter(BasePlatformAdapter):
             }
         except Exception as direct_error:
             try:
-                seed_content = starter_message or f"\U0001f9f5 Thread created by Hermes: **{name}**"
+                seed_content = starter_message or f"\U0001f9f5 Thread created by Evil Hermes: **{name}**"
                 seed_msg = await parent_channel.send(seed_content)
                 thread = await seed_msg.create_thread(
                     name=name,
@@ -5340,7 +5340,7 @@ class DiscordAdapter(BasePlatformAdapter):
         titles don't show raw <@id>, <@&id>, or <#id> markers — the ID
         isn't meaningful to humans glancing at the thread list (#6336).
         Real semantic naming is done after the first agent turn, when
-        Hermes has an LLM-generated session title and can safely rename
+        Evil Hermes has an LLM-generated session title and can safely rename
         only this newly-created thread.
         """
         content = (content or "").strip()
@@ -5348,7 +5348,7 @@ class DiscordAdapter(BasePlatformAdapter):
         content = re.sub(r"<@[!&]?\d+>", "", content)
         content = re.sub(r"<#\d+>", "", content)
         content = re.sub(r"\s+", " ", content).strip()
-        thread_name = content[:80] if content else "Hermes"
+        thread_name = content[:80] if content else "Evil Hermes"
         if len(content) > 80:
             thread_name = thread_name[:77] + "..."
         return thread_name
@@ -5381,7 +5381,7 @@ class DiscordAdapter(BasePlatformAdapter):
                 last_direct_error = direct_error
                 try:
                     seed_msg = await message.channel.send(
-                        f"\U0001f9f5 Thread created by Hermes: **{thread_name}**"
+                        f"\U0001f9f5 Thread created by Evil Hermes: **{thread_name}**"
                     )
                     thread = await seed_msg.create_thread(
                         name=thread_name,
@@ -5461,7 +5461,7 @@ class DiscordAdapter(BasePlatformAdapter):
         if edit is None:
             return False
         try:
-            await edit(name=cleaned, reason="Hermes semantic session title")
+            await edit(name=cleaned, reason="Evil Hermes semantic session title")
             logger.info(
                 "[%s] Renamed Discord thread %s from %r to %r",
                 self.name, thread_id, current_name, cleaned,
@@ -5512,7 +5512,7 @@ class DiscordAdapter(BasePlatformAdapter):
             return None
 
         thread_name = (name or "handoff").strip()[:80] or "handoff"
-        reason = "Hermes session handoff"
+        reason = "Evil Hermes session handoff"
 
         # First try: create a thread directly on the channel.
         try:
@@ -5535,7 +5535,7 @@ class DiscordAdapter(BasePlatformAdapter):
             send = getattr(parent, "send", None)
             if send is None:
                 return None
-            seed_msg = await send(f"\U0001f9f5 Hermes handoff: **{thread_name}**")
+            seed_msg = await send(f"\U0001f9f5 Evil Hermes handoff: **{thread_name}**")
             thread = await seed_msg.create_thread(
                 name=thread_name,
                 auto_archive_duration=1440,
@@ -5624,7 +5624,7 @@ class DiscordAdapter(BasePlatformAdapter):
 
             prompt_prefix = (
                 "⚠️ **Command Approval Required**\n\n"
-                "Do you want Hermes to run this command?\n\n"
+                "Do you want Evil Hermes to run this command?\n\n"
                 "**Requested command:**\n```bash\n"
             )
             if smart_denied:
@@ -5777,7 +5777,7 @@ class DiscordAdapter(BasePlatformAdapter):
                 body = body[: max_desc - 3] + "..."
 
             embed = discord.Embed(
-                title="❓ Hermes needs your input",
+                title="❓ Evil Hermes needs your input",
                 description=body,
                 color=discord.Color.orange(),
             )
@@ -5846,7 +5846,7 @@ class DiscordAdapter(BasePlatformAdapter):
                 else "\n\nReply in this channel with your answer."
             )
             content = self._self_contained_prompt_content(
-                "❓ **Hermes needs your input**", str(question or "").strip(),
+                "❓ **Evil Hermes needs your input**", str(question or "").strip(),
                 tail=clarify_tail,
             )
             msg = await channel.send(content=content, embed=embed, view=view) if view else await channel.send(content=content, embed=embed)
@@ -6324,7 +6324,7 @@ class DiscordAdapter(BasePlatformAdapter):
                     # invocation for this message.
                     try:
                         await message.channel.send(
-                            "⚠️ Hermes could not create a Discord thread for "
+                            "⚠️ Evil Hermes could not create a Discord thread for "
                             "this message, so the request was not processed. Please retry."
                         )
                     except Exception as notify_error:
@@ -8395,7 +8395,7 @@ def interactive_setup() -> None:
         )
 
     print()
-    print_info("📬 Home Channel: where Hermes delivers cron job results,")
+    print_info("📬 Home Channel: where Evil Hermes delivers cron job results,")
     print_info("   cross-platform messages, and notifications.")
     print_info("   To get a channel ID: right-click a channel → Copy Channel ID")
     print_info("   (requires Developer Mode in Discord settings)")
@@ -8550,7 +8550,7 @@ def _build_adapter(config):
 
 
 def register(ctx) -> None:
-    """Plugin entry point — called by the Hermes plugin system."""
+    """Plugin entry point — called by the Evil Hermes plugin system."""
     ctx.register_platform(
         name="discord",
         label="Discord",

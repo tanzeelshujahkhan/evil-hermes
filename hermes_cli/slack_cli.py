@@ -99,7 +99,7 @@ def _build_full_manifest(
 
     if messaging_experience == "assistant":
         features["assistant_view"] = {
-            "assistant_description": "Chat with Hermes in threads and DMs.",
+            "assistant_description": "Chat with Evil Hermes in threads and DMs.",
         }
         bot_scopes.append("assistant:write")
         bot_events.extend(
@@ -110,7 +110,7 @@ def _build_full_manifest(
         )
     elif messaging_experience == "agent":
         features["agent_view"] = {
-            "agent_description": "Chat with Hermes in Slack Messages.",
+            "agent_description": "Chat with Evil Hermes in Slack Messages.",
         }
         bot_scopes.append("assistant:write")
         # Slack includes current viewing context in Agent DM events only after
@@ -128,7 +128,7 @@ def _build_full_manifest(
         },
         "display_information": {
             "name": bot_name[:35],
-            "description": (bot_description or "Your Hermes agent on Slack")[:140],
+            "description": (bot_description or "Your Evil Hermes agent on Slack")[:140],
             "background_color": "#1a1a2e",
         },
         "features": features,
@@ -157,7 +157,7 @@ def slack_manifest_command(args) -> int:
     Flags (all parsed in ``hermes_cli/main.py``):
       --write [PATH]  Write to file instead of stdout (default path:
                       ``$HERMES_HOME/slack-manifest.json``)
-      --name NAME     Override the bot display name (default: "Hermes")
+      --name NAME     Override the bot display name (default: "Evil Hermes")
       --description DESC  Override the bot description
       --slashes-only  Emit only the ``features.slash_commands`` array (for
                       merging into an existing manifest manually)
@@ -169,8 +169,8 @@ def slack_manifest_command(args) -> int:
                       app_home_opened + message.im) instead of the legacy
                       Assistant messaging experience.
     """
-    name = getattr(args, "name", None) or "Hermes"
-    description = getattr(args, "description", None) or "Your Hermes agent on Slack"
+    name = getattr(args, "name", None) or "Evil Hermes"
+    description = getattr(args, "description", None) or "Your Evil Hermes agent on Slack"
     if getattr(args, "agent_view", False):
         messaging_experience = "agent"
     elif getattr(args, "no_assistant", False):
@@ -208,7 +208,7 @@ def slack_manifest_command(args) -> int:
         print(f"Slack manifest written to: {target}", file=sys.stderr)
         print(
             "\nNext steps:\n"
-            "  1. Open https://api.slack.com/apps and pick your Hermes app\n"
+            "  1. Open https://api.slack.com/apps and pick your Evil Hermes app\n"
             "     (or create a new one: Create New App → From an app manifest).\n"
             f"  2. Features → App Manifest → paste the contents of\n"
             f"     {target}\n"

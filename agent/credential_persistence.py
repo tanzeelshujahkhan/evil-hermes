@@ -14,7 +14,7 @@ import re
 from typing import Any, Dict, Mapping
 
 
-# Sources Hermes owns and can intentionally persist in auth.json.  Everything
+# Sources Evil Hermes owns and can intentionally persist in auth.json.  Everything
 # else with a non-empty source is treated as borrowed/reference-only by default
 # so future external secret providers fail closed at the disk boundary.
 _PERSISTABLE_PROVIDER_SOURCES = frozenset({

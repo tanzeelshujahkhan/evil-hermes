@@ -1,4 +1,4 @@
-"""Native Spotify tools for Hermes (registered via plugins/spotify)."""
+"""Native Spotify tools for Evil Hermes (registered via plugins/spotify)."""
 
 from __future__ import annotations
 

@@ -1,6 +1,6 @@
 """Session adapter for codex app-server runtime.
 
-Owns one Codex thread per Hermes session. Drives `turn/start`, consumes
+Owns one Codex thread per Evil Hermes session. Drives `turn/start`, consumes
 streaming notifications via CodexEventProjector, handles server-initiated
 approval requests (apply_patch, exec command), translates cancellation,
 and returns a clean turn result that AIAgent.run_conversation() can splice
@@ -93,7 +93,7 @@ _TURN_ABORTED_MARKERS = ("<turn_aborted>", "<turn_aborted/>")
 
 
 def _coerce_turn_input_text(user_input: Any) -> str:
-    """Collapse Hermes/OpenAI rich content into app-server text input.
+    """Collapse Evil Hermes/OpenAI rich content into app-server text input.
 
     The current `turn/start` path sends text items only. TUI image attachment
     can hand us OpenAI-style content parts, so keep the text/path hints and
@@ -190,7 +190,7 @@ class _ServerRequestRouting:
 
 
 class CodexAppServerSession:
-    """One Codex thread per Hermes session, lifetime owned by AIAgent.
+    """One Codex thread per Evil Hermes session, lifetime owned by AIAgent.
 
     Not thread-safe — one caller drives it at a time, matching how AIAgent's
     run_conversation() loop is structured today. The codex client itself can
@@ -249,7 +249,7 @@ class CodexAppServerSession:
             )
         self._client.initialize(
             client_name="hermes",
-            client_title="Hermes Agent",
+            client_title="Evil Hermes Agent",
             client_version=_get_hermes_version(),
         )
         # Permission selection is intentionally NOT sent on thread/start.
@@ -373,7 +373,7 @@ class CodexAppServerSession:
     ) -> TurnResult:
         """Send a user message and block until turn/completed, while
         forwarding server-initiated approval requests and projecting items
-        into Hermes' messages shape.
+        into Evil Hermes' messages shape.
 
         post_tool_quiet_timeout: if codex emits a tool completion and then
         goes quiet for this many seconds without emitting another item or
@@ -406,7 +406,7 @@ class CodexAppServerSession:
         user_input_text = _coerce_turn_input_text(user_input)
 
         # Send turn/start with the user input. Text-only for now (codex
-        # supports rich content but Hermes' text path is the common case).
+        # supports rich content but Evil Hermes' text path is the common case).
         try:
             ts = self._client.request(
                 "turn/start",
@@ -801,7 +801,7 @@ class CodexAppServerSession:
             logger.warning("turn/interrupt timed out")
 
     def _handle_server_request(self, req: dict) -> None:
-        """Translate a codex server request (approval) into Hermes' approval
+        """Translate a codex server request (approval) into Evil Hermes' approval
         flow, then send the response.
 
         Method names verified live against codex 0.130.0 (Apr 2026):
@@ -834,7 +834,7 @@ class CodexAppServerSession:
             # Codex's MCP layer asks the user for structured input on
             # behalf of an MCP server (e.g. tool-call confirmation,
             # OAuth, form data). For our own hermes-tools callback we
-            # auto-accept — the user already approved Hermes' tools
+            # auto-accept — the user already approved Evil Hermes' tools
             # by enabling the runtime, and we never expose anything
             # codex's built-in shell can't already do. For other MCP
             # servers we decline so the user explicitly opts in via
@@ -1029,10 +1029,10 @@ def _apply_compaction_notification(result: TurnResult, note: dict) -> None:
 
 
 def _approval_choice_to_codex_decision(choice: str) -> str:
-    """Map Hermes approval choices onto codex's CommandExecutionApprovalDecision
+    """Map Evil Hermes approval choices onto codex's CommandExecutionApprovalDecision
     / FileChangeApprovalDecision wire values.
 
-    Hermes returns 'once', 'session', 'always', or 'deny'.
+    Evil Hermes returns 'once', 'session', 'always', or 'deny'.
     Codex expects 'accept', 'acceptForSession', 'decline', or 'cancel'
     (verified against codex-rs/app-server-protocol/src/protocol/v2/item.rs
     on codex 0.130.0).
@@ -1063,7 +1063,7 @@ def _has_turn_aborted_marker(text: str) -> bool:
 
 
 def _get_hermes_version() -> str:
-    """Best-effort Hermes version string for codex's userAgent line."""
+    """Best-effort Evil Hermes version string for codex's userAgent line."""
     try:
         from importlib.metadata import version
 

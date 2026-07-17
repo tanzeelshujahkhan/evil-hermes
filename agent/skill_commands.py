@@ -29,7 +29,7 @@ _SKILL_MULTI_HYPHEN = re.compile(r"-{2,}")
 # ---------------------------------------------------------------------------
 # Skill-scaffolding markers and the canonical extractor.
 #
-# When a user invokes a /skill (or /bundle), Hermes expands the turn into a
+# When a user invokes a /skill (or /bundle), Evil Hermes expands the turn into a
 # model-facing message that embeds the full skill body plus scaffolding. That
 # expanded text is what flows into the agent loop — and into memory providers
 # via MemoryManager. Providers that store or embed the raw user turn (mem0,
@@ -376,14 +376,14 @@ def scan_skill_commands() -> Dict[str, Dict[str, Any]]:
                     if not cmd_name:
                         continue
                     # Skip if this skill's auto-generated /command collides
-                    # with a core Hermes slash command (name or alias). The
+                    # with a core Evil Hermes slash command (name or alias). The
                     # skill remains fully loadable via /skill <name>.
                     # Uses resolve_command() so aliases and case variants are
                     # covered without maintaining a separate cache.
                     if resolve_command(cmd_name) is not None:
                         logger.warning(
                             "Skill %r generates slash command '/%s' which "
-                            "collides with a core Hermes command; skipping "
+                            "collides with a core Evil Hermes command; skipping "
                             "auto-registration. Use '/skill %s' instead.",
                             name, cmd_name, name,
                         )

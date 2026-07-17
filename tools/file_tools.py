@@ -577,7 +577,7 @@ _hermes_config_resolved_loaded = False
 
 
 def _get_hermes_config_resolved() -> str | None:
-    """Return the resolved absolute path of the Hermes config file (cached)."""
+    """Return the resolved absolute path of the Evil Hermes config file (cached)."""
     global _hermes_config_resolved, _hermes_config_resolved_loaded
     if _hermes_config_resolved_loaded:
         return _hermes_config_resolved
@@ -609,14 +609,14 @@ def _check_sensitive_path(filepath: str, task_id: str = "default") -> str | None
             return _err
     if resolved in _SENSITIVE_EXACT_PATHS or normalized in _SENSITIVE_EXACT_PATHS:
         return _err
-    # Prevent agents from modifying the Hermes config file directly.
+    # Prevent agents from modifying the Evil Hermes config file directly.
     # approvals.mode and other security settings live here; a malicious or
     # prompt-injected agent could silently disable exec approval by writing to
     # this file.
     hermes_config = _get_hermes_config_resolved()
     if hermes_config and (resolved == hermes_config or normalized == hermes_config):
         return (
-            f"Refusing to write to Hermes config file: {filepath}\n"
+            f"Refusing to write to Evil Hermes config file: {filepath}\n"
             "Agent cannot modify security-sensitive configuration. "
             "Edit ~/.hermes/config.yaml directly or use 'hermes config' instead."
         )
@@ -624,7 +624,7 @@ def _check_sensitive_path(filepath: str, task_id: str = "default") -> str | None
 
 
 def _get_container_mirror_prefix_for_task(task_id: str = "default") -> str | None:
-    """Return the container-side Hermes mirror prefix for Docker file tools."""
+    """Return the container-side Evil Hermes mirror prefix for Docker file tools."""
     try:
         from tools.terminal_tool import (
             _active_environments,
@@ -658,9 +658,9 @@ def _get_container_mirror_prefix_for_task(task_id: str = "default") -> str | Non
 
 
 def _check_cross_profile_path(filepath: str, task_id: str = "default") -> str | None:
-    """Return a soft-guard warning when ``filepath`` lands in another Hermes
+    """Return a soft-guard warning when ``filepath`` lands in another Evil Hermes
     profile's scoped area, a host-side sandbox-mirror of authoritative profile
-    state, or the Docker container's sandbox mirror of Hermes state.
+    state, or the Docker container's sandbox mirror of Evil Hermes state.
 
     Three detectors run in order:
 
@@ -669,13 +669,13 @@ def _check_cross_profile_path(filepath: str, task_id: str = "default") -> str | 
     * sandbox-mirror (#32049) — writes that hit the
       ``…/sandboxes/<backend>/<task>/home/.hermes/…`` mirror created by a
       non-local terminal backend (Docker, Daytona, etc.), where the host
-      Hermes process never reads the mirror and the authoritative file is
+      Evil Hermes process never reads the mirror and the authoritative file is
       left untouched.
     * container-mirror (#32049 follow-up) — writes from inside a Docker
       container whose bind-mounted home strips the ``sandboxes/`` prefix, so
       the agent sees a plain ``/root/.hermes/…`` path.
 
-    Returns ``None`` when the write is in-scope or outside Hermes scope.
+    Returns ``None`` when the write is in-scope or outside Evil Hermes scope.
     All detectors are soft guards — the agent can override any by
     passing ``cross_profile=True`` to its write tool after explicit user
     direction. Defense-in-depth, NOT a security boundary — the terminal
@@ -1968,7 +1968,7 @@ WRITE_FILE_SCHEMA = {
             "content": {"type": "string", "description": "Complete content to write to the file"},
             "cross_profile": {
                 "type": "boolean",
-                "description": "Opt out of the cross-profile soft guard. Defaults to false. Set true ONLY after explicit user direction to edit another Hermes profile's skills/plugins/cron/memories — by default these writes are blocked with a warning because they affect a different profile than the one this session is running under.",
+                "description": "Opt out of the cross-profile soft guard. Defaults to false. Set true ONLY after explicit user direction to edit another Evil Hermes profile's skills/plugins/cron/memories — by default these writes are blocked with a warning because they affect a different profile than the one this session is running under.",
                 "default": False,
             },
         },
@@ -2019,7 +2019,7 @@ PATCH_SCHEMA = {
             },
             "cross_profile": {
                 "type": "boolean",
-                "description": "Opt out of the cross-profile soft guard. Defaults to false. Set true ONLY after explicit user direction to edit another Hermes profile's skills/plugins/cron/memories.",
+                "description": "Opt out of the cross-profile soft guard. Defaults to false. Set true ONLY after explicit user direction to edit another Evil Hermes profile's skills/plugins/cron/memories.",
                 "default": False,
             },
         },

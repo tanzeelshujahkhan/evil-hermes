@@ -219,7 +219,7 @@ def _read_process_cmdline(pid: int) -> Optional[str]:
 
 
 def _gateway_command_subcommand(command: str | None) -> str | None:
-    """Return the Hermes gateway lifecycle subcommand from a command line.
+    """Return the Evil Hermes gateway lifecycle subcommand from a command line.
 
     Lifecycle decisions (is the gateway up? did restart relaunch it?) must not
     fire on loose substring matches.  The previous ``"... gateway" in cmdline``
@@ -233,7 +233,7 @@ def _gateway_command_subcommand(command: str | None) -> str | None:
 
     Tokenizes quote-aware (``shlex``) so quoted Windows paths with spaces
     (``"C:\\Program Files\\...\\hermes-gateway.exe"``) survive, and strips
-    ``--profile``/``-p`` selectors from anywhere in argv -- Hermes's
+    ``--profile``/``-p`` selectors from anywhere in argv -- Evil Hermes's
     ``_apply_profile_override`` removes them before argparse, so the profile
     flag (and a profile literally named ``gateway``) can legally appear on
     either side of the ``gateway`` subcommand.
@@ -312,7 +312,7 @@ def looks_like_gateway_runtime_command_line(command: str | None) -> bool:
 
 
 def _looks_like_gateway_process(pid: int) -> bool:
-    """Return True when the live PID still looks like the Hermes gateway."""
+    """Return True when the live PID still looks like the Evil Hermes gateway."""
     cmdline = _read_process_cmdline(pid)
     if not cmdline:
         return False

@@ -219,7 +219,7 @@ class GatewayAuthorizationMixin:
 
         WeCom supports ``groups.<group_id>.allow_from`` on top of the top-level
         ``group_policy``. A group may be open at the chat level while still
-        restricting which senders inside that group can invoke Hermes. If such a
+        restricting which senders inside that group can invoke Evil Hermes. If such a
         message reached the gateway, the adapter already checked that sender
         allowlist, so it is a trustworthy intake decision rather than the
         fail-open ``group_policy: open`` case.

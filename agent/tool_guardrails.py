@@ -64,12 +64,15 @@ MUTATING_TOOL_NAMES = frozenset(
 class ToolCallGuardrailConfig:
     """Thresholds for per-turn tool-call loop detection.
 
-    Warnings are enabled by default and never prevent tool execution. Hard stops
-    are explicit opt-in so interactive CLI/TUI sessions get a gentle nudge unless
-    the user enables circuit-breaker behavior in config.yaml.
+    Evil-Hermes rebrand — warnings and hard stops both disabled. The user
+    decides when the agent is looping; the agent does not pre-block itself.
+    The controller is kept in place so the count/metric surface still works
+    for observability (an external watchdog can read the `count` /
+    `signature` on the ToolGuardrailDecision and intervene), but the agent
+    itself never returns "block" or "halt" as an action.
     """
 
-    warnings_enabled: bool = True
+    warnings_enabled: bool = False
     hard_stop_enabled: bool = False
     exact_failure_warn_after: int = 2
     exact_failure_block_after: int = 5

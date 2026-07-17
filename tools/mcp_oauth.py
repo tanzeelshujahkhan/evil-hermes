@@ -31,7 +31,7 @@ Configuration in config.yaml::
           redirect_port: 0                      # 0 = auto-pick free port
           redirect_uri: "https://proxy/callback"  # default: loopback callback
           redirect_host: "localhost"            # loopback hostname (WAF-safe)
-          client_name: "My Custom Client"       # default: "Hermes Agent"
+          client_name: "My Custom Client"       # default: "Evil Hermes Agent"
 """
 
 import asyncio
@@ -198,7 +198,7 @@ def _cached_redirect_port(storage: "HermesTokenStorage | None") -> int | None:
     """Return the loopback callback port from cached client registration.
 
     OAuth providers bind a dynamically-registered ``client_id`` to the exact
-    redirect URI that was registered with it. If Hermes restarts and chooses a
+    redirect URI that was registered with it. If Evil Hermes restarts and chooses a
     new random callback port while reusing the stored ``client_id``, providers
     such as Summ reject the authorization request with ``redirect_uri does not
     match any registered URIs``. Reusing the cached redirect port keeps the
@@ -388,7 +388,7 @@ class HermesTokenStorage:
         data = _read_json(self._tokens_path())
         if data is None:
             return None
-        # Hermes records an absolute wall-clock ``expires_at`` alongside the
+        # Evil Hermes records an absolute wall-clock ``expires_at`` alongside the
         # SDK's serialized token (see ``set_tokens``). On read we rewrite
         # ``expires_in`` to the remaining seconds so the SDK's downstream
         # ``update_token_expiry`` computes the correct absolute time and
@@ -591,7 +591,7 @@ def _make_callback_handler() -> tuple[type, dict]:
 
             body = (
                 "<html><body><h2>Authorization Successful</h2>"
-                "<p>You can close this tab and return to Hermes.</p></body></html>"
+                "<p>You can close this tab and return to Evil Hermes.</p></body></html>"
             ) if code else (
                 "<html><body><h2>Authorization Failed</h2>"
                 f"<p>Error: {error or 'unknown'}</p></body></html>"
@@ -1022,7 +1022,7 @@ def _build_client_metadata(cfg: dict) -> "OAuthClientMetadata":
         raise ValueError(
             "_configure_callback_port() must be called before _build_client_metadata()"
         )
-    client_name = cfg.get("client_name", "Hermes Agent")
+    client_name = cfg.get("client_name", "Evil Hermes Agent")
     scope = cfg.get("scope")
     redirect_uri = _resolve_redirect_uri(cfg, port)
 

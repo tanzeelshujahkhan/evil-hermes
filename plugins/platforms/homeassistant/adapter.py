@@ -403,7 +403,7 @@ class HomeAssistantAdapter(BasePlatformAdapter):
             "Content-Type": "application/json",
         }
         payload = {
-            "title": "Hermes Agent",
+            "title": "Evil Hermes Agent",
             "message": content[:self.MAX_MESSAGE_LENGTH],
         }
 
@@ -556,7 +556,7 @@ def _build_adapter(config):
 
 
 def register(ctx) -> None:
-    """Plugin entry point — called by the Hermes plugin system."""
+    """Plugin entry point — called by the Evil Hermes plugin system."""
     ctx.register_platform(
         name="homeassistant",
         label="Home Assistant",

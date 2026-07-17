@@ -24,7 +24,7 @@ from utils import normalize_proxy_url
 
 logger = logging.getLogger(__name__)
 
-# Audio file extensions Hermes recognizes for native audio delivery.
+# Audio file extensions Evil Hermes recognizes for native audio delivery.
 # Kept in sync with tools/send_message_tool.py and cron/scheduler.py via
 # should_send_media_as_audio() below.
 _AUDIO_EXTS = frozenset({'.ogg', '.opus', '.mp3', '.wav', '.m4a', '.flac'})
@@ -56,7 +56,7 @@ def _thread_metadata_for_source(source, reply_to_message_id: str | None = None) 
     """Build platform-aware thread metadata for adapter sends.
 
     Most platforms route threaded sends with a generic ``thread_id`` metadata
-    value. Telegram private-chat topics created through Hermes' DM-topic helper
+    value. Telegram private-chat topics created through Evil Hermes' DM-topic helper
     are exposed in updates as ``message_thread_id`` plus a reply anchor. Live
     user-message replies route with ``message_thread_id`` + ``reply_to_message_id``;
     synthetic/resumed sends that have no reply anchor fall back to Telegram's
@@ -2550,7 +2550,7 @@ class BasePlatformAdapter(ABC):
         final-editing the preview.
 
         Some adapters can send richer final messages than their current edit
-        implementation supports. Telegram is the motivating case: Hermes sends
+        implementation supports. Telegram is the motivating case: Evil Hermes sends
         final replies through ``sendRichMessage`` but still finalizes streamed
         previews through its existing MarkdownV2 edit path until Bot API 10.1's
         ``rich_message`` edit parameter is wired directly. Such adapters
@@ -3418,7 +3418,7 @@ class BasePlatformAdapter(ABC):
         Override in subclasses to send audio as voice bubbles (Telegram)
         or file attachments (Discord). Default falls back to a friendly
         notice — never echo the local audio_path into chat, since it is a
-        host filesystem path that would leak the Hermes home layout.
+        host filesystem path that would leak the Evil Hermes home layout.
         """
         # audio_path is intentionally NOT included in the chat text — it is a
         # host-local path that leaks filesystem layout. The path is logged for
@@ -3468,7 +3468,7 @@ class BasePlatformAdapter(ABC):
         Override in subclasses to send videos as inline playable media.
         Default falls back to a friendly notice — never echo the local
         video_path into chat, since it is a host filesystem path that
-        would leak the Hermes home layout.
+        would leak the Evil Hermes home layout.
         """
         # See send_voice for the rationale: do not echo host paths into chat.
         logger.warning(
@@ -3496,7 +3496,7 @@ class BasePlatformAdapter(ABC):
         Override in subclasses to send files as downloadable attachments.
         Default falls back to a friendly notice — never echo the local
         file_path into chat, since it is a host filesystem path that
-        would leak the Hermes home layout.
+        would leak the Evil Hermes home layout.
         """
         # See send_voice for the rationale: do not echo host paths into chat.
         logger.warning(
@@ -3530,7 +3530,7 @@ class BasePlatformAdapter(ABC):
         Override in subclasses for native photo attachments. Default falls
         back to a friendly notice — never echo the local image_path into
         chat, since it is a host filesystem path that would leak the
-        Hermes home layout.
+        Evil Hermes home layout.
         """
         # See send_voice for the rationale: do not echo host paths into chat.
         logger.warning(

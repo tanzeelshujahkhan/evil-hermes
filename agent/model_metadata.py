@@ -188,7 +188,7 @@ CONTEXT_PROBE_TIERS = [
 # Default context length when no detection method succeeds.
 DEFAULT_FALLBACK_CONTEXT = CONTEXT_PROBE_TIERS[0]
 
-# Minimum context length required to run Hermes Agent.  Models with fewer
+# Minimum context length required to run Evil Hermes Agent.  Models with fewer
 # tokens cannot maintain enough working memory for tool-calling workflows.
 # Sessions, model switches, and cron jobs should reject models below this.
 MINIMUM_CONTEXT_LENGTH = 64_000
@@ -294,7 +294,7 @@ DEFAULT_CONTEXT_LENGTHS = {
     "glm-5.2": 1_048_576,
     "glm": 202752,
     # xAI Grok — xAI /v1/models does not return context_length metadata,
-    # so these hardcoded fallbacks prevent Hermes from probing-down to
+    # so these hardcoded fallbacks prevent Evil Hermes from probing-down to
     # the default 128k when the user points at https://api.x.ai/v1
     # via a custom provider. Values sourced from models.dev (2026-04).
     # Keys use substring matching (longest-first), so e.g. "grok-4.20"
@@ -479,7 +479,7 @@ _URL_TO_PROVIDER: Dict[str, str] = {
     "models.github.ai": "copilot",
     # GitHub Models free tier (Azure-hosted prototyping endpoint) — same
     # canonical provider as the Copilot API.  Hard per-request token cap
-    # (often 8K) makes it unusable for Hermes' system prompt, but mapping
+    # (often 8K) makes it unusable for Evil Hermes' system prompt, but mapping
     # it here lets us recognize the endpoint and emit a targeted hint
     # instead of falling through the unknown-custom-endpoint path.
     "models.inference.ai.azure.com": "copilot",
@@ -576,7 +576,7 @@ def _maybe_cache_local_context_length(
     base_url: str,
     length: int,
 ) -> None:
-    """Persist a locally probed context length only when it meets Hermes minimum.
+    """Persist a locally probed context length only when it meets Evil Hermes minimum.
 
     Sub-minimum live windows (e.g. vLLM ``--max-model-len 32768``) are still
     returned to callers so ``agent_init`` can fail with the existing
@@ -1770,7 +1770,7 @@ def _query_local_context_length_uncached(model: str, base_url: str, api_key: str
                     # the *runtime* context Ollama will actually allocate KV cache
                     # for. The GGUF model_info.context_length is the training max,
                     # which can be larger than num_ctx — using it here would let
-                    # Hermes grow conversations past the runtime limit and Ollama
+                    # Evil Hermes grow conversations past the runtime limit and Ollama
                     # would silently truncate. Matches query_ollama_num_ctx().
                     params = data.get("parameters", "")
                     if "num_ctx" in params:
@@ -2621,7 +2621,7 @@ def estimate_request_tokens_rough(
 ) -> int:
     """Rough token estimate for a full chat-completions request.
 
-    Includes the major payload buckets Hermes sends to providers:
+    Includes the major payload buckets Evil Hermes sends to providers:
     system prompt, conversation messages, and tool schemas.  With 50+
     tools enabled, schemas alone can add 20-30K tokens — a significant
     blind spot when only counting messages. Image content is counted

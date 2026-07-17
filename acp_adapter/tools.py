@@ -200,7 +200,7 @@ def _json_loads_maybe(value: Optional[str]) -> Any:
     except Exception:
         pass
 
-    # Some Hermes tools append a human hint after a JSON payload, e.g.
+    # Some Evil Hermes tools append a human hint after a JSON payload, e.g.
     # ``{...}\n\n[Hint: Results truncated...]``. Keep the structured rendering path
     # by decoding the first JSON value instead of falling back to raw text.
     try:
@@ -211,7 +211,7 @@ def _json_loads_maybe(value: Optional[str]) -> Any:
 
 
 def _tool_result_failed(result: Optional[str], tool_name: str | None = None) -> bool:
-    """Return True when a structured Hermes tool result clearly failed.
+    """Return True when a structured Evil Hermes tool result clearly failed.
 
     Keep this deliberately conservative. Plain text can contain words like
     "error" because tests failed or a command printed diagnostics; Zed should
@@ -238,7 +238,7 @@ def _tool_result_failed(result: Optional[str], tool_name: str | None = None) -> 
     if isinstance(exit_code, int) and exit_code != 0:
         return True
 
-    # Hermes core/polished tools commonly report tool-level failures as a
+    # Evil Hermes core/polished tools commonly report tool-level failures as a
     # structured {"error": "..."} payload without an explicit success flag.
     # Keep generic plugin/unknown tool payloads conservative to avoid marking
     # optional diagnostic messages as failed.
@@ -314,7 +314,7 @@ def _format_read_file_result(result: Optional[str], args: Optional[Dict[str, Any
     header = f"Read {path}{suffix}"
     if data.get("total_lines") is not None:
         header += f" — {data.get('total_lines')} total lines"
-    # Hermes read_file output is line-numbered with `|`. If we send it as raw
+    # Evil Hermes read_file output is line-numbered with `|`. If we send it as raw
     # Markdown, Zed can interpret pipes as tables and collapse the layout.
     # Fence the payload so file lines stay readable and literal.
     return _truncate_text(f"{header}\n\n{_fenced_text(content)}")
