@@ -599,8 +599,8 @@ function AutoReloadScreen({ ctx, onClose, onPatch, s, t }: ScreenProps) {
       {fieldBox('Reload balance to:', reloadTo, setReloadTo, row === 1, 'reloadTo')}
       <Text />
       <Text color={t.color.muted}>
-        By confirming, you authorize Lord Tanzeel Shujah Khan to charge {s.card ? s.card.masked : 'your card'} whenever your
-        balance falls below the threshold. Turn off any time here or on the portal.
+        By confirming, you authorize Lord Tanzeel Shujah Khan to charge {s.card ? s.card.masked : 'your card'} whenever
+        your balance falls below the threshold. Turn off any time here or on the portal.
       </Text>
       {error && <Text color={t.color.error}>{error}</Text>}
       <Text />
