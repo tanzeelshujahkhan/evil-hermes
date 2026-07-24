@@ -861,6 +861,31 @@ PLATFORM_HINTS = {
 # the machine/OS the agent's tools actually run on.
 # ---------------------------------------------------------------------------
 
+
+
+
+# Telegram rich-messages extension — opt-in via ``platforms.telegram.extra.rich_messages``.
+# Appended after PLATFORM_HINTS['telegram'] (the base MarkdownV2-compatible hint) when the
+# operator has enabled the extension in config. Covers Bot API 10.1 features beyond the
+# base hint: real Markdown tables, task lists, math, collapsible details, etc. The base
+# hint stays accurate for users who haven't opted in; this extension is a strict superset.
+TELEGRAM_RICH_MESSAGES_HINT = (
+    "Telegram now supports rich Markdown, so lean into it: whenever it "
+    "makes the answer clearer or easier to scan, actively reach for real "
+    "Markdown tables (pipe `| col | col |` syntax), bullet and numbered "
+    "lists, task lists (`- [ ]` / `- [x]`), headings, nested blockquotes, "
+    "collapsible details, footnotes/references, math/formulas (`$...$`, "
+    "`$$...$$`), underline, subscript/superscript, marked (highlighted) "
+    "text, and anchors. Default to structured formatting over dense "
+    "paragraphs for any comparison, set of steps, key/value summary, or "
+    "tabular data. Prefer real Markdown tables and task lists over "
+    "hand-built bullet substitutes when presenting structured data; these "
+    "degrade gracefully (tables become readable bullet groups) when rich "
+    "rendering is unavailable, but advanced constructs like math and "
+    "collapsible details may render as plain source text in that case. "
+)
+
+
 WSL_ENVIRONMENT_HINT = (
     "You are running inside WSL (Windows Subsystem for Linux). "
     "The Windows host filesystem is mounted under /mnt/ — "
